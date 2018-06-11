@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intro_views_flutter/UI/pages.dart';
 
 void main() => runApp(new MyApp());
 
@@ -7,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Flutter Demo',
+      title: 'IntroViews Flutter',
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -17,11 +18,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
   @override
   _MyHomePageState createState() => new _MyHomePageState();
 }
@@ -33,10 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return new Scaffold(
       body: new Stack(
         children: <Widget>[
-          new Container(
-            color: Colors.blueAccent,
-            child: new Column(),
-          ),
+          new Page(),
         ],
       ),
 
