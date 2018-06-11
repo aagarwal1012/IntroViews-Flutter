@@ -1,7 +1,18 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Constants/constants.dart';
+import 'package:intro_views_flutter/Models/slide_update.dart';
 
 class PageDragger extends StatefulWidget {
+
+  final StreamController<SlideUpdate> slideUpdateStream;
+
+
+  PageDragger({
+    this.slideUpdateStream,
+  });
+
   @override
   _PageDraggerState createState() => new _PageDraggerState();
 }
@@ -33,6 +44,8 @@ class _PageDraggerState extends State<PageDragger> {
       }
 
       slidePercent = (dx / FULL_TARNSITION_PX).abs().clamp(0.0, 1.0);
+
+      widget.slideUpdateStream.add(new SlideUpdate(slideDirection, slidePercent));
     }
   }
 
