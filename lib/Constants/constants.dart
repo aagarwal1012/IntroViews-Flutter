@@ -1,5 +1,5 @@
 enum SlideDirection{
   leftToRight,
   rightToLeft,
-  none
+  none,
 }

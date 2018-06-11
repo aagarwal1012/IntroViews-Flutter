@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           new PagerIndicator(
-
+            pagerIndicatorViewModel: null,
           ),
         ],
       ),
