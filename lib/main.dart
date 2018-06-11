@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intro_views_flutter/Models/page_view_model.dart';
 import 'package:intro_views_flutter/UI/pages.dart';
 
 void main() => runApp(new MyApp());
@@ -29,7 +30,9 @@ class _MyHomePageState extends State<MyHomePage> {
     return new Scaffold(
       body: new Stack(
         children: <Widget>[
-          new Page(),
+          new Page(
+              pageViewModel: pages[0],
+          ),
         ],
       ),
 
