@@ -7,4 +7,6 @@ enum SlideDirection{
 enum UpdateType{
   dragging,
   doneDragging,
+  animating,
+  doneAnimating,
 }

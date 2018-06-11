@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:intro_views_flutter/Animation/animated_page_dragger.dart';
 import 'package:intro_views_flutter/Animation/page_dragger.dart';
 import 'package:intro_views_flutter/Constants/constants.dart';
 import 'package:intro_views_flutter/Models/pager_indicator_view_model.dart';
@@ -30,9 +31,10 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => new _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   StreamController<SlideUpdate> slideUpdateStream;
+  AnimatedPageDragger animatedPageDragger;
 
   int activeIndex = 0;
   int nextPageIndex = 0;
@@ -59,15 +61,39 @@ class _MyHomePageState extends State<MyHomePage> {
         else if(event.updateType == UpdateType.doneDragging){
 
           if(slidePercent > 0.5){
-            activeIndex = slideDirection == SlideDirection.leftToRight
-                ? activeIndex - 1 : activeIndex + 1;
+            animatedPageDragger = new AnimatedPageDragger(
+              slideDirection: slideDirection,
+              transitionGoal: TransitionGoal.open,
+              slidePercent: slidePercent,
+              slideUpdateStream: slideUpdateStream,
+              vsync: this,
+            );
+          } else {
+            animatedPageDragger = new AnimatedPageDragger(
+              slideDirection: slideDirection,
+              transitionGoal: TransitionGoal.close,
+              slidePercent: slidePercent,
+              slideUpdateStream: slideUpdateStream,
+              vsync: this,
+            );
+
+            nextPageIndex = activeIndex;
           }
+          animatedPageDragger.run();
+
+        }
+        else if(event.updateType == UpdateType.animating){
+          slideDirection = event.direction;
+          slidePercent = event.slidePercent;
+        }
+        else if(event.updateType == UpdateType.doneAnimating){
+          activeIndex = nextPageIndex;
 
           slideDirection = SlideDirection.none;
           slidePercent = 0.0;
+
+          animatedPageDragger.dispose();
         }
-        slideDirection = event.direction;
-        slidePercent = event.slidePercent;
       });
     });
   }
