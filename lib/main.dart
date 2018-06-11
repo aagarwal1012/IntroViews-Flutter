@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intro_views_flutter/Constants/constants.dart';
+import 'package:intro_views_flutter/Models/pager_indicator_view_model.dart';
 import 'package:intro_views_flutter/UI/pager_indicator.dart';
 import 'package:intro_views_flutter/UI/pages.dart';
 import 'Animation/page_reveal.dart';
@@ -43,7 +45,9 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           new PagerIndicator(
-            pagerIndicatorViewModel: null,
+            viewModel: new PagerIndicatorViewModel(
+                pages, 1, SlideDirection.none, 0.0,
+            ),
           ),
         ],
       ),

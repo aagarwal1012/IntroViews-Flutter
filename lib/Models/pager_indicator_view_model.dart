@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Constants/constants.dart';
 import 'package:intro_views_flutter/Models/page_view_model.dart';
 
