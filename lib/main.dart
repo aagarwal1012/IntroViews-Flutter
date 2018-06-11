@@ -34,6 +34,10 @@ class _MyHomePageState extends State<MyHomePage> {
               pageViewModel: pages[0],
             percentVisible: 1.0,
           ),
+          new Page(
+            pageViewModel: pages[1],
+            percentVisible: 1.0,
+          )
         ],
       ),
 
