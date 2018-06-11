@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Models/page_bubble_view_model.dart';
 
@@ -15,15 +17,23 @@ class PageBubble extends StatelessWidget {
     return new Padding(
       padding: const EdgeInsets.all(10.0),
       child: new Container(
-        width: 50.0,
-        height: 50.0,
+        width: lerpDouble(20.0, 45.0, viewModel.activePercent),
+        height: lerpDouble(20.0, 45.0, viewModel.activePercent),
         decoration: new BoxDecoration(
           shape: BoxShape.circle,
-          color: const Color(0x88FFFFFF),
+          color: viewModel.isHollow ? Colors.transparent : const Color(0x88FFFFFF),
+          border: new Border.all(
+            color: viewModel.isHollow ? const Color(0x88FFFFFF) : Colors.transparent,
+            width: 3.0,
+          )
         ),
-        child: new Image.asset(
-          viewModel.iconAssetPath,
-          color: viewModel.color,
+        child: new Opacity(
+          opacity: viewModel.activePercent,
+          // ignore: conflicting_dart_import
+          child: new Image.asset(
+            viewModel.iconAssetPath,
+            color: viewModel.color,
+          ),
         ),
       ),
     );

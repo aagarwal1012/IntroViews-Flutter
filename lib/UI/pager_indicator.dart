@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intro_views_flutter/Models/page_bubble_view_model.dart';
 import 'package:intro_views_flutter/Models/pager_indiactor_view_model.dart';
 import 'package:intro_views_flutter/UI/page_bubble.dart';
 
@@ -19,30 +20,28 @@ class PagerIndicator extends StatelessWidget {
         new Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: new Container(
-                width: 20.0,
-                height: 20.0,
-                decoration: new BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: const Color(0x88FFFFFF),
-                ),
+            new PageBubble(
+              viewModel: new PageBubbleViewModel(
+                "assets/shopping_cart.png",
+                Colors.green,
+                false,
+                0.0,
               ),
             ),
-            new PageBubble(),
-            new Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: new Container(
-                width: 20.0,
-                height: 20.0,
-                decoration: new BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: new Border.all(
-                    color: const Color(0x88FFFFFF),
-                    width: 3.0,
-                  ),
+            new PageBubble(
+                viewModel: new PageBubbleViewModel(
+                  "assets/shopping_cart.png",
+                  Colors.green,
+                  false,
+                  1.0,
                 ),
+            ),
+            new PageBubble(
+              viewModel: new PageBubbleViewModel(
+                "assets/shopping_cart.png",
+                Colors.green,
+                true,
+                0.0,
               ),
             ),
           ],
