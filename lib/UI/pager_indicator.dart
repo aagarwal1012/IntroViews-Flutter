@@ -16,9 +16,7 @@ class PagerIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
 
     List<PageBubble> bubbles = [];
-
-
-
+    
     for(var i = 0; i < viewModel.pages.length; i++){
       final page = viewModel.pages[i];
 
