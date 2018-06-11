@@ -3,3 +3,8 @@ enum SlideDirection{
   rightToLeft,
   none,
 }
+
+enum UpdateType{
+  dragging,
+  doneDragging,
+}
