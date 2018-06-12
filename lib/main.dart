@@ -1,14 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:intro_views_flutter/Animation/animated_page_dragger.dart';
-import 'package:intro_views_flutter/Animation/page_dragger.dart';
+import 'package:intro_views_flutter/Animation_Gesture/animated_page_dragger.dart';
+import 'package:intro_views_flutter/Animation_Gesture/page_dragger.dart';
 import 'package:intro_views_flutter/Constants/constants.dart';
 import 'package:intro_views_flutter/Models/pager_indicator_view_model.dart';
 import 'package:intro_views_flutter/Models/slide_update_model.dart';
 import 'package:intro_views_flutter/UI/pager_indicator.dart';
 import 'package:intro_views_flutter/UI/pages.dart';
-import 'package:intro_views_flutter/Animation/page_reveal.dart';
+import 'package:intro_views_flutter/Animation_Gesture/page_reveal.dart';
 
 /**
  * This is the main method of app, from here execution starts.

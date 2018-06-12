@@ -4,14 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Constants/constants.dart';
 import 'package:intro_views_flutter/Models/slide_update_model.dart';
 
+/**
+ * This class is used to get user gesture and work according to it.
+ */
+
 class PageDragger extends StatefulWidget {
 
+  //These bool variables are used to check whether user can drag left or right or none.
   final bool canDragLeftToRight;
   final bool canDragRightToLeft;
 
+  //Stream controller
   final StreamController<SlideUpdate> slideUpdateStream;
 
-
+  //Constructor
   PageDragger({
     this.canDragLeftToRight,
     this.canDragRightToLeft,
@@ -24,20 +30,28 @@ class PageDragger extends StatefulWidget {
 
 class _PageDraggerState extends State<PageDragger> {
 
-  static const FULL_TARNSITION_PX = 300.0;
-
+  //Variables
   Offset dragStart;
   SlideDirection slideDirection;
   double slidePercent = 0.0;
 
+  // This methods executes when user starts dragging.
   onDragStart(DragStartDetails details){
+    
     dragStart = details.globalPosition;
+  
   }
 
+  // This methods executes while user is dragging.
   onDragUpdate(DragUpdateDetails details){
+    
     if(dragStart != null){
+      //Getting new position details 
       final newPosition = details.globalPosition;
+      //Change in position in x
       final dx = dragStart.dx - newPosition.dx;
+      
+      //predicting slide direction
       if(dx > 0.0 && widget.canDragRightToLeft){
         slideDirection = SlideDirection.rightToLeft;
       }
@@ -47,19 +61,32 @@ class _PageDraggerState extends State<PageDragger> {
       else{
         slideDirection = SlideDirection.none;
       }
-
+      
+      //predicting slide percent
       if(slideDirection != SlideDirection.none) {
+        //clamp method is used to clamp the value of slidePercent from 0.0 to 1.0, after 1.0 it set to 1.0
         slidePercent = (dx / FULL_TARNSITION_PX).abs().clamp(0.0, 1.0);
       }
       else{
         slidePercent = 0.0;
       }
 
-      widget.slideUpdateStream.add(new SlideUpdate(slideDirection, slidePercent, UpdateType.dragging));
+      // Adding to slideUpdateStream
+      widget.slideUpdateStream.add(
+          new SlideUpdate(
+              slideDirection,
+              slidePercent,
+              UpdateType.dragging
+          )
+      );
     }
+    
   }
 
+  // This method executes when user ends dragging.
   onDragEnd(DragEndDetails details){
+
+    // Adding to slideUpdateStream
     widget.slideUpdateStream.add(
       new SlideUpdate(
           SlideDirection.none,
@@ -67,12 +94,15 @@ class _PageDraggerState extends State<PageDragger> {
           UpdateType.doneDragging
       )
     );
-    
+
+    //Making dragStart to null for the reallocation
     dragStart = null;
   }
 
   @override
   Widget build(BuildContext context) {
+
+    //Gesture Detector for horizontal drag
     return new GestureDetector(
       onHorizontalDragStart: onDragStart,
       onHorizontalDragUpdate: onDragUpdate,
