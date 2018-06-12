@@ -1,13 +1,16 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:intro_views_flutter/Clipper/circular_reveal_clipper.dart';
+
+/**
+ * This class reveals the next page in the circular form.
+ */
 
 class PageReveal extends StatelessWidget {
 
   final double revealPercent;
   final Widget child;
 
-
+  //Constructor
   PageReveal({
     this.revealPercent,
     this.child
@@ -15,39 +18,12 @@ class PageReveal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //ClipOval cuts the page to circular shape.
     return new ClipOval(
-      clipper: new CircleRevealClipper(revealPercent: revealPercent),
+      clipper: new CircularRevealClipper(revealPercent: revealPercent),
       child: child,
     );
   }
 }
 
-class CircleRevealClipper extends CustomClipper<Rect>{
 
-  final double revealPercent;
-
-
-  CircleRevealClipper({
-    this.revealPercent
-  });
-
-  @override
-  Rect getClip(Size size) {
-    final epicenter = new Offset(size.width/2, size.height*0.9);
-
-    // Calculate distance from epicenter to the top left corner to make sure we fill the screen.
-    double theta = atan(epicenter.dy / epicenter.dx);
-    final distanceToCorner = epicenter.dy / sin(theta);
-
-    final radius = distanceToCorner * revealPercent;
-    final diameter = 2 * radius;
-
-    return new Rect.fromLTWH(epicenter.dx - radius, epicenter.dy - radius, diameter, diameter);
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Rect> oldClipper) {
-    return true;
-  }
-
-}
