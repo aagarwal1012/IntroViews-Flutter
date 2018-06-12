@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Models/page_view_model.dart';
 
+final BUBBLE_WIDTH = 55.0;
+
 final pages = [
   new PageViewModel(
       const Color(0xFF678FB4),
