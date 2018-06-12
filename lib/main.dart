@@ -8,14 +8,14 @@ import 'package:intro_views_flutter/Models/pager_indicator_view_model.dart';
 import 'package:intro_views_flutter/Models/slide_update.dart';
 import 'package:intro_views_flutter/UI/pager_indicator.dart';
 import 'package:intro_views_flutter/UI/pages.dart';
-import 'Animation/page_reveal.dart';
+import 'package:intro_views_flutter/Animation/page_reveal.dart';
 
 /**
  * This is the main method of app, from here execution starts.
  */
-void main() => runApp(new MyApp());
+void main() => runApp(new App());
 
-class MyApp extends StatelessWidget {
+class App extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
   AnimatedPageDragger animatedPageDragger;  //When user stops dragging then by using this page automatically drags.
 
-  int activeIndex = 0;  //active page index
+  int activePageIndex = 0;  //active page index
   int nextPageIndex = 0;  //next page index
   SlideDirection slideDirection = SlideDirection.none;   //slide direction
   double slidePercent = 0.0;  //slide percentage (0.0 to 1.0)
@@ -73,13 +73,13 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
           //conditions on slide direction
           if(slideDirection == SlideDirection.leftToRight){
-            nextPageIndex = activeIndex - 1;
+            nextPageIndex = activePageIndex - 1;
           }
           else if(slideDirection == SlideDirection.rightToLeft){
-            nextPageIndex = activeIndex + 1;
+            nextPageIndex = activePageIndex + 1;
           }
           else{
-            nextPageIndex = activeIndex;
+            nextPageIndex = activePageIndex;
           }
 
         }
@@ -106,7 +106,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               vsync: this,
             );
             //also next page is active page
-            nextPageIndex = activeIndex;
+            nextPageIndex = activePageIndex;
           }
           //Run the animation
           animatedPageDragger.run();
@@ -122,7 +122,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         //done animating
         else if(event.updateType == UpdateType.doneAnimating){
 
-          activeIndex = nextPageIndex;
+          activePageIndex = nextPageIndex;
 
           slideDirection = SlideDirection.none;
           slidePercent = 0.0;
@@ -147,7 +147,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       body: new Stack(
         children: <Widget>[
           new Page(
-            pageViewModel: pages[activeIndex],
+            pageViewModel: pages[activePageIndex],
             percentVisible: 1.0,
           ),  //Pages
           new PageReveal( //next page reveal
@@ -160,14 +160,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           new PagerIndicator( //bottom page indicator
             viewModel: new PagerIndicatorViewModel(
                 pages,
-                activeIndex,
+                activePageIndex,
                 slideDirection,
                 slidePercent,
             ),
           ), //PagerIndicator
           new PageDragger( //Used for gesture control
-            canDragLeftToRight: activeIndex > 0,
-            canDragRightToLeft: activeIndex < pages.length - 1,
+            canDragLeftToRight: activePageIndex > 0,
+            canDragRightToLeft: activePageIndex < pages.length - 1,
             slideUpdateStream: this.slideUpdateStream,
           ),//PageDragger
         ], //Widget

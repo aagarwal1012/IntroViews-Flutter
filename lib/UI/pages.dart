@@ -1,38 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Models/page_view_model.dart';
 
-final pages = [
-  new PageViewModel(
-      const Color(0xFF678FB4),
-      'assets/hotels.png',
-      'Hotels',
-      'All hotels and hostels are sorted by hospitality rating',
-      'assets/key.png'
-  ),
-  new PageViewModel(
-      const Color(0xFF65B0B4),
-      'assets/banks.png',
-      'Banks',
-      'We carefully verify all banks before adding them into the app',
-      'assets/wallet.png'
-  ),
-  new PageViewModel(
-    const Color(0xFF9B90BC),
-    'assets/stores.png',
-    'Store',
-    'All local stores are categorized for your convenience',
-    'assets/shopping_cart.png',
-  ),
-];
-
+/**
+ * This is the class which contains the Page UI.
+ */
 
 class Page extends StatelessWidget {
 
+  //page details
   final PageViewModel pageViewModel;
 
+  //percent visible of page
   double percentVisible = 1.0;
 
-
+  //Constructor
   Page({
     this.pageViewModel,
     this.percentVisible,
@@ -43,19 +24,19 @@ class Page extends StatelessWidget {
     return new Container(
       width: double.infinity,
       color: pageViewModel.color,
-      child: new Opacity(
+      child: new Opacity(       //Opacity is used to create fade in effect
         opacity: percentVisible,
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new Transform(
+            new Transform(      //Used for vertical transformation
               transform : new Matrix4.translationValues(0.0, 50.0 * (1 - percentVisible), 0.0) ,
               child: new Padding(
                   padding: new EdgeInsets.only(bottom: 20.0),
-                  child: new Image.asset(pageViewModel.heroAssetPath, width: 200.0, height: 200.0,)
-              ),
-            ),
-            new Transform(
+                  child: new Image.asset(pageViewModel.heroAssetPath, width: 200.0, height: 200.0,)   //Loading main icon
+              ), //Padding
+            ),  //Transform
+            new Transform(      //Used for vertical transformation
               transform : new Matrix4.translationValues(0.0, 30.0 * (1 - percentVisible), 0.0) ,
               child: new Padding(
                 padding: new EdgeInsets.only(top: 10.0, bottom: 10.0),
@@ -65,11 +46,11 @@ class Page extends StatelessWidget {
                     color: Colors.white,
                     fontFamily: "FlamanteRoma",
                     fontSize: 34.0,
-                  ),
-                ),
-              ),
-            ),
-            new Transform(
+                  ),  //TextStyle
+                ),  //Text
+              ),//Padding
+            ),  //Transform
+            new Transform(      //Used for vertical transformation
               transform : new Matrix4.translationValues(0.0, 30.0 * (1 - percentVisible), 0.0) ,
               child: new Padding(
                 padding: const EdgeInsets.only(bottom: 75.0),
@@ -79,14 +60,14 @@ class Page extends StatelessWidget {
                   style: new TextStyle(
                     color: Colors.white,
                     fontSize: 18.0,
-                  ),
-                ),
-              ),
-            ),
+                  ),  //TextStyle
+                ),  //Text
+              ),  //Padding
+            ),  //Transform
           ],
 
-        ),
-      ),
-    );
+        ),  //Column
+      ),  //Opacity
+    );  //Container
   }
 }
