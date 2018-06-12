@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Models/page_view_model.dart';
 
+/**
+ * This package contains all the constants used.
+ */
+
 final BUBBLE_WIDTH = 55.0;
 
 final pages = [

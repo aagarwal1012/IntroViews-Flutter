@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
+//view model for pages
+
 class PageViewModel{
   final Color color;
+  //main image path
   final String heroAssetPath;
   final String title;
   final String body;

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Constants/constants.dart';
-import 'package:intro_views_flutter/Models/slide_update.dart';
+import 'package:intro_views_flutter/Models/slide_update_model.dart';
 
 class PageDragger extends StatefulWidget {
 

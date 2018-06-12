@@ -3,7 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Constants/constants.dart';
-import 'package:intro_views_flutter/Models/slide_update.dart';
+import 'package:intro_views_flutter/Models/slide_update_model.dart';
 
 class AnimatedPageDragger{
   static const PERCENT_PER_MILLISECOND = 0.005;

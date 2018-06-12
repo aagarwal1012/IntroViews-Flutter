@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// View Model for page bubble
+
 class PageBubbleViewModel{
   final String iconAssetPath;
   final Color color;
