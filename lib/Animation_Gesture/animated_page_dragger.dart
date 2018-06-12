@@ -5,71 +5,98 @@ import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Constants/constants.dart';
 import 'package:intro_views_flutter/Models/slide_update_model.dart';
 
+/**
+ * This class provides the animation controller
+ * used when then user stops dragging and page
+ * reveal is not completed.
+ */
+
 class AnimatedPageDragger{
-  static const PERCENT_PER_MILLISECOND = 0.005;
 
   final slideDirection;
+
+  //This variable tells that whether we have to open or close the page reveal.
   final transitionGoal;
 
+  //Animation controller
   AnimationController completionAnimationController;
 
+  //Constructor
   AnimatedPageDragger({
     this.slideDirection,
     this.transitionGoal,
     slidePercent,
     StreamController<SlideUpdate> slideUpdateStream,
     TickerProvider vsync,
-  }){
+  })
+  {
     final startSlidePercent = slidePercent;
     var endSlidePercent;
     var duration;
 
+    //We have to complete the page reveal
     if(transitionGoal == TransitionGoal.open){
       endSlidePercent = 1.0;
+
       final slideRemaining = 1.0 - slidePercent;
+      //Standard value take for drag velocity to avoid complex calculations.
       duration = new Duration(
         milliseconds: (slideRemaining / PERCENT_PER_MILLISECOND).round()
       );
     }
+    //We have to close the page reveal
     else{
+
       endSlidePercent = 0.0;
+
       duration = new Duration(
         milliseconds: (slidePercent / PERCENT_PER_MILLISECOND).round()
       );
     }
 
-
-
+    //Adding listener to animation controller
+    //Also value to animation controller vary from 0.0 to 1.0 according to duration.
     completionAnimationController = new AnimationController(
       duration: duration,
-        vsync: vsync)
+        vsync: vsync
+    )
     ..addListener((){
 
-        final slidePercent = lerpDouble(startSlidePercent, endSlidePercent,
-            completionAnimationController.value);
+      final slidePercent = lerpDouble(startSlidePercent, endSlidePercent, completionAnimationController.value);
 
-        slideUpdateStream.add(
-          new SlideUpdate(slideDirection, slidePercent, UpdateType.animating)
-        );
+      //Adding to slide update stream
+      slideUpdateStream.add(
+          new SlideUpdate(
+              slideDirection,
+              slidePercent,
+              UpdateType.animating
+          )
+      );
+
     })
     ..addStatusListener((AnimationStatus status){
+      //When animation has done executing
       if(status == AnimationStatus.completed){
+        //Adding to slide update stream
         slideUpdateStream.add(
-            new SlideUpdate(slideDirection, slidePercent, UpdateType.doneAnimating)
+            new SlideUpdate(
+                slideDirection,
+                slidePercent,
+                UpdateType.doneAnimating
+            )
         );
       }
     });
   }
 
+  //This method is used to run animation Controller
   run(){
     completionAnimationController.forward(from: 0.0);
   }
+
+  //This method is used to dispose animation controller
   dispose(){
     completionAnimationController.dispose();
   }
-}
 
-enum TransitionGoal{
-  open,
-  close,
 }

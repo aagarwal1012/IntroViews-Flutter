@@ -9,6 +9,8 @@ final BUBBLE_WIDTH = 55.0;
 
 final FULL_TARNSITION_PX = 300.0;
 
+final PERCENT_PER_MILLISECOND = 0.00125;
+
 final pages = [
   new PageViewModel(
       const Color(0xFF678FB4),
@@ -45,4 +47,9 @@ enum UpdateType{
   doneDragging,
   animating,
   doneAnimating,
+}
+
+enum TransitionGoal{
+  open,
+  close,
 }
