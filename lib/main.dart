@@ -167,9 +167,18 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 slidePercent,
             ),
           ), //PagerIndicator
-          new PageIndicatorButtons(
+          new PageIndicatorButtons(   //Skip and Done Buttons
             acitvePageIndex: activePageIndex,
             totalPages: pages.length,
+            onPressedDoneButton: null,  //void Callback to be executed after pressing done button
+            slidePercent: slidePercent,
+            slideDirection: slideDirection,
+            onPressedSkipButton: (){
+              setState(() {
+                activePageIndex = pages.length - 1;
+                nextPageIndex = activePageIndex;
+              });
+            },
           ),
           new PageDragger( //Used for gesture control
             canDragLeftToRight: activePageIndex > 0,
