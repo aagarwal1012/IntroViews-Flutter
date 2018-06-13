@@ -90,7 +90,7 @@ class _PageDraggerState extends State<PageDragger> {
     widget.slideUpdateStream.add(
       new SlideUpdate(
           SlideDirection.none,
-          0.0,
+          slidePercent,
           UpdateType.doneDragging
       )
     );

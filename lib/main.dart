@@ -6,6 +6,7 @@ import 'package:intro_views_flutter/Animation_Gesture/page_dragger.dart';
 import 'package:intro_views_flutter/Constants/constants.dart';
 import 'package:intro_views_flutter/Models/pager_indicator_view_model.dart';
 import 'package:intro_views_flutter/Models/slide_update_model.dart';
+import 'package:intro_views_flutter/UI/page_indicator_buttons.dart';
 import 'package:intro_views_flutter/UI/pager_indicator.dart';
 import 'package:intro_views_flutter/UI/pages.dart';
 import 'package:intro_views_flutter/Animation_Gesture/page_reveal.dart';
@@ -157,6 +158,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               percentVisible: slidePercent,
             ),
           ), //PageReveal
+
           new PagerIndicator( //bottom page indicator
             viewModel: new PagerIndicatorViewModel(
                 pages,
@@ -165,6 +167,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 slidePercent,
             ),
           ), //PagerIndicator
+          new PageIndicatorButtons(
+            acitvePageIndex: activePageIndex,
+            totalPages: pages.length,
+          ),
           new PageDragger( //Used for gesture control
             canDragLeftToRight: activePageIndex > 0,
             canDragRightToLeft: activePageIndex < pages.length - 1,
