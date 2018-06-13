@@ -3,6 +3,7 @@ import 'package:intro_views_flutter/Constants/constants.dart';
 import 'package:intro_views_flutter/Models/page_bubble_view_model.dart';
 import 'package:intro_views_flutter/Models/pager_indicator_view_model.dart';
 import 'package:intro_views_flutter/UI/page_bubble.dart';
+import 'package:intro_views_flutter/UI/page_indicator_buttons.dart';
 
 /**
  * This class contains the UI elements associated with bottom page indicator.
@@ -71,17 +72,25 @@ class PagerIndicator extends StatelessWidget {
     else if(viewModel.slideDirection == SlideDirection.rightToLeft){
       translation -= BUBBLE_WIDTH * viewModel.slidePercent;
     }
+
     //TODO : Add skip and done button
     //UI
     return new Column(
       children: <Widget>[
         new Expanded(child: new Container()),
-        new Transform(    // used for horizontal transformation
-          transform: new Matrix4.translationValues(translation, 0.0, 0.0),
-          child: new Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: bubbles,
-          ),  //Row
+        new Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            new SkipButton(),
+            new Transform(    // used for horizontal transformation
+            transform: new Matrix4.translationValues(translation, 0.0, 0.0),
+            child: new Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: bubbles,
+              ),  //Row
+            ),
+            new DoneButton(),
+          ],
         ),  //Transform
       ],  //Children
     );  //Column
