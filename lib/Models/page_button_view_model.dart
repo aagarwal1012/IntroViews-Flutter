@@ -1,5 +1,9 @@
 import 'package:intro_views_flutter/Constants/constants.dart';
 
+/**
+ * This is view model for the skip and done buttons.
+ */
+
 class PageButtonViewModel{
   final double slidePercent;
   final int totalPages;

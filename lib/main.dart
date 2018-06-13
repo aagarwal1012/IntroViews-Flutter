@@ -173,7 +173,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             onPressedDoneButton: null,  //void Callback to be executed after pressing done button
             slidePercent: slidePercent,
             slideDirection: slideDirection,
-            onPressedSkipButton: (){
+            onPressedSkipButton: (){    //method executed on pressing skip button
               setState(() {
                 activePageIndex = pages.length - 1;
                 nextPageIndex = activePageIndex;
