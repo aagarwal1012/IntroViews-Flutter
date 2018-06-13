@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="256b0e26-5aaa-45c7-a386-7a57169658c0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/UI/page_indicator_buttons.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/UI/page_bubble.dart" afterPath="$PROJECT_DIR$/lib/UI/page_bubble.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/UI/pager_indicator.dart" afterPath="$PROJECT_DIR$/lib/UI/pager_indicator.dart" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
@@ -36,11 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pager_indicator.dart" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pager_indicator.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/UI/pager_indicator.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="87" column="42" lean-forward="true" selection-start-line="87" selection-start-column="42" selection-end-line="87" selection-end-column="42" />
+            <state relative-caret-position="1995">
+              <caret line="95" column="14" lean-forward="true" selection-start-line="95" selection-start-column="14" selection-end-line="95" selection-end-column="14" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -48,7 +45,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="page_indicator_buttons.dart" pinned="false" current-in-tab="true">
+      <file leaf-file-name="page_indicator_buttons.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/UI/page_indicator_buttons.dart">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="462">
@@ -147,8 +144,8 @@
         <option value="$PROJECT_DIR$/lib/Animation_Gesture/animated_page_dragger.dart" />
         <option value="$PROJECT_DIR$/lib/Constants/constants.dart" />
         <option value="$PROJECT_DIR$/lib/UI/page_bubble.dart" />
-        <option value="$PROJECT_DIR$/lib/UI/pager_indicator.dart" />
         <option value="$PROJECT_DIR$/lib/UI/page_indicator_buttons.dart" />
+        <option value="$PROJECT_DIR$/lib/UI/pager_indicator.dart" />
       </list>
     </option>
   </component>
@@ -330,7 +327,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1528889779610" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1528890243769" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -378,7 +375,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1528889779610" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1528890243769" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -567,7 +564,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1429" height="1038" extended-state="0" />
+    <frame x="-8" y="0" width="1429" height="1038" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -776,21 +773,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/UI/pager_indicator.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="87" column="42" lean-forward="true" selection-start-line="87" selection-start-column="42" selection-end-line="87" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/UI/page_indicator_buttons.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="34" column="15" lean-forward="true" selection-start-line="34" selection-start-column="15" selection-end-line="34" selection-end-column="15" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/UI/pager_indicator.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1995">
+          <caret line="95" column="14" lean-forward="true" selection-start-line="95" selection-start-column="14" selection-end-line="95" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

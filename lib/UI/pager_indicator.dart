@@ -81,7 +81,12 @@ class PagerIndicator extends StatelessWidget {
         new Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            new SkipButton(),
+            (viewModel.activeIndex < viewModel.pages.length - 1)
+                ? new SkipButton()
+                : new Padding(
+              padding: const EdgeInsets.only(right: 125.0, left: 0.0),
+              child: new Container(),
+            ),
             new Transform(    // used for horizontal transformation
             transform: new Matrix4.translationValues(translation, 0.0, 0.0),
             child: new Row(
@@ -89,7 +94,12 @@ class PagerIndicator extends StatelessWidget {
               children: bubbles,
               ),  //Row
             ),
-            new DoneButton(),
+            (viewModel.activeIndex == viewModel.pages.length - 1)
+                ? new DoneButton()
+                : new Padding(
+                  padding: const EdgeInsets.only(left: 30.0, right: 0.0),
+                  child: new Container(),
+                ),
           ],
         ),  //Transform
       ],  //Children
