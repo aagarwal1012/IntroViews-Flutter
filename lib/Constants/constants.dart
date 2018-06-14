@@ -13,28 +13,33 @@ final PERCENT_PER_MILLISECOND = 0.00125;
 
 final pages = [
   new PageViewModel(
-      const Color(0xFF678FB4),
-      'assets/hotels.png',
-      'Hotels',
-      'All hotels and hostels are sorted by hospitality rating',
-      'assets/key.png'
+    color: const Color(0xFF678FB4),
+    mainImageAssetPath: 'assets/hotels.png',
+    title: 'Hotels',
+    body: 'All hotels and hostels are sorted by hospitality rating',
+    iconImageAssetPath: 'assets/key.png',
+    titleTextColor: Colors.white,
+    bodyTextColor: Colors.white,
   ),
   new PageViewModel(
-      const Color(0xFF65B0B4),
-      'assets/banks.png',
-      'Banks',
-      'We carefully verify all banks before adding them into the app',
-      'assets/wallet.png'
+    color: const Color(0xFF65B0B4),
+    mainImageAssetPath: 'assets/banks.png',
+    title: 'Banks',
+    body: 'We carefully verify all banks before adding them into the app',
+    iconImageAssetPath: 'assets/wallet.png',
+    titleTextColor: Colors.white,
+    bodyTextColor: Colors.white,
   ),
   new PageViewModel(
-    const Color(0xFF9B90BC),
-    'assets/stores.png',
-    'Store',
-    'All local stores are categorized for your convenience',
-    'assets/shopping_cart.png',
+    color: const Color(0xFF9B90BC),
+    mainImageAssetPath: 'assets/stores.png',
+    title: 'Store',
+    body: 'All local stores are categorized for your convenience',
+    iconImageAssetPath: 'assets/shopping_cart.png',
+    titleTextColor: Colors.white,
+    bodyTextColor: Colors.white,
   ),
 ];
-
 
 enum SlideDirection{
   leftToRight,

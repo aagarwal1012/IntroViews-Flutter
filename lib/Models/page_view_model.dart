@@ -5,18 +5,22 @@ import 'package:flutter/material.dart';
 class PageViewModel{
   final Color color;
   //main image path
-  final String heroAssetPath;
+  final String mainImageAssetPath;
   final String title;
   final String body;
-  final String iconAssetPath;
+  final String iconImageAssetPath;
+  final Color titleTextColor;
+  final Color bodyTextColor;
 
-  PageViewModel(
+  PageViewModel({
     this.color,
-    this.heroAssetPath,
+    this.mainImageAssetPath,
     this.title,
     this.body,
-    this.iconAssetPath
-  );
+    this.iconImageAssetPath,
+    this.bodyTextColor,
+    this.titleTextColor,
+  });
 
 
 }

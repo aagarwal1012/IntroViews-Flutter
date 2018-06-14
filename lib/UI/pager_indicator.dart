@@ -1,12 +1,8 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Constants/constants.dart';
 import 'package:intro_views_flutter/Models/page_bubble_view_model.dart';
 import 'package:intro_views_flutter/Models/pager_indicator_view_model.dart';
-import 'package:intro_views_flutter/Models/slide_update_model.dart';
 import 'package:intro_views_flutter/UI/page_bubble.dart';
-import 'package:intro_views_flutter/UI/page_indicator_buttons.dart';
 
 /**
  * This class contains the UI elements associated with bottom page indicator.
@@ -55,7 +51,7 @@ class PagerIndicator extends StatelessWidget {
       bubbles.add(
           new PageBubble(
             viewModel: new PageBubbleViewModel(
-              page.iconAssetPath,
+              page.iconImageAssetPath,
               page.color,
               isHollow,
               percentActive,
@@ -75,8 +71,6 @@ class PagerIndicator extends StatelessWidget {
     else if(viewModel.slideDirection == SlideDirection.rightToLeft){
       translation -= BUBBLE_WIDTH * viewModel.slidePercent;
     }
-
-    //TODO : Add skip and done button callback
     //UI
     return new Column(
     children: <Widget>[
@@ -84,16 +78,6 @@ class PagerIndicator extends StatelessWidget {
       new Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-//            (viewModel.activeIndex < viewModel.pages.length - 1)
-//                ? new SkipButton(
-//                onTap: (){
-//
-//                },
-//            )
-//                : new Padding(
-//              padding: const EdgeInsets.only(right: 125.0, left: 0.0),
-//              child: new Container(),
-//            ),
           new Transform(    // used for horizontal transformation
           transform: new Matrix4.translationValues(translation, 0.0, 0.0),
           child: new Row(
@@ -101,12 +85,6 @@ class PagerIndicator extends StatelessWidget {
             children: bubbles,
             ),  //Row
           ),
-//            (viewModel.activeIndex == viewModel.pages.length - 1)
-//                ? new DoneButton()
-//                : new Padding(
-//                  padding: const EdgeInsets.only(left: 30.0, right: 0.0),
-//                  child: new Container(),
-//                ),
         ],
       ),  //Transform
     ],  //Children

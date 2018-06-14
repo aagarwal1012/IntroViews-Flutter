@@ -36,7 +36,7 @@ class Page extends StatelessWidget {
                 child: new Text(
                   pageViewModel.title,
                   style: new TextStyle(
-                    color: Colors.white,
+                    color: (pageViewModel.titleTextColor != null) ? pageViewModel.titleTextColor : Colors.white,
                     fontFamily: "FlamanteRoma",
                     fontSize: 34.0,
                   ),  //TextStyle
@@ -47,8 +47,8 @@ class Page extends StatelessWidget {
               transform : new Matrix4.translationValues(0.0, 50.0 * (1 - percentVisible), 0.0) ,
               child: new Padding(
                   padding: new EdgeInsets.only(bottom: 30.0),
-                  child: (pageViewModel.heroAssetPath != null && pageViewModel.heroAssetPath != "")
-                      ? new Image.asset(pageViewModel.heroAssetPath, width: 285.0, height: 285.0,)  : new Container(height: 285.0, width: 285.0,)  //Loading main icon
+                  child: (pageViewModel.mainImageAssetPath != null && pageViewModel.mainImageAssetPath != "")
+                      ? new Image.asset(pageViewModel.mainImageAssetPath, width: 285.0, height: 285.0,)  : new Container(height: 285.0, width: 285.0,)  //Loading main icon
               ), //Padding
             ),  //Transform
             new Transform(      //Used for vertical transformation
@@ -59,7 +59,7 @@ class Page extends StatelessWidget {
                   pageViewModel.body,
                   textAlign: TextAlign.center,
                   style: new TextStyle(
-                    color: Colors.white,
+                    color: (pageViewModel.bodyTextColor != null) ? pageViewModel.bodyTextColor : Colors.white,
                     fontSize: 18.0,
                   ),  //TextStyle
                 ),  //Text
