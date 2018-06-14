@@ -4,15 +4,24 @@ import 'package:flutter/material.dart';
 
 class PageBubbleViewModel{
   final String iconAssetPath;
-  final Color color;
+  final Color iconColor;
   final bool isHollow;
   final double activePercent;
+  Color bubbleBackgroundColor;
 
   PageBubbleViewModel(
       this.iconAssetPath,
-      this.color,
+      this.iconColor,
       this.isHollow,
-      this.activePercent,);
+      this.activePercent,
+      {this.bubbleBackgroundColor}
+      )
+  {
+
+    if(bubbleBackgroundColor == null)
+      bubbleBackgroundColor = const Color(0x88FFFFFF);
+
+  }
 
 
 }

@@ -31,9 +31,9 @@ class PageBubble extends StatelessWidget {
             decoration: new BoxDecoration(
               shape: BoxShape.circle,
               //Alpha is used to create fade effect for background color
-              color: viewModel.isHollow ? const Color(0x88FFFFFF).withAlpha((0x88 * viewModel.activePercent).round()) : const Color(0x88FFFFFF),
+              color: viewModel.isHollow ? viewModel.bubbleBackgroundColor.withAlpha((0x88 * viewModel.activePercent).round()) : const Color(0x88FFFFFF),
               border: new Border.all(
-                color: viewModel.isHollow ? const Color(0x88FFFFFF).withAlpha((0x88 * (1 - viewModel.activePercent)).round()) : Colors.transparent,
+                color: viewModel.isHollow ? viewModel.bubbleBackgroundColor.withAlpha((0x88 * (1 - viewModel.activePercent)).round()) : Colors.transparent,
                 width: 3.0,
               ),  //Border
             ),  //BoxDecoration
@@ -43,7 +43,7 @@ class PageBubble extends StatelessWidget {
                 // ignore: conflicting_dart_import
                 ? new Image.asset(
                 viewModel.iconAssetPath,
-                color: viewModel.color,
+                color: viewModel.iconColor,
               )
                 : new Container(),
             ),  //opacity

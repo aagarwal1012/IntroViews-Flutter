@@ -42,7 +42,7 @@ class Home extends StatefulWidget {
 
 /**
  * State of above Home widget.
- * It extends the TickerProviderStateMixin as it is used for animation control.
+ * It extends the TickerProviderStateMixin as it is used for animation control (vsync).
  */
 class _HomeState extends State<Home> with TickerProviderStateMixin {
 
