@@ -2,87 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e2f1632-0cea-43fa-8238-f24a6d515179" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_for_Android.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/runConfigurations/main_dart.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.metadata" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/app/build.gradle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/app/src/main/java/com/ayush/introviewsflutter/MainActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable/launch_background.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/app/src/main/res/values/styles.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/build.gradle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/gradle.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/gradlew" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/gradlew.bat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/settings.gradle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/banks.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/fonts/Flamante-Roma-Medium.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/fonts/Flamante-Roma-MediumItalic.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/hotels.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/key.old.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/key.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/shopping_cart.old.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/shopping_cart.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/stores.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/wallet.old.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/wallet.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/intro_views_flutter_android.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Flutter/AppFrameworkInfo.plist" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner.xcworkspace/contents.xcworkspacedata" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/AppDelegate.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/AppDelegate.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Base.lproj/LaunchScreen.storyboard" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Base.lproj/Main.storyboard" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/Info.plist" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/Runner/main.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/main.dart" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/widget_test.dart" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/intro_views_flutter.iml" afterPath="$PROJECT_DIR$/intro_views_flutter.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Constants/constants.dart" afterPath="$PROJECT_DIR$/lib/Constants/constants.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/UI/page_bubble.dart" afterPath="$PROJECT_DIR$/lib/UI/page_bubble.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pubspec.lock" afterPath="$PROJECT_DIR$/pubspec.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pubspec.yaml" afterPath="$PROJECT_DIR$/pubspec.yaml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LICENSE" afterPath="$PROJECT_DIR$/LICENSE" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -98,7 +18,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="intro_views_flutter.dart" pinned="false" current-in-tab="true">
+      <file leaf-file-name="intro_views_flutter.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/intro_views_flutter.dart">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-819">
@@ -106,6 +26,16 @@
               <folding>
                 <element signature="e#30#50#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LICENSE" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/LICENSE">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="42">
+              <caret line="2" column="32" lean-forward="true" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -138,6 +68,7 @@
         <option value="$PROJECT_DIR$/lib/intro_views_flutter.dart" />
         <option value="$PROJECT_DIR$/example/lib/main.dart" />
         <option value="$PROJECT_DIR$/example/pubspec.yaml" />
+        <option value="$PROJECT_DIR$/LICENSE" />
       </list>
     </option>
   </component>
@@ -305,7 +236,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529065613638" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529065795229" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -353,7 +284,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529065613638" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529065795229" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -564,7 +495,7 @@
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5209251" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20962566" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -621,6 +552,14 @@
           <folding>
             <element signature="e#30#50#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="32" lean-forward="true" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
