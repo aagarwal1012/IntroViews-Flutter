@@ -15,13 +15,10 @@ class SkipButton extends StatelessWidget {
   //view model
   PageButtonViewModel pageButtonViewModel;
 
-  final String fontFamily;
-
   //Constructor
   SkipButton({
     this.onTap,
     this.pageButtonViewModel,
-    this.fontFamily,
   });
 
   @override
@@ -44,9 +41,9 @@ class SkipButton extends StatelessWidget {
         child: new Text(
           "SKIP",
           style: new TextStyle(
-            color: Colors.white,
-            fontSize: 18.0,
-            fontFamily: "FlamanteRoma",
+            color: pageButtonViewModel.pageButtonColor,
+            fontSize: pageButtonViewModel.pageButtonTextSize,
+            fontFamily: pageButtonViewModel.fontFamily,
           ),  //TextStyle
         ),  //Text
       ),  //Opacity
@@ -65,13 +62,10 @@ class DoneButton extends StatelessWidget {
   //View Model
   PageButtonViewModel pageButtonViewModel;
 
-  final String fontFamily;
-
   //Constructor
   DoneButton({
     this.onTap,
     this.pageButtonViewModel,
-    this.fontFamily,
   });
 
   @override
@@ -91,9 +85,9 @@ class DoneButton extends StatelessWidget {
         child: new Text(
           "DONE",
           style: new TextStyle(
-            color: Colors.white,
-            fontSize: 18.0,
-            fontFamily: fontFamily,
+            color: pageButtonViewModel.pageButtonColor,
+            fontSize: pageButtonViewModel.pageButtonTextSize,
+            fontFamily: pageButtonViewModel.fontFamily,
           ),  //TextStyle
         ),  //Text
       ),  //Opacity
@@ -113,6 +107,7 @@ class PageIndicatorButtons extends StatelessWidget {
   final Color pageButtonsColor;
   final bool showSkipButton;
   final String fontFamily;
+  final double pageButtonTextSize;
 
   //Constructor
   PageIndicatorButtons({
@@ -124,7 +119,8 @@ class PageIndicatorButtons extends StatelessWidget {
     this.onPressedSkipButton,
     this.pageButtonsColor = const Color(0x88FFFFFF),
     this.showSkipButton = true,
-    this.fontFamily
+    this.fontFamily,
+    this.pageButtonTextSize = 18.0,
   });
 
   @override
@@ -149,8 +145,11 @@ class PageIndicatorButtons extends StatelessWidget {
                             totalPages: totalPages,
                             slidePercent: slidePercent,
                             slideDirection: slideDirection,
+                            fontFamily: fontFamily,
+                            pageButtonColor: pageButtonsColor,
+                            pageButtonTextSize: pageButtonTextSize,
                           ),
-                          fontFamily: fontFamily,
+
                       )
                       : new Container(),
                 ],
@@ -175,8 +174,10 @@ class PageIndicatorButtons extends StatelessWidget {
                           totalPages: totalPages,
                           slidePercent: slidePercent,
                           slideDirection: slideDirection,
+                          fontFamily: fontFamily,
+                          pageButtonColor: pageButtonsColor,
+                          pageButtonTextSize: pageButtonTextSize,
                         ),
-                        fontFamily: fontFamily,
                       )
                       : new Container(),
                 ],

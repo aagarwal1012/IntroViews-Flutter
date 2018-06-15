@@ -32,6 +32,16 @@ flutter:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 
+  assets:
+    - assets/air-hostess.png
+    - assets/airplane.png
+    - assets/bus-driver.png
+    - assets/bus.png
+    - assets/hotel.png
+    - assets/taxi.png
+    - assets/taxi-driver.png
+    - assets/waiter.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 
@@ -54,6 +64,10 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
+  fonts:
+    - family: MyFont
+      fonts:
+        - asset: assets/Fonts/sspu.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.io/custom-fonts/#from-packages

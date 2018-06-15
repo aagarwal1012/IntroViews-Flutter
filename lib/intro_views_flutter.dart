@@ -23,6 +23,8 @@ class IntroViewsFlutter extends StatefulWidget {
   final VoidCallback onTapDoneButton;
   final Color pageButtonsColor;
   final bool showSkipButton;
+  final double pageButtonTextSize;
+  final String pageButtonFontFamily;
 
   IntroViewsFlutter(
       this.pages,
@@ -30,6 +32,8 @@ class IntroViewsFlutter extends StatefulWidget {
         this.onTapDoneButton = null,
         this.pageButtonsColor = const Color(0x88FFFFF),
         this.showSkipButton = true,
+        this.pageButtonTextSize = 18.0,
+        this.pageButtonFontFamily,
       }
       );
 
@@ -180,6 +184,7 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter> with TickerProvid
             },
             pageButtonsColor: widget.pageButtonsColor,
             showSkipButton: widget.showSkipButton,
+            fontFamily: widget.pageButtonFontFamily,
           ),
           new PageDragger( //Used for gesture control
             canDragLeftToRight: activePageIndex > 0,

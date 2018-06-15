@@ -32,7 +32,7 @@ class Page extends StatelessWidget {
             new Transform(      //Used for vertical transformation
               transform : new Matrix4.translationValues(0.0, 30.0 * (1 - percentVisible), 0.0) ,
               child: new Padding(
-                padding: new EdgeInsets.only(top: 100.0, bottom: 30.0),
+                padding: new EdgeInsets.only(top: 100.0, bottom: 30.0, left: 10.0, right: 10.0),
                 child: new Text(
                   pageViewModel.title,
                   style: (pageViewModel.pageTitleBold)
@@ -40,12 +40,12 @@ class Page extends StatelessWidget {
                         color: pageViewModel.titleTextColor,
                         fontFamily: pageViewModel.fontFamily,
                         fontWeight: FontWeight.bold,
-                        fontSize: 34.0,
+                        fontSize: pageViewModel.titleTextSize,
                       )
                     : new TextStyle(
                         color: pageViewModel.titleTextColor,
                         fontFamily: pageViewModel.fontFamily,
-                        fontSize: 34.0,
+                        fontSize: pageViewModel.titleTextSize,
                       ),//TextStyle
                 ),  //Text
               ),//Padding
@@ -61,13 +61,13 @@ class Page extends StatelessWidget {
             new Transform(      //Used for vertical transformation
               transform : new Matrix4.translationValues(0.0, 30.0 * (1 - percentVisible), 0.0) ,
               child: new Padding(
-                padding: const EdgeInsets.only(bottom: 75.0),
+                padding: const EdgeInsets.only(bottom: 75.0, left: 10.0, right: 10.0),
                 child: new Text(
                   pageViewModel.body,
                   textAlign: TextAlign.center,
                   style: new TextStyle(
                     color: pageViewModel.bodyTextColor,
-                    fontSize: 18.0,
+                    fontSize: pageViewModel.bodyTextSize,
                     fontFamily: pageViewModel.fontFamily,
                   ),  //TextStyle
                 ),  //Text

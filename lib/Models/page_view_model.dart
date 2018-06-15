@@ -11,10 +11,12 @@ class PageViewModel{
   final String iconImageAssetPath;
   final Color titleTextColor;
   final Color bodyTextColor;
-  Color iconColor;
+  final Color iconColor;
   final Color bubbleBackgroundColor;
   final String fontFamily;
   final bool pageTitleBold;
+  final double titleTextSize;
+  final double bodyTextSize;
 
   PageViewModel({
     this.pageColor,
@@ -28,11 +30,9 @@ class PageViewModel{
     this.iconColor,
     this.fontFamily,
     this.pageTitleBold = false,
-  }){
-    if(iconColor == null){
-      iconColor = pageColor;
-    }
-  }
+    this.titleTextSize = 34.0,
+    this.bodyTextSize = 18.0,
+  });
 
 
 }

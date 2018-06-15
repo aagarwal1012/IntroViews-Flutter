@@ -8,35 +8,53 @@ import 'package:intro_views_flutter/intro_views_flutter.dart';
 void main() => runApp(new App());
 
 class App extends StatelessWidget {
-  // This widget is the root of your application.
 
   final pages = [
     new PageViewModel(
-      pageColor: const Color(0xFF678FB4),
-      mainImageAssetPath: '',
+      pageColor: const Color(0xFF03A9F4),
+      mainImageAssetPath: 'assets/airplane.png',
+      title: 'Flights',
+      body: 'Haselfree  booking  of  flight  tickets  with  full  refund     on  cancelation',
+      iconImageAssetPath: 'assets/air-hostess.png',
+      titleTextColor: Colors.white,
+      bodyTextColor: Colors.white,
+      fontFamily: "MyFont",
+      titleTextSize: 50.0,
+      bodyTextSize: 25.0,
+      iconColor: null,
+      pageTitleBold: false,
+      bubbleBackgroundColor: Colors.white,
+
+    ),
+    new PageViewModel(
+      pageColor: const Color(0xFF8BC34A),
+      mainImageAssetPath: 'assets/hotel.png',
       title: 'Hotels',
-      body: 'All hotels and hostels are sorted by hospitality rating',
-      iconImageAssetPath: '',
+      body: 'We  work  for  the  comfort,  enjoy  your  stay  at  our  beautiful  hotels',
+      iconImageAssetPath: 'assets/waiter.png',
       titleTextColor: Colors.white,
       bodyTextColor: Colors.white,
+      iconColor: null,
+      titleTextSize: 54.0,
+      bodyTextSize: 25.0,
+      fontFamily: "MyFont",
+      pageTitleBold: false,
+      bubbleBackgroundColor: Colors.white,
     ),
     new PageViewModel(
-      pageColor: const Color(0xFF65B0B4),
-      mainImageAssetPath: '',
-      title: 'Banks',
-      body: 'We carefully verify all banks before adding them into the app',
-      iconImageAssetPath: '',
+      pageColor: const Color(0xFF607D8B),
+      mainImageAssetPath: 'assets/taxi.png',
+      title: 'Cabs',
+      body: 'Easy  cab  booking  at  your  doorstep  with  cashless  payment  system',
+      iconImageAssetPath: 'assets/taxi-driver.png',
       titleTextColor: Colors.white,
       bodyTextColor: Colors.white,
-    ),
-    new PageViewModel(
-      pageColor: const Color(0xFF9B90BC),
-      mainImageAssetPath: '',
-      title: 'Store',
-      body: 'All local stores are categorized for your convenience',
-      iconImageAssetPath: '',
-      titleTextColor: Colors.white,
-      bodyTextColor: Colors.white,
+      iconColor: null,
+      titleTextSize: 54.0,
+      bodyTextSize: 25.0,
+      fontFamily: "MyFont",
+      pageTitleBold: false,
+      bubbleBackgroundColor: Colors.white,
     ),
   ];
 
@@ -49,6 +67,13 @@ class App extends StatelessWidget {
       ),  //theme
       home: new IntroViewsFlutter(
         pages,
+        onTapDoneButton: (){
+
+        },
+        showSkipButton: true,
+        pageButtonsColor: Colors.white,
+        pageButtonTextSize: 18.0,
+
       ), //home page
     );
   }
