@@ -65,16 +65,36 @@ class App extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),  //theme
-      home: new IntroViewsFlutter(
-        pages,
-        onTapDoneButton: (){
-
-        },
-        showSkipButton: true,
-        pageButtonsColor: Colors.white,
-        pageButtonTextSize: 18.0,
-
+      home: new Builder(
+          builder: (context) => new IntroViewsFlutter(
+            pages,
+            onTapDoneButton: (){
+              Navigator.push(
+                context,
+                new MaterialPageRoute(
+                    builder: (context) => new HomePage()
+                ),
+              );
+            },
+            showSkipButton: true,
+            pageButtonsColor: Colors.white,
+            pageButtonTextSize: 18.0,
+          ),
       ), //home page
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: new AppBar(
+        title: new Text('Home'),
+      ),
+      body: new Center(
+        child: new Text("This is the home page of the app"),
+      ),
     );
   }
 }
