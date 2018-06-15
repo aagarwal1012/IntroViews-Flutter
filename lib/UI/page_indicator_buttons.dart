@@ -104,6 +104,8 @@ class PageIndicatorButtons extends StatelessWidget {
   VoidCallback onPressedSkipButton;   //Callback for Skip Button
   SlideDirection slideDirection;
   final double slidePercent;
+  final Color pageButtonsColor;
+  final bool showSkipButton;
 
   //Constructor
   PageIndicatorButtons({
@@ -113,6 +115,8 @@ class PageIndicatorButtons extends StatelessWidget {
     this.slideDirection,
     this.slidePercent,
     this.onPressedSkipButton,
+    this.pageButtonsColor = const Color(0x88FFFFFF),
+    this.showSkipButton = true,
   });
 
   @override
@@ -129,7 +133,7 @@ class PageIndicatorButtons extends StatelessWidget {
               child: new Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  (acitvePageIndex < totalPages - 1 || (acitvePageIndex == totalPages - 1 && slideDirection == SlideDirection.leftToRight))
+                  ((acitvePageIndex < totalPages - 1 || (acitvePageIndex == totalPages - 1 && slideDirection == SlideDirection.leftToRight)) && showSkipButton)
                       ? new SkipButton(
                           onTap: onPressedSkipButton,
                           pageButtonViewModel: new PageButtonViewModel(  //View Model

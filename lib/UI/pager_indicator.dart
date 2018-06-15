@@ -52,9 +52,10 @@ class PagerIndicator extends StatelessWidget {
           new PageBubble(
             viewModel: new PageBubbleViewModel(
               page.iconImageAssetPath,
-              page.color,
+              page.iconColor,
               isHollow,
               percentActive,
+              bubbleBackgroundColor: page.bubbleBackgroundColor,
             ),
           )
       );

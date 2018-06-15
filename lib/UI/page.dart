@@ -23,7 +23,7 @@ class Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Container(
       width: double.infinity,
-      color: pageViewModel.color,
+      color: pageViewModel.pageColor,
       child: new Opacity(       //Opacity is used to create fade in effect
         opacity: percentVisible,
         child: new Column(
@@ -36,7 +36,7 @@ class Page extends StatelessWidget {
                 child: new Text(
                   pageViewModel.title,
                   style: new TextStyle(
-                    color: (pageViewModel.titleTextColor != null) ? pageViewModel.titleTextColor : Colors.white,
+                    color: pageViewModel.titleTextColor,
                     fontFamily: "FlamanteRoma",
                     fontSize: 34.0,
                   ),  //TextStyle
@@ -59,7 +59,7 @@ class Page extends StatelessWidget {
                   pageViewModel.body,
                   textAlign: TextAlign.center,
                   style: new TextStyle(
-                    color: (pageViewModel.bodyTextColor != null) ? pageViewModel.bodyTextColor : Colors.white,
+                    color: pageViewModel.bodyTextColor,
                     fontSize: 18.0,
                   ),  //TextStyle
                 ),  //Text

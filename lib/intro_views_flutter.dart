@@ -7,16 +7,32 @@ import 'package:intro_views_flutter/Animation_Gesture/animated_page_dragger.dart
 import 'package:intro_views_flutter/Animation_Gesture/page_dragger.dart';
 import 'package:intro_views_flutter/Animation_Gesture/page_reveal.dart';
 import 'package:intro_views_flutter/Constants/constants.dart';
+import 'package:intro_views_flutter/Models/page_view_model.dart';
 import 'package:intro_views_flutter/Models/pager_indicator_view_model.dart';
 import 'package:intro_views_flutter/Models/slide_update_model.dart';
 import 'package:intro_views_flutter/UI/page_indicator_buttons.dart';
 import 'package:intro_views_flutter/UI/pager_indicator.dart';
-import 'package:intro_views_flutter/UI/pages.dart';
+import 'package:intro_views_flutter/UI/page.dart';
 
 /**
  * This is the IntroViewsFlutter widget of app which is a stateful widget as its state is dynamic and updates asynchronously.
  */
 class IntroViewsFlutter extends StatefulWidget {
+
+  final List<PageViewModel> pages;
+  final VoidCallback onTapDoneButton;
+  final Color pageButtonsColor;
+  final bool showSkipButton;
+
+  IntroViewsFlutter(
+      this.pages,
+      {
+        this.onTapDoneButton = null,
+        this.pageButtonsColor = const Color(0x88FFFFF),
+        this.showSkipButton = true,
+      }
+      );
+
   @override
   _IntroViewsFlutterState createState() => new _IntroViewsFlutterState();
 }
@@ -124,6 +140,8 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter> with TickerProvid
   @override
   Widget build(BuildContext context) {
 
+    List<PageViewModel> pages = widget.pages;
+
     return new Scaffold(
       //Stack is used to place components over one another.
       body: new Stack(
@@ -151,7 +169,7 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter> with TickerProvid
           new PageIndicatorButtons(   //Skip and Done Buttons
             acitvePageIndex: activePageIndex,
             totalPages: pages.length,
-            onPressedDoneButton: null,  //void Callback to be executed after pressing done button
+            onPressedDoneButton: widget.onTapDoneButton,  //void Callback to be executed after pressing done button
             slidePercent: slidePercent,
             slideDirection: slideDirection,
             onPressedSkipButton: (){    //method executed on pressing skip button
@@ -160,6 +178,8 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter> with TickerProvid
                 nextPageIndex = activePageIndex;
               });
             },
+            pageButtonsColor: widget.pageButtonsColor,
+            showSkipButton: widget.showSkipButton,
           ),
           new PageDragger( //Used for gesture control
             canDragLeftToRight: activePageIndex > 0,
