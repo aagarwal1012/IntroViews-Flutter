@@ -44,7 +44,7 @@ class PageBubble extends StatelessWidget {
                 ? new Image.asset(
                 viewModel.iconAssetPath,
                 color: viewModel.iconColor,
-              )
+                )
                 : new Container(),
             ),  //opacity
           ),  //Container
