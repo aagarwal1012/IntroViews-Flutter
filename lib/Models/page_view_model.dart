@@ -13,6 +13,8 @@ class PageViewModel{
   final Color bodyTextColor;
   Color iconColor;
   final Color bubbleBackgroundColor;
+  final String fontFamily;
+  final bool pageTitleBold;
 
   PageViewModel({
     this.pageColor,
@@ -24,6 +26,8 @@ class PageViewModel{
     this.titleTextColor = const Color(0x88FFFFFF),
     this.bubbleBackgroundColor = const Color(0x88FFFFFF),
     this.iconColor,
+    this.fontFamily,
+    this.pageTitleBold = false,
   }){
     if(iconColor == null){
       iconColor = pageColor;

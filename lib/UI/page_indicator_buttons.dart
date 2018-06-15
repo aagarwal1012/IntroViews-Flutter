@@ -15,10 +15,13 @@ class SkipButton extends StatelessWidget {
   //view model
   PageButtonViewModel pageButtonViewModel;
 
+  final String fontFamily;
+
   //Constructor
   SkipButton({
     this.onTap,
     this.pageButtonViewModel,
+    this.fontFamily,
   });
 
   @override
@@ -62,10 +65,13 @@ class DoneButton extends StatelessWidget {
   //View Model
   PageButtonViewModel pageButtonViewModel;
 
+  final String fontFamily;
+
   //Constructor
   DoneButton({
     this.onTap,
     this.pageButtonViewModel,
+    this.fontFamily,
   });
 
   @override
@@ -87,7 +93,7 @@ class DoneButton extends StatelessWidget {
           style: new TextStyle(
             color: Colors.white,
             fontSize: 18.0,
-            fontFamily: "FlamanteRoma",
+            fontFamily: fontFamily,
           ),  //TextStyle
         ),  //Text
       ),  //Opacity
@@ -106,6 +112,7 @@ class PageIndicatorButtons extends StatelessWidget {
   final double slidePercent;
   final Color pageButtonsColor;
   final bool showSkipButton;
+  final String fontFamily;
 
   //Constructor
   PageIndicatorButtons({
@@ -117,6 +124,7 @@ class PageIndicatorButtons extends StatelessWidget {
     this.onPressedSkipButton,
     this.pageButtonsColor = const Color(0x88FFFFFF),
     this.showSkipButton = true,
+    this.fontFamily
   });
 
   @override
@@ -142,6 +150,7 @@ class PageIndicatorButtons extends StatelessWidget {
                             slidePercent: slidePercent,
                             slideDirection: slideDirection,
                           ),
+                          fontFamily: fontFamily,
                       )
                       : new Container(),
                 ],
@@ -167,6 +176,7 @@ class PageIndicatorButtons extends StatelessWidget {
                           slidePercent: slidePercent,
                           slideDirection: slideDirection,
                         ),
+                        fontFamily: fontFamily,
                       )
                       : new Container(),
                 ],

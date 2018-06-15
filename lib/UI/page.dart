@@ -35,11 +35,18 @@ class Page extends StatelessWidget {
                 padding: new EdgeInsets.only(top: 100.0, bottom: 30.0),
                 child: new Text(
                   pageViewModel.title,
-                  style: new TextStyle(
-                    color: pageViewModel.titleTextColor,
-                    fontFamily: "FlamanteRoma",
-                    fontSize: 34.0,
-                  ),  //TextStyle
+                  style: (pageViewModel.pageTitleBold)
+                    ? new TextStyle(
+                        color: pageViewModel.titleTextColor,
+                        fontFamily: pageViewModel.fontFamily,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 34.0,
+                      )
+                    : new TextStyle(
+                        color: pageViewModel.titleTextColor,
+                        fontFamily: pageViewModel.fontFamily,
+                        fontSize: 34.0,
+                      ),//TextStyle
                 ),  //Text
               ),//Padding
             ),  //Transform
@@ -61,6 +68,7 @@ class Page extends StatelessWidget {
                   style: new TextStyle(
                     color: pageViewModel.bodyTextColor,
                     fontSize: 18.0,
+                    fontFamily: pageViewModel.fontFamily,
                   ),  //TextStyle
                 ),  //Text
               ),  //Padding
