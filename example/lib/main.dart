@@ -7,8 +7,13 @@ import 'package:intro_views_flutter/intro_views_flutter.dart';
  */
 void main() => runApp(new App());
 
+/**
+ * App widget class
+ */
+
 class App extends StatelessWidget {
 
+  //making list of pages needed to pass in IntroViewsFlutter constructor.
   final pages = [
     new PageViewModel(
       pageColor: const Color(0xFF03A9F4),
@@ -60,11 +65,12 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return new MaterialApp(
       title: 'IntroViews Flutter',  //title of app
       theme: new ThemeData(
         primarySwatch: Colors.blue,
-      ),  //theme
+      ),  //ThemeData
       home: new Builder(
           builder: (context) => new IntroViewsFlutter(
             pages,
@@ -73,28 +79,34 @@ class App extends StatelessWidget {
                 context,
                 new MaterialPageRoute(
                     builder: (context) => new HomePage()
-                ),
+                ),  //MaterialPageRoute
               );
             },
-            showSkipButton: true,
+            showSkipButton: true, //Whether you want to show the skip button or not.
             pageButtonsColor: Colors.white,
             pageButtonTextSize: 18.0,
-          ),
-      ), //home page
-    );
+          ),  //IntroViewsFlutter
+      ),  //Builder
+    );  //Material App
   }
 }
+
+/**
+ * Home Page of our example app.
+ */
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: new AppBar(
         title: new Text('Home'),
-      ),
+      ),  //Appbar
       body: new Center(
         child: new Text("This is the home page of the app"),
-      ),
-    );
+      ),  //Center
+    );  //Scaffold
+
   }
 }
