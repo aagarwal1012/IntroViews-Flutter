@@ -1,9 +1,10 @@
 <div align="center"><img src="/display/header.png"/></div>
+<br/>
 
-> IntroViews is inspired by [Paper Onboarding](https://github.com/Ramotion/paper-onboarding-android) and developed with `love` from scratch. I decided to rewrite almost all the features in order to make it available to the `flutter` developers and extensible as possible.
+IntroViews is inspired by [Paper Onboarding](https://github.com/Ramotion/paper-onboarding-android) and developed with `love` from scratch. I decided to rewrite almost all the features in order to make it available to the `flutter` developers and extensible as possible.
 
 
-<img src="/display/output.gif" align = "right" height = "500px">
+<img src="https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/display/output.gif" align = "right" height = "550px">
 
 #  Features
 
@@ -42,50 +43,81 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 
 # Usage
 
-- `IntroViewsFlutter` class require a `list` of `PageViewModel` , and some other parameters. Refer the code below to create a PageViewModel page.  
+<img src = "https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/display/page3.png" align = "right" height = "450px"/>
+
+- `IntroViewsFlutter` widget require a `list` of `PageViewModel` , and some other parameters. Refer the code below to create a PageViewModel page.
+
+  ```dart
+  Final page = new PageViewModel(
+        pageColor: const Color(0xFF607D8B),
+        mainImageAssetPath: 'assets/taxi.png',
+        title: 'Cabs',
+        body: 'Easy cab booking at your doorstep with cashless payment system',
+        iconImageAssetPath: 'assets/taxi-driver.png',
+        titleTextColor: Colors.white,
+        bodyTextColor: Colors.white,
+        iconColor: null,
+        titleTextSize: 54.0,
+        bodyTextSize: 24.0,
+        fontFamily: "MyFont",
+        pageTitleBold: false,
+        bubbleBackgroundColor: Colors.white,
+      );
+  ```
+
+- Now refer the code below to get the `IntroViewsFlutter` widget.
+
+  ```dart
+  final Widget introViews = new IntroViewsFlutter(
+        [page],
+        onTapDoneButton: (){
+          //Void Callback  
+        },
+        showSkipButton: true,
+        pageButtonFontFamily: "Regular",
+        pageButtonsColor: Colors.white,
+        pageButtonTextSize: 18.0,
+      );
+  ```
+***Note :*** If you added more than four pages in the list then there can be overlapping between `page icons` and `skip button`, so my suggestion is just make the `showSkipButton: false`.
 
 # Documentation
 
-#### ImageSteganography Class
+### PageViewModel Class
 
-| Java attribute     | Java set methods                | Description                                                  | Default Value |
+| Dart attribute  | Datatype         | Description                                                  | Default Value |
 | :---------------- | :------------------------------ | :----------------------------------------------------------- | :-----------: |
-| Message | setMessage(...) , getMessage() | Set the value of message, Get the value of message. | Null      |
-| Secret_Key | setSecret_key(...) | Set the value of secret key. | Null      |
-| Image  | setImage(...) | Set the value of image.              | Null      |
-| Encoded_Image | getEncoded_image() | Get the value of encoded image after text encoding. | Null       |
-| Encoded | isEncoded() | Check that the encoding is over or not | false       |
-| Decoded | isDecoded() | Check that the decoding is over or not. | false       |
-| SecretKeyWrong | isSecretKeyWrong() | Check that the secret key provided was right or wrong but after decoding was done. | true     |
+| pageColor | Color | Set color of the page. | Null      |
+| mainImageAssetPath | String | Set the main image asset path of the page. | Null      |
+| title | String | Set the title text of the page. | Null      |
+| body | String | Set the body text of the page. | Null       |
+| iconImageAssetPath | String | Set the icon image asset path that would be displayed in page bubble. | Null    |
+| titleTextColor | Color | Set the title text color. | Colors.white |
+| bodyTextColor | Color | Set the body text color. | Colors.white |
+| iconColor | Color | Set the page bubble icon color. | Null |
+| bubbleBackgroundColor | Color | Set the page bubble background color. | Colors.white |
+| fontFamily | String | Use your own custom font to style the title and body. | Default |
+| pageTitleBold | Bool | Set the title font weight to bold. | False |
+| titleTextSize | Double | Set the size of title text. | 34.0 |
+| bodyTextSize | Double | Set the size of body text. | 18.0 |
+
+### IntroViewFlutter Class
+
+| Dart attribute  | Datatype         | Description                                                  | Default Value |
+| :---------------- | :------------------------------ | :----------------------------------------------------------- | :-----------: |
+| pages | List<PageViewMode> | Set the pages of the intro screen. | Null      |
+| onTapDoneButton | VoidCallback | Method executes on tapping done button. | Null      |
+| pageButtonColor | Color | Set the color of skip and done buttons. | Colors.white |
+| showSkipButton | Bool | Show the skip button at the bottom of page. | true   |
+| pageButtonTextSize | Double | Set the button text size. | 18.0 |
+| pageButtonFontFamily | String | Set the font of button text. | Default |
+
+For help on editing package code, view the [flutter documentation](https://flutter.io/developing-packages/).
 
 # Want to contribute !
-This is the well `documented` library. I have documented each and every method that I have used, so have a good read to the code and suggest some changes and new feature to be added in the library.  
-Feel free to <a href = "https://github.com/aagarwal1012/Image-Steganography-Library-Android/issues">open an issue</a>.
+
+This is the well `documented` package. I have documented each and every method that I have used, so have a good read to the code and suggest some changes and new feature to be added in the package.  
+Feel free to <a href = "https://github.com/aagarwal1012/IntroViews-Flutter/issues">open an issue</a>.
 
 # License
-**Image Steganography** is licensed under `MIT license`.
-
-```
-MIT License
-
-Copyright (c) 2018 Ayush Agarwal
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
+**IntroViews-Flutter** is licensed under `MIT license`.
