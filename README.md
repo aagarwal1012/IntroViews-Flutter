@@ -4,7 +4,7 @@
 IntroViews is inspired by [Paper Onboarding](https://github.com/Ramotion/paper-onboarding-android) and developed with `love` from scratch. I decided to rewrite almost all the features in order to make it available to the `flutter` developers and extensible as possible.
 
 
-<img src="https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/display/output.gif" align = "right" height = "520px">
+<img src="https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/display/output.gif" align = "right" height = "550px">
 
 #  Features
 
