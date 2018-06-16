@@ -32,7 +32,7 @@ class Page extends StatelessWidget {
             new Transform(      //Used for vertical transformation
               transform : new Matrix4.translationValues(0.0, 30.0 * (1 - percentVisible), 0.0) ,
               child: new Padding(
-                padding: new EdgeInsets.only(top: 100.0, bottom: 30.0, left: 10.0, right: 10.0),
+                padding: new EdgeInsets.only(top: 60.0, bottom: 30.0, left: 10.0, right: 10.0),
                 child: new Text(
                   pageViewModel.title,
                   style: (pageViewModel.pageTitleBold)
