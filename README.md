@@ -4,7 +4,7 @@
 IntroViews is inspired by [Paper Onboarding](https://github.com/Ramotion/paper-onboarding-android) and developed with `love` from scratch. I decided to rewrite almost all the features in order to make it available to the `flutter` developers and extensible as possible.
 
 
-<img src="/display/output.gif" align = "right" height = "520px">
+<img src="https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/display/output.gif" align = "right" height = "520px">
 
 #  Features
 
@@ -43,7 +43,7 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 
 # Usage
 
-<img src = "/display/page3.png" align = "right" height = "450px"/>
+<img src = "https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/display/page3.png" align = "right" height = "450px"/>
 
 - `IntroViewsFlutter` widget require a `list` of `PageViewModel` , and some other parameters. Refer the code below to create a PageViewModel page.
 
