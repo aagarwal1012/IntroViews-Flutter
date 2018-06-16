@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5e2f1632-0cea-43fa-8238-f24a6d515179" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/lib/main.dart" afterPath="$PROJECT_DIR$/example/lib/main.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/pubspec.lock" afterPath="$PROJECT_DIR$/example/pubspec.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/pubspec.yaml" afterPath="$PROJECT_DIR$/example/pubspec.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/intro_views_flutter.iml" afterPath="$PROJECT_DIR$/intro_views_flutter.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/UI/page.dart" afterPath="$PROJECT_DIR$/lib/UI/page.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pubspec.lock" afterPath="$PROJECT_DIR$/pubspec.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pubspec.yaml" afterPath="$PROJECT_DIR$/pubspec.yaml" />
-    </list>
+    <list default="true" id="5e2f1632-0cea-43fa-8238-f24a6d515179" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
     <ignored path="$PROJECT_DIR$/.pub/" />
@@ -243,7 +234,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529144735125" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529146566200" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -291,7 +282,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529144735125" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529146566200" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
