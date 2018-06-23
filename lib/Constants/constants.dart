@@ -1,12 +1,10 @@
-/**
- * This package contains all the constants used.
- */
+/// This package contains all the constants used.
 
-final BUBBLE_WIDTH = 55.0;
+const BUBBLE_WIDTH = 55.0;
 
-final FULL_TARNSITION_PX = 300.0;
+const FULL_TARNSITION_PX = 300.0;
 
-final PERCENT_PER_MILLISECOND = 0.00125;
+const PERCENT_PER_MILLISECOND = 0.00125;
 
 enum SlideDirection {
   leftToRight,

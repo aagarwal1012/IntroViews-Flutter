@@ -2,9 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-/**
- * Custom clipper for circular page reveal.
- */
+/// Custom clipper for circular page reveal.
 
 class CircularRevealClipper extends CustomClipper<Rect> {
   final double revealPercent;

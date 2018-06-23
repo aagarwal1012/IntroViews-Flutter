@@ -2,14 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Models/page_view_model.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
 
-/**
- * This is the main method of app, from here execution starts.
- */
+/// This is the main method of app, from here execution starts.
 void main() => runApp(new App());
 
-/**
- * App widget class
- */
+/// App widget class
 
 class App extends StatelessWidget {
   //making list of pages needed to pass in IntroViewsFlutter constructor.
@@ -92,9 +88,7 @@ class App extends StatelessWidget {
   }
 }
 
-/**
- * Home Page of our example app.
- */
+/// Home Page of our example app.
 
 class HomePage extends StatelessWidget {
   @override

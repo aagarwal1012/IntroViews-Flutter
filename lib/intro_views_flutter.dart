@@ -14,9 +14,7 @@ import 'package:intro_views_flutter/UI/page_indicator_buttons.dart';
 import 'package:intro_views_flutter/UI/pager_indicator.dart';
 import 'package:intro_views_flutter/UI/page.dart';
 
-/**
- * This is the IntroViewsFlutter widget of app which is a stateful widget as its state is dynamic and updates asynchronously.
- */
+/// This is the IntroViewsFlutter widget of app which is a stateful widget as its state is dynamic and updates asynchronously.
 class IntroViewsFlutter extends StatefulWidget {
   final List<PageViewModel> pages;
   final VoidCallback onTapDoneButton;
@@ -27,7 +25,7 @@ class IntroViewsFlutter extends StatefulWidget {
 
   IntroViewsFlutter(
     this.pages, {
-    this.onTapDoneButton = null,
+    this.onTapDoneButton,
     this.pageButtonsColor = const Color(0x88FFFFF),
     this.showSkipButton = true,
     this.pageButtonTextSize = 18.0,
@@ -38,13 +36,12 @@ class IntroViewsFlutter extends StatefulWidget {
   _IntroViewsFlutterState createState() => new _IntroViewsFlutterState();
 }
 
-/**
- * State of above widget.
- * It extends the TickerProviderStateMixin as it is used for animation control (vsync).
- */
+/// State of above widget.
+/// It extends the TickerProviderStateMixin as it is used for animation control (vsync).
 
 class _IntroViewsFlutterState extends State<IntroViewsFlutter>
     with TickerProviderStateMixin {
+
   StreamController<SlideUpdate>
       slideUpdateStream; //Stream controller is used to get all the updates when user slides across screen.
 
@@ -56,9 +53,7 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
   SlideDirection slideDirection = SlideDirection.none; //slide direction
   double slidePercent = 0.0; //slide percentage (0.0 to 1.0)
 
-  /**
-   * Constructor
-   */
+  /// Constructor
   _IntroViewsFlutterState() {
     //Stream Controller initialization
     slideUpdateStream = new StreamController<SlideUpdate>();
@@ -125,11 +120,11 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
         }
       });
     });
+    //Removing instances of sink.
+    slideUpdateStream.close();
   }
 
-  /**
-   * Build method
-   */
+  /// Build method
 
   @override
   Widget build(BuildContext context) {

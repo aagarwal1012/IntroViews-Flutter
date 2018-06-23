@@ -5,11 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Constants/constants.dart';
 import 'package:intro_views_flutter/Models/slide_update_model.dart';
 
-/**
- * This class provides the animation controller
- * used when then user stops dragging and page
- * reveal is not completed.
- */
+/// This class provides the animation controller
+/// used when then user stops dragging and page
+/// reveal is not completed.
 
 class AnimatedPageDragger {
   final slideDirection;

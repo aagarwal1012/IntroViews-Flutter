@@ -2,15 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Constants/constants.dart';
 import 'package:intro_views_flutter/Models/page_button_view_model.dart';
 
-/**
- * Skip button class
- */
+/// Skip button class
 
 class SkipButton extends StatelessWidget {
   //callback for skip button
-  VoidCallback onTap;
+  final VoidCallback onTap;
   //view model
-  PageButtonViewModel pageButtonViewModel;
+  final PageButtonViewModel pageButtonViewModel;
 
   //Constructor
   SkipButton({
@@ -50,15 +48,13 @@ class SkipButton extends StatelessWidget {
   }
 }
 
-/**
- * Done Button class
- */
+/// Done Button class
 
 class DoneButton extends StatelessWidget {
   //Callback
-  VoidCallback onTap;
+  final VoidCallback onTap;
   //View Model
-  PageButtonViewModel pageButtonViewModel;
+  final PageButtonViewModel pageButtonViewModel;
 
   //Constructor
   DoneButton({
@@ -98,9 +94,9 @@ class PageIndicatorButtons extends StatelessWidget {
   //Some variables
   final int acitvePageIndex;
   final int totalPages;
-  VoidCallback onPressedDoneButton; //Callback for Done Button
-  VoidCallback onPressedSkipButton; //Callback for Skip Button
-  SlideDirection slideDirection;
+  final VoidCallback onPressedDoneButton; //Callback for Done Button
+  final VoidCallback onPressedSkipButton; //Callback for Skip Button
+  final SlideDirection slideDirection;
   final double slidePercent;
   final Color pageButtonsColor;
   final bool showSkipButton;

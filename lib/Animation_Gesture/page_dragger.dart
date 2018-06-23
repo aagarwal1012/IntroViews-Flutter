@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Constants/constants.dart';
 import 'package:intro_views_flutter/Models/slide_update_model.dart';
 
-/**
- * This class is used to get user gesture and work according to it.
- */
+/// This class is used to get user gesture and work according to it.
 
 class PageDragger extends StatefulWidget {
   //These bool variables are used to check whether user can drag left or right or none.
