@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Constants/constants.dart';
 import 'package:intro_views_flutter/Models/page_button_view_model.dart';
@@ -9,7 +7,6 @@ import 'package:intro_views_flutter/Models/page_button_view_model.dart';
  */
 
 class SkipButton extends StatelessWidget {
-
   //callback for skip button
   VoidCallback onTap;
   //view model
@@ -23,14 +20,16 @@ class SkipButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     //Calculating opacity to create a fade in effect
     double opacity = 1.0;
 
-    if(pageButtonViewModel.activePageIndex == pageButtonViewModel.totalPages - 2 && pageButtonViewModel.slideDirection == SlideDirection.rightToLeft){
+    if (pageButtonViewModel.activePageIndex ==
+            pageButtonViewModel.totalPages - 2 &&
+        pageButtonViewModel.slideDirection == SlideDirection.rightToLeft) {
       opacity = 1.0 - pageButtonViewModel.slidePercent;
-    }
-    else if(pageButtonViewModel.activePageIndex == pageButtonViewModel.totalPages - 1 && pageButtonViewModel.slideDirection == SlideDirection.leftToRight){
+    } else if (pageButtonViewModel.activePageIndex ==
+            pageButtonViewModel.totalPages - 1 &&
+        pageButtonViewModel.slideDirection == SlideDirection.leftToRight) {
       opacity = pageButtonViewModel.slidePercent;
     }
 
@@ -44,10 +43,10 @@ class SkipButton extends StatelessWidget {
             color: pageButtonViewModel.pageButtonColor,
             fontSize: pageButtonViewModel.pageButtonTextSize,
             fontFamily: pageButtonViewModel.fontFamily,
-          ),  //TextStyle
-        ),  //Text
-      ),  //Opacity
-    );    //FlatButton
+          ), //TextStyle
+        ), //Text
+      ), //Opacity
+    ); //FlatButton
   }
 }
 
@@ -56,7 +55,6 @@ class SkipButton extends StatelessWidget {
  */
 
 class DoneButton extends StatelessWidget {
-
   //Callback
   VoidCallback onTap;
   //View Model
@@ -70,11 +68,12 @@ class DoneButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     //Calculating opacity so as to create a fade in effect
     double opacity = 1.0;
 
-    if(pageButtonViewModel.activePageIndex == pageButtonViewModel.totalPages - 1 && pageButtonViewModel.slideDirection == SlideDirection.leftToRight){
+    if (pageButtonViewModel.activePageIndex ==
+            pageButtonViewModel.totalPages - 1 &&
+        pageButtonViewModel.slideDirection == SlideDirection.leftToRight) {
       opacity = 1.0 - pageButtonViewModel.slidePercent;
     }
 
@@ -88,20 +87,19 @@ class DoneButton extends StatelessWidget {
             color: pageButtonViewModel.pageButtonColor,
             fontSize: pageButtonViewModel.pageButtonTextSize,
             fontFamily: pageButtonViewModel.fontFamily,
-          ),  //TextStyle
-        ),  //Text
-      ),  //Opacity
-    );  //FlatButton
+          ), //TextStyle
+        ), //Text
+      ), //Opacity
+    ); //FlatButton
   }
 }
 
 class PageIndicatorButtons extends StatelessWidget {
-
   //Some variables
   final int acitvePageIndex;
   final int totalPages;
-  VoidCallback onPressedDoneButton;   //Callback for Done Button
-  VoidCallback onPressedSkipButton;   //Callback for Skip Button
+  VoidCallback onPressedDoneButton; //Callback for Done Button
+  VoidCallback onPressedSkipButton; //Callback for Skip Button
   SlideDirection slideDirection;
   final double slidePercent;
   final Color pageButtonsColor;
@@ -125,7 +123,6 @@ class PageIndicatorButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return new Stack(
       children: <Widget>[
         new Column(
@@ -137,10 +134,15 @@ class PageIndicatorButtons extends StatelessWidget {
               child: new Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  ((acitvePageIndex < totalPages - 1 || (acitvePageIndex == totalPages - 1 && slideDirection == SlideDirection.leftToRight)) && showSkipButton)
+                  ((acitvePageIndex < totalPages - 1 ||
+                              (acitvePageIndex == totalPages - 1 &&
+                                  slideDirection ==
+                                      SlideDirection.leftToRight)) &&
+                          showSkipButton)
                       ? new SkipButton(
                           onTap: onPressedSkipButton,
-                          pageButtonViewModel: new PageButtonViewModel(  //View Model
+                          pageButtonViewModel: new PageButtonViewModel(
+                            //View Model
                             activePageIndex: acitvePageIndex,
                             totalPages: totalPages,
                             slidePercent: slidePercent,
@@ -149,14 +151,13 @@ class PageIndicatorButtons extends StatelessWidget {
                             pageButtonColor: pageButtonsColor,
                             pageButtonTextSize: pageButtonTextSize,
                           ),
-
-                      )
+                        )
                       : new Container(),
                 ],
-              ),  //Row
-            ),  //Padding
+              ), //Row
+            ), //Padding
           ],
-        ),  //Column
+        ), //Column
         new Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
@@ -166,26 +167,29 @@ class PageIndicatorButtons extends StatelessWidget {
               child: new Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  (acitvePageIndex == totalPages - 1 || (acitvePageIndex == totalPages - 2 && slideDirection == SlideDirection.rightToLeft))
+                  (acitvePageIndex == totalPages - 1 ||
+                          (acitvePageIndex == totalPages - 2 &&
+                              slideDirection == SlideDirection.rightToLeft))
                       ? new DoneButton(
-                        onTap: onPressedDoneButton,
-                        pageButtonViewModel: new PageButtonViewModel(   //view Model
-                          activePageIndex: acitvePageIndex,
-                          totalPages: totalPages,
-                          slidePercent: slidePercent,
-                          slideDirection: slideDirection,
-                          fontFamily: fontFamily,
-                          pageButtonColor: pageButtonsColor,
-                          pageButtonTextSize: pageButtonTextSize,
-                        ),
-                      )
+                          onTap: onPressedDoneButton,
+                          pageButtonViewModel: new PageButtonViewModel(
+                            //view Model
+                            activePageIndex: acitvePageIndex,
+                            totalPages: totalPages,
+                            slidePercent: slidePercent,
+                            slideDirection: slideDirection,
+                            fontFamily: fontFamily,
+                            pageButtonColor: pageButtonsColor,
+                            pageButtonTextSize: pageButtonTextSize,
+                          ),
+                        )
                       : new Container(),
                 ],
-              ),  //Row
-            ),  //Padding
+              ), //Row
+            ), //Padding
           ],
-        ),  //Column
+        ), //Column
       ],
-    );  //Stack
+    ); //Stack
   }
 }

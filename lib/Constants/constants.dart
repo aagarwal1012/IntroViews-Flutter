@@ -1,6 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:intro_views_flutter/Models/page_view_model.dart';
-
 /**
  * This package contains all the constants used.
  */
@@ -11,20 +8,20 @@ final FULL_TARNSITION_PX = 300.0;
 
 final PERCENT_PER_MILLISECOND = 0.00125;
 
-enum SlideDirection{
+enum SlideDirection {
   leftToRight,
   rightToLeft,
   none,
 }
 
-enum UpdateType{
+enum UpdateType {
   dragging,
   doneDragging,
   animating,
   doneAnimating,
 }
 
-enum TransitionGoal{
+enum TransitionGoal {
   open,
   close,
 }

@@ -18,7 +18,6 @@ import 'package:intro_views_flutter/UI/page.dart';
  * This is the IntroViewsFlutter widget of app which is a stateful widget as its state is dynamic and updates asynchronously.
  */
 class IntroViewsFlutter extends StatefulWidget {
-
   final List<PageViewModel> pages;
   final VoidCallback onTapDoneButton;
   final Color pageButtonsColor;
@@ -27,15 +26,13 @@ class IntroViewsFlutter extends StatefulWidget {
   final String pageButtonFontFamily;
 
   IntroViewsFlutter(
-      this.pages,
-      {
-        this.onTapDoneButton = null,
-        this.pageButtonsColor = const Color(0x88FFFFF),
-        this.showSkipButton = true,
-        this.pageButtonTextSize = 18.0,
-        this.pageButtonFontFamily,
-      }
-      );
+    this.pages, {
+    this.onTapDoneButton = null,
+    this.pageButtonsColor = const Color(0x88FFFFF),
+    this.showSkipButton = true,
+    this.pageButtonTextSize = 18.0,
+    this.pageButtonFontFamily,
+  });
 
   @override
   _IntroViewsFlutterState createState() => new _IntroViewsFlutterState();
@@ -46,63 +43,61 @@ class IntroViewsFlutter extends StatefulWidget {
  * It extends the TickerProviderStateMixin as it is used for animation control (vsync).
  */
 
-class _IntroViewsFlutterState extends State<IntroViewsFlutter> with TickerProviderStateMixin{
-  StreamController<SlideUpdate> slideUpdateStream;  //Stream controller is used to get all the updates when user slides across screen.
+class _IntroViewsFlutterState extends State<IntroViewsFlutter>
+    with TickerProviderStateMixin {
+  StreamController<SlideUpdate>
+      slideUpdateStream; //Stream controller is used to get all the updates when user slides across screen.
 
-  AnimatedPageDragger animatedPageDragger;  //When user stops dragging then by using this page automatically drags.
+  AnimatedPageDragger
+      animatedPageDragger; //When user stops dragging then by using this page automatically drags.
 
-  int activePageIndex = 0;  //active page index
-  int nextPageIndex = 0;  //next page index
-  SlideDirection slideDirection = SlideDirection.none;   //slide direction
-  double slidePercent = 0.0;  //slide percentage (0.0 to 1.0)
+  int activePageIndex = 0; //active page index
+  int nextPageIndex = 0; //next page index
+  SlideDirection slideDirection = SlideDirection.none; //slide direction
+  double slidePercent = 0.0; //slide percentage (0.0 to 1.0)
 
   /**
    * Constructor
    */
-  _IntroViewsFlutterState(){
+  _IntroViewsFlutterState() {
     //Stream Controller initialization
     slideUpdateStream = new StreamController<SlideUpdate>();
     //listening to updates of stream controller
-    slideUpdateStream.stream.listen((SlideUpdate event){
-
-      setState(() {     //setState is used to change the values dynamically
+    slideUpdateStream.stream.listen((SlideUpdate event) {
+      setState(() {
+        //setState is used to change the values dynamically
 
         //if the user is dragging then
-        if(event.updateType == UpdateType.dragging){
-
+        if (event.updateType == UpdateType.dragging) {
           slideDirection = event.direction;
           slidePercent = event.slidePercent;
 
           //conditions on slide direction
-          if(slideDirection == SlideDirection.leftToRight){
+          if (slideDirection == SlideDirection.leftToRight) {
             nextPageIndex = activePageIndex - 1;
-          }
-          else if(slideDirection == SlideDirection.rightToLeft){
+          } else if (slideDirection == SlideDirection.rightToLeft) {
             nextPageIndex = activePageIndex + 1;
-          }
-          else{
+          } else {
             nextPageIndex = activePageIndex;
           }
-
         }
         //if the user has done dragging
-        else if(event.updateType == UpdateType.doneDragging){
-
+        else if (event.updateType == UpdateType.doneDragging) {
           //Auto completion of event using Animated page dragger.
-          if(slidePercent > 0.5){
+          if (slidePercent > 0.5) {
             animatedPageDragger = new AnimatedPageDragger(
               slideDirection: slideDirection,
-              transitionGoal: TransitionGoal.open,  //we have to animate the open page reveal
+              transitionGoal:
+                  TransitionGoal.open, //we have to animate the open page reveal
               slidePercent: slidePercent,
               slideUpdateStream: slideUpdateStream,
               vsync: this,
             );
-          }
-          else
-          {
+          } else {
             animatedPageDragger = new AnimatedPageDragger(
               slideDirection: slideDirection,
-              transitionGoal: TransitionGoal.close, //we have to close the page reveal
+              transitionGoal:
+                  TransitionGoal.close, //we have to close the page reveal
               slidePercent: slidePercent,
               slideUpdateStream: slideUpdateStream,
               vsync: this,
@@ -112,18 +107,14 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter> with TickerProvid
           }
           //Run the animation
           animatedPageDragger.run();
-
         }
         //when animating
-        else if(event.updateType == UpdateType.animating){
-
+        else if (event.updateType == UpdateType.animating) {
           slideDirection = event.direction;
           slidePercent = event.slidePercent;
-
         }
         //done animating
-        else if(event.updateType == UpdateType.doneAnimating){
-
+        else if (event.updateType == UpdateType.doneAnimating) {
           activePageIndex = nextPageIndex;
 
           slideDirection = SlideDirection.none;
@@ -131,7 +122,6 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter> with TickerProvid
 
           //disposing the animation controller
           animatedPageDragger.dispose();
-
         }
       });
     });
@@ -143,7 +133,6 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter> with TickerProvid
 
   @override
   Widget build(BuildContext context) {
-
     List<PageViewModel> pages = widget.pages;
 
     return new Scaffold(
@@ -153,8 +142,9 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter> with TickerProvid
           new Page(
             pageViewModel: pages[activePageIndex],
             percentVisible: 1.0,
-          ),  //Pages
-          new PageReveal( //next page reveal
+          ), //Pages
+          new PageReveal(
+            //next page reveal
             revealPercent: slidePercent,
             child: new Page(
               pageViewModel: pages[nextPageIndex],
@@ -162,7 +152,8 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter> with TickerProvid
             ),
           ), //PageReveal
 
-          new PagerIndicator( //bottom page indicator
+          new PagerIndicator(
+            //bottom page indicator
             viewModel: new PagerIndicatorViewModel(
               pages,
               activePageIndex,
@@ -170,13 +161,16 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter> with TickerProvid
               slidePercent,
             ),
           ), //PagerIndicator
-          new PageIndicatorButtons(   //Skip and Done Buttons
+          new PageIndicatorButtons(
+            //Skip and Done Buttons
             acitvePageIndex: activePageIndex,
             totalPages: pages.length,
-            onPressedDoneButton: widget.onTapDoneButton,  //void Callback to be executed after pressing done button
+            onPressedDoneButton: widget
+                .onTapDoneButton, //void Callback to be executed after pressing done button
             slidePercent: slidePercent,
             slideDirection: slideDirection,
-            onPressedSkipButton: (){    //method executed on pressing skip button
+            onPressedSkipButton: () {
+              //method executed on pressing skip button
               setState(() {
                 activePageIndex = pages.length - 1;
                 nextPageIndex = activePageIndex;
@@ -186,14 +180,14 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter> with TickerProvid
             showSkipButton: widget.showSkipButton,
             fontFamily: widget.pageButtonFontFamily,
           ),
-          new PageDragger( //Used for gesture control
+          new PageDragger(
+            //Used for gesture control
             canDragLeftToRight: activePageIndex > 0,
             canDragRightToLeft: activePageIndex < pages.length - 1,
             slideUpdateStream: this.slideUpdateStream,
-          ),//PageDragger
+          ), //PageDragger
         ], //Widget
       ), //Stack
-    );  //Scaffold
+    ); //Scaffold
   }
 }
-

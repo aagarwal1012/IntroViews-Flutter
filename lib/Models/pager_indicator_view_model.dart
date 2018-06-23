@@ -3,7 +3,7 @@ import 'package:intro_views_flutter/Models/page_view_model.dart';
 
 //view model for page indicator
 
-class PagerIndicatorViewModel{
+class PagerIndicatorViewModel {
   final List<PageViewModel> pages;
   final int activeIndex;
   final SlideDirection slideDirection;
@@ -15,6 +15,4 @@ class PagerIndicatorViewModel{
     this.slideDirection,
     this.slidePercent,
   );
-
 }
-

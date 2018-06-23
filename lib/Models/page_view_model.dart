@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 //view model for pages
 
-class PageViewModel{
+class PageViewModel {
   final Color pageColor;
   //main image path
   final String mainImageAssetPath;
@@ -33,6 +33,4 @@ class PageViewModel{
     this.titleTextSize = 34.0,
     this.bodyTextSize = 18.0,
   });
-
-
 }

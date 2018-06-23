@@ -9,7 +9,6 @@ import 'package:intro_views_flutter/UI/page_bubble.dart';
  */
 
 class PagerIndicator extends StatelessWidget {
-
   //view model
   final PagerIndicatorViewModel viewModel;
 
@@ -20,75 +19,71 @@ class PagerIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     //Extracting page bubble information from page view model
     List<PageBubble> bubbles = [];
 
-    for(var i = 0; i < viewModel.pages.length; i++){
-
+    for (var i = 0; i < viewModel.pages.length; i++) {
       final page = viewModel.pages[i];
 
       //calculating percent active
       var percentActive;
-      if (i == viewModel.activeIndex){
+      if (i == viewModel.activeIndex) {
         percentActive = 1.0 - viewModel.slidePercent;
-      }
-      else if(i == viewModel.activeIndex - 1 && viewModel.slideDirection == SlideDirection.leftToRight){
+      } else if (i == viewModel.activeIndex - 1 &&
+          viewModel.slideDirection == SlideDirection.leftToRight) {
         percentActive = viewModel.slidePercent;
-      }
-      else if(i == viewModel.activeIndex + 1 && viewModel.slideDirection == SlideDirection.rightToLeft){
+      } else if (i == viewModel.activeIndex + 1 &&
+          viewModel.slideDirection == SlideDirection.rightToLeft) {
         percentActive = viewModel.slidePercent;
-      }
-      else{
+      } else {
         percentActive = 0.0;
       }
 
       //Checking is that bubble hollow
       bool isHollow = i > viewModel.activeIndex ||
-          (i == viewModel.activeIndex && viewModel.slideDirection == SlideDirection.leftToRight);
+          (i == viewModel.activeIndex &&
+              viewModel.slideDirection == SlideDirection.leftToRight);
 
       //Adding to the list
-      bubbles.add(
-          new PageBubble(
-            viewModel: new PageBubbleViewModel(
-              page.iconImageAssetPath,
-              page.iconColor,
-              isHollow,
-              percentActive,
-              bubbleBackgroundColor: page.bubbleBackgroundColor,
-            ),
-          )
-      );
-
+      bubbles.add(new PageBubble(
+        viewModel: new PageBubbleViewModel(
+          page.iconImageAssetPath,
+          page.iconColor,
+          isHollow,
+          percentActive,
+          bubbleBackgroundColor: page.bubbleBackgroundColor,
+        ),
+      ));
     }
 
     //Calculating the translation value of pager indicator while sliding.
-    final baseTranslation = ((viewModel.pages.length * BUBBLE_WIDTH) / 2) - (BUBBLE_WIDTH / 2);
+    final baseTranslation =
+        ((viewModel.pages.length * BUBBLE_WIDTH) / 2) - (BUBBLE_WIDTH / 2);
     var translation = baseTranslation - (viewModel.activeIndex * BUBBLE_WIDTH);
 
-    if(viewModel.slideDirection == SlideDirection.leftToRight){
+    if (viewModel.slideDirection == SlideDirection.leftToRight) {
       translation += BUBBLE_WIDTH * viewModel.slidePercent;
-    }
-    else if(viewModel.slideDirection == SlideDirection.rightToLeft){
+    } else if (viewModel.slideDirection == SlideDirection.rightToLeft) {
       translation -= BUBBLE_WIDTH * viewModel.slidePercent;
     }
     //UI
     return new Column(
-    children: <Widget>[
-      new Expanded(child: new Container()),
-      new Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          new Transform(    // used for horizontal transformation
-          transform: new Matrix4.translationValues(translation, 0.0, 0.0),
-          child: new Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: bubbles,
-            ),  //Row
-          ),
-        ],
-      ),  //Transform
-    ],  //Children
-    );  //Column
+      children: <Widget>[
+        new Expanded(child: new Container()),
+        new Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            new Transform(
+              // used for horizontal transformation
+              transform: new Matrix4.translationValues(translation, 0.0, 0.0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: bubbles,
+              ), //Row
+            ),
+          ],
+        ), //Transform
+      ], //Children
+    ); //Column
   }
 }

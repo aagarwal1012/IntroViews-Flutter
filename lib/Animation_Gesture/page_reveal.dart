@@ -6,15 +6,11 @@ import 'package:intro_views_flutter/Clipper/circular_reveal_clipper.dart';
  */
 
 class PageReveal extends StatelessWidget {
-
   final double revealPercent;
   final Widget child;
 
   //Constructor
-  PageReveal({
-    this.revealPercent,
-    this.child
-  });
+  PageReveal({this.revealPercent, this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -25,5 +21,3 @@ class PageReveal extends StatelessWidget {
     );
   }
 }
-
-
