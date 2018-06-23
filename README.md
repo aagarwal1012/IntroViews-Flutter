@@ -79,7 +79,7 @@ You should then run `flutter packages get` in your terminal so as to get the pac
         pageButtonTextSize: 18.0,
       );
   ```
-  For further usage refer the `example` available.
+  For further usage refer the [`example`](https://github.com/aagarwal1012/IntroViews-Flutter/tree/master/example/lib) available.
 
   ***Note :*** If you added more than four pages in the list then there can be overlapping between `page icons` and `skip button`, so my suggestion is just make the `showSkipButton: false`.
 
@@ -119,7 +119,7 @@ For help on editing package code, view the [flutter documentation](https://flutt
 # Want to contribute !
 
 This is the well `documented` package. I have documented each and every method that I have used, so have a good read to the code and suggest some changes and new feature to be added in the package.  
-Feel free to <a href = "https://github.com/aagarwal1012/IntroViews-Flutter/issues">open an issue</a>.
+Feel free to [open an issue](https://github.com/aagarwal1012/IntroViews-Flutter/issues).
 
 # License
 **IntroViews-Flutter** is licensed under `MIT license`.

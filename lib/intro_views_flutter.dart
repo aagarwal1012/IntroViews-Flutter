@@ -41,8 +41,8 @@ class IntroViewsFlutter extends StatefulWidget {
 
 class _IntroViewsFlutterState extends State<IntroViewsFlutter>
     with TickerProviderStateMixin {
-
   StreamController<SlideUpdate>
+      // ignore: close_sinks
       slideUpdateStream; //Stream controller is used to get all the updates when user slides across screen.
 
   AnimatedPageDragger
@@ -120,8 +120,6 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
         }
       });
     });
-    //Removing instances of sink.
-    slideUpdateStream.close();
   }
 
   /// Build method
