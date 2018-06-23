@@ -1,10 +1,10 @@
-<div align="center"><img src="/display/header.png"/></div>
+<div align="center"><img src="https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/display/header.png?raw=true"/></div>
 <br/>
 
 IntroViews is inspired by [Paper Onboarding](https://github.com/Ramotion/paper-onboarding-android) and developed with `love` from scratch. I decided to rewrite almost all the features in order to make it available to the `flutter` developers and extensible as possible.
 
 
-<img src="https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/display/output.gif" align = "right" height = "550px">
+<img src="https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/display/output.gif?raw=true" align = "right" height = "550px">
 
 #  Features
 
@@ -43,7 +43,7 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 
 # Usage
 
-<img src = "https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/display/page3.png" align = "right" height = "450px"/>
+<img src = "https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/display/page3.png?raw=true" align = "right" height = "450px"/>
 
 - `IntroViewsFlutter` widget require a `list` of `PageViewModel` , and some other parameters. Refer the code below to create a PageViewModel page.
 
@@ -79,7 +79,9 @@ You should then run `flutter packages get` in your terminal so as to get the pac
         pageButtonTextSize: 18.0,
       );
   ```
-***Note :*** If you added more than four pages in the list then there can be overlapping between `page icons` and `skip button`, so my suggestion is just make the `showSkipButton: false`.
+  For further usage refer the `example` available.
+
+  ***Note :*** If you added more than four pages in the list then there can be overlapping between `page icons` and `skip button`, so my suggestion is just make the `showSkipButton: false`.
 
 # Documentation
 
