@@ -23,14 +23,23 @@ class IntroViewsFlutter extends StatefulWidget {
   final double pageButtonTextSize;
   final String pageButtonFontFamily;
 
+  /// Override 'DONE' Text with Your Own Text, its TextStyle will be copied and override [pageButtonTextSize] [PageButtonFontFamily] [PageButtonsColor]
+  final Text done;
+
+  /// Override 'Skip' Text with Your Own Text, its TextStyle will be copied and override [pageButtonTextSize] [PageButtonFontFamily] [PageButtonsColor]
+  final Text skip;
+
   IntroViewsFlutter(
     this.pages, {
+    Key key,
     this.onTapDoneButton,
     this.pageButtonsColor = const Color(0x88FFFFF),
     this.showSkipButton = true,
     this.pageButtonTextSize = 18.0,
     this.pageButtonFontFamily,
-  });
+    this.done,
+    this.skip,
+  }) : super(key: key);
 
   @override
   _IntroViewsFlutterState createState() => new _IntroViewsFlutterState();
@@ -169,9 +178,12 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
                 nextPageIndex = activePageIndex;
               });
             },
+            pageButtonTextSize: widget.pageButtonTextSize,
             pageButtonsColor: widget.pageButtonsColor,
             showSkipButton: widget.showSkipButton,
             fontFamily: widget.pageButtonFontFamily,
+            done: widget.done,
+            skip: widget.skip,
           ),
           new PageDragger(
             //Used for gesture control

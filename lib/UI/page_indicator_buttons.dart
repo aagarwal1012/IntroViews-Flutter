@@ -9,11 +9,12 @@ class SkipButton extends StatelessWidget {
   final VoidCallback onTap;
   //view model
   final PageButtonViewModel pageButtonViewModel;
-
+  final Text skip;
   //Constructor
   SkipButton({
     this.onTap,
     this.pageButtonViewModel,
+    this.skip,
   });
 
   @override
@@ -31,17 +32,24 @@ class SkipButton extends StatelessWidget {
       opacity = pageButtonViewModel.slidePercent;
     }
 
+    final String skipText = (skip != null) ? skip.data : 'SKIP';
+    TextStyle style = new TextStyle(
+      color: pageButtonViewModel.pageButtonColor,
+      fontSize: pageButtonViewModel.pageButtonTextSize,
+      fontFamily: pageButtonViewModel.fontFamily,
+    );
+
+    if (skip?.style != null) {
+      style = style.merge(skip.style);
+    }
+
     return new FlatButton(
       onPressed: onTap,
       child: new Opacity(
         opacity: opacity,
         child: new Text(
-          "SKIP",
-          style: new TextStyle(
-            color: pageButtonViewModel.pageButtonColor,
-            fontSize: pageButtonViewModel.pageButtonTextSize,
-            fontFamily: pageButtonViewModel.fontFamily,
-          ), //TextStyle
+          skipText,
+          style: style,
         ), //Text
       ), //Opacity
     ); //FlatButton
@@ -55,11 +63,12 @@ class DoneButton extends StatelessWidget {
   final VoidCallback onTap;
   //View Model
   final PageButtonViewModel pageButtonViewModel;
-
+  final Text done;
   //Constructor
   DoneButton({
     this.onTap,
     this.pageButtonViewModel,
+    this.done,
   });
 
   @override
@@ -73,17 +82,24 @@ class DoneButton extends StatelessWidget {
       opacity = 1.0 - pageButtonViewModel.slidePercent;
     }
 
+    final String doneString = (done != null) ? done.data : 'DONE';
+    TextStyle style = new TextStyle(
+      color: pageButtonViewModel.pageButtonColor,
+      fontSize: pageButtonViewModel.pageButtonTextSize,
+      fontFamily: pageButtonViewModel.fontFamily,
+    );
+
+    if (done?.style != null) {
+      style = style.merge(done.style);
+    }
+
     return new FlatButton(
       onPressed: onTap,
       child: new Opacity(
         opacity: opacity,
         child: new Text(
-          "DONE",
-          style: new TextStyle(
-            color: pageButtonViewModel.pageButtonColor,
-            fontSize: pageButtonViewModel.pageButtonTextSize,
-            fontFamily: pageButtonViewModel.fontFamily,
-          ), //TextStyle
+          doneString,
+          style: style, //TextStyle
         ), //Text
       ), //Opacity
     ); //FlatButton
@@ -102,11 +118,12 @@ class PageIndicatorButtons extends StatelessWidget {
   final bool showSkipButton;
   final String fontFamily;
   final double pageButtonTextSize;
-
+  final Text done;
+  final Text skip;
   //Constructor
   PageIndicatorButtons({
-    this.acitvePageIndex,
-    this.totalPages,
+    @required this.acitvePageIndex,
+    @required this.totalPages,
     this.onPressedDoneButton,
     this.slideDirection,
     this.slidePercent,
@@ -115,6 +132,8 @@ class PageIndicatorButtons extends StatelessWidget {
     this.showSkipButton = true,
     this.fontFamily,
     this.pageButtonTextSize = 18.0,
+    this.skip,
+    this.done,
   });
 
   @override
@@ -136,6 +155,7 @@ class PageIndicatorButtons extends StatelessWidget {
                                       SlideDirection.leftToRight)) &&
                           showSkipButton)
                       ? new SkipButton(
+                          skip: skip,
                           onTap: onPressedSkipButton,
                           pageButtonViewModel: new PageButtonViewModel(
                             //View Model
@@ -167,6 +187,7 @@ class PageIndicatorButtons extends StatelessWidget {
                           (acitvePageIndex == totalPages - 2 &&
                               slideDirection == SlideDirection.rightToLeft))
                       ? new DoneButton(
+                          done: done,
                           onTap: onPressedDoneButton,
                           pageButtonViewModel: new PageButtonViewModel(
                             //view Model
