@@ -80,8 +80,10 @@ class App extends StatelessWidget {
               },
               showSkipButton:
                   true, //Whether you want to show the skip button or not.
-              pageButtonsColor: Colors.white,
-              pageButtonTextSize: 18.0,
+              pageButtonTextStyles: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+              ),
             ), //IntroViewsFlutter
       ), //Builder
     ); //Material App
