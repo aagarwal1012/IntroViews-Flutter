@@ -19,10 +19,14 @@ class IntroViewsFlutter extends StatefulWidget {
   final List<PageViewModel> pages;
   final VoidCallback onTapDoneButton;
   final Color pageButtonsColor;
+
+  /// Whether you want to show the skip button or not.
   final bool showSkipButton;
   final double pageButtonTextSize;
   final String pageButtonFontFamily;
 
+  /// run a function after skip Button pressed
+  final VoidCallback onTapSkipButton;
   IntroViewsFlutter(
     this.pages, {
     this.onTapDoneButton,
@@ -30,6 +34,7 @@ class IntroViewsFlutter extends StatefulWidget {
     this.showSkipButton = true,
     this.pageButtonTextSize = 18.0,
     this.pageButtonFontFamily,
+    this.onTapSkipButton,
   });
 
   @override
@@ -167,6 +172,11 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
               setState(() {
                 activePageIndex = pages.length - 1;
                 nextPageIndex = activePageIndex;
+                // after skip pressed invoke function
+                // this can be used for analytics/page transition
+                if (widget.onTapSkipButton != null) {
+                  widget.onTapSkipButton();
+                }
               });
             },
             pageButtonsColor: widget.pageButtonsColor,
