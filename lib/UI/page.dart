@@ -24,21 +24,62 @@ class Page extends StatelessWidget {
       child: new Opacity(
         //Opacity is used to create fade in effect
         opacity: percentVisible,
-        child: new OrientationBuilder(builder: (context, orientation) {
+        child: new OrientationBuilder(
+            builder: (BuildContext context, Orientation orientation) {
           return orientation == Orientation.portrait
-              ? _PortraitPage(
-                  pageViewModel: pageViewModel,
-                  percentVisible: percentVisible,
-                )
-              : _LandscapePage(
-                  pageViewModel: pageViewModel,
-                  percentVisible: percentVisible,
-                );
+              ? _buildPortraitPage()
+              : __buildLandscapePage();
         }),
       ),
     );
   }
+
+  /// when device is Portraint place title, image and body in a column
+  Widget _buildPortraitPage() {
+    return new Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        new _TitlePageTransform(
+            percentVisible: percentVisible,
+            pageViewModel: pageViewModel), //Transform
+        new _ImagePageTransform(
+            percentVisible: percentVisible,
+            pageViewModel: pageViewModel), //Transform
+        new _BodyPageTransform(
+            percentVisible: percentVisible,
+            pageViewModel: pageViewModel), //Transform
+      ],
+    );
+  }
+
+  /// if Device is Landscape reorder with row and column
+  Widget __buildLandscapePage() {
+    return new Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.max,
+      children: <Widget>[
+        new _ImagePageTransform(
+            percentVisible: percentVisible,
+            pageViewModel: pageViewModel), //Transform
+
+        new Flexible(
+            child: new Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            new _TitlePageTransform(
+                percentVisible: percentVisible,
+                pageViewModel: pageViewModel), //Transform
+            new _BodyPageTransform(
+                percentVisible: percentVisible,
+                pageViewModel: pageViewModel), //Tran
+          ],
+        ) // column,
+            )
+      ],
+    );
+  }
 }
+
 /// Body for the Page.
 class _BodyPageTransform extends StatelessWidget {
   final double percentVisible;
@@ -106,75 +147,7 @@ class _ImagePageTransform extends StatelessWidget {
     );
   }
 }
-/// if Device is Landscape reorder with row and column
-class _LandscapePage extends StatelessWidget {
-  //page details
-  final PageViewModel pageViewModel;
 
-  //percent visible of page
-  final double percentVisible;
-
-  //Constructor
-  const _LandscapePage({Key key, this.pageViewModel, this.percentVisible})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return new Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.max,
-      children: <Widget>[
-        new _ImagePageTransform(
-            percentVisible: percentVisible,
-            pageViewModel: pageViewModel), //Transform
-
-        new Flexible(
-          child: new Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              new _TitlePageTransform(
-                  percentVisible: percentVisible,
-                  pageViewModel: pageViewModel), //Transform
-              new _BodyPageTransform(
-                  percentVisible: percentVisible,
-                  pageViewModel: pageViewModel), //Tran
-            ],
-          ) // column,
-        )
-      ],
-    ); //row
-  }
-}
-/// when device is Portraint place title, image and body in a column 
-class _PortraitPage extends StatelessWidget {
-  //page details
-  final PageViewModel pageViewModel;
-
-  //percent visible of page
-  final double percentVisible;
-
-  //Constructor
-  const _PortraitPage({Key key, this.pageViewModel, this.percentVisible})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return new Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: <Widget>[
-        new _TitlePageTransform(
-            percentVisible: percentVisible,
-            pageViewModel: pageViewModel), //Transform
-        new _ImagePageTransform(
-            percentVisible: percentVisible,
-            pageViewModel: pageViewModel), //Transform
-        new _BodyPageTransform(
-            percentVisible: percentVisible,
-            pageViewModel: pageViewModel), //Transform
-      ],
-    ); //column
-  }
-}
 /// Title for the Page
 class _TitlePageTransform extends StatelessWidget {
   final double percentVisible;
