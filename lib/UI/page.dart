@@ -29,12 +29,12 @@ class Page extends StatelessWidget {
           return orientation == Orientation.portrait
               ? _buildPortraitPage()
               : __buildLandscapePage();
-        }),
+        }), //OrientationBuilder
       ),
     );
   }
 
-  /// when device is Portraint place title, image and body in a column
+  /// when device is Portrait place title, image and body in a column
   Widget _buildPortraitPage() {
     return new Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -71,10 +71,10 @@ class Page extends StatelessWidget {
                 pageViewModel: pageViewModel), //Transform
             new _BodyPageTransform(
                 percentVisible: percentVisible,
-                pageViewModel: pageViewModel), //Tran
+                pageViewModel: pageViewModel), //Transform
           ],
-        ) // column,
-            )
+        ) // Column
+            ),
       ],
     );
   }
@@ -85,6 +85,7 @@ class _BodyPageTransform extends StatelessWidget {
   final double percentVisible;
 
   final PageViewModel pageViewModel;
+
   const _BodyPageTransform({
     Key key,
     @required this.percentVisible,
@@ -117,6 +118,7 @@ class _ImagePageTransform extends StatelessWidget {
   final double percentVisible;
 
   final PageViewModel pageViewModel;
+
   const _ImagePageTransform({
     Key key,
     @required this.percentVisible,
@@ -153,6 +155,7 @@ class _TitlePageTransform extends StatelessWidget {
   final double percentVisible;
 
   final PageViewModel pageViewModel;
+
   const _TitlePageTransform({
     Key key,
     @required this.percentVisible,

@@ -47,7 +47,7 @@ class App extends StatelessWidget {
       mainImageAssetPath: 'assets/taxi.png',
       title: 'Cabs',
       body:
-          'Easy  cab  booking  at  your  doorstep  with      cashless  payment  system',
+          'Easy  cab  booking  at  your  doorstep  with  cashless  payment  system',
       iconImageAssetPath: 'assets/taxi-driver.png',
       titleTextColor: Colors.white,
       bodyTextColor: Colors.white,
