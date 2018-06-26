@@ -18,18 +18,16 @@ import 'package:intro_views_flutter/UI/page.dart';
 class IntroViewsFlutter extends StatefulWidget {
   final List<PageViewModel> pages;
   final VoidCallback onTapDoneButton;
-  final Color pageButtonsColor;
-  final bool showSkipButton;
-  final double pageButtonTextSize;
-  final String pageButtonFontFamily;
 
+  final bool showSkipButton;
+
+  /// TextStyles for done, skip Buttons
+  final TextStyle pageButtonTextStyles;
   IntroViewsFlutter(
     this.pages, {
     this.onTapDoneButton,
-    this.pageButtonsColor = const Color(0x88FFFFF),
     this.showSkipButton = true,
-    this.pageButtonTextSize = 18.0,
-    this.pageButtonFontFamily,
+    this.pageButtonTextStyles,
   });
 
   @override
@@ -126,6 +124,9 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
 
   @override
   Widget build(BuildContext context) {
+    TextStyle defaultTextStyle =
+        new TextStyle(fontSize: 18.0, color: const Color(0x88FFFFFF))
+            .merge(widget.pageButtonTextStyles);
     List<PageViewModel> pages = widget.pages;
 
     return new Scaffold(
@@ -154,25 +155,26 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
               slidePercent,
             ),
           ), //PagerIndicator
-          new PageIndicatorButtons(
-            //Skip and Done Buttons
-            acitvePageIndex: activePageIndex,
-            totalPages: pages.length,
-            onPressedDoneButton: widget
-                .onTapDoneButton, //void Callback to be executed after pressing done button
-            slidePercent: slidePercent,
-            slideDirection: slideDirection,
-            onPressedSkipButton: () {
-              //method executed on pressing skip button
-              setState(() {
-                activePageIndex = pages.length - 1;
-                nextPageIndex = activePageIndex;
-              });
-            },
-            pageButtonsColor: widget.pageButtonsColor,
-            showSkipButton: widget.showSkipButton,
-            fontFamily: widget.pageButtonFontFamily,
-          ),
+          DefaultTextStyle.merge(
+            style: defaultTextStyle,
+            child: PageIndicatorButtons(
+              //Skip and Done Buttons
+              acitvePageIndex: activePageIndex,
+              totalPages: pages.length,
+              onPressedDoneButton: widget
+                  .onTapDoneButton, //void Callback to be executed after pressing done button
+              slidePercent: slidePercent,
+              slideDirection: slideDirection,
+              onPressedSkipButton: () {
+                //method executed on pressing skip button
+                setState(() {
+                  activePageIndex = pages.length - 1;
+                  nextPageIndex = activePageIndex;
+                });
+              },
+              showSkipButton: widget.showSkipButton,
+            ),
+          ), 
           new PageDragger(
             //Used for gesture control
             canDragLeftToRight: activePageIndex > 0,
