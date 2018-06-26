@@ -81,7 +81,9 @@ You should then run `flutter packages get` in your terminal so as to get the pac
   ```
   For further usage refer the [`example`](https://github.com/aagarwal1012/IntroViews-Flutter/tree/master/example/lib) available.
 
-  ***Note :*** If you added more than four pages in the list then there can be overlapping between `page icons` and `skip button`, so my suggestion is just make the `showSkipButton: false`.
+  For `Landscape` preview click the [link](https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/display/landscape2.png?raw=true).
+
+  ***Note :*** If you added more than four pages in the list then there might be overlapping between `page icons` and `skip button`, so my suggestion is just make the `showSkipButton: false`.
 
 # Documentation
 
