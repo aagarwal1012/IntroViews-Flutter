@@ -16,22 +16,36 @@ import 'package:intro_views_flutter/UI/page.dart';
 
 /// This is the IntroViewsFlutter widget of app which is a stateful widget as its state is dynamic and updates asynchronously.
 class IntroViewsFlutter extends StatefulWidget {
+  /// List of [PageViewModel] to display
   final List<PageViewModel> pages;
+
+  /// Callback on Done Button Pressed
   final VoidCallback onTapDoneButton;
 
+  /// set the Text Color for skip, done buttons
+  ///
+  /// gets overiden by [pageButtonTextStyles]
   final Color pageButtonsColor;
 
   /// Whether you want to show the skip button or not.
   final bool showSkipButton;
 
   /// TextStyles for done, skip Buttons
+  ///
+  /// overides [pageButtonFontFamily] [pageButtonsColor] [pageButtonTextSize]
   final TextStyle pageButtonTextStyles;
 
   /// run a function after skip Button pressed
   final VoidCallback onTapSkipButton;
 
+  /// set the Text Size for skip, done buttons
+  ///
+  /// gets overiden by [pageButtonTextStyles]
   final double pageButtonTextSize;
 
+  /// set the Font Family for skip, done buttons
+  ///
+  /// gets overiden by [pageButtonTextStyles]
   final String pageButtonFontFamily;
   IntroViewsFlutter(this.pages,
       {this.onTapDoneButton,
