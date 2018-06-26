@@ -11,52 +11,44 @@ class App extends StatelessWidget {
   //making list of pages needed to pass in IntroViewsFlutter constructor.
   final pages = [
     new PageViewModel(
-      pageColor: const Color(0xFF03A9F4),
-      mainImageAssetPath: 'assets/airplane.png',
-      title: 'Flights',
-      body:
+        pageColor: const Color(0xFF03A9F4),
+        iconImageAssetPath: 'assets/air-hostess.png',
+        iconColor: null,
+        bubbleBackgroundColor: Colors.blue[900],
+        body: Text(
           'Haselfree  booking  of  flight  tickets  with  full  refund  on  cancelation',
-      iconImageAssetPath: 'assets/air-hostess.png',
-      titleTextColor: Colors.white,
-      bodyTextColor: Colors.white,
-      fontFamily: "MyFont",
-      titleTextSize: 50.0,
-      bodyTextSize: 24.0,
-      iconColor: null,
-      pageTitleBold: false,
-      bubbleBackgroundColor: Colors.white,
-    ),
+        ),
+        title: Text(
+          'Flights',
+          style: TextStyle(color: Colors.white70),
+        ),
+        textStyle: TextStyle(fontFamily: 'MyFont'),
+        mainImage: Image.asset(
+          'assets/airplane.png',
+        )),
     new PageViewModel(
       pageColor: const Color(0xFF8BC34A),
-      mainImageAssetPath: 'assets/hotel.png',
-      title: 'Hotels',
-      body:
-          'We  work  for  the  comfort ,  enjoy  your  stay  at  our  beautiful  hotels',
       iconImageAssetPath: 'assets/waiter.png',
-      titleTextColor: Colors.white,
-      bodyTextColor: Colors.white,
       iconColor: null,
-      titleTextSize: 54.0,
-      bodyTextSize: 24.0,
-      fontFamily: "MyFont",
-      pageTitleBold: false,
-      bubbleBackgroundColor: Colors.white,
+      bubbleBackgroundColor: Colors.green[900],
+      body: Text(
+        'We  work  for  the  comfort ,  enjoy  your  stay  at  our  beautiful  hotels',
+      ),
+      title: Text('Hotels'),
+      mainImage: Image.asset('assets/hotel.png'),
+      textStyle: TextStyle(fontFamily: 'MyFont'),
     ),
     new PageViewModel(
       pageColor: const Color(0xFF607D8B),
-      mainImageAssetPath: 'assets/taxi.png',
-      title: 'Cabs',
-      body:
-          'Easy  cab  booking  at  your  doorstep  with  cashless  payment  system',
       iconImageAssetPath: 'assets/taxi-driver.png',
-      titleTextColor: Colors.white,
-      bodyTextColor: Colors.white,
       iconColor: null,
-      titleTextSize: 54.0,
-      bodyTextSize: 24.0,
-      fontFamily: "MyFont",
-      pageTitleBold: false,
       bubbleBackgroundColor: Colors.white,
+      body: Text(
+        'Easy  cab  booking  at  your  doorstep  with  cashless  payment  system',
+      ),
+      title: Text('Cabs'),
+      mainImage: Image.asset('assets/taxi.png'),
+      textStyle: TextStyle(fontFamily: 'MyFont'),
     ),
   ];
 
