@@ -1,3 +1,9 @@
+## 1.0.3
+
+* Made intro views responsive.
+* Added onTapSkipButton voidCallback.
+* Updated Readme.
+
 ## 1.0.2
 
 * Updated Readme.

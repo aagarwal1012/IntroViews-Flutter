@@ -19,16 +19,28 @@ class IntroViewsFlutter extends StatefulWidget {
   final List<PageViewModel> pages;
   final VoidCallback onTapDoneButton;
 
+  final Color pageButtonsColor;
+
+  /// Whether you want to show the skip button or not.
   final bool showSkipButton;
 
   /// TextStyles for done, skip Buttons
   final TextStyle pageButtonTextStyles;
-  IntroViewsFlutter(
-    this.pages, {
-    this.onTapDoneButton,
-    this.showSkipButton = true,
-    this.pageButtonTextStyles,
-  });
+
+  /// run a function after skip Button pressed
+  final VoidCallback onTapSkipButton;
+
+  final double pageButtonTextSize;
+
+  final String pageButtonFontFamily;
+  IntroViewsFlutter(this.pages,
+      {this.onTapDoneButton,
+      this.showSkipButton = true,
+      this.pageButtonTextStyles,
+      this.pageButtonTextSize = 18.0,
+      this.pageButtonFontFamily,
+      this.onTapSkipButton,
+      this.pageButtonsColor});
 
   @override
   _IntroViewsFlutterState createState() => new _IntroViewsFlutterState();
@@ -124,9 +136,11 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
 
   @override
   Widget build(BuildContext context) {
-    TextStyle defaultTextStyle =
-        new TextStyle(fontSize: 18.0, color: const Color(0x88FFFFFF))
-            .merge(widget.pageButtonTextStyles);
+    TextStyle defaultTextStyle = new TextStyle(
+            fontSize: widget.pageButtonTextSize ?? 18.0,
+            color: widget.pageButtonsColor ?? const Color(0x88FFFFFF),
+            fontFamily: widget.pageButtonFontFamily)
+        .merge(widget.pageButtonTextStyles);
     List<PageViewModel> pages = widget.pages;
 
     return new Scaffold(
@@ -170,11 +184,16 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
                 setState(() {
                   activePageIndex = pages.length - 1;
                   nextPageIndex = activePageIndex;
+                  // after skip pressed invoke function
+                  // this can be used for analytics/page transition
+                  if (widget.onTapSkipButton != null) {
+                    widget.onTapSkipButton();
+                  }
                 });
               },
               showSkipButton: widget.showSkipButton,
             ),
-          ), 
+          ),
           new PageDragger(
             //Used for gesture control
             canDragLeftToRight: activePageIndex > 0,

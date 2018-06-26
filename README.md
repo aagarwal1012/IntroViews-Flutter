@@ -84,7 +84,9 @@ You should then run `flutter packages get` in your terminal so as to get the pac
   ```
   For further usage refer the [`example`](https://github.com/aagarwal1012/IntroViews-Flutter/tree/master/example/lib) available.
 
-  ***Note :*** If you added more than four pages in the list then there can be overlapping between `page icons` and `skip button`, so my suggestion is just make the `showSkipButton: false`.
+  For `Landscape` preview click the [link](https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/display/landscape2.png?raw=true).
+
+  ***Note :*** If you added more than four pages in the list then there might be overlapping between `page icons` and `skip button`, so my suggestion is just make the `showSkipButton: false`.
 
 # Documentation
 
@@ -113,8 +115,10 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 | pages | List<PageViewMode> | Set the pages of the intro screen. | Null      |
 | onTapDoneButton | VoidCallback | Method executes on tapping done button. | Null      |
 | showSkipButton | Bool | Show the skip button at the bottom of page. | true   |
-| pageButtonTextStyles | TextStyle | Configure TextStyle for skip, done buttons | fontSize: 18.0, color: Color(0x88FFFFFF)  |
-
+| pageButtonTextSize | Double | Set the button text size. | 18.0 |
+| pageButtonFontFamily | String | Set the font of button text. | Default |
+| onTapSkipButton | VoidCallback | Method executes on tapping skip button. | null |
+| pageButtonTextStyles | TextStyle | Configure TextStyle for skip, done buttons, overrides [pageButtonFontFamily] [pageButtonsColor] [pageButtonTextSize]  | fontSize: 18.0, color: Color(0x88FFFFFF)  |
 For help on editing package code, view the [flutter documentation](https://flutter.io/developing-packages/).
 
 # Want to contribute !
