@@ -116,6 +116,7 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 | pageButtonTextSize | Double | Set the button text size. | 18.0 |
 | pageButtonFontFamily | String | Set the font of button text. | Default |
 | onTapSkipButton | VoidCallback | Method executes on tapping skip button. | null |
+ 
 For help on editing package code, view the [flutter documentation](https://flutter.io/developing-packages/).
 
 # Want to contribute !
