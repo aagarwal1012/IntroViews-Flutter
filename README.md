@@ -28,7 +28,7 @@ You should ensure that you add the `intro_views_flutter` as a dependency in your
 
 ```yaml
 dependencies:
- intro_views_flutter: "^1.0.2"
+ intro_views_flutter: "^2.0.1"
 ```
 
 You can also reference the git repository directly if you want:
@@ -114,7 +114,7 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 | pageButtonTextSize | Double | Set the button text size. | 18.0 |
 | pageButtonFontFamily | String | Set the font of button text. | Default |
 | onTapSkipButton | VoidCallback | Method executes on tapping skip button. | null |
-| pageButtonTextStyles | TextStyle | Configure TextStyle for skip, done buttons, overrides pageButtonFontFamily, pageButtonsColor, pageButtonTextSize. | fontSize: 18.0, color: Color(0x88FFFFFF)  |
+| pageButtonTextStyles | TextStyle | Configure TextStyle for skip, done buttons, overrides pageButtonFontFamily, pageButtonsColor, pageButtonTextSize. | fontSize: `18.0`, color: `Colors.white` |
 
 For help on editing package code, view the [flutter documentation](https://flutter.io/developing-packages/).
 
