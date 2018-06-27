@@ -74,7 +74,7 @@ class DoneButton extends StatelessWidget {
       child: new Opacity(
         opacity: opacity,
         child: new Text(
-          "DONE", 
+          "DONE",
           style: style, //TextStyle
         ), //Text
       ), //Opacity

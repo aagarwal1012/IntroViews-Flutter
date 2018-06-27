@@ -32,7 +32,7 @@ class IntroViewsFlutter extends StatefulWidget {
 
   /// TextStyles for done, skip Buttons
   ///
-  /// overides [pageButtonFontFamily] [pageButtonsColor] [pageButtonTextSize]
+  /// overrides [pageButtonFontFamily] [pageButtonsColor] [pageButtonTextSize]
   final TextStyle pageButtonTextStyles;
 
   /// run a function after skip Button pressed
@@ -40,12 +40,12 @@ class IntroViewsFlutter extends StatefulWidget {
 
   /// set the Text Size for skip, done buttons
   ///
-  /// gets overiden by [pageButtonTextStyles]
+  /// gets overridden by [pageButtonTextStyles]
   final double pageButtonTextSize;
 
   /// set the Font Family for skip, done buttons
   ///
-  /// gets overiden by [pageButtonTextStyles]
+  /// gets overridden by [pageButtonTextStyles]
   final String pageButtonFontFamily;
   IntroViewsFlutter(this.pages,
       {this.onTapDoneButton,
@@ -155,6 +155,7 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
             color: widget.pageButtonsColor ?? const Color(0x88FFFFFF),
             fontFamily: widget.pageButtonFontFamily)
         .merge(widget.pageButtonTextStyles);
+
     List<PageViewModel> pages = widget.pages;
 
     return new Scaffold(
