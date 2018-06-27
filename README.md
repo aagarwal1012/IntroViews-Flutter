@@ -74,9 +74,12 @@ You should then run `flutter packages get` in your terminal so as to get the pac
           //Void Callback  
         },
         showSkipButton: true,
-        pageButtonFontFamily: "Regular",
-        pageButtonsColor: Colors.white,
-        pageButtonTextSize: 18.0,
+        pageButtonTextStyles: new TextStyle(
+            color: Colors.white, 
+            fontSize: 18.0,
+            fontFamily: "Regular",
+          ),
+
       );
   ```
   For further usage refer the [`example`](https://github.com/aagarwal1012/IntroViews-Flutter/tree/master/example/lib) available.
@@ -111,12 +114,12 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 | :---------------- | :------------------------------ | :----------------------------------------------------------- | :-----------: |
 | pages | List<PageViewMode> | Set the pages of the intro screen. | Null      |
 | onTapDoneButton | VoidCallback | Method executes on tapping done button. | Null      |
-| pageButtonColor | Color | Set the color of skip and done buttons. | Colors.white |
 | showSkipButton | Bool | Show the skip button at the bottom of page. | true   |
 | pageButtonTextSize | Double | Set the button text size. | 18.0 |
 | pageButtonFontFamily | String | Set the font of button text. | Default |
 | onTapSkipButton | VoidCallback | Method executes on tapping skip button. | null |
- 
+| pageButtonTextStyles | TextStyle | Configure TextStyle for skip, done buttons, overrides pageButtonFontFamily, pageButtonsColor, pageButtonTextSize. | fontSize: 18.0, color: Color(0x88FFFFFF)  |
+
 For help on editing package code, view the [flutter documentation](https://flutter.io/developing-packages/).
 
 # Want to contribute !

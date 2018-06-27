@@ -16,26 +16,45 @@ import 'package:intro_views_flutter/UI/page.dart';
 
 /// This is the IntroViewsFlutter widget of app which is a stateful widget as its state is dynamic and updates asynchronously.
 class IntroViewsFlutter extends StatefulWidget {
+  /// List of [PageViewModel] to display
   final List<PageViewModel> pages;
+
+  /// Callback on Done Button Pressed
   final VoidCallback onTapDoneButton;
+
+  /// set the Text Color for skip, done buttons
+  ///
+  /// gets overiden by [pageButtonTextStyles]
   final Color pageButtonsColor;
 
   /// Whether you want to show the skip button or not.
   final bool showSkipButton;
-  final double pageButtonTextSize;
-  final String pageButtonFontFamily;
+
+  /// TextStyles for done, skip Buttons
+  ///
+  /// overrides [pageButtonFontFamily] [pageButtonsColor] [pageButtonTextSize]
+  final TextStyle pageButtonTextStyles;
 
   /// run a function after skip Button pressed
   final VoidCallback onTapSkipButton;
-  IntroViewsFlutter(
-    this.pages, {
-    this.onTapDoneButton,
-    this.pageButtonsColor = const Color(0x88FFFFF),
-    this.showSkipButton = true,
-    this.pageButtonTextSize = 18.0,
-    this.pageButtonFontFamily,
-    this.onTapSkipButton,
-  });
+
+  /// set the Text Size for skip, done buttons
+  ///
+  /// gets overridden by [pageButtonTextStyles]
+  final double pageButtonTextSize;
+
+  /// set the Font Family for skip, done buttons
+  ///
+  /// gets overridden by [pageButtonTextStyles]
+  final String pageButtonFontFamily;
+  IntroViewsFlutter(this.pages,
+      {this.onTapDoneButton,
+      this.showSkipButton = true,
+      this.pageButtonTextStyles,
+      this.pageButtonTextSize = 18.0,
+      this.pageButtonFontFamily,
+      this.onTapSkipButton,
+      this.pageButtonsColor});
 
   @override
   _IntroViewsFlutterState createState() => new _IntroViewsFlutterState();
@@ -131,6 +150,12 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
 
   @override
   Widget build(BuildContext context) {
+    TextStyle defaultTextStyle = new TextStyle(
+            fontSize: widget.pageButtonTextSize ?? 18.0,
+            color: widget.pageButtonsColor ?? const Color(0x88FFFFFF),
+            fontFamily: widget.pageButtonFontFamily)
+        .merge(widget.pageButtonTextStyles);
+
     List<PageViewModel> pages = widget.pages;
 
     return new Scaffold(
@@ -159,29 +184,30 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
               slidePercent,
             ),
           ), //PagerIndicator
-          new PageIndicatorButtons(
-            //Skip and Done Buttons
-            acitvePageIndex: activePageIndex,
-            totalPages: pages.length,
-            onPressedDoneButton: widget
-                .onTapDoneButton, //void Callback to be executed after pressing done button
-            slidePercent: slidePercent,
-            slideDirection: slideDirection,
-            onPressedSkipButton: () {
-              //method executed on pressing skip button
-              setState(() {
-                activePageIndex = pages.length - 1;
-                nextPageIndex = activePageIndex;
-                // after skip pressed invoke function
-                // this can be used for analytics/page transition
-                if (widget.onTapSkipButton != null) {
-                  widget.onTapSkipButton();
-                }
-              });
-            },
-            pageButtonsColor: widget.pageButtonsColor,
-            showSkipButton: widget.showSkipButton,
-            fontFamily: widget.pageButtonFontFamily,
+          DefaultTextStyle.merge(
+            style: defaultTextStyle,
+            child: PageIndicatorButtons(
+              //Skip and Done Buttons
+              acitvePageIndex: activePageIndex,
+              totalPages: pages.length,
+              onPressedDoneButton: widget
+                  .onTapDoneButton, //void Callback to be executed after pressing done button
+              slidePercent: slidePercent,
+              slideDirection: slideDirection,
+              onPressedSkipButton: () {
+                //method executed on pressing skip button
+                setState(() {
+                  activePageIndex = pages.length - 1;
+                  nextPageIndex = activePageIndex;
+                  // after skip pressed invoke function
+                  // this can be used for analytics/page transition
+                  if (widget.onTapSkipButton != null) {
+                    widget.onTapSkipButton();
+                  }
+                });
+              },
+              showSkipButton: widget.showSkipButton,
+            ),
           ),
           new PageDragger(
             //Used for gesture control
