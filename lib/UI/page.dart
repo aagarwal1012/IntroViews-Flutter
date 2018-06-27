@@ -100,20 +100,16 @@ class _BodyPageTransform extends StatelessWidget {
           new Matrix4.translationValues(0.0, 30.0 * (1 - percentVisible), 0.0),
       child: new Padding(
         padding: const EdgeInsets.only(bottom: 75.0, left: 10.0, right: 10.0),
-        child: new Text(
-          pageViewModel.body,
-          textAlign: TextAlign.center,
-          style: new TextStyle(
-            color: pageViewModel.bodyTextColor,
-            fontSize: pageViewModel.bodyTextSize,
-            fontFamily: pageViewModel.fontFamily,
-          ), //TextStyle
-        ), //Text
+        child: DefaultTextStyle.merge(
+            style: pageViewModel.bodyTextStyle,
+            textAlign: TextAlign.center,
+            child: pageViewModel.body),
       ), //Padding
     );
   }
 }
 
+/// Main Image of the Page
 class _ImagePageTransform extends StatelessWidget {
   final double percentVisible;
 
@@ -132,20 +128,13 @@ class _ImagePageTransform extends StatelessWidget {
       transform:
           new Matrix4.translationValues(0.0, 50.0 * (1 - percentVisible), 0.0),
       child: new Padding(
-          padding: new EdgeInsets.only(bottom: 30.0),
-          child: (pageViewModel.mainImageAssetPath != null &&
-                  pageViewModel.mainImageAssetPath != "")
-              ? new Image.asset(
-                  pageViewModel.mainImageAssetPath,
-                  width: 285.0,
-                  height: 285.0,
-                  alignment: Alignment.center,
-                )
-              : new Container(
-                  height: 285.0,
-                  width: 285.0,
-                ) //Loading main icon
-          ), //Padding
+        padding: new EdgeInsets.only(top: 20.0, bottom: 40.0),
+        child: new Container(
+          width: 285.0,
+          height: 285.0,
+          child: pageViewModel.mainImage, //Loading main
+        ), //Container
+      ), //Padding
     );
   }
 }
@@ -171,21 +160,10 @@ class _TitlePageTransform extends StatelessWidget {
       child: new Padding(
         padding: new EdgeInsets.only(
             top: 60.0, bottom: 30.0, left: 10.0, right: 10.0),
-        child: new Text(
-          pageViewModel.title,
-          style: (pageViewModel.pageTitleBold)
-              ? new TextStyle(
-                  color: pageViewModel.titleTextColor,
-                  fontFamily: pageViewModel.fontFamily,
-                  fontWeight: FontWeight.bold,
-                  fontSize: pageViewModel.titleTextSize,
-                )
-              : new TextStyle(
-                  color: pageViewModel.titleTextColor,
-                  fontFamily: pageViewModel.fontFamily,
-                  fontSize: pageViewModel.titleTextSize,
-                ), //TextStyle
-        ), //Text
+        child: DefaultTextStyle.merge(
+          style: pageViewModel.titleTextStyle,
+          child: pageViewModel.title,
+        ),
       ), //Padding
     );
   }

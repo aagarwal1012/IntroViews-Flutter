@@ -3,34 +3,53 @@ import 'package:flutter/material.dart';
 //view model for pages
 
 class PageViewModel {
+  /// Page BackGround Color
   final Color pageColor;
-  //main image path
-  final String mainImageAssetPath;
-  final String title;
-  final String body;
-  final String iconImageAssetPath;
-  final Color titleTextColor;
-  final Color bodyTextColor;
-  final Color iconColor;
-  final Color bubbleBackgroundColor;
-  final String fontFamily;
-  final bool pageTitleBold;
-  final double titleTextSize;
-  final double bodyTextSize;
 
-  PageViewModel({
-    this.pageColor,
-    this.mainImageAssetPath,
-    this.title,
-    this.body,
-    this.iconImageAssetPath,
-    this.bodyTextColor = const Color(0x88FFFFFF),
-    this.titleTextColor = const Color(0x88FFFFFF),
-    this.bubbleBackgroundColor = const Color(0x88FFFFFF),
-    this.iconColor,
-    this.fontFamily,
-    this.pageTitleBold = false,
-    this.titleTextSize = 34.0,
-    this.bodyTextSize = 18.0,
-  });
+  ///icon image path
+  final String iconImageAssetPath;
+
+  /// iconColor
+  final Color iconColor;
+
+  /// color for background of progress bubbles
+  ///
+  /// @Default `const Color(0x88FFFFFF)`
+  final Color bubbleBackgroundColor;
+
+  /// Text widget for the title
+  ///
+  /// @Default style `color: Colors.white , fontSize: 50.0`
+  final Text title;
+
+  /// Text widget for the title
+  ///
+  /// @Default style `color: Colors.white, fontSize: 24.0`
+  final Text body;
+
+  /// set default TextStyle for both title and body
+  final TextStyle textStyle;
+
+  /// Image Widget
+  final Image mainImage;
+
+  PageViewModel(
+      {this.pageColor,
+      this.iconImageAssetPath,
+      this.bubbleBackgroundColor = const Color(0x88FFFFFF),
+      this.iconColor,
+      @required this.title,
+      @required this.body,
+      @required this.mainImage,
+      this.textStyle});
+
+  TextStyle get titleTextStyle {
+    return new TextStyle(color: Colors.white, fontSize: 50.0)
+        .merge(this.textStyle);
+  }
+
+  TextStyle get bodyTextStyle {
+    return new TextStyle(color: Colors.white, fontSize: 24.0)
+        .merge(this.textStyle);
+  }
 }
