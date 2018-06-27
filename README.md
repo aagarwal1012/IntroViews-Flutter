@@ -50,15 +50,20 @@ You should then run `flutter packages get` in your terminal so as to get the pac
   ```dart
   Final page = new PageViewModel(
       pageColor: const Color(0xFF607D8B),
-      title: Text('Cabs'),
-      mainImage: Image.asset('assets/taxi.png'),
-      body: Text(
-        'Easy  cab  booking  at  your  doorstep  with  cashless  payment  system',
-      ),
-      textStyle: TextStyle(fontFamily: 'MyFont'),
-      iconImageAssetPath: 'assets/taxi-driver.png',
-      bubbleBackgroundColor: Colors.white,
-      iconColor: null,
+        iconImageAssetPath: 'assets/taxi-driver.png',
+        iconColor: null,
+        bubbleBackgroundColor: null,
+        body: Text(
+          'Easy  cab  booking  at  your  doorstep  with  cashless  payment  system',
+        ),
+        title: Text('Cabs'),
+        mainImage: Image.asset(
+          'assets/taxi.png',
+          height: 285.0,
+          width: 285.0,
+          alignment: Alignment.center,
+        ),
+        textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
       );
   ```
 
@@ -76,7 +81,6 @@ You should then run `flutter packages get` in your terminal so as to get the pac
             fontSize: 18.0,
             fontFamily: "Regular",
           ),
-
       );
   ```
   For further usage refer the [`example`](https://github.com/aagarwal1012/IntroViews-Flutter/tree/master/example/lib) available.
@@ -98,7 +102,7 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 | iconImageAssetPath | String | Set the icon image asset path that would be displayed in page bubble. | Null    |
 | iconColor | Color | Set the page bubble icon color. | Null |
 | bubbleBackgroundColor | Color | Set the page bubble background color. | Colors.white |
-| textStyle | TextStyle | set TextStyle for both title and body | title: `color: Colors.white , fontSize: 50.0` <br> body: `color: Colors.white , fontSize: 24.0` |
+| textStyle | TextStyle | Set TextStyle for both title and body | title: `color: Colors.white , fontSize: 50.0` <br> body: `color: Colors.white , fontSize: 24.0` |
 
 ### IntroViewFlutter Class
 

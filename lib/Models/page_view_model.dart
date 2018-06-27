@@ -13,17 +13,17 @@ class PageViewModel {
   final Color iconColor;
 
   /// color for background of progress bubbles
-  /// 
+  ///
   /// @Default `const Color(0x88FFFFFF)`
   final Color bubbleBackgroundColor;
 
   /// Text widget for the title
-  /// 
+  ///
   /// @Default style `color: Colors.white , fontSize: 50.0`
   final Text title;
 
   /// Text widget for the title
-  /// 
+  ///
   /// @Default style `color: Colors.white, fontSize: 24.0`
   final Text body;
 

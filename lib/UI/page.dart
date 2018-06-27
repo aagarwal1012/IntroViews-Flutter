@@ -109,6 +109,7 @@ class _BodyPageTransform extends StatelessWidget {
   }
 }
 
+/// Main Image of the Page
 class _ImagePageTransform extends StatelessWidget {
   final double percentVisible;
 
@@ -124,14 +125,16 @@ class _ImagePageTransform extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Transform(
       //Used for vertical transformation
-      transform: new Matrix4.translationValues(
-          0.0, 50.0 * (1 - percentVisible), 0.0),
-      child: new Container(
+      transform:
+          new Matrix4.translationValues(0.0, 50.0 * (1 - percentVisible), 0.0),
+      child: new Padding(
+        padding: new EdgeInsets.only(top: 20.0, bottom: 40.0),
+        child: new Container(
           width: 285.0,
           height: 285.0,
-          padding: new EdgeInsets.only(bottom: 30.0),
-          child: pageViewModel.mainImage, //Loading main 
-          ), //Padding
+          child: pageViewModel.mainImage, //Loading main
+        ), //Container
+      ), //Padding
     );
   }
 }

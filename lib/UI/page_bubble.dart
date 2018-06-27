@@ -34,7 +34,7 @@ class PageBubble extends StatelessWidget {
               color: viewModel.isHollow
                   ? viewModel.bubbleBackgroundColor
                       .withAlpha((0x88 * viewModel.activePercent).round())
-                  : viewModel.bubbleBackgroundColor.withOpacity(lerpDouble(0.5, 1.0, viewModel.activePercent)),
+                  : viewModel.bubbleBackgroundColor,
               border: new Border.all(
                 color: viewModel.isHollow
                     ? viewModel.bubbleBackgroundColor.withAlpha(
