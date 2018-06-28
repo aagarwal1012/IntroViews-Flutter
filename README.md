@@ -28,7 +28,7 @@ You should ensure that you add the `intro_views_flutter` as a dependency in your
 
 ```yaml
 dependencies:
- intro_views_flutter: "^1.0.2"
+ intro_views_flutter: "^2.0.1"
 ```
 
 You can also reference the git repository directly if you want:
@@ -49,19 +49,21 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 
   ```dart
   Final page = new PageViewModel(
-        pageColor: const Color(0xFF607D8B),
-        mainImageAssetPath: 'assets/taxi.png',
-        title: 'Cabs',
-        body: 'Easy cab booking at your doorstep with cashless payment system',
+      pageColor: const Color(0xFF607D8B),
         iconImageAssetPath: 'assets/taxi-driver.png',
-        titleTextColor: Colors.white,
-        bodyTextColor: Colors.white,
         iconColor: null,
-        titleTextSize: 54.0,
-        bodyTextSize: 24.0,
-        fontFamily: "MyFont",
-        pageTitleBold: false,
-        bubbleBackgroundColor: Colors.white,
+        bubbleBackgroundColor: null,
+        body: Text(
+          'Easy  cab  booking  at  your  doorstep  with  cashless  payment  system',
+        ),
+        title: Text('Cabs'),
+        mainImage: Image.asset(
+          'assets/taxi.png',
+          height: 285.0,
+          width: 285.0,
+          alignment: Alignment.center,
+        ),
+        textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
       );
   ```
 
@@ -74,14 +76,18 @@ You should then run `flutter packages get` in your terminal so as to get the pac
           //Void Callback  
         },
         showSkipButton: true,
-        pageButtonFontFamily: "Regular",
-        pageButtonsColor: Colors.white,
-        pageButtonTextSize: 18.0,
+        pageButtonTextStyles: new TextStyle(
+            color: Colors.white, 
+            fontSize: 18.0,
+            fontFamily: "Regular",
+          ),
       );
   ```
   For further usage refer the [`example`](https://github.com/aagarwal1012/IntroViews-Flutter/tree/master/example/lib) available.
 
-  ***Note :*** If you added more than four pages in the list then there can be overlapping between `page icons` and `skip button`, so my suggestion is just make the `showSkipButton: false`.
+  For `Landscape` preview click the [link](https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/display/landscape2.png?raw=true).
+
+  ***Note :*** If you added more than four pages in the list then there might be overlapping between `page icons` and `skip button`, so my suggestion is just make the `showSkipButton: false`.
 
 # Documentation
 
@@ -90,18 +96,13 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 | Dart attribute  | Datatype         | Description                                                  | Default Value |
 | :---------------- | :------------------------------ | :----------------------------------------------------------- | :-----------: |
 | pageColor | Color | Set color of the page. | Null      |
-| mainImageAssetPath | String | Set the main image asset path of the page. | Null      |
-| title | String | Set the title text of the page. | Null      |
-| body | String | Set the body text of the page. | Null       |
+| mainImage | Image | Set the main image of the page. | Null      |
+| title | Text | Set the title text of the page. | Null      |
+| body | Text | Set the body text of the page. | Null       |
 | iconImageAssetPath | String | Set the icon image asset path that would be displayed in page bubble. | Null    |
-| titleTextColor | Color | Set the title text color. | Colors.white |
-| bodyTextColor | Color | Set the body text color. | Colors.white |
 | iconColor | Color | Set the page bubble icon color. | Null |
 | bubbleBackgroundColor | Color | Set the page bubble background color. | Colors.white |
-| fontFamily | String | Use your own custom font to style the title and body. | Default |
-| pageTitleBold | Bool | Set the title font weight to bold. | False |
-| titleTextSize | Double | Set the size of title text. | 34.0 |
-| bodyTextSize | Double | Set the size of body text. | 18.0 |
+| textStyle | TextStyle | Set TextStyle for both title and body | title: `color: Colors.white , fontSize: 50.0` <br> body: `color: Colors.white , fontSize: 24.0` |
 
 ### IntroViewFlutter Class
 
@@ -109,12 +110,13 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 | :---------------- | :------------------------------ | :----------------------------------------------------------- | :-----------: |
 | pages | List<PageViewMode> | Set the pages of the intro screen. | Null      |
 | onTapDoneButton | VoidCallback | Method executes on tapping done button. | Null      |
-| pageButtonColor | Color | Set the color of skip and done buttons. | Colors.white |
 | showSkipButton | Bool | Show the skip button at the bottom of page. | true   |
 | pageButtonTextSize | Double | Set the button text size. | 18.0 |
 | pageButtonFontFamily | String | Set the font of button text. | Default |
-| skip | TextWidget | Override SkipButton Text and styles. | null |
-| done | TextWidget | Override DoneButton Text and styles. | null |
+| skip | Text | Override SkipButton Text and styles. | null |
+| done | Text | Override DoneButton Text and styles. | null |
+| onTapSkipButton | VoidCallback | Method executes on tapping skip button. | null |
+| pageButtonTextStyles | TextStyle | Configure TextStyle for skip, done buttons, overrides pageButtonFontFamily, pageButtonsColor, pageButtonTextSize. | fontSize: `18.0`, color: `Colors.white` |
 
 For help on editing package code, view the [flutter documentation](https://flutter.io/developing-packages/).
 
