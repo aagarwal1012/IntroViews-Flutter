@@ -37,17 +37,24 @@ class Page extends StatelessWidget {
   /// when device is Portrait place title, image and body in a column
   Widget _buildPortraitPage() {
     return new Column(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisSize: MainAxisSize.max,
       children: <Widget>[
-        new _TitlePageTransform(
-            percentVisible: percentVisible,
-            pageViewModel: pageViewModel), //Transform
-        new _ImagePageTransform(
-            percentVisible: percentVisible,
-            pageViewModel: pageViewModel), //Transform
-        new _BodyPageTransform(
-            percentVisible: percentVisible,
-            pageViewModel: pageViewModel), //Transform
+        Flexible(
+          flex: 1,
+          child: new _TitlePageTransform(
+              percentVisible: percentVisible, pageViewModel: pageViewModel),
+        ), //Transform
+        Expanded(
+          flex: 4,
+          child: new _ImagePageTransform(
+              percentVisible: percentVisible, pageViewModel: pageViewModel),
+        ), //Transform
+        Flexible(
+          flex: 2,
+          child: new _BodyPageTransform(
+              percentVisible: percentVisible, pageViewModel: pageViewModel),
+        ), //Transform
       ],
     );
   }
@@ -58,9 +65,10 @@ class Page extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
-        new _ImagePageTransform(
-            percentVisible: percentVisible,
-            pageViewModel: pageViewModel), //Transform
+        Expanded(
+          child: new _ImagePageTransform(
+              percentVisible: percentVisible, pageViewModel: pageViewModel),
+        ), //Transform
 
         new Flexible(
           child: new Column(
@@ -131,8 +139,6 @@ class _ImagePageTransform extends StatelessWidget {
       child: new Padding(
         padding: new EdgeInsets.only(top: 20.0, bottom: 40.0),
         child: new Container(
-          width: 285.0,
-          height: 285.0,
           child: pageViewModel.mainImage, //Loading main
         ), //Container
       ), //Padding
