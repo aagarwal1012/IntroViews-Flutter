@@ -48,11 +48,14 @@ class IntroViewsFlutter extends StatefulWidget {
   /// gets overridden by [pageButtonTextStyles]
   final String pageButtonFontFamily;
 
-  /// Override 'DONE' Text with Your Own Text, its TextStyle will be copied and override [pageButtonTextSize] [PageButtonFontFamily] [PageButtonsColor]
-  final Text endText;
+  /// Override 'DONE' Text with Your Own Text,
+  final Text doneText;
 
-  /// Override 'Skip' Text with Your Own Text, its TextStyle will be copied and override [pageButtonTextSize] [PageButtonFontFamily] [PageButtonsColor]
-  final Text startText;
+  /// Override 'Skip' Text with Your Own Text,
+  final Text skipText;
+
+  /// always Show DoneButton
+  final bool doneButtonPersist;
   IntroViewsFlutter(
     this.pages, {
     Key key,
@@ -63,8 +66,9 @@ class IntroViewsFlutter extends StatefulWidget {
     this.pageButtonFontFamily,
     this.onTapSkipButton,
     this.pageButtonsColor,
-    this.endText =  const Text("DONE"),
-    this.startText = const Text("SKIP"),
+    this.doneText = const Text("DONE"),
+    this.skipText = const Text("SKIP"),
+    this.doneButtonPersist = false,
   }) : super(key: key);
 
   @override
@@ -218,8 +222,9 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
               });
             },
             showSkipButton: widget.showSkipButton,
-            endText: widget.endText,
-            startText: widget.startText,
+            doneText: widget.doneText,
+            skipText: widget.skipText,
+            doneButtonPersist: widget.doneButtonPersist,
           ),
 
           new PageDragger(

@@ -94,9 +94,12 @@ class PageIndicatorButtons extends StatelessWidget {
   final double slidePercent;
   final bool showSkipButton;
 
-  final Text endText;
-  final Text startText;
+  final Text doneText;
+  final Text skipText;
   final TextStyle textStyle;
+
+  final bool doneButtonPersist;
+
   //Constructor
   PageIndicatorButtons({
     @required this.acitvePageIndex,
@@ -106,9 +109,10 @@ class PageIndicatorButtons extends StatelessWidget {
     this.slidePercent,
     this.onPressedSkipButton,
     this.showSkipButton = true,
-    this.startText,
-    this.endText,
+    this.skipText,
+    this.doneText,
     this.textStyle,
+    this.doneButtonPersist,
   });
 
   @override
@@ -131,7 +135,7 @@ class PageIndicatorButtons extends StatelessWidget {
                               slideDirection == SlideDirection.leftToRight)) &&
                       showSkipButton)
                   ? new SkipButton(
-                      child: startText,
+                      child: skipText,
                       onTap: onPressedSkipButton,
                       pageButtonViewModel: new PageButtonViewModel(
                         //View Model
@@ -148,15 +152,16 @@ class PageIndicatorButtons extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 10.0),
               child: (acitvePageIndex == totalPages - 1 ||
                       (acitvePageIndex == totalPages - 2 &&
-                          slideDirection == SlideDirection.rightToLeft))
+                              slideDirection == SlideDirection.rightToLeft ||
+                          doneButtonPersist))
                   ? new DoneButton(
-                      child: endText,
+                      child: doneText,
                       onTap: onPressedDoneButton,
                       pageButtonViewModel: new PageButtonViewModel(
                         //view Model
                         activePageIndex: acitvePageIndex,
                         totalPages: totalPages,
-                        slidePercent: slidePercent,
+                        slidePercent: doneButtonPersist ? 0.0 : slidePercent,
                         slideDirection: slideDirection,
                       ),
                     )

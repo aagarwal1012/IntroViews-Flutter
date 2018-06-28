@@ -113,10 +113,11 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 | showSkipButton | Bool | Show the skip button at the bottom of page. | true   |
 | pageButtonTextSize | Double | Set the button text size. | 18.0 |
 | pageButtonFontFamily | String | Set the font of button text. | Default |
-| skip | Text | Override SkipButton Text and styles. | null |
-| done | Text | Override DoneButton Text and styles. | null |
 | onTapSkipButton | VoidCallback | Method executes on tapping skip button. | null |
 | pageButtonTextStyles | TextStyle | Configure TextStyle for skip, done buttons, overrides pageButtonFontFamily, pageButtonsColor, pageButtonTextSize. | fontSize: `18.0`, color: `Colors.white` |
+| skipText | Text | Override SkipButton Text and styles. | Text('SKIP') |
+| doneText | Text | Override DoneButton Text and styles. | Text('DONE') |
+| doneButtonPersist | Bool | show done Button throughout pages | false |
 
 For help on editing package code, view the [flutter documentation](https://flutter.io/developing-packages/).
 
