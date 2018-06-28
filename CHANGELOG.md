@@ -1,3 +1,6 @@
+## 2.1.0
+* Fixed overflow for small screen apps.
+
 ## 2.0.1
 **Major Updates**
 * Made intro views responsive.
