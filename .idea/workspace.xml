@@ -306,7 +306,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1530270987789" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1530271106812" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -354,7 +354,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1530270987789" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1530271106812" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -549,7 +549,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="952" y="0" width="976" height="1038" extended-state="0" />
+    <frame x="952" y="0" width="976" height="1038" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -999,11 +999,11 @@
           <first_editor relative-caret-position="315">
             <caret line="30" column="29" lean-forward="false" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
             <folding>
-              <marker date="1530270741496" expanded="true" signature="910:954" ph="dependencies: &lt;1 key&gt;" />
-              <marker date="1530270741496" expanded="true" signature="946:954" ph="^2.1.1" />
-              <marker date="1530270741496" expanded="true" signature="1033:1125" ph="dependencies: &lt;1 key&gt;" />
-              <marker date="1530270741496" expanded="true" signature="1048:1125" ph="intro_views_flutter: &lt;1 key&gt;" />
-              <marker date="1530270741496" expanded="true" signature="1077:1125" ph="git://git…ws-Flutter" />
+              <marker date="1530271076830" expanded="true" signature="910:954" ph="dependencies: &lt;1 key&gt;" />
+              <marker date="1530271076830" expanded="true" signature="946:954" ph="^2.1.1" />
+              <marker date="1530271076830" expanded="true" signature="1033:1125" ph="dependencies: &lt;1 key&gt;" />
+              <marker date="1530271076830" expanded="true" signature="1048:1125" ph="intro_views_flutter: &lt;1 key&gt;" />
+              <marker date="1530271076830" expanded="true" signature="1077:1125" ph="git://git…ws-Flutter" />
             </folding>
           </first_editor>
           <second_editor />
