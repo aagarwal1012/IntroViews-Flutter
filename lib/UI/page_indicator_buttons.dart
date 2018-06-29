@@ -9,11 +9,12 @@ class SkipButton extends StatelessWidget {
   final VoidCallback onTap;
   //view model
   final PageButtonViewModel pageButtonViewModel;
-
+  final Text child;
   //Constructor
   SkipButton({
     this.onTap,
     this.pageButtonViewModel,
+    this.child,
   });
 
   @override
@@ -35,9 +36,9 @@ class SkipButton extends StatelessWidget {
       onPressed: onTap,
       child: new Opacity(
         opacity: opacity,
-        child: new Text(
-          "SKIP",
-          style: style, //TextStyle
+        child: DefaultTextStyle.merge(
+          style: style,
+          child: child,
         ), //Text
       ), //Opacity
     ); //FlatButton
@@ -51,11 +52,12 @@ class DoneButton extends StatelessWidget {
   final VoidCallback onTap;
   //View Model
   final PageButtonViewModel pageButtonViewModel;
-
+  final Text child;
   //Constructor
   DoneButton({
     this.onTap,
     this.pageButtonViewModel,
+    this.child,
   });
 
   @override
@@ -73,10 +75,10 @@ class DoneButton extends StatelessWidget {
       onPressed: onTap,
       child: new Opacity(
         opacity: opacity,
-        child: new Text(
-          "DONE",
-          style: style, //TextStyle
-        ), //Text
+        child: DefaultTextStyle.merge(
+          style: style,
+          child: child, //Text
+        ),
       ), //Opacity
     ); //FlatButton
   }
@@ -92,15 +94,25 @@ class PageIndicatorButtons extends StatelessWidget {
   final double slidePercent;
   final bool showSkipButton;
 
+  final Text doneText;
+  final Text skipText;
+  final TextStyle textStyle;
+
+  final bool doneButtonPersist;
+
   //Constructor
   PageIndicatorButtons({
-    this.acitvePageIndex,
-    this.totalPages,
+    @required this.acitvePageIndex,
+    @required this.totalPages,
     this.onPressedDoneButton,
     this.slideDirection,
     this.slidePercent,
     this.onPressedSkipButton,
     this.showSkipButton = true,
+    this.skipText,
+    this.doneText,
+    this.textStyle,
+    this.doneButtonPersist,
   });
 
   @override
@@ -109,48 +121,54 @@ class PageIndicatorButtons extends StatelessWidget {
       left: 0.0,
       right: 0.0,
       bottom: 0.0,
-      child: new Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.max,
-        children: <Widget>[
-          new Padding(
-            padding: const EdgeInsets.only(bottom: 10.0),
-            child: ((acitvePageIndex < totalPages - 1 ||
-                        (acitvePageIndex == totalPages - 1 &&
-                            slideDirection == SlideDirection.leftToRight)) &&
-                    showSkipButton)
-                ? new SkipButton(
-                    onTap: onPressedSkipButton,
-                    pageButtonViewModel: new PageButtonViewModel(
-                      //View Model
-                      activePageIndex: acitvePageIndex,
-                      totalPages: totalPages,
-                      slidePercent: slidePercent,
-                      slideDirection: slideDirection,
-                    ),
-                  )
-                : new Container(), //Row
-          ), //Padding
+      child: DefaultTextStyle(
+        style: textStyle,
+        child: new Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            new Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: ((acitvePageIndex < totalPages - 1 ||
+                          (acitvePageIndex == totalPages - 1 &&
+                              slideDirection == SlideDirection.leftToRight)) &&
+                      showSkipButton)
+                  ? new SkipButton(
+                      child: skipText,
+                      onTap: onPressedSkipButton,
+                      pageButtonViewModel: new PageButtonViewModel(
+                        //View Model
+                        activePageIndex: acitvePageIndex,
+                        totalPages: totalPages,
+                        slidePercent: slidePercent,
+                        slideDirection: slideDirection,
+                      ),
+                    )
+                  : new Container(), //Row
+            ), //Padding
 
-          new Padding(
-            padding: const EdgeInsets.only(bottom: 10.0),
-            child: (acitvePageIndex == totalPages - 1 ||
-                    (acitvePageIndex == totalPages - 2 &&
-                        slideDirection == SlideDirection.rightToLeft))
-                ? new DoneButton(
-                    onTap: onPressedDoneButton,
-                    pageButtonViewModel: new PageButtonViewModel(
-                      //view Model
-                      activePageIndex: acitvePageIndex,
-                      totalPages: totalPages,
-                      slidePercent: slidePercent,
-                      slideDirection: slideDirection,
-                    ),
-                  )
-                : new Container(), //Row
-          ),
-        ],
+            new Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: (acitvePageIndex == totalPages - 1 ||
+                      (acitvePageIndex == totalPages - 2 &&
+                              slideDirection == SlideDirection.rightToLeft ||
+                          doneButtonPersist))
+                  ? new DoneButton(
+                      child: doneText,
+                      onTap: onPressedDoneButton,
+                      pageButtonViewModel: new PageButtonViewModel(
+                        //view Model
+                        activePageIndex: acitvePageIndex,
+                        totalPages: totalPages,
+                        slidePercent: doneButtonPersist ? 0.0 : slidePercent,
+                        slideDirection: slideDirection,
+                      ),
+                    )
+                  : new Container(), //Row
+            ),
+          ],
+        ),
       ),
     );
   }
