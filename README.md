@@ -108,16 +108,16 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 
 | Dart attribute  | Datatype         | Description                                                  | Default Value |
 | :---------------- | :------------------------------ | :----------------------------------------------------------- | :-----------: |
-| pages | List<PageViewMode> | Set the pages of the intro screen. | Null      |
+| pages | List<PageViewModel> | Set the pages of the intro screen. | Null      |
 | onTapDoneButton | VoidCallback | Method executes on tapping done button. | Null      |
 | showSkipButton | Bool | Show the skip button at the bottom of page. | true   |
 | pageButtonTextSize | Double | Set the button text size. | 18.0 |
 | pageButtonFontFamily | String | Set the font of button text. | Default |
 | onTapSkipButton | VoidCallback | Method executes on tapping skip button. | null |
 | pageButtonTextStyles | TextStyle | Configure TextStyle for skip, done buttons, overrides pageButtonFontFamily, pageButtonsColor, pageButtonTextSize. | fontSize: `18.0`, color: `Colors.white` |
-| skipText | Text | Override SkipButton Text and styles. | Text('SKIP') |
-| doneText | Text | Override DoneButton Text and styles. | Text('DONE') |
-| doneButtonPersist | Bool | show done Button throughout pages | false |
+| skipText | Text | Override Skip Button Text and styles. | Text('SKIP') |
+| doneText | Text | Override Done Button Text and styles. | Text('DONE') |
+| doneButtonPersist | Bool | Show done Button throughout pages | false |
 
 For help on editing package code, view the [flutter documentation](https://flutter.io/developing-packages/).
 
