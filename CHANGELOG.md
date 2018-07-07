@@ -1,4 +1,9 @@
-## 2.1.0
+## 2.2.1
+* Added feature to override Text widget styles for skip and done button.
+* Added doneButtonPersist to show done button throughout the session.
+* Updated Readme.
+
+## 2.1.1
 * Fixed overflow for small screen apps.
 
 ## 2.0.1

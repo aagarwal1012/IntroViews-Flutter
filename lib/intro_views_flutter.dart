@@ -56,6 +56,7 @@ class IntroViewsFlutter extends StatefulWidget {
 
   /// always Show DoneButton
   final bool doneButtonPersist;
+
   IntroViewsFlutter(
     this.pages, {
     Key key,
