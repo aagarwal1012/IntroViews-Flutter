@@ -1,8 +1,12 @@
 <div align="center"><img src="https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/display/header.png?raw=true"/></div>
 <br/>
 
+
+
+
 IntroViews is inspired by [Paper Onboarding](https://github.com/Ramotion/paper-onboarding-android) and developed with `love` from scratch. I decided to rewrite almost all the features in order to make it available to the `flutter` developers and extensible as possible.
 
+[![pub package](https://img.shields.io/pub/v/intro_views_flutter.svg)](https://pub.dartlang.org/packages/intro_views_flutter) 
 
 <img src="https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/display/output.gif?raw=true" align = "right" height = "550px">
 
