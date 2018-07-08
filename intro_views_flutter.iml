@@ -21,14 +21,6 @@
       <excludeFolder url="file://$MODULE_DIR$/example/.idea/packages" />
       <excludeFolder url="file://$MODULE_DIR$/example/.idea/runConfigurations/packages" />
       <excludeFolder url="file://$MODULE_DIR$/example/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/example/android/.gradle/4.1/fileChanges/packages" />
-      <excludeFolder url="file://$MODULE_DIR$/example/android/.gradle/4.1/fileContent/packages" />
-      <excludeFolder url="file://$MODULE_DIR$/example/android/.gradle/4.1/fileHashes/packages" />
-      <excludeFolder url="file://$MODULE_DIR$/example/android/.gradle/4.1/javaCompile/packages" />
-      <excludeFolder url="file://$MODULE_DIR$/example/android/.gradle/4.1/packages" />
-      <excludeFolder url="file://$MODULE_DIR$/example/android/.gradle/4.1/taskHistory/packages" />
-      <excludeFolder url="file://$MODULE_DIR$/example/android/.gradle/buildOutputCleanup/packages" />
-      <excludeFolder url="file://$MODULE_DIR$/example/android/.gradle/packages" />
       <excludeFolder url="file://$MODULE_DIR$/example/android/app/packages" />
       <excludeFolder url="file://$MODULE_DIR$/example/android/app/src/main/java/com/example/example/packages" />
       <excludeFolder url="file://$MODULE_DIR$/example/android/app/src/main/java/com/example/packages" />
@@ -68,11 +60,12 @@
       <excludeFolder url="file://$MODULE_DIR$/example/lib/packages" />
       <excludeFolder url="file://$MODULE_DIR$/example/packages" />
       <excludeFolder url="file://$MODULE_DIR$/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/test/packages" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 25 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Dart Packages" level="project" />
     <orderEntry type="library" name="Dart SDK" level="project" />
     <orderEntry type="library" name="Flutter Plugins" level="project" />
+    <orderEntry type="library" name="Dart Packages" level="project" />
   </component>
 </module>
