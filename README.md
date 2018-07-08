@@ -29,7 +29,7 @@ You should ensure that you add the `intro_views_flutter` as a dependency in your
 
 ```yaml
 dependencies:
- intro_views_flutter: "^2.1.1"
+ intro_views_flutter: "^2.2.2"
 ```
 
 You can also reference the git repository directly if you want:

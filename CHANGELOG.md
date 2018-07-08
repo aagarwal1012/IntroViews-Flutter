@@ -1,3 +1,8 @@
+## 2.2.2
+* Added Widget testing.
+* Updated Readme.
+
+
 ## 2.2.1
 * Added feature to override Text widget styles for skip and done button.
 * Added doneButtonPersist to show done button throughout the session.

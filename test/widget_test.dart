@@ -42,11 +42,11 @@ void main() {
     // Verify that our counter has incremented.
     expect(find.text('SKIP'), findsNothing);
     expect(find.text('DONE'), findsOneWidget);
-    
+
     // Tap the 'DONE' button and trigger a frame
     await tester.tap(find.text('DONE'));
     await tester.pumpAndSettle();
-    
+
     // Verify that the home page opens.
     expect(find.text('DONE'), findsNothing);
     expect(find.text('This is the home page of the app'), findsOneWidget);
