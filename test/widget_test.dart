@@ -27,6 +27,31 @@ void main() {
     expect(find.text('DONE'), findsOneWidget);
   });
 
+  testWidgets('Done Pressed smoke test', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(new App());
+
+    // Verify that our counter starts at 0.
+    expect(find.text('SKIP'), findsOneWidget);
+    expect(find.text('DONE'), findsNothing);
+
+    // Tap the 'SKIP' button and trigger a frame.
+    await tester.tap(find.text('SKIP'));
+    await tester.pump();
+
+    // Verify that our counter has incremented.
+    expect(find.text('SKIP'), findsNothing);
+    expect(find.text('DONE'), findsOneWidget);
+    
+    // Tap the 'DONE' button and trigger a frame
+    await tester.tap(find.text('DONE'));
+    await tester.pumpAndSettle();
+    
+    // Verify that the home page opens.
+    expect(find.text('DONE'), findsNothing);
+    expect(find.text('This is the home page of the app'), findsOneWidget);
+  });
+
   // Drag from first page to second and back to first
   testWidgets('drag Reveal smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
@@ -38,7 +63,7 @@ void main() {
     expect(find.text('Hotels'), findsNothing);
 
     // Drag Screen To Reveal next Page
-    await tester.drag(find.byType(App) , Offset(-400.0, 0.0));
+    await tester.drag(find.byType(App), Offset(-400.0, 0.0));
 
     await tester.pumpAndSettle();
 
@@ -47,7 +72,7 @@ void main() {
     expect(find.text('Hotels'), findsWidgets);
 
     // Drag Screen To Reveal next Prev page
-    await tester.drag(find.byType(App) , Offset(400.0, 0.0));
+    await tester.drag(find.byType(App), Offset(400.0, 0.0));
 
     await tester.pumpAndSettle();
     // first page should have been removed by second page
