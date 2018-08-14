@@ -10,7 +10,7 @@
       alt="Pub Package" />
   </a>
   	<a href="https://travis-ci.com/aagarwal1012/IntroViews-Flutter">
-    <img src=https://travis-ci.com/aagarwal1012/IntroViews-Flutter.svg?branch=master"
+    <img src="https://travis-ci.com/aagarwal1012/IntroViews-Flutter.svg?branch=master"
       alt="Build Status" />
   </a>
   	<a href="https://opensource.org/licenses/MIT">
