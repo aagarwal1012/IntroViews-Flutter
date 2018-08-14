@@ -1,9 +1,25 @@
 <div align="center"><img src="https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/display/header.png?raw=true"/></div>
 <br/>
+<div align="center">
+	<a href="https://flutter.io">
+    <img src="https://img.shields.io/badge/Platform-Flutter-yellow.svg"
+      alt="Platform" />
+  </a>
+  	<a href="https://pub.dartlang.org/packages/intro_views_flutter">
+    <img src="https://img.shields.io/pub/v/intro_views_flutter.svg"
+      alt="Pub Package" />
+  </a>
+  	<a href="https://travis-ci.com/aagarwal1012/IntroViews-Flutter">
+    <img src=https://travis-ci.com/aagarwal1012/IntroViews-Flutter.svg?branch=master"
+      alt="Build Status" />
+  </a>
+  	<a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/License-MIT-red.svg?style=flat-square"
+      alt="License: MIT" />
+  </a>
+</div><br>
 
 IntroViews is inspired by [Paper Onboarding](https://github.com/Ramotion/paper-onboarding-android) and developed with `love` from scratch. I decided to rewrite almost all the features in order to make it available to the `flutter` developers and extensible as possible.
-
-[![pub package](https://img.shields.io/pub/v/intro_views_flutter.svg)](https://pub.dartlang.org/packages/intro_views_flutter) [![Build Status](https://travis-ci.com/aagarwal1012/IntroViews-Flutter.svg?branch=master)](https://travis-ci.com/aagarwal1012/IntroViews-Flutter)
 
 <img src="https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/display/output.gif?raw=true" align = "right" height = "550px">
 
@@ -125,7 +141,7 @@ For help on editing package code, view the [flutter documentation](https://flutt
 
 # Want to contribute !
 
-This is the well `documented` package. I have documented each and every method that I have used, so have a good read to the code and suggest some changes and new feature to be added in the package.  
+This is the well `documented` package. I have documented each and every method that I have used, so have a good read to the code and suggest some changes and new feature to be added in the package. See [Contributing.md](https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/CONTRIBUTING.md).
 Feel free to [open an issue](https://github.com/aagarwal1012/IntroViews-Flutter/issues).
 
 # License
