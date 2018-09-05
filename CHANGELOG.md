@@ -1,3 +1,6 @@
+## 2.2.4
+* Adjust the Scaffold in fullscreen.
+
 ## 2.2.3
 * General Update.
 
