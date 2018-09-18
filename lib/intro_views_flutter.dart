@@ -56,6 +56,14 @@ class IntroViewsFlutter extends StatefulWidget {
 
   /// always Show DoneButton
   final bool doneButtonPersist;
+  
+  /// [MainAxisAlignment] for [PageViewModel] page column aligment  
+  /// default [MainAxisAligment.spaceAround]
+  /// 
+  /// portrait view wraps around  [title] [body] [mainImage]
+  /// 
+  /// landscape view wraps around [title] [body]
+  final MainAxisAlignment columnMainAxisAlignment;
 
   IntroViewsFlutter(
     this.pages, {
@@ -70,6 +78,7 @@ class IntroViewsFlutter extends StatefulWidget {
     this.doneText = const Text("DONE"),
     this.skipText = const Text("SKIP"),
     this.doneButtonPersist = false,
+    this.columnMainAxisAlignment = MainAxisAlignment.spaceAround
   }) : super(key: key);
 
   @override
@@ -182,6 +191,7 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
           new Page(
             pageViewModel: pages[activePageIndex],
             percentVisible: 1.0,
+            columnMainAxisAlignment: widget.columnMainAxisAlignment,
           ), //Pages
           new PageReveal(
             //next page reveal
@@ -189,6 +199,7 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
             child: new Page(
               pageViewModel: pages[nextPageIndex],
               percentVisible: slidePercent,
+              columnMainAxisAlignment: widget.columnMainAxisAlignment
             ),
           ), //PageReveal
 
