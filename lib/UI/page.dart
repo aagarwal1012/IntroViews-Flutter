@@ -9,10 +9,14 @@ class Page extends StatelessWidget {
   ///percent visible of page
   final double percentVisible;
 
+  /// [MainAxisAligment]
+  final MainAxisAlignment columnMainAxisAlignment;
+
   //Constructor
   Page({
     this.pageViewModel,
     this.percentVisible = 1.0,
+    this.columnMainAxisAlignment = MainAxisAlignment.spaceAround,
   });
 
   @override
@@ -37,23 +41,29 @@ class Page extends StatelessWidget {
   /// when device is Portrait place title, image and body in a column
   Widget _buildPortraitPage() {
     return new Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisAlignment: columnMainAxisAlignment,
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
         Flexible(
           flex: 1,
           child: new _TitlePageTransform(
-              percentVisible: percentVisible, pageViewModel: pageViewModel),
+            percentVisible: percentVisible,
+            pageViewModel: pageViewModel,
+          ),
         ), //Transform
         Expanded(
           flex: 4,
           child: new _ImagePageTransform(
-              percentVisible: percentVisible, pageViewModel: pageViewModel),
+            percentVisible: percentVisible,
+            pageViewModel: pageViewModel,
+          ),
         ), //Transform
         Flexible(
           flex: 2,
           child: new _BodyPageTransform(
-              percentVisible: percentVisible, pageViewModel: pageViewModel),
+            percentVisible: percentVisible,
+            pageViewModel: pageViewModel,
+          ),
         ), //Transform
       ],
     );
@@ -67,20 +77,24 @@ class Page extends StatelessWidget {
       children: <Widget>[
         Expanded(
           child: new _ImagePageTransform(
-              percentVisible: percentVisible, pageViewModel: pageViewModel),
+            percentVisible: percentVisible,
+            pageViewModel: pageViewModel,
+          ),
         ), //Transform
 
         new Flexible(
           child: new Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: columnMainAxisAlignment,
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
               new _TitlePageTransform(
-                  percentVisible: percentVisible,
-                  pageViewModel: pageViewModel), //Transform
+                percentVisible: percentVisible,
+                pageViewModel: pageViewModel,
+              ), //Transform
               new _BodyPageTransform(
-                  percentVisible: percentVisible,
-                  pageViewModel: pageViewModel), //Transform
+                percentVisible: percentVisible,
+                pageViewModel: pageViewModel,
+              ), //Transform
             ],
           ), // Column
         ),
@@ -108,11 +122,16 @@ class _BodyPageTransform extends StatelessWidget {
       transform:
           new Matrix4.translationValues(0.0, 30.0 * (1 - percentVisible), 0.0),
       child: new Padding(
-        padding: const EdgeInsets.only(bottom: 75.0, left: 10.0, right: 10.0),
+        padding: const EdgeInsets.only(
+          bottom: 75.0,
+          left: 10.0,
+          right: 10.0,
+        ),
         child: DefaultTextStyle.merge(
-            style: pageViewModel.bodyTextStyle,
-            textAlign: TextAlign.center,
-            child: pageViewModel.body),
+          style: pageViewModel.bodyTextStyle,
+          textAlign: TextAlign.center,
+          child: pageViewModel.body,
+        ),
       ), //Padding
     );
   }
@@ -137,7 +156,10 @@ class _ImagePageTransform extends StatelessWidget {
       transform:
           new Matrix4.translationValues(0.0, 50.0 * (1 - percentVisible), 0.0),
       child: new Padding(
-        padding: new EdgeInsets.only(top: 20.0, bottom: 40.0),
+        padding: new EdgeInsets.only(
+          top: 20.0,
+          bottom: 40.0,
+        ),
         child: new Container(
           child: pageViewModel.mainImage, //Loading main
         ), //Container
@@ -166,7 +188,11 @@ class _TitlePageTransform extends StatelessWidget {
           new Matrix4.translationValues(0.0, 30.0 * (1 - percentVisible), 0.0),
       child: new Padding(
         padding: new EdgeInsets.only(
-            top: 60.0, bottom: 30.0, left: 10.0, right: 10.0),
+          top: 60.0,
+          bottom: 30.0,
+          left: 10.0,
+          right: 10.0,
+        ),
         child: DefaultTextStyle.merge(
           style: pageViewModel.titleTextStyle,
           child: pageViewModel.title,
