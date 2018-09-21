@@ -1,3 +1,8 @@
+## 2.3.0
+**Feature Enhancement**
+* Exposed columnMainAxisAlignment to change mainAxisligment.
+* Updated Readme.
+
 ## 2.2.4
 * Adjust the Scaffold in fullscreen.
 
