@@ -56,30 +56,29 @@ class IntroViewsFlutter extends StatefulWidget {
 
   /// always Show DoneButton
   final bool doneButtonPersist;
-  
-  /// [MainAxisAlignment] for [PageViewModel] page column aligment  
+
+  /// [MainAxisAlignment] for [PageViewModel] page column aligment
   /// default [MainAxisAligment.spaceAround]
-  /// 
+  ///
   /// portrait view wraps around  [title] [body] [mainImage]
-  /// 
+  ///
   /// landscape view wraps around [title] [body]
   final MainAxisAlignment columnMainAxisAlignment;
 
-  IntroViewsFlutter(
-    this.pages, {
-    Key key,
-    this.onTapDoneButton,
-    this.showSkipButton = true,
-    this.pageButtonTextStyles,
-    this.pageButtonTextSize = 18.0,
-    this.pageButtonFontFamily,
-    this.onTapSkipButton,
-    this.pageButtonsColor,
-    this.doneText = const Text("DONE"),
-    this.skipText = const Text("SKIP"),
-    this.doneButtonPersist = false,
-    this.columnMainAxisAlignment = MainAxisAlignment.spaceAround
-  }) : super(key: key);
+  IntroViewsFlutter(this.pages,
+      {Key key,
+      this.onTapDoneButton,
+      this.showSkipButton = true,
+      this.pageButtonTextStyles,
+      this.pageButtonTextSize = 18.0,
+      this.pageButtonFontFamily,
+      this.onTapSkipButton,
+      this.pageButtonsColor,
+      this.doneText = const Text("DONE"),
+      this.skipText = const Text("SKIP"),
+      this.doneButtonPersist = false,
+      this.columnMainAxisAlignment = MainAxisAlignment.spaceAround})
+      : super(key: key);
 
   @override
   _IntroViewsFlutterState createState() => new _IntroViewsFlutterState();
@@ -197,10 +196,9 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
             //next page reveal
             revealPercent: slidePercent,
             child: new Page(
-              pageViewModel: pages[nextPageIndex],
-              percentVisible: slidePercent,
-              columnMainAxisAlignment: widget.columnMainAxisAlignment
-            ),
+                pageViewModel: pages[nextPageIndex],
+                percentVisible: slidePercent,
+                columnMainAxisAlignment: widget.columnMainAxisAlignment),
           ), //PageReveal
 
           new PagerIndicator(
