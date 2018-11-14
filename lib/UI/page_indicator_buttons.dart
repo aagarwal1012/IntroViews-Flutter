@@ -9,7 +9,7 @@ class SkipButton extends StatelessWidget {
   final VoidCallback onTap;
   //view model
   final PageButtonViewModel pageButtonViewModel;
-  final Text child;
+  final Widget child;
   //Constructor
   SkipButton({
     this.onTap,
@@ -32,9 +32,9 @@ class SkipButton extends StatelessWidget {
       opacity = pageButtonViewModel.slidePercent;
     }
 
-    return new FlatButton(
+    return FlatButton(
       onPressed: onTap,
-      child: new Opacity(
+      child: Opacity(
         opacity: opacity,
         child: DefaultTextStyle.merge(
           style: style,
@@ -52,7 +52,7 @@ class DoneButton extends StatelessWidget {
   final VoidCallback onTap;
   //View Model
   final PageButtonViewModel pageButtonViewModel;
-  final Text child;
+  final Widget child;
   //Constructor
   DoneButton({
     this.onTap,
@@ -71,9 +71,9 @@ class DoneButton extends StatelessWidget {
       opacity = 1.0 - pageButtonViewModel.slidePercent;
     }
 
-    return new FlatButton(
+    return FlatButton(
       onPressed: onTap,
-      child: new Opacity(
+      child: Opacity(
         opacity: opacity,
         child: DefaultTextStyle.merge(
           style: style,
@@ -94,8 +94,8 @@ class PageIndicatorButtons extends StatelessWidget {
   final double slidePercent;
   final bool showSkipButton;
 
-  final Text doneText;
-  final Text skipText;
+  final Widget doneText;
+  final Widget skipText;
   final TextStyle textStyle;
 
   final bool doneButtonPersist;
@@ -123,21 +123,21 @@ class PageIndicatorButtons extends StatelessWidget {
       bottom: 0.0,
       child: DefaultTextStyle(
         style: textStyle,
-        child: new Row(
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            new Padding(
+            Padding(
               padding: const EdgeInsets.only(bottom: 10.0),
               child: ((acitvePageIndex < totalPages - 1 ||
                           (acitvePageIndex == totalPages - 1 &&
                               slideDirection == SlideDirection.leftToRight)) &&
                       showSkipButton)
-                  ? new SkipButton(
+                  ? SkipButton(
                       child: skipText,
                       onTap: onPressedSkipButton,
-                      pageButtonViewModel: new PageButtonViewModel(
+                      pageButtonViewModel: PageButtonViewModel(
                         //View Model
                         activePageIndex: acitvePageIndex,
                         totalPages: totalPages,
@@ -145,19 +145,18 @@ class PageIndicatorButtons extends StatelessWidget {
                         slideDirection: slideDirection,
                       ),
                     )
-                  : new Container(), //Row
+                  : Container(), //Row
             ), //Padding
-
-            new Padding(
+            Padding(
               padding: const EdgeInsets.only(bottom: 10.0),
               child: (acitvePageIndex == totalPages - 1 ||
                       (acitvePageIndex == totalPages - 2 &&
                               slideDirection == SlideDirection.rightToLeft ||
                           doneButtonPersist))
-                  ? new DoneButton(
+                  ? DoneButton(
                       child: doneText,
                       onTap: onPressedDoneButton,
-                      pageButtonViewModel: new PageButtonViewModel(
+                      pageButtonViewModel: PageButtonViewModel(
                         //view Model
                         activePageIndex: acitvePageIndex,
                         totalPages: totalPages,
@@ -165,7 +164,7 @@ class PageIndicatorButtons extends StatelessWidget {
                         slideDirection: slideDirection,
                       ),
                     )
-                  : new Container(), //Row
+                  : Container(), //Row
             ),
           ],
         ),
