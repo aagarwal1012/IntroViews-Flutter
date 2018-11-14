@@ -79,7 +79,8 @@ class App extends StatelessWidget {
                 Navigator.push(
                   context,
                   new MaterialPageRoute(
-                      builder: (context) => new HomePage()), //MaterialPageRoute
+                    builder: (context) => new HomePage(),
+                  ), //MaterialPageRoute
                 );
               },
               showSkipButton:
