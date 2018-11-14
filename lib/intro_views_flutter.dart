@@ -92,13 +92,15 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
   int nextPageIndex = 0; //next page index
   SlideDirection slideDirection = SlideDirection.none; //slide direction
   double slidePercent = 0.0; //slide percentage (0.0 to 1.0)
+  StreamSubscription<SlideUpdate> slideUpdateStream$;
 
-  /// Constructor
-  _IntroViewsFlutterState() {
+  @override
+  void initState() {
+    // TODO: implement initState
     //Stream Controller initialization
     slideUpdateStream = new StreamController<SlideUpdate>();
     //listening to updates of stream controller
-    slideUpdateStream.stream.listen((SlideUpdate event) {
+    slideUpdateStream$ = slideUpdateStream.stream.listen((SlideUpdate event) {
       setState(() {
         //setState is used to change the values dynamically
 
@@ -156,10 +158,23 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
           slidePercent = 0.0;
 
           //disposing the animation controller
-          animatedPageDragger.dispose();
+          animatedPageDragger?.dispose();
         }
       });
     });
+    
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    print('dispose');
+    // TODO: implement dispose
+    slideUpdateStream$?.cancel();
+    animatedPageDragger?.dispose();
+    slideUpdateStream?.close();
+    super.dispose();
   }
 
   /// Build method
