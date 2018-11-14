@@ -137,6 +137,7 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 | doneText             | Text                | Override Done Button Text and styles.                                                                             |              Text('DONE')               |
 | doneButtonPersist    | Bool                | Show done Button throughout pages                                                                                 |                  false                  |
 | columnMainAxisAlignment    | MainAxisAlignment                | control [MainAxisAlignment] for column                                                                                 |                  MainAxisAlignment.spaceAround                  |
+| fullTransition    | double                | adjust scroll distance for full transition                                                                                 |                  300.0                  |
 
 For help on editing package code, view the [flutter documentation](https://flutter.io/developing-packages/).
 

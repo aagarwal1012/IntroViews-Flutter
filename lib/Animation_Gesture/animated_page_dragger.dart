@@ -10,10 +10,10 @@ import 'package:intro_views_flutter/Models/slide_update_model.dart';
 /// reveal is not completed.
 
 class AnimatedPageDragger {
-  final slideDirection;
+  final SlideDirection slideDirection;
 
   //This variable tells that whether we have to open or close the page reveal.
-  final transitionGoal;
+  final TransitionGoal transitionGoal;
 
   //Animation controller
   AnimationController completionAnimationController;
@@ -22,13 +22,13 @@ class AnimatedPageDragger {
   AnimatedPageDragger({
     this.slideDirection,
     this.transitionGoal,
-    slidePercent,
+    double slidePercent,
     StreamController<SlideUpdate> slideUpdateStream,
     TickerProvider vsync,
   }) {
     final startSlidePercent = slidePercent;
-    var endSlidePercent;
-    var duration;
+    double endSlidePercent;
+    Duration duration;
 
     //We have to complete the page reveal
     if (transitionGoal == TransitionGoal.open) {
@@ -36,37 +36,37 @@ class AnimatedPageDragger {
 
       final slideRemaining = 1.0 - slidePercent;
       //Standard value take for drag velocity to avoid complex calculations.
-      duration = new Duration(
+      duration = Duration(
           milliseconds: (slideRemaining / PERCENT_PER_MILLISECOND).round());
     }
     //We have to close the page reveal
     else {
       endSlidePercent = 0.0;
 
-      duration = new Duration(
+      duration = Duration(
           milliseconds: (slidePercent / PERCENT_PER_MILLISECOND).round());
     }
 
     //Adding listener to animation controller
     //Also value to animation controller vary from 0.0 to 1.0 according to duration.
-    completionAnimationController =
-        new AnimationController(duration: duration, vsync: vsync)
-          ..addListener(() {
-            final slidePercent = lerpDouble(startSlidePercent, endSlidePercent,
-                completionAnimationController.value);
+    completionAnimationController = AnimationController(
+        duration: duration, vsync: vsync)
+      ..addListener(() {
+        final slidePercent = lerpDouble(startSlidePercent, endSlidePercent,
+            completionAnimationController.value);
 
-            //Adding to slide update stream
-            slideUpdateStream.add(new SlideUpdate(
-                slideDirection, slidePercent, UpdateType.animating));
-          })
-          ..addStatusListener((AnimationStatus status) {
-            //When animation has done executing
-            if (status == AnimationStatus.completed) {
-              //Adding to slide update stream
-              slideUpdateStream.add(new SlideUpdate(
-                  slideDirection, slidePercent, UpdateType.doneAnimating));
-            }
-          });
+        //Adding to slide update stream
+        slideUpdateStream.add(
+            SlideUpdate(slideDirection, slidePercent, UpdateType.animating));
+      })
+      ..addStatusListener((AnimationStatus status) {
+        //When animation has done executing
+        if (status == AnimationStatus.completed) {
+          //Adding to slide update stream
+          slideUpdateStream.add(SlideUpdate(
+              slideDirection, slidePercent, UpdateType.doneAnimating));
+        }
+      });
   }
 
   //This method is used to run animation Controller

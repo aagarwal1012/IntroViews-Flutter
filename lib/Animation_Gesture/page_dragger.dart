@@ -10,7 +10,7 @@ class PageDragger extends StatefulWidget {
   //These bool variables are used to check whether user can drag left or right or none.
   final bool canDragLeftToRight;
   final bool canDragRightToLeft;
-
+  final double fullTransitionPX;
   //Stream controller
   final StreamController<SlideUpdate> slideUpdateStream;
 
@@ -18,11 +18,12 @@ class PageDragger extends StatefulWidget {
   PageDragger({
     this.canDragLeftToRight,
     this.canDragRightToLeft,
-    this.slideUpdateStream,
-  });
+    this.slideUpdateStream, 
+    this.fullTransitionPX = FULL_TARNSITION_PX,
+  }): assert(fullTransitionPX != null);
 
   @override
-  _PageDraggerState createState() => new _PageDraggerState();
+  _PageDraggerState createState() => _PageDraggerState();
 }
 
 class _PageDraggerState extends State<PageDragger> {
@@ -56,21 +57,21 @@ class _PageDraggerState extends State<PageDragger> {
       //predicting slide percent
       if (slideDirection != SlideDirection.none) {
         //clamp method is used to clamp the value of slidePercent from 0.0 to 1.0, after 1.0 it set to 1.0
-        slidePercent = (dx / FULL_TARNSITION_PX).abs().clamp(0.0, 1.0);
+        slidePercent = (dx / widget.fullTransitionPX).abs().clamp(0.0, 1.0);
       } else {
         slidePercent = 0.0;
       }
 
       // Adding to slideUpdateStream
       widget.slideUpdateStream.add(
-          new SlideUpdate(slideDirection, slidePercent, UpdateType.dragging));
+           SlideUpdate(slideDirection, slidePercent, UpdateType.dragging));
     }
   }
 
   // This method executes when user ends dragging.
   onDragEnd(DragEndDetails details) {
     // Adding to slideUpdateStream
-    widget.slideUpdateStream.add(new SlideUpdate(
+    widget.slideUpdateStream.add( SlideUpdate(
         SlideDirection.none, slidePercent, UpdateType.doneDragging));
 
     //Making dragStart to null for the reallocation
@@ -80,7 +81,7 @@ class _PageDraggerState extends State<PageDragger> {
   @override
   Widget build(BuildContext context) {
     //Gesture Detector for horizontal drag
-    return new GestureDetector(
+    return GestureDetector(
       onHorizontalDragStart: onDragStart,
       onHorizontalDragUpdate: onDragUpdate,
       onHorizontalDragEnd: onDragEnd,
