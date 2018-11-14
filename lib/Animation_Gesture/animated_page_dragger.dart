@@ -70,12 +70,12 @@ class AnimatedPageDragger {
   }
 
   //This method is used to run animation Controller
-  run() {
+  void run() {
     completionAnimationController.forward(from: 0.0);
   }
 
   //This method is used to dispose animation controller
-  dispose() {
+  void dispose() {
     completionAnimationController.dispose();
   }
 }

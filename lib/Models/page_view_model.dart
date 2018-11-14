@@ -17,21 +17,34 @@ class PageViewModel {
   /// @Default `const Color(0x88FFFFFF)`
   final Color bubbleBackgroundColor;
 
-  /// Text widget for the title
+  /// widget for the title
   ///
-  /// @Default style `color: Colors.white , fontSize: 50.0`
-  final Text title;
+  /// _typicaly a Text Widget_
+  ///
+  /// @Default Textstyle `color: Colors.white , fontSize: 50.0`
+  final Widget title;
 
-  /// Text widget for the title
+  /// widget for the body
   ///
-  /// @Default style `color: Colors.white, fontSize: 24.0`
-  final Text body;
+  /// _typicaly a Text Widget_
+  ///
+  /// @Default Textstyle `color: Colors.white, fontSize: 24.0`
+  final Widget body;
 
   /// set default TextStyle for both title and body
   final TextStyle textStyle;
 
   /// Image Widget
-  final Image mainImage;
+  ///
+  /// _typicaly a Image Widget_
+  final Widget mainImage;
+
+  /// bubble inner Widget
+  ///
+  /// _typicaly a Image Widget_
+  ///
+  /// gets overriden by [iconImageAssetPath]
+  final Widget bubble;
 
   PageViewModel(
       {this.pageColor,
@@ -41,15 +54,14 @@ class PageViewModel {
       @required this.title,
       @required this.body,
       @required this.mainImage,
+      this.bubble,
       this.textStyle});
 
   TextStyle get titleTextStyle {
-    return new TextStyle(color: Colors.white, fontSize: 50.0)
-        .merge(this.textStyle);
+    return TextStyle(color: Colors.white, fontSize: 50.0).merge(this.textStyle);
   }
 
   TextStyle get bodyTextStyle {
-    return new TextStyle(color: Colors.white, fontSize: 24.0)
-        .merge(this.textStyle);
+    return TextStyle(color: Colors.white, fontSize: 24.0).merge(this.textStyle);
   }
 }

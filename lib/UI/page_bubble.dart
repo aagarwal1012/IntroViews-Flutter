@@ -15,27 +15,27 @@ class PageBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
+    return Container(
       width: 55.0,
       height: 65.0,
-      child: new Center(
-        child: new Padding(
+      child: Center(
+        child: Padding(
           padding: const EdgeInsets.all(10.0),
-          child: new Container(
+          child: Container(
             width: lerpDouble(
                 20.0,
                 45.0,
                 viewModel
                     .activePercent), //This method return in between values according to active percent.
             height: lerpDouble(20.0, 45.0, viewModel.activePercent),
-            decoration: new BoxDecoration(
+            decoration: BoxDecoration(
               shape: BoxShape.circle,
               //Alpha is used to create fade effect for background color
               color: viewModel.isHollow
                   ? viewModel.bubbleBackgroundColor
                       .withAlpha((0x88 * viewModel.activePercent).round())
                   : viewModel.bubbleBackgroundColor,
-              border: new Border.all(
+              border: Border.all(
                 color: viewModel.isHollow
                     ? viewModel.bubbleBackgroundColor.withAlpha(
                         (0x88 * (1 - viewModel.activePercent)).round())
@@ -43,16 +43,21 @@ class PageBubble extends StatelessWidget {
                 width: 3.0,
               ), //Border
             ), //BoxDecoration
-            child: new Opacity(
+            child: Opacity(
               opacity: viewModel.activePercent,
               child: (viewModel.iconAssetPath != null &&
                       viewModel.iconAssetPath != "")
                   // ignore: conflicting_dart_import
-                  ? new Image.asset(
+                  ? Image.asset(
                       viewModel.iconAssetPath,
                       color: viewModel.iconColor,
                     )
-                  : new Container(),
+                  : viewModel.bubbleInner != null
+                      ? Transform.scale(
+                          scale: viewModel.activePercent.clamp(0.5, 1.0),
+                          child: viewModel.bubbleInner,
+                        )
+                      : Container(),
             ), //opacity
           ), //Container
         ), //Padding

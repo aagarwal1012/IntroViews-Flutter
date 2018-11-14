@@ -45,15 +45,15 @@ You should ensure that you add the `intro_views_flutter` as a dependency in your
 
 ```yaml
 dependencies:
- intro_views_flutter: "^2.2.4"
+  intro_views_flutter: '^2.2.4'
 ```
 
 You can also reference the git repository directly if you want:
 
 ```yaml
 dependencies:
- intro_views_flutter:
-   git: git://github.com/aagarwal1012/IntroViews-Flutter
+  intro_views_flutter:
+    git: git://github.com/aagarwal1012/IntroViews-Flutter
 ```
 
 You should then run `flutter packages get` in your terminal so as to get the package.
@@ -90,7 +90,7 @@ You should then run `flutter packages get` in your terminal so as to get the pac
   final Widget introViews = new IntroViewsFlutter(
         [page],
         onTapDoneButton: (){
-          //Void Callback  
+          //Void Callback
         },
         showSkipButton: true,
         pageButtonTextStyles: new TextStyle(
@@ -111,33 +111,34 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 
 ### PageViewModel Class
 
-| Dart attribute        | Datatype  | Description                                                           |                                          Default Value                                          |
-| :-------------------- | :-------- | :-------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------: |
-| pageColor             | Color     | Set color of the page.                                                |                                              Null                                               |
-| mainImage             | Image     | Set the main image of the page.                                       |                                              Null                                               |
-| title                 | Text      | Set the title text of the page.                                       |                                              Null                                               |
-| body                  | Text      | Set the body text of the page.                                        |                                              Null                                               |
-| iconImageAssetPath    | String    | Set the icon image asset path that would be displayed in page bubble. |                                              Null                                               |
-| iconColor             | Color     | Set the page bubble icon color.                                       |                                              Null                                               |
-| bubbleBackgroundColor | Color     | Set the page bubble background color.                                 |                                          Colors.white                                           |
-| textStyle             | TextStyle | Set TextStyle for both title and body                                 | title: `color: Colors.white , fontSize: 50.0` <br> body: `color: Colors.white , fontSize: 24.0` |
+| Dart attribute        | Datatype       | Description                                                           |                                          Default Value                                          |
+| :-------------------- | :------------- | :-------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------: |
+| pageColor             | Color          | Set color of the page.                                                |                                              Null                                               |
+| mainImage             | Image / Widget | Set the main image of the page.                                       |                                              Null                                               |
+| title                 | Text / Widget  | Set the title text of the page.                                       |                                              Null                                               |
+| body                  | Text / Widget  | Set the body text of the page.                                        |                                              Null                                               |
+| iconImageAssetPath    | String         | Set the icon image asset path that would be displayed in page bubble. |                                              Null                                               |
+| iconColor             | Color          | Set the page bubble icon color.                                       |                                              Null                                               |
+| bubbleBackgroundColor | Color          | Set the page bubble background color.                                 |                                          Colors.white / Color(0x88FFFFFF)                                           |
+| textStyle             | TextStyle      | Set TextStyle for both title and body                                 | title: `color: Colors.white , fontSize: 50.0` <br> body: `color: Colors.white , fontSize: 24.0` |
+| bubble                | Widget         | set a costum widget for the inner bubble                              |                                              null                                               |
 
 ### IntroViewFlutter Class
 
-| Dart attribute       | Datatype            | Description                                                                                                       |              Default Value              |
-| :------------------- | :------------------ | :---------------------------------------------------------------------------------------------------------------- | :-------------------------------------: |
-| pages                | List<PageViewModel> | Set the pages of the intro screen.                                                                                |                  Null                   |
-| onTapDoneButton      | VoidCallback        | Method executes on tapping done button.                                                                           |                  Null                   |
-| showSkipButton       | Bool                | Show the skip button at the bottom of page.                                                                       |                  true                   |
-| pageButtonTextSize   | Double              | Set the button text size.                                                                                         |                  18.0                   |
-| pageButtonFontFamily | String              | Set the font of button text.                                                                                      |                 Default                 |
-| onTapSkipButton      | VoidCallback        | Method executes on tapping skip button.                                                                           |                  null                   |
-| pageButtonTextStyles | TextStyle           | Configure TextStyle for skip, done buttons, overrides pageButtonFontFamily, pageButtonsColor, pageButtonTextSize. | fontSize: `18.0`, color: `Colors.white` |
-| skipText             | Text                | Override Skip Button Text and styles.                                                                             |              Text('SKIP')               |
-| doneText             | Text                | Override Done Button Text and styles.                                                                             |              Text('DONE')               |
-| doneButtonPersist    | Bool                | Show done Button throughout pages                                                                                 |                  false                  |
-| columnMainAxisAlignment    | MainAxisAlignment                | control [MainAxisAlignment] for column                                                                                 |                  MainAxisAlignment.spaceAround                  |
-| fullTransition    | double                | adjust scroll distance for full transition                                                                                 |                  300.0                  |
+| Dart attribute          | Datatype            | Description                                                                                                       |              Default Value              |
+| :---------------------- | :------------------ | :---------------------------------------------------------------------------------------------------------------- | :-------------------------------------: |
+| pages                   | List<PageViewModel> | Set the pages of the intro screen.                                                                                |                  Null                   |
+| onTapDoneButton         | VoidCallback        | Method executes on tapping done button.                                                                           |                  Null                   |
+| showSkipButton          | Bool                | Show the skip button at the bottom of page.                                                                       |                  true                   |
+| pageButtonTextSize      | Double              | Set the button text size.                                                                                         |                  18.0                   |
+| pageButtonFontFamily    | String              | Set the font of button text.                                                                                      |                 Default                 |
+| onTapSkipButton         | VoidCallback        | Method executes on tapping skip button.                                                                           |                  null                   |
+| pageButtonTextStyles    | TextStyle           | Configure TextStyle for skip, done buttons, overrides pageButtonFontFamily, pageButtonsColor, pageButtonTextSize. | fontSize: `18.0`, color: `Colors.white` |
+| skipText                | Text / Widget       | Override Skip Button Text and styles.                                                                             |              Text('SKIP')               |
+| doneText                | Text / Widget       | Override Done Button Text and styles.                                                                             |              Text('DONE')               |
+| doneButtonPersist       | Bool                | Show done Button throughout pages                                                                                 |                  false                  |
+| columnMainAxisAlignment | MainAxisAlignment   | control [MainAxisAlignment] for column                                                                            |      MainAxisAlignment.spaceAround      |
+| fullTransition          | double              | adjust scroll distance for full transition                                                                        |                  300.0                  |
 
 For help on editing package code, view the [flutter documentation](https://flutter.io/developing-packages/).
 

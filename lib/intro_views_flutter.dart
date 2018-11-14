@@ -174,7 +174,7 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
           slidePercent = 0.0;
 
           //disposing the animation controller
-          animatedPageDragger?.dispose();
+          // animatedPageDragger?.dispose();
         }
       });
     });
