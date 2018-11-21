@@ -1,6 +1,5 @@
 .DS_Store
 .dart_tool/
-.idea
 
 .packages
 .pub/
@@ -10,10 +9,11 @@ ios/.generated/
 ios/Flutter/Generated.xcconfig
 ios/Runner/GeneratedPluginRegistrant.*
 
-*.iml         // IntelliJ
-*.ipr         // IntelliJ
-*.iws         // IntelliJ
-.idea/        // IntelliJ
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea
 
 doc/api/
 
