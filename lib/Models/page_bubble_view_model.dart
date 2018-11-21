@@ -7,12 +7,15 @@ class PageBubbleViewModel {
   final Color iconColor;
   final bool isHollow;
   final double activePercent;
-  Color bubbleBackgroundColor;
+  final Color bubbleBackgroundColor;
+  final Widget bubbleInner;
 
-  PageBubbleViewModel(
-      this.iconAssetPath, this.iconColor, this.isHollow, this.activePercent,
-      {this.bubbleBackgroundColor}) {
-    if (bubbleBackgroundColor == null)
-      bubbleBackgroundColor = const Color(0x88FFFFFF);
-  }
+  PageBubbleViewModel({
+    this.bubbleInner,
+    this.iconAssetPath,
+    this.iconColor,
+    this.isHollow,
+    this.activePercent,
+    this.bubbleBackgroundColor = const Color(0x88FFFFFF),
+  }) : assert(bubbleBackgroundColor != null);
 }

@@ -1,6 +1,13 @@
+##2.4.0
+**Feature Enhancement**
+* Exposed the way to change the distance a user needs to drag for a full transition to occur using `fullTransition` and its default value is set to `300.0`.
+* Added ability to insert a custom widget in the page bubble.
+* Changed `title`, `body`, `mainImage` PageViewModel types to be more dynamic.
+* Removed all `new` keywords.
+
 ## 2.3.0
 **Feature Enhancement**
-* Exposed columnMainAxisAlignment to change mainAxisligment.
+* Exposed columnMainAxisAlignment to change mainAxisAlignment.
 * Updated Readme.
 
 ## 2.2.4
