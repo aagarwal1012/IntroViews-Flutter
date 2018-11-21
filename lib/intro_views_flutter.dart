@@ -49,10 +49,12 @@ class IntroViewsFlutter extends StatefulWidget {
   final String pageButtonFontFamily;
 
   /// Override 'DONE' Text with Your Own Text,
-  final Text doneText;
+  /// typicaly a Text Widget
+  final Widget doneText;
 
   /// Override 'Skip' Text with Your Own Text,
-  final Text skipText;
+  /// typicaly a Text Widget
+  final Widget skipText;
 
   /// always Show DoneButton
   final bool doneButtonPersist;
@@ -65,23 +67,30 @@ class IntroViewsFlutter extends StatefulWidget {
   /// landscape view wraps around [title] [body]
   final MainAxisAlignment columnMainAxisAlignment;
 
-  IntroViewsFlutter(this.pages,
-      {Key key,
-      this.onTapDoneButton,
-      this.showSkipButton = true,
-      this.pageButtonTextStyles,
-      this.pageButtonTextSize = 18.0,
-      this.pageButtonFontFamily,
-      this.onTapSkipButton,
-      this.pageButtonsColor,
-      this.doneText = const Text("DONE"),
-      this.skipText = const Text("SKIP"),
-      this.doneButtonPersist = false,
-      this.columnMainAxisAlignment = MainAxisAlignment.spaceAround})
-      : super(key: key);
+  /// ajust how how much the user most drag for a full page transition
+  ///
+  /// default to 300.0
+  final double fullTransition;
+
+  IntroViewsFlutter(
+    this.pages, {
+    Key key,
+    this.onTapDoneButton,
+    this.showSkipButton = true,
+    this.pageButtonTextStyles,
+    this.pageButtonTextSize = 18.0,
+    this.pageButtonFontFamily,
+    this.onTapSkipButton,
+    this.pageButtonsColor,
+    this.doneText = const Text("DONE"),
+    this.skipText = const Text("SKIP"),
+    this.doneButtonPersist = false,
+    this.columnMainAxisAlignment = MainAxisAlignment.spaceAround,
+    this.fullTransition = FULL_TARNSITION_PX,
+  }) : super(key: key);
 
   @override
-  _IntroViewsFlutterState createState() => new _IntroViewsFlutterState();
+  _IntroViewsFlutterState createState() => _IntroViewsFlutterState();
 }
 
 /// State of above widget.
@@ -100,13 +109,14 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
   int nextPageIndex = 0; //next page index
   SlideDirection slideDirection = SlideDirection.none; //slide direction
   double slidePercent = 0.0; //slide percentage (0.0 to 1.0)
+  StreamSubscription<SlideUpdate> slideUpdateStream$;
 
-  /// Constructor
-  _IntroViewsFlutterState() {
+  @override
+  void initState() {
     //Stream Controller initialization
-    slideUpdateStream = new StreamController<SlideUpdate>();
+    slideUpdateStream = StreamController<SlideUpdate>();
     //listening to updates of stream controller
-    slideUpdateStream.stream.listen((SlideUpdate event) {
+    slideUpdateStream$ = slideUpdateStream.stream.listen((SlideUpdate event) {
       setState(() {
         //setState is used to change the values dynamically
 
@@ -128,7 +138,7 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
         else if (event.updateType == UpdateType.doneDragging) {
           //Auto completion of event using Animated page dragger.
           if (slidePercent > 0.5) {
-            animatedPageDragger = new AnimatedPageDragger(
+            animatedPageDragger = AnimatedPageDragger(
               slideDirection: slideDirection,
               transitionGoal:
                   TransitionGoal.open, //we have to animate the open page reveal
@@ -137,7 +147,7 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
               vsync: this,
             );
           } else {
-            animatedPageDragger = new AnimatedPageDragger(
+            animatedPageDragger = AnimatedPageDragger(
               slideDirection: slideDirection,
               transitionGoal:
                   TransitionGoal.close, //we have to close the page reveal
@@ -164,17 +174,27 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
           slidePercent = 0.0;
 
           //disposing the animation controller
-          animatedPageDragger.dispose();
+          // animatedPageDragger?.dispose();
         }
       });
     });
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    slideUpdateStream$?.cancel();
+    animatedPageDragger?.dispose();
+    slideUpdateStream?.close();
+    super.dispose();
   }
 
   /// Build method
 
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyle = new TextStyle(
+    TextStyle textStyle = TextStyle(
             fontSize: widget.pageButtonTextSize ?? 18.0,
             color: widget.pageButtonsColor ?? const Color(0x88FFFFFF),
             fontFamily: widget.pageButtonFontFamily)
@@ -182,28 +202,28 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
 
     List<PageViewModel> pages = widget.pages;
 
-    return new Scaffold(
+    return Scaffold(
       //Stack is used to place components over one another.
       resizeToAvoidBottomPadding: false,
-      body: new Stack(
+      body: Stack(
         children: <Widget>[
-          new Page(
+          Page(
             pageViewModel: pages[activePageIndex],
             percentVisible: 1.0,
             columnMainAxisAlignment: widget.columnMainAxisAlignment,
           ), //Pages
-          new PageReveal(
+          PageReveal(
             //next page reveal
             revealPercent: slidePercent,
-            child: new Page(
+            child: Page(
                 pageViewModel: pages[nextPageIndex],
                 percentVisible: slidePercent,
                 columnMainAxisAlignment: widget.columnMainAxisAlignment),
           ), //PageReveal
 
-          new PagerIndicator(
+          PagerIndicator(
             //bottom page indicator
-            viewModel: new PagerIndicatorViewModel(
+            viewModel: PagerIndicatorViewModel(
               pages,
               activePageIndex,
               slideDirection,
@@ -211,7 +231,7 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
             ),
           ), //PagerIndicator
 
-          new PageIndicatorButtons(
+          PageIndicatorButtons(
             //Skip and Done Buttons
             textStyle: textStyle,
             acitvePageIndex: activePageIndex,
@@ -238,8 +258,9 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
             doneButtonPersist: widget.doneButtonPersist,
           ),
 
-          new PageDragger(
+          PageDragger(
             //Used for gesture control
+            fullTransitionPX: widget.fullTransition,
             canDragLeftToRight: activePageIndex > 0,
             canDragRightToLeft: activePageIndex < pages.length - 1,
             slideUpdateStream: this.slideUpdateStream,

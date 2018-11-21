@@ -3,18 +3,17 @@ import 'package:intro_views_flutter/Models/page_view_model.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
 
 /// This is the main method of app, from here execution starts.
-void main() => runApp(new App());
+void main() => runApp(App());
 
 /// App widget class
 
 class App extends StatelessWidget {
   //making list of pages needed to pass in IntroViewsFlutter constructor.
   final pages = [
-    new PageViewModel(
+    PageViewModel(
         pageColor: const Color(0xFF03A9F4),
-        iconImageAssetPath: 'assets/air-hostess.png',
-        iconColor: null,
-        bubbleBackgroundColor: null,
+        // iconImageAssetPath: 'assets/air-hostess.png',
+        bubble: Image.asset('assets/air-hostess.png'),
         body: Text(
           'Haselfree  booking  of  flight  tickets  with  full  refund  on  cancelation',
         ),
@@ -28,11 +27,9 @@ class App extends StatelessWidget {
           width: 285.0,
           alignment: Alignment.center,
         )),
-    new PageViewModel(
+    PageViewModel(
       pageColor: const Color(0xFF8BC34A),
       iconImageAssetPath: 'assets/waiter.png',
-      iconColor: null,
-      bubbleBackgroundColor: null,
       body: Text(
         'We  work  for  the  comfort ,  enjoy  your  stay  at  our  beautiful  hotels',
       ),
@@ -45,11 +42,9 @@ class App extends StatelessWidget {
       ),
       textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
     ),
-    new PageViewModel(
+    PageViewModel(
       pageColor: const Color(0xFF607D8B),
       iconImageAssetPath: 'assets/taxi-driver.png',
-      iconColor: null,
-      bubbleBackgroundColor: null,
       body: Text(
         'Easy  cab  booking  at  your  doorstep  with  cashless  payment  system',
       ),
@@ -66,20 +61,20 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'IntroViews Flutter', //title of app
-      theme: new ThemeData(
+      theme: ThemeData(
         primarySwatch: Colors.blue,
       ), //ThemeData
-      home: new Builder(
-        builder: (context) => new IntroViewsFlutter(
+      home: Builder(
+        builder: (context) => IntroViewsFlutter(
               pages,
               onTapDoneButton: () {
                 Navigator.push(
                   context,
-                  new MaterialPageRoute(
-                    builder: (context) => new HomePage(),
+                  MaterialPageRoute(
+                    builder: (context) => HomePage(),
                   ), //MaterialPageRoute
                 );
               },
@@ -101,11 +96,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-        title: new Text('Home'),
+      appBar: AppBar(
+        title: Text('Home'),
       ), //Appbar
-      body: new Center(
-        child: new Text("This is the home page of the app"),
+      body: Center(
+        child: Text("This is the home page of the app"),
       ), //Center
     ); //Scaffold
   }

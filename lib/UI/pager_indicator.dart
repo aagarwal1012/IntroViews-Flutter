@@ -43,13 +43,14 @@ class PagerIndicator extends StatelessWidget {
               viewModel.slideDirection == SlideDirection.leftToRight);
 
       //Adding to the list
-      bubbles.add(new PageBubble(
-        viewModel: new PageBubbleViewModel(
-          page.iconImageAssetPath,
-          page.iconColor,
-          isHollow,
-          percentActive,
+      bubbles.add(PageBubble(
+        viewModel: PageBubbleViewModel(
+          iconAssetPath: page.iconImageAssetPath,
+          iconColor: page.iconColor,
+          isHollow: isHollow,
+          activePercent: percentActive,
           bubbleBackgroundColor: page.bubbleBackgroundColor,
+          bubbleInner: page.bubble,
         ),
       ));
     }
@@ -65,16 +66,16 @@ class PagerIndicator extends StatelessWidget {
       translation -= BUBBLE_WIDTH * viewModel.slidePercent;
     }
     //UI
-    return new Column(
+    return Column(
       children: <Widget>[
-        new Expanded(child: new Container()),
-        new Row(
+        Expanded(child: Container()),
+        Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            new Transform(
+            Transform(
               // used for horizontal transformation
-              transform: new Matrix4.translationValues(translation, 0.0, 0.0),
-              child: new Row(
+              transform: Matrix4.translationValues(translation, 0.0, 0.0),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: bubbles,
               ), //Row
