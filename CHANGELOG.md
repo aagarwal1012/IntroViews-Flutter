@@ -7,7 +7,7 @@
 
 ## 2.3.0
 **Feature Enhancement**
-* Exposed columnMainAxisAlignment to change mainAxisligment.
+* Exposed columnMainAxisAlignment to change mainAxisAlignment.
 * Updated Readme.
 
 ## 2.2.4
