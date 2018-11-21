@@ -23,6 +23,16 @@ IntroViews is inspired by [Paper Onboarding](https://github.com/Ramotion/paper-o
 
 <img src="https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/display/output.gif?raw=true" align = "right" height = "550px">
 
+# Table of contents
+  * [Features](#features)
+  * [Getting Started](#getting-started)
+  * [Usage](#usage)
+  * [Documentation](#documentaion)  
+  	* [PageViewModel Class](#pageViewModel-class)
+  	* [IntroViewFlutter Class](#introViewFlutter-class)
+  * [Bugs or Requests](#want-to-contribute-!)
+  * [License](#license)
+
 # Features
 
 - Easy addition of pages.
@@ -121,7 +131,7 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 | iconColor             | Color          | Set the page bubble icon color.                                       |                                              Null                                               |
 | bubbleBackgroundColor | Color          | Set the page bubble background color.                                 |                                          Colors.white / Color(0x88FFFFFF)                                           |
 | textStyle             | TextStyle      | Set TextStyle for both title and body                                 | title: `color: Colors.white , fontSize: 50.0` <br> body: `color: Colors.white , fontSize: 24.0` |
-| bubble                | Widget         | set a costum widget for the inner bubble                              |                                              null                                               |
+| bubble                | Widget         | Set a custom widget for the inner bubble                              |                                              null                                               |
 
 ### IntroViewFlutter Class
 
@@ -137,8 +147,8 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 | skipText                | Text / Widget       | Override Skip Button Text and styles.                                                                             |              Text('SKIP')               |
 | doneText                | Text / Widget       | Override Done Button Text and styles.                                                                             |              Text('DONE')               |
 | doneButtonPersist       | Bool                | Show done Button throughout pages                                                                                 |                  false                  |
-| columnMainAxisAlignment | MainAxisAlignment   | control [MainAxisAlignment] for column                                                                            |      MainAxisAlignment.spaceAround      |
-| fullTransition          | double              | adjust scroll distance for full transition                                                                        |                  300.0                  |
+| columnMainAxisAlignment | MainAxisAlignment   | Control [MainAxisAlignment] for column                                                                            |      MainAxisAlignment.spaceAround      |
+| fullTransition          | double              | Adjust scroll distance for full transition                                                                        |                  300.0                  |
 
 For help on editing package code, view the [flutter documentation](https://flutter.io/developing-packages/).
 
