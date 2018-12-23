@@ -260,7 +260,7 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
           PageIndicatorButtons(
             //Skip and Done Buttons
             textStyle: textStyle,
-            acitvePageIndex: activePageIndex,
+            activePageIndex: activePageIndex,
             totalPages: pages.length,
             onPressedDoneButton: widget.onTapDoneButton,
             //void Callback to be executed after pressing done button

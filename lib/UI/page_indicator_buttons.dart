@@ -90,7 +90,7 @@ class DoneButton extends StatelessWidget {
 
 class PageIndicatorButtons extends StatelessWidget {
   //Some variables
-  final int acitvePageIndex;
+  final int activePageIndex;
   final int totalPages;
   final VoidCallback onPressedDoneButton; //Callback for Done Button
   final VoidCallback onPressedNextButton;
@@ -111,8 +111,8 @@ class PageIndicatorButtons extends StatelessWidget {
   final bool doneButtonPersist;
 
   Widget _getDoneORNextButton() {
-    if ((acitvePageIndex < totalPages - 1 ||
-            (acitvePageIndex == totalPages - 1 &&
+    if ((activePageIndex < totalPages - 1 ||
+            (activePageIndex == totalPages - 1 &&
                 slideDirection == SlideDirection.leftToRight)) &&
         showNextButton) {
       return DefaultButton(
@@ -120,14 +120,14 @@ class PageIndicatorButtons extends StatelessWidget {
         onTap: onPressedNextButton,
         pageButtonViewModel: PageButtonViewModel(
           //View Model
-          activePageIndex: acitvePageIndex,
+          activePageIndex: activePageIndex,
           totalPages: totalPages,
           slidePercent: slidePercent,
           slideDirection: slideDirection,
         ),
       );
-    } else if (acitvePageIndex == totalPages - 1 ||
-        (acitvePageIndex == totalPages - 2 &&
+    } else if (activePageIndex == totalPages - 1 ||
+        (activePageIndex == totalPages - 2 &&
                 slideDirection == SlideDirection.rightToLeft ||
             doneButtonPersist)) {
       return DoneButton(
@@ -135,7 +135,7 @@ class PageIndicatorButtons extends StatelessWidget {
         onTap: onPressedDoneButton,
         pageButtonViewModel: PageButtonViewModel(
           //view Model
-          activePageIndex: acitvePageIndex,
+          activePageIndex: activePageIndex,
           totalPages: totalPages,
           slidePercent: doneButtonPersist ? 0.0 : slidePercent,
           slideDirection: slideDirection,
@@ -147,22 +147,22 @@ class PageIndicatorButtons extends StatelessWidget {
   }
 
   Widget _getSkipORBackButton() {
-    if (acitvePageIndex <= totalPages &&
-        acitvePageIndex >= 1 &&
+    if (activePageIndex <= totalPages &&
+        activePageIndex >= 1 &&
         showBackButton) {
       return DefaultButton(
         child: backText,
         onTap: onPressedBackButton,
         pageButtonViewModel: PageButtonViewModel(
           //View Model
-          activePageIndex: acitvePageIndex,
+          activePageIndex: activePageIndex,
           totalPages: totalPages,
           slidePercent: slidePercent,
           slideDirection: slideDirection,
         ),
       );
-    } else if ((acitvePageIndex < totalPages - 1 ||
-            (acitvePageIndex == totalPages - 1 &&
+    } else if ((activePageIndex < totalPages - 1 ||
+            (activePageIndex == totalPages - 1 &&
                 slideDirection == SlideDirection.leftToRight)) &&
         showSkipButton) {
       return DefaultButton(
@@ -170,7 +170,7 @@ class PageIndicatorButtons extends StatelessWidget {
         onTap: onPressedSkipButton,
         pageButtonViewModel: PageButtonViewModel(
           //View Model
-          activePageIndex: acitvePageIndex,
+          activePageIndex: activePageIndex,
           totalPages: totalPages,
           slidePercent: slidePercent,
           slideDirection: slideDirection,
@@ -183,7 +183,7 @@ class PageIndicatorButtons extends StatelessWidget {
 
   //Constructor
   PageIndicatorButtons(
-      {@required this.acitvePageIndex,
+      {@required this.activePageIndex,
       @required this.totalPages,
       this.onPressedDoneButton,
       this.slideDirection,
