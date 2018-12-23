@@ -33,6 +33,9 @@ class IntroViewsFlutter extends StatefulWidget {
   /// Whether you want to show the next button or not.
   final bool showNextButton;
 
+  /// Whether you want to show the back button or not.
+  final bool showBackButton;
+
   /// TextStyles for done, skip Buttons
   ///
   /// overrides [pageButtonFontFamily] [pageButtonsColor] [pageButtonTextSize]
@@ -43,6 +46,9 @@ class IntroViewsFlutter extends StatefulWidget {
 
   /// run a function after next Button pressed
   final VoidCallback onTapNextButton;
+
+  /// run a function after back Button pressed
+  final VoidCallback onTapBackButton;
 
   /// set the Text Size for skip, done buttons
   ///
@@ -57,6 +63,10 @@ class IntroViewsFlutter extends StatefulWidget {
   /// Override 'DONE' Text with Your Own Text,
   /// typicaly a Text Widget
   final Widget doneText;
+
+  /// Override 'BACK' Text with Your Own Text,
+  /// typicaly a Text Widget
+  final Widget backText;
 
   /// Override 'NEXT' Text with Your Own Text,
   /// typicaly a Text Widget
@@ -88,7 +98,9 @@ class IntroViewsFlutter extends StatefulWidget {
     this.onTapDoneButton,
     this.showSkipButton = true,
     this.pageButtonTextStyles,
+    this.onTapBackButton,
     this.showNextButton = true,
+    this.showBackButton = true,
     this.pageButtonTextSize = 18.0,
     this.pageButtonFontFamily,
     this.onTapSkipButton,
@@ -97,6 +109,7 @@ class IntroViewsFlutter extends StatefulWidget {
     this.doneText = const Text("DONE"),
     this.nextText = const Text("NEXT"),
     this.skipText = const Text("SKIP"),
+    this.backText = const Text("BACK"),
     this.doneButtonPersist = false,
     this.columnMainAxisAlignment = MainAxisAlignment.spaceAround,
     this.fullTransition = FULL_TARNSITION_PX,
@@ -267,20 +280,34 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
             },
             showSkipButton: widget.showSkipButton,
             showNextButton: widget.showNextButton,
+            showBackButton: widget.showBackButton,
             onPressedNextButton: () {
               //method executed on pressing next button
               setState(() {
                 activePageIndex = activePageIndex + 1;
                 nextPageIndex = nextPageIndex + 1;
-                // after skip pressed invoke function
+                // after next pressed invoke function
                 // this can be used for analytics/page transition
                 if (widget.onTapNextButton != null) {
                   widget.onTapNextButton();
                 }
               });
             },
+            onPressedBackButton: () {
+              //method executed on pressing back button
+              setState(() {
+                activePageIndex = activePageIndex - 1;
+                nextPageIndex = nextPageIndex - 1;
+                // after next pressed invoke function
+                // this can be used for analytics/page transition
+                if (widget.onTapBackButton != null) {
+                  widget.onTapBackButton();
+                }
+              });
+            },
             nextText: widget.nextText,
             doneText: widget.doneText,
+            backText: widget.backText,
             skipText: widget.skipText,
             doneButtonPersist: widget.doneButtonPersist,
           ),

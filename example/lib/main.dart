@@ -79,8 +79,6 @@ class App extends StatelessWidget {
                   ), //MaterialPageRoute
                 );
               },
-              showSkipButton:
-              true, //Whether you want to show the skip button or not.
               pageButtonTextStyles: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
