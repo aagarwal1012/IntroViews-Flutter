@@ -153,22 +153,7 @@ class PageIndicatorButtons extends StatelessWidget {
   final bool doneButtonPersist;
 
   Widget _getDoneORNextButton(){
-    if (acitvePageIndex == totalPages - 1 ||
-        (acitvePageIndex == totalPages - 2 &&
-            slideDirection == SlideDirection.rightToLeft ||
-            doneButtonPersist)){
-      return DoneButton(
-        child: doneText,
-        onTap: onPressedDoneButton,
-        pageButtonViewModel: PageButtonViewModel(
-          //view Model
-          activePageIndex: acitvePageIndex,
-          totalPages: totalPages,
-          slidePercent: doneButtonPersist ? 0.0 : slidePercent,
-          slideDirection: slideDirection,
-        ),
-      );
-    }else if ((acitvePageIndex < totalPages - 1 ||
+    if ((acitvePageIndex < totalPages - 1 ||
         (acitvePageIndex == totalPages - 1 &&
             slideDirection == SlideDirection.leftToRight)) &&
         showNextButton){
@@ -183,7 +168,22 @@ class PageIndicatorButtons extends StatelessWidget {
           slideDirection: slideDirection,
         ),
       );
-    }else{
+    }else if (acitvePageIndex == totalPages - 1 ||
+        (acitvePageIndex == totalPages - 2 &&
+            slideDirection == SlideDirection.rightToLeft ||
+            doneButtonPersist)){
+      return DoneButton(
+        child: doneText,
+        onTap: onPressedDoneButton,
+        pageButtonViewModel: PageButtonViewModel(
+          //view Model
+          activePageIndex: acitvePageIndex,
+          totalPages: totalPages,
+          slidePercent: doneButtonPersist ? 0.0 : slidePercent,
+          slideDirection: slideDirection,
+        ),
+      );
+    }else {
       return Container();
     }
   }

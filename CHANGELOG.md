@@ -1,3 +1,6 @@
+## 2.5.0
+* Added Next Button to move to the next screen. Overriding doneButtonPersist.
+
 ## 2.4.0
 **Feature Enhancement**
 * Exposed the way to change the distance a user needs to drag for a full transition to occur using `fullTransition` and its default value is set to `300.0`.
