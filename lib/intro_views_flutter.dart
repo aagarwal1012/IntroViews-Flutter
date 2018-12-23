@@ -30,6 +30,9 @@ class IntroViewsFlutter extends StatefulWidget {
   /// Whether you want to show the skip button or not.
   final bool showSkipButton;
 
+  /// Whether you want to show the next button or not.
+  final bool showNextButton;
+
   /// TextStyles for done, skip Buttons
   ///
   /// overrides [pageButtonFontFamily] [pageButtonsColor] [pageButtonTextSize]
@@ -37,6 +40,9 @@ class IntroViewsFlutter extends StatefulWidget {
 
   /// run a function after skip Button pressed
   final VoidCallback onTapSkipButton;
+
+  /// run a function after next Button pressed
+  final VoidCallback onTapNextButton;
 
   /// set the Text Size for skip, done buttons
   ///
@@ -51,6 +57,10 @@ class IntroViewsFlutter extends StatefulWidget {
   /// Override 'DONE' Text with Your Own Text,
   /// typicaly a Text Widget
   final Widget doneText;
+
+  /// Override 'NEXT' Text with Your Own Text,
+  /// typicaly a Text Widget
+  final Widget nextText;
 
   /// Override 'Skip' Text with Your Own Text,
   /// typicaly a Text Widget
@@ -78,11 +88,14 @@ class IntroViewsFlutter extends StatefulWidget {
     this.onTapDoneButton,
     this.showSkipButton = true,
     this.pageButtonTextStyles,
+    this.showNextButton = true,
     this.pageButtonTextSize = 18.0,
     this.pageButtonFontFamily,
     this.onTapSkipButton,
+    this.onTapNextButton,
     this.pageButtonsColor,
     this.doneText = const Text("DONE"),
+    this.nextText = const Text("NEXT"),
     this.skipText = const Text("SKIP"),
     this.doneButtonPersist = false,
     this.columnMainAxisAlignment = MainAxisAlignment.spaceAround,
@@ -140,8 +153,8 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
           if (slidePercent > 0.5) {
             animatedPageDragger = AnimatedPageDragger(
               slideDirection: slideDirection,
-              transitionGoal:
-                  TransitionGoal.open, //we have to animate the open page reveal
+              transitionGoal: TransitionGoal.open,
+              //we have to animate the open page reveal
               slidePercent: slidePercent,
               slideUpdateStream: slideUpdateStream,
               vsync: this,
@@ -149,8 +162,8 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
           } else {
             animatedPageDragger = AnimatedPageDragger(
               slideDirection: slideDirection,
-              transitionGoal:
-                  TransitionGoal.close, //we have to close the page reveal
+              transitionGoal: TransitionGoal.close,
+              //we have to close the page reveal
               slidePercent: slidePercent,
               slideUpdateStream: slideUpdateStream,
               vsync: this,
@@ -236,8 +249,8 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
             textStyle: textStyle,
             acitvePageIndex: activePageIndex,
             totalPages: pages.length,
-            onPressedDoneButton: widget
-                .onTapDoneButton, //void Callback to be executed after pressing done button
+            onPressedDoneButton: widget.onTapDoneButton,
+            //void Callback to be executed after pressing done button
             slidePercent: slidePercent,
             slideDirection: slideDirection,
             onPressedSkipButton: () {
@@ -253,6 +266,20 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
               });
             },
             showSkipButton: widget.showSkipButton,
+            showNextButton: widget.showNextButton,
+            onPressedNextButton: () {
+              //method executed on pressing next button
+              setState(() {
+                activePageIndex = activePageIndex + 1;
+                nextPageIndex = nextPageIndex + 1;
+                // after skip pressed invoke function
+                // this can be used for analytics/page transition
+                if (widget.onTapNextButton != null) {
+                  widget.onTapNextButton();
+                }
+              });
+            },
+            nextText: widget.nextText,
             doneText: widget.doneText,
             skipText: widget.skipText,
             doneButtonPersist: widget.doneButtonPersist,

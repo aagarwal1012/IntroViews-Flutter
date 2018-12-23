@@ -7,9 +7,11 @@ import 'package:intro_views_flutter/Models/page_button_view_model.dart';
 class SkipButton extends StatelessWidget {
   //callback for skip button
   final VoidCallback onTap;
+
   //view model
   final PageButtonViewModel pageButtonViewModel;
   final Widget child;
+
   //Constructor
   SkipButton({
     this.onTap,
@@ -50,9 +52,11 @@ class SkipButton extends StatelessWidget {
 class DoneButton extends StatelessWidget {
   //Callback
   final VoidCallback onTap;
+
   //View Model
   final PageButtonViewModel pageButtonViewModel;
   final Widget child;
+
   //Constructor
   DoneButton({
     this.onTap,
@@ -84,36 +88,122 @@ class DoneButton extends StatelessWidget {
   }
 }
 
+/// Nexg button class
+
+class NextButton extends StatelessWidget {
+  //callback for skip button
+  final VoidCallback onTap;
+
+  //view model
+  final PageButtonViewModel pageButtonViewModel;
+  final Widget child;
+
+  //Constructor
+  NextButton({
+    this.onTap,
+    this.pageButtonViewModel,
+    this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    //Calculating opacity to create a fade in effect
+    double opacity = 1.0;
+    final TextStyle style = DefaultTextStyle.of(context).style;
+    if (pageButtonViewModel.activePageIndex ==
+            pageButtonViewModel.totalPages - 2 &&
+        pageButtonViewModel.slideDirection == SlideDirection.rightToLeft) {
+      opacity = 1.0 - pageButtonViewModel.slidePercent;
+    } else if (pageButtonViewModel.activePageIndex ==
+            pageButtonViewModel.totalPages - 1 &&
+        pageButtonViewModel.slideDirection == SlideDirection.leftToRight) {
+      opacity = pageButtonViewModel.slidePercent;
+    }
+
+    return FlatButton(
+      onPressed: onTap,
+      child: Opacity(
+        opacity: opacity,
+        child: DefaultTextStyle.merge(
+          style: style,
+          child: child,
+        ), //Text
+      ), //Opacity
+    ); //FlatButton
+  }
+}
+
 class PageIndicatorButtons extends StatelessWidget {
   //Some variables
   final int acitvePageIndex;
   final int totalPages;
   final VoidCallback onPressedDoneButton; //Callback for Done Button
+  final VoidCallback onPressedNextButton;
   final VoidCallback onPressedSkipButton; //Callback for Skip Button
   final SlideDirection slideDirection;
   final double slidePercent;
   final bool showSkipButton;
+  final bool showNextButton;
 
   final Widget doneText;
   final Widget skipText;
+  final Widget nextText;
   final TextStyle textStyle;
 
   final bool doneButtonPersist;
 
+  Widget _getDoneORNextButton(){
+    if (acitvePageIndex == totalPages - 1 ||
+        (acitvePageIndex == totalPages - 2 &&
+            slideDirection == SlideDirection.rightToLeft ||
+            doneButtonPersist)){
+      return DoneButton(
+        child: doneText,
+        onTap: onPressedDoneButton,
+        pageButtonViewModel: PageButtonViewModel(
+          //view Model
+          activePageIndex: acitvePageIndex,
+          totalPages: totalPages,
+          slidePercent: doneButtonPersist ? 0.0 : slidePercent,
+          slideDirection: slideDirection,
+        ),
+      );
+    }else if ((acitvePageIndex < totalPages - 1 ||
+        (acitvePageIndex == totalPages - 1 &&
+            slideDirection == SlideDirection.leftToRight)) &&
+        showNextButton){
+      return NextButton(
+        child: nextText,
+        onTap: onPressedNextButton,
+        pageButtonViewModel: PageButtonViewModel(
+          //View Model
+          activePageIndex: acitvePageIndex,
+          totalPages: totalPages,
+          slidePercent: slidePercent,
+          slideDirection: slideDirection,
+        ),
+      );
+    }else{
+      return Container();
+    }
+  }
+
   //Constructor
-  PageIndicatorButtons({
-    @required this.acitvePageIndex,
-    @required this.totalPages,
-    this.onPressedDoneButton,
-    this.slideDirection,
-    this.slidePercent,
-    this.onPressedSkipButton,
-    this.showSkipButton = true,
-    this.skipText,
-    this.doneText,
-    this.textStyle,
-    this.doneButtonPersist,
-  });
+  PageIndicatorButtons(
+      {@required this.acitvePageIndex,
+      @required this.totalPages,
+      this.onPressedDoneButton,
+      this.slideDirection,
+      this.slidePercent,
+      this.onPressedSkipButton,
+      this.onPressedNextButton,
+      this.showSkipButton = true,
+      this.skipText,
+      this.nextText,
+      this.doneText,
+      this.textStyle,
+      this.doneButtonPersist,
+      this.showNextButton = true});
 
   @override
   Widget build(BuildContext context) {
@@ -149,23 +239,8 @@ class PageIndicatorButtons extends StatelessWidget {
             ), //Padding
             Padding(
               padding: const EdgeInsets.only(bottom: 10.0),
-              child: (acitvePageIndex == totalPages - 1 ||
-                      (acitvePageIndex == totalPages - 2 &&
-                              slideDirection == SlideDirection.rightToLeft ||
-                          doneButtonPersist))
-                  ? DoneButton(
-                      child: doneText,
-                      onTap: onPressedDoneButton,
-                      pageButtonViewModel: PageButtonViewModel(
-                        //view Model
-                        activePageIndex: acitvePageIndex,
-                        totalPages: totalPages,
-                        slidePercent: doneButtonPersist ? 0.0 : slidePercent,
-                        slideDirection: slideDirection,
-                      ),
-                    )
-                  : Container(), //Row
-            ),
+              child: _getDoneORNextButton() //Row
+            )
           ],
         ),
       ),
