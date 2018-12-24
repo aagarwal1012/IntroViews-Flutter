@@ -120,53 +120,51 @@ class PageIndicatorButtons extends StatelessWidget {
     return Positioned(
       left: 0.0,
       right: 0.0,
-      bottom: 0.0,
-      child: DefaultTextStyle(
-        style: textStyle,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10.0),
-              child: ((acitvePageIndex < totalPages - 1 ||
-                          (acitvePageIndex == totalPages - 1 &&
-                              slideDirection == SlideDirection.leftToRight)) &&
-                      showSkipButton)
-                  ? SkipButton(
-                      child: skipText,
-                      onTap: onPressedSkipButton,
-                      pageButtonViewModel: PageButtonViewModel(
-                        //View Model
-                        activePageIndex: acitvePageIndex,
-                        totalPages: totalPages,
-                        slidePercent: slidePercent,
-                        slideDirection: slideDirection,
-                      ),
-                    )
-                  : Container(), //Row
-            ), //Padding
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10.0),
-              child: (acitvePageIndex == totalPages - 1 ||
-                      (acitvePageIndex == totalPages - 2 &&
-                              slideDirection == SlideDirection.rightToLeft ||
-                          doneButtonPersist))
-                  ? DoneButton(
-                      child: doneText,
-                      onTap: onPressedDoneButton,
-                      pageButtonViewModel: PageButtonViewModel(
-                        //view Model
-                        activePageIndex: acitvePageIndex,
-                        totalPages: totalPages,
-                        slidePercent: doneButtonPersist ? 0.0 : slidePercent,
-                        slideDirection: slideDirection,
-                      ),
-                    )
-                  : Container(), //Row
-            ),
-          ],
+      child: SafeArea(
+        child: DefaultTextStyle(
+          style: textStyle,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10.0),
+                child: ((acitvePageIndex < totalPages - 1 ||
+                            (acitvePageIndex == totalPages - 1 &&
+                                slideDirection == SlideDirection.leftToRight)) &&
+                        showSkipButton)
+                    ? SkipButton(
+                        child: skipText,
+                        onTap: onPressedSkipButton,
+                        pageButtonViewModel: PageButtonViewModel(
+                          //View Model
+                          activePageIndex: acitvePageIndex,
+                          totalPages: totalPages,
+                          slidePercent: slidePercent,
+                          slideDirection: slideDirection,
+                        ),
+                      )
+                    : Container(), //Row
+              ), //Padding
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10.0),
+                child: doneButtonPersist
+                    ? DoneButton(
+                        child: doneText,
+                        onTap: onPressedDoneButton,
+                        pageButtonViewModel: PageButtonViewModel(
+                          //view Model
+                          activePageIndex: acitvePageIndex,
+                          totalPages: totalPages,
+                          slidePercent: doneButtonPersist ? 0.0 : slidePercent,
+                          slideDirection: slideDirection,
+                        ),
+                      )
+                    : Container(), //Row
+              ),
+            ],
+          ),
         ),
       ),
     );

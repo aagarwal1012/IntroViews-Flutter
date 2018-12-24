@@ -7,6 +7,7 @@ import 'package:intro_views_flutter/Animation_Gesture/animated_page_dragger.dart
 import 'package:intro_views_flutter/Animation_Gesture/page_dragger.dart';
 import 'package:intro_views_flutter/Animation_Gesture/page_reveal.dart';
 import 'package:intro_views_flutter/Constants/constants.dart';
+import 'package:intro_views_flutter/Models/page_button_view_model.dart';
 import 'package:intro_views_flutter/Models/page_view_model.dart';
 import 'package:intro_views_flutter/Models/pager_indicator_view_model.dart';
 import 'package:intro_views_flutter/Models/slide_update_model.dart';
@@ -137,7 +138,7 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
         //if the user has done dragging
         else if (event.updateType == UpdateType.doneDragging) {
           //Auto completion of event using Animated page dragger.
-          if (slidePercent > 0.5) {
+          if (slidePercent > 0.3) {
             animatedPageDragger = AnimatedPageDragger(
               slideDirection: slideDirection,
               transitionGoal:
@@ -175,6 +176,11 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
 
           //disposing the animation controller
           // animatedPageDragger?.dispose();
+        } else if (event.updateType == UpdateType.nextPage) {
+          slideDirection = event.direction;
+          slidePercent = event.slidePercent;
+
+          _animateToPage(slideDirection);
         }
       });
     });
@@ -201,6 +207,8 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
         .merge(widget.pageButtonTextStyles);
 
     List<PageViewModel> pages = widget.pages;
+    var canDragLeftToRight = activePageIndex > 0;
+    var canDragRightToLeft = activePageIndex < pages.length - 1;
 
     return Scaffold(
       //Stack is used to place components over one another.
@@ -219,17 +227,79 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
                 pageViewModel: pages[nextPageIndex],
                 percentVisible: slidePercent,
                 columnMainAxisAlignment: widget.columnMainAxisAlignment),
-          ), //PageReveal
+          ),
 
-          PagerIndicator(
-            //bottom page indicator
-            viewModel: PagerIndicatorViewModel(
-              pages,
-              activePageIndex,
-              slideDirection,
-              slidePercent,
-            ),
-          ), //PagerIndicator
+          PageDragger(
+            //Used for gesture control
+            fullTransitionPX: widget.fullTransition,
+            canDragLeftToRight: canDragLeftToRight,
+            canDragRightToLeft: canDragRightToLeft,
+            slideUpdateStream: this.slideUpdateStream,
+          ), //Pa// geReveal
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                alignment: Alignment.bottomCenter,
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: IconButton(
+                  icon: Icon(Icons.chevron_left, color: Colors.white),
+                  onPressed: () {
+                    if (canDragLeftToRight) {
+                      _animateToPage(SlideDirection.leftToRight);
+                    }
+                  },
+                ),
+              ),
+
+              Expanded(
+                child: PagerIndicator(
+                  //bottom page indicator
+                  viewModel: PagerIndicatorViewModel(
+                    pages,
+                    activePageIndex,
+                    slideDirection,
+                    slidePercent,
+                  ),
+                ),
+              ),
+
+              Container(
+                alignment: Alignment.bottomCenter,
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: !widget.doneButtonPersist &&
+                        (activePageIndex == pages.length - 1 ||
+                            (activePageIndex == pages.length - 2 &&
+                                slideDirection == SlideDirection.rightToLeft))
+                    ? DefaultTextStyle(
+                        style: widget.pageButtonTextStyles,
+                        child: DoneButton(
+                          child: widget.doneText,
+                          onTap: widget.onTapDoneButton,
+                          pageButtonViewModel: PageButtonViewModel(
+                            //view Model
+                            activePageIndex: activePageIndex,
+                            totalPages: pages.length,
+                            slidePercent: widget.doneButtonPersist ? 0.0 : slidePercent,
+                            slideDirection: slideDirection,
+                          ),
+                        ),
+                      )
+                    : IconButton(
+                        icon: Icon(
+                          Icons.chevron_right,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          if (canDragRightToLeft) {
+                            _animateToPage(SlideDirection.rightToLeft);
+                          }
+                        },
+                      ),
+              ), //PagerIndicator
+            ],
+          ),
 
           PageIndicatorButtons(
             //Skip and Done Buttons
@@ -257,16 +327,38 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
             skipText: widget.skipText,
             doneButtonPersist: widget.doneButtonPersist,
           ),
-
-          PageDragger(
-            //Used for gesture control
-            fullTransitionPX: widget.fullTransition,
-            canDragLeftToRight: activePageIndex > 0,
-            canDragRightToLeft: activePageIndex < pages.length - 1,
-            slideUpdateStream: this.slideUpdateStream,
-          ), //PageDragger
         ], //Widget
       ), //Stack
     ); //Scaffold
+  }
+
+
+  void _animateToPage(SlideDirection slideDirection) {
+    if (slideDirection == SlideDirection.rightToLeft &&
+        widget.pages.length > activePageIndex) {
+      nextPageIndex = activePageIndex + 1;
+    }else if (slideDirection == SlideDirection.leftToRight &&
+        activePageIndex -1 >= 0) {
+      nextPageIndex = activePageIndex - 1;
+    }
+
+    if (animatedPageDragger?.animationStatus == AnimationStatus.forward) {
+      if (widget.pages.length - 1 > nextPageIndex &&
+          slideDirection == SlideDirection.rightToLeft) {
+        nextPageIndex++;
+      }else if (nextPageIndex > 0 && slideDirection == SlideDirection.leftToRight){
+        nextPageIndex--;
+      }
+    } else {
+      animatedPageDragger = AnimatedPageDragger(
+        slideDirection: slideDirection,
+        transitionGoal: TransitionGoal.open,
+        percentPerMillisecond: 0.007,
+        slidePercent: slidePercent,
+        slideUpdateStream: slideUpdateStream,
+        vsync: this,
+      );
+      animatedPageDragger.run();
+    }
   }
 }

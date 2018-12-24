@@ -58,7 +58,7 @@ class PagerIndicator extends StatelessWidget {
     //Calculating the translation value of pager indicator while sliding.
     final baseTranslation =
         ((viewModel.pages.length * BUBBLE_WIDTH) / 2) - (BUBBLE_WIDTH / 2);
-    var translation = baseTranslation - (viewModel.activeIndex * BUBBLE_WIDTH);
+    var translation = baseTranslation - ((viewModel.activeIndex + 1) * BUBBLE_WIDTH);
 
     if (viewModel.slideDirection == SlideDirection.leftToRight) {
       translation += BUBBLE_WIDTH * viewModel.slidePercent;
@@ -66,23 +66,23 @@ class PagerIndicator extends StatelessWidget {
       translation -= BUBBLE_WIDTH * viewModel.slidePercent;
     }
     //UI
-    return Column(
-      children: <Widget>[
-        Expanded(child: Container()),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Transform(
-              // used for horizontal transformation
-              transform: Matrix4.translationValues(translation, 0.0, 0.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: bubbles,
-              ), //Row
+    return Container(
+      alignment: Alignment.bottomCenter,
+      child: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        child: Transform(
+          // used for horizontal transformation
+          transform: Matrix4.translationValues(translation, 0.0, 0.0),
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: bubbles,
             ),
-          ],
-        ), //Transform
-      ], //Children
+          ), //Row
+        ),
+      ),
     ); //Column
   }
 }

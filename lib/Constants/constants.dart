@@ -17,6 +17,7 @@ enum UpdateType {
   doneDragging,
   animating,
   doneAnimating,
+  nextPage,
 }
 
 enum TransitionGoal {

@@ -17,11 +17,13 @@ class AnimatedPageDragger {
 
   //Animation controller
   AnimationController completionAnimationController;
+  final double percentPerMillisecond;
 
   //Constructor
   AnimatedPageDragger({
     this.slideDirection,
     this.transitionGoal,
+    this.percentPerMillisecond = PERCENT_PER_MILLISECOND,
     double slidePercent,
     StreamController<SlideUpdate> slideUpdateStream,
     TickerProvider vsync,
@@ -37,14 +39,14 @@ class AnimatedPageDragger {
       final slideRemaining = 1.0 - slidePercent;
       //Standard value take for drag velocity to avoid complex calculations.
       duration = Duration(
-          milliseconds: (slideRemaining / PERCENT_PER_MILLISECOND).round());
+          milliseconds: (slideRemaining / percentPerMillisecond).round());
     }
     //We have to close the page reveal
     else {
       endSlidePercent = 0.0;
 
       duration = Duration(
-          milliseconds: (slidePercent / PERCENT_PER_MILLISECOND).round());
+          milliseconds: (slidePercent / percentPerMillisecond).round());
     }
 
     //Adding listener to animation controller
@@ -73,6 +75,8 @@ class AnimatedPageDragger {
   void run() {
     completionAnimationController.forward(from: 0.0);
   }
+
+  AnimationStatus get animationStatus => completionAnimationController.status;
 
   //This method is used to dispose animation controller
   void dispose() {
