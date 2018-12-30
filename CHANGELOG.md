@@ -1,5 +1,6 @@
 ## 2.5.0
 * Added Next Button to move to the next screen. Overriding doneButtonPersist.
+* Added Back Button. Overrides showSkipButton starting from the second page.
 
 ## 2.4.0
 **Feature Enhancement**
