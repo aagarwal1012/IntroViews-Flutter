@@ -63,7 +63,7 @@ void main() {
     expect(find.text('Hotels'), findsNothing);
 
     // Drag Screen To Reveal next Page
-    await tester.drag(find.byType(App), Offset(-400.0, 0.0));
+    await tester.fling(find.byType(App), Offset(-400.0, 0.0), 0.1);
 
     await tester.pumpAndSettle();
 
@@ -72,7 +72,7 @@ void main() {
     expect(find.text('Hotels'), findsWidgets);
 
     // Drag Screen To Reveal next Prev page
-    await tester.drag(find.byType(App), Offset(400.0, 0.0));
+    await tester.fling(find.byType(App), Offset(400.0, 0.0), 0.1);
 
     await tester.pumpAndSettle();
     // first page should have been removed by second page
