@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Constants/constants.dart';
 import 'package:intro_views_flutter/Models/page_button_view_model.dart';
 
-/// Skip button class
+/// Skip, Next, and Back button class
 
-class SkipButton extends StatelessWidget {
+class DefaultButton extends StatelessWidget {
   //callback for skip button
   final VoidCallback onTap;
+
   //view model
   final PageButtonViewModel pageButtonViewModel;
   final Widget child;
+
   //Constructor
-  SkipButton({
+  DefaultButton({
     this.onTap,
     this.pageButtonViewModel,
     this.child,
@@ -50,9 +52,11 @@ class SkipButton extends StatelessWidget {
 class DoneButton extends StatelessWidget {
   //Callback
   final VoidCallback onTap;
+
   //View Model
   final PageButtonViewModel pageButtonViewModel;
   final Widget child;
+
   //Constructor
   DoneButton({
     this.onTap,
@@ -86,34 +90,116 @@ class DoneButton extends StatelessWidget {
 
 class PageIndicatorButtons extends StatelessWidget {
   //Some variables
-  final int acitvePageIndex;
+  final int activePageIndex;
   final int totalPages;
   final VoidCallback onPressedDoneButton; //Callback for Done Button
+  final VoidCallback onPressedNextButton;
+  final VoidCallback onPressedBackButton;
   final VoidCallback onPressedSkipButton; //Callback for Skip Button
   final SlideDirection slideDirection;
   final double slidePercent;
   final bool showSkipButton;
+  final bool showNextButton;
+  final bool showBackButton;
 
   final Widget doneText;
   final Widget skipText;
+  final Widget nextText;
+  final Widget backText;
   final TextStyle textStyle;
 
   final bool doneButtonPersist;
 
+  Widget _getDoneORNextButton() {
+    if ((activePageIndex < totalPages - 1 ||
+            (activePageIndex == totalPages - 1 &&
+                slideDirection == SlideDirection.leftToRight)) &&
+        showNextButton) {
+      return DefaultButton(
+        child: nextText,
+        onTap: onPressedNextButton,
+        pageButtonViewModel: PageButtonViewModel(
+          //View Model
+          activePageIndex: activePageIndex,
+          totalPages: totalPages,
+          slidePercent: slidePercent,
+          slideDirection: slideDirection,
+        ),
+      );
+    } else if (activePageIndex == totalPages - 1 ||
+        (activePageIndex == totalPages - 2 &&
+                slideDirection == SlideDirection.rightToLeft ||
+            doneButtonPersist)) {
+      return DoneButton(
+        child: doneText,
+        onTap: onPressedDoneButton,
+        pageButtonViewModel: PageButtonViewModel(
+          //view Model
+          activePageIndex: activePageIndex,
+          totalPages: totalPages,
+          slidePercent: doneButtonPersist ? 0.0 : slidePercent,
+          slideDirection: slideDirection,
+        ),
+      );
+    } else {
+      return Container();
+    }
+  }
+
+  Widget _getSkipORBackButton() {
+    if (activePageIndex <= totalPages &&
+        activePageIndex >= 1 &&
+        showBackButton) {
+      return DefaultButton(
+        child: backText,
+        onTap: onPressedBackButton,
+        pageButtonViewModel: PageButtonViewModel(
+          //View Model
+          activePageIndex: activePageIndex,
+          totalPages: totalPages,
+          slidePercent: slidePercent,
+          slideDirection: slideDirection,
+        ),
+      );
+    } else if ((activePageIndex < totalPages - 1 ||
+            (activePageIndex == totalPages - 1 &&
+                slideDirection == SlideDirection.leftToRight)) &&
+        showSkipButton) {
+      return DefaultButton(
+        child: skipText,
+        onTap: onPressedSkipButton,
+        pageButtonViewModel: PageButtonViewModel(
+          //View Model
+          activePageIndex: activePageIndex,
+          totalPages: totalPages,
+          slidePercent: slidePercent,
+          slideDirection: slideDirection,
+        ),
+      );
+    } else {
+      return Container();
+    }
+  }
+
   //Constructor
-  PageIndicatorButtons({
-    @required this.acitvePageIndex,
-    @required this.totalPages,
-    this.onPressedDoneButton,
-    this.slideDirection,
-    this.slidePercent,
-    this.onPressedSkipButton,
-    this.showSkipButton = true,
-    this.skipText,
-    this.doneText,
-    this.textStyle,
-    this.doneButtonPersist,
-  });
+  PageIndicatorButtons(
+      {@required this.activePageIndex,
+      @required this.totalPages,
+      this.onPressedDoneButton,
+      this.slideDirection,
+      this.slidePercent,
+      this.onPressedSkipButton,
+      this.onPressedNextButton,
+      this.onPressedBackButton,
+      this.showSkipButton,
+      this.skipText,
+      this.nextText,
+      this.doneText,
+      this.textStyle,
+      this.doneButtonPersist,
+      this.showNextButton = true,
+      this.showBackButton = true,
+      this.backText});
 
   @override
   Widget build(BuildContext context) {
@@ -129,43 +215,13 @@ class PageIndicatorButtons extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(bottom: 10.0),
-              child: ((acitvePageIndex < totalPages - 1 ||
-                          (acitvePageIndex == totalPages - 1 &&
-                              slideDirection == SlideDirection.leftToRight)) &&
-                      showSkipButton)
-                  ? SkipButton(
-                      child: skipText,
-                      onTap: onPressedSkipButton,
-                      pageButtonViewModel: PageButtonViewModel(
-                        //View Model
-                        activePageIndex: acitvePageIndex,
-                        totalPages: totalPages,
-                        slidePercent: slidePercent,
-                        slideDirection: slideDirection,
-                      ),
-                    )
-                  : Container(), //Row
-            ), //Padding
+                padding: const EdgeInsets.only(bottom: 10.0),
+                child: _getSkipORBackButton() //Row
+                ), //Padding
             Padding(
-              padding: const EdgeInsets.only(bottom: 10.0),
-              child: (acitvePageIndex == totalPages - 1 ||
-                      (acitvePageIndex == totalPages - 2 &&
-                              slideDirection == SlideDirection.rightToLeft ||
-                          doneButtonPersist))
-                  ? DoneButton(
-                      child: doneText,
-                      onTap: onPressedDoneButton,
-                      pageButtonViewModel: PageButtonViewModel(
-                        //view Model
-                        activePageIndex: acitvePageIndex,
-                        totalPages: totalPages,
-                        slidePercent: doneButtonPersist ? 0.0 : slidePercent,
-                        slideDirection: slideDirection,
-                      ),
-                    )
-                  : Container(), //Row
-            ),
+                padding: const EdgeInsets.only(bottom: 10.0),
+                child: _getDoneORNextButton() //Row
+                )
           ],
         ),
       ),
