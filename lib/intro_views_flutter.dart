@@ -115,7 +115,7 @@ class IntroViewsFlutter extends StatefulWidget {
     this.doneButtonPersist = false,
     this.columnMainAxisAlignment = MainAxisAlignment.spaceAround,
     this.fullTransition = FULL_TARNSITION_PX,
-    this.background = null,
+    this.background,
   }) : super(key: key);
 
   @override
