@@ -155,6 +155,7 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 | doneButtonPersist       | Bool                | Show done Button throughout pages                                                                                 |                  false                  |
 | columnMainAxisAlignment | MainAxisAlignment   | Control [MainAxisAlignment] for column                                                                            |      MainAxisAlignment.spaceAround      |
 | fullTransition          | double              | Adjust scroll distance for full transition                                                                        |                  300.0                  |
+| background              | Color               | Set the background color to Colors.transparent if you have your own background image below | null |
 
 For help on editing package code, view the [flutter documentation](https://flutter.io/developing-packages/).
 

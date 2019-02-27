@@ -91,6 +91,8 @@ class IntroViewsFlutter extends StatefulWidget {
   ///
   /// default to 300.0
   final double fullTransition;
+  
+  final Color background;
 
   IntroViewsFlutter(
     this.pages, {
@@ -113,6 +115,7 @@ class IntroViewsFlutter extends StatefulWidget {
     this.doneButtonPersist = false,
     this.columnMainAxisAlignment = MainAxisAlignment.spaceAround,
     this.fullTransition = FULL_TARNSITION_PX,
+    this.background,
   }) : super(key: key);
 
   @override
@@ -231,6 +234,7 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
     return Scaffold(
       //Stack is used to place components over one another.
       resizeToAvoidBottomPadding: false,
+      backgroundColor: widget.background,
       body: Stack(
         children: <Widget>[
           Page(
