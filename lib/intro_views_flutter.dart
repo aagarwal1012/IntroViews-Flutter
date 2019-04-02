@@ -91,7 +91,7 @@ class IntroViewsFlutter extends StatefulWidget {
   ///
   /// default to 300.0
   final double fullTransition;
-  
+
   final Color background;
 
   IntroViewsFlutter(
