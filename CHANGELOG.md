@@ -1,3 +1,7 @@
+## 2.6.0
+* Fix problem padding top in title of pageViews.
+* Background property added that can be used to add full screen image to IntroViews.
+
 ## 2.5.0
 * Added Next Button to move to the next screen. Overriding doneButtonPersist.
 * Added Back Button. Overrides showSkipButton starting from the second page.

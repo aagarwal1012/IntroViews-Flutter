@@ -68,8 +68,7 @@ class App extends StatelessWidget {
         primarySwatch: Colors.blue,
       ), //ThemeData
       home: Builder(
-        builder: (context) =>
-            IntroViewsFlutter(
+        builder: (context) => IntroViewsFlutter(
               pages,
               onTapDoneButton: () {
                 Navigator.push(
