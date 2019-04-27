@@ -14,8 +14,12 @@
       alt="Build Status" />
   </a>
   	<a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/badge/License-MIT-red.svg?style=flat-square"
+    <img src="https://img.shields.io/badge/License-MIT-red.svg"
       alt="License: MIT" />
+  </a>
+	<a href="https://www.paypal.me/aagarwal1012">
+    <img src="https://img.shields.io/badge/Donate-PayPal-green.svg"
+      alt="Donate" />
   </a>
 </div><br>
 
@@ -163,6 +167,11 @@ For help on editing package code, view the [flutter documentation](https://flutt
 
 This is the well `documented` package. I have documented each and every method that I have used, so have a good read to the code and suggest some changes and new feature to be added in the package. See [Contributing.md](https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/CONTRIBUTING.md).
 Feel free to [open an issue](https://github.com/aagarwal1012/IntroViews-Flutter/issues).
+
+# Donate
+> If you found this project helpful or you learned something from the source code and want to thank me, consider buying me a cup of :coffee:
+>
+> - [PayPal](https://www.paypal.me/aagarwal1012/)
 
 # License
 
