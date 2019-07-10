@@ -69,20 +69,20 @@ class App extends StatelessWidget {
       ), //ThemeData
       home: Builder(
         builder: (context) => IntroViewsFlutter(
-              pages,
-              onTapDoneButton: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => HomePage(),
-                  ), //MaterialPageRoute
-                );
-              },
-              pageButtonTextStyles: TextStyle(
-                color: Colors.white,
-                fontSize: 18.0,
-              ),
-            ), //IntroViewsFlutter
+          pages,
+          onTapDoneButton: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomePage(),
+              ), //MaterialPageRoute
+            );
+          },
+          pageButtonTextStyles: TextStyle(
+            color: Colors.white,
+            fontSize: 18.0,
+          ),
+        ), //IntroViewsFlutter
       ), //Builder
     ); //Material App
   }

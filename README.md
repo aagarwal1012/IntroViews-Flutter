@@ -13,6 +13,10 @@
     <img src="https://travis-ci.com/aagarwal1012/IntroViews-Flutter.svg?branch=master"
       alt="Build Status" />
   </a>
+    <a href="https://codecov.io/gh/aagarwal1012/IntroViews-Flutter">
+    <img src="https://codecov.io/gh/aagarwal1012/IntroViews-Flutter/branch/master/graph/badge.svg"
+      alt="Codecov Coverage" />
+  </a>
   	<a href="https://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/badge/License-MIT-red.svg"
       alt="License: MIT" />
