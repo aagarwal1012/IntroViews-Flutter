@@ -189,7 +189,7 @@ class _TitlePageTransform extends StatelessWidget {
       child: new Padding(
         padding: new EdgeInsets.only(
           top: 5.0,
-          bottom: 30.0,
+          bottom: 5.0,
           left: 10.0,
           right: 10.0,
         ),
