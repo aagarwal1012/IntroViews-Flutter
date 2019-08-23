@@ -128,7 +128,7 @@ class _BodyPageTransform extends StatelessWidget {
           right: 10.0,
         ),
         child: DefaultTextStyle.merge(
-          style: pageViewModel.bodyTextStyle,
+          style: pageViewModel.mergedBodyTextStyle,
           textAlign: TextAlign.center,
           child: pageViewModel.body,
         ),
@@ -194,7 +194,7 @@ class _TitlePageTransform extends StatelessWidget {
           right: 10.0,
         ),
         child: DefaultTextStyle.merge(
-          style: pageViewModel.titleTextStyle,
+          style: pageViewModel.mergedTitleTextStyle,
           child: pageViewModel.title,
         ),
       ), //Padding

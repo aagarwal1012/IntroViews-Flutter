@@ -139,8 +139,9 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 | iconImageAssetPath    | String         | Set the icon image asset path that would be displayed in page bubble. |                                              Null                                               |
 | iconColor             | Color          | Set the page bubble icon color.                                       |                                              Null                                               |
 | bubbleBackgroundColor | Color          | Set the page bubble background color.                                 |                                          Colors.white / Color(0x88FFFFFF)                                           |
-| titleTextStyle             | TextStyle      | Set TextStyle for title                                 | title: `color: Colors.white , fontSize: 50.0` <br> body: `color: Colors.white , fontSize: 24.0` |
-| bodyTextStyle             | TextStyle      | Set TextStyle for body                                 | title: `color: Colors.white , fontSize: 50.0` <br> body: `color: Colors.white , fontSize: 24.0` |
+| textStyle             | TextStyle      | Set TextStyle for both title and body                                 | title: `color: Colors.white , fontSize: 50.0` <br> body: `color: Colors.white , fontSize: 24.0` |
+| titleTextStyle             | TextStyle      | Set TextStyle for title                                 | `color: Colors.white , fontSize: 50.0` |
+| bodyTextStyle             | TextStyle      | Set TextStyle for body                                 | `color: Colors.white , fontSize: 24.0` |
 | bubble                | Widget         | Set a custom widget for the inner bubble                              |                                              null                                               |
 
 ### IntroViewFlutter Class
