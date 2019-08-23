@@ -61,11 +61,11 @@ class PageViewModel {
       this.titleTextStyle,
       this.bodyTextStyle});
 
-  TextStyle get titleTextStyle {
-    return TextStyle(color: Colors.white, fontSize: 50.0).merge(this.titleTextStyle);
+  TextStyle get mergedTitleTextStyle {
+    return TextStyle(color: Colors.white, fontSize: 50.0).merge(this.mergedTitleTextStyle);
   }
 
-  TextStyle get bodyTextStyle {
-    return TextStyle(color: Colors.white, fontSize: 24.0).merge(this.bodyTextStyle);
+  TextStyle get mergedBodyTextStyle {
+    return TextStyle(color: Colors.white, fontSize: 24.0).merge(this.mergedBodyTextStyle);
   }
 }
