@@ -33,7 +33,7 @@ class PageViewModel {
 
   /// set default TextStyle for title
   final TextStyle titleTextStyle;
-  
+
   /// set default TextStyle for body
   final TextStyle bodyTextStyle;
 
@@ -62,10 +62,12 @@ class PageViewModel {
       this.bodyTextStyle});
 
   TextStyle get mergedTitleTextStyle {
-    return TextStyle(color: Colors.white, fontSize: 50.0).merge(this.mergedTitleTextStyle);
+    return TextStyle(color: Colors.white, fontSize: 50.0)
+        .merge(this.mergedTitleTextStyle);
   }
 
   TextStyle get mergedBodyTextStyle {
-    return TextStyle(color: Colors.white, fontSize: 24.0).merge(this.mergedBodyTextStyle);
+    return TextStyle(color: Colors.white, fontSize: 24.0)
+        .merge(this.mergedBodyTextStyle);
   }
 }
