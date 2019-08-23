@@ -99,7 +99,7 @@ You should then run `flutter packages get` in your terminal so as to get the pac
           alignment: Alignment.center,
         ),
         titleTextStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
-	bodyTextStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
+        bodyTextStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
       );
   ```
 
