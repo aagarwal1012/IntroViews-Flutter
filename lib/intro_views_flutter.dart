@@ -287,27 +287,35 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
             showBackButton: widget.showBackButton,
             onPressedNextButton: () {
               //method executed on pressing next button
-              setState(() {
-                activePageIndex = activePageIndex + 1;
-                nextPageIndex = nextPageIndex + 1;
-                // after next pressed invoke function
-                // this can be used for analytics/page transition
-                if (widget.onTapNextButton != null) {
-                  widget.onTapNextButton();
-                }
-              });
+              // setState(() {
+              //   activePageIndex = activePageIndex + 1;
+              //   nextPageIndex = nextPageIndex + 1;
+              //   // after next pressed invoke function
+              //   // this can be used for analytics/page transition
+              //   if (widget.onTapNextButton != null) {
+              //     widget.onTapNextButton();
+              //   }
+              // });
+              _animateToPage(SlideDirection.rightToLeft);
+              if (widget.onTapNextButton != null) {
+                widget.onTapNextButton();
+              }
             },
             onPressedBackButton: () {
-              //method executed on pressing back button
-              setState(() {
-                activePageIndex = activePageIndex - 1;
-                nextPageIndex = nextPageIndex - 1;
-                // after next pressed invoke function
-                // this can be used for analytics/page transition
-                if (widget.onTapBackButton != null) {
-                  widget.onTapBackButton();
-                }
-              });
+              // //method executed on pressing back button
+              // setState(() {
+              //   activePageIndex = activePageIndex - 1;
+              //   nextPageIndex = nextPageIndex - 1;
+              //   // after next pressed invoke function
+              //   // this can be used for analytics/page transition
+              //   if (widget.onTapBackButton != null) {
+              //     widget.onTapBackButton();
+              //   }
+              // });
+              _animateToPage(SlideDirection.leftToRight);
+              if (widget.onTapBackButton != null) {
+                widget.onTapBackButton();
+              }
             },
             nextText: widget.nextText,
             doneText: widget.doneText,
@@ -326,5 +334,33 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
         ], //Widget
       ), //Stack
     ); //Scaffold
+  }
+
+	  void _animateToPage(SlideDirection slideDirection) {
+    if (slideDirection == SlideDirection.rightToLeft &&
+        widget.pages.length > activePageIndex) {
+      nextPageIndex = activePageIndex + 1;
+    }else if (slideDirection == SlideDirection.leftToRight &&
+        activePageIndex -1 >= 0) {
+      nextPageIndex = activePageIndex - 1;
+    }
+
+     if (animatedPageDragger?.animationStatus == AnimationStatus.forward) {
+      if (widget.pages.length - 1 > nextPageIndex &&
+          slideDirection == SlideDirection.rightToLeft) {
+        nextPageIndex++;
+      }else if (nextPageIndex > 0 && slideDirection == SlideDirection.leftToRight){
+        nextPageIndex--;
+      }
+    } else {
+      animatedPageDragger = AnimatedPageDragger(
+        slideDirection: slideDirection,
+        transitionGoal: TransitionGoal.open,
+        slidePercent: slidePercent,
+        slideUpdateStream: slideUpdateStream,
+        vsync: this,
+      );
+      animatedPageDragger.run();
+    }
   }
 }
