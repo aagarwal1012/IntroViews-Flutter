@@ -336,20 +336,21 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
     ); //Scaffold
   }
 
-	  void _animateToPage(SlideDirection slideDirection) {
+  void _animateToPage(SlideDirection slideDirection) {
     if (slideDirection == SlideDirection.rightToLeft &&
         widget.pages.length > activePageIndex) {
       nextPageIndex = activePageIndex + 1;
-    }else if (slideDirection == SlideDirection.leftToRight &&
-        activePageIndex -1 >= 0) {
+    } else if (slideDirection == SlideDirection.leftToRight &&
+        activePageIndex - 1 >= 0) {
       nextPageIndex = activePageIndex - 1;
     }
 
-     if (animatedPageDragger?.animationStatus == AnimationStatus.forward) {
+    if (animatedPageDragger?.animationStatus == AnimationStatus.forward) {
       if (widget.pages.length - 1 > nextPageIndex &&
           slideDirection == SlideDirection.rightToLeft) {
         nextPageIndex++;
-      }else if (nextPageIndex > 0 && slideDirection == SlideDirection.leftToRight){
+      } else if (nextPageIndex > 0 &&
+          slideDirection == SlideDirection.leftToRight) {
         nextPageIndex--;
       }
     } else {
