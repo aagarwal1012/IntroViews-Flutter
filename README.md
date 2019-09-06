@@ -83,7 +83,7 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 - `IntroViewsFlutter` widget require a `list` of `PageViewModel` , and some other parameters. Refer the code below to create a PageViewModel page.
 
   ```dart
-  Final page = new PageViewModel(
+  final page = new PageViewModel(
       pageColor: const Color(0xFF607D8B),
         iconImageAssetPath: 'assets/taxi-driver.png',
         iconColor: null,
