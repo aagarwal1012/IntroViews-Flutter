@@ -15,6 +15,15 @@
         "doc",
         "projectManagement"
       ]
+    },
+    {
+      "login": "newerton",
+      "name": "Newerton",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/4175945?v=4",
+      "profile": "http://newerton.com",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
