@@ -20,7 +20,8 @@ class App extends StatelessWidget {
         title: Text(
           'Flights',
         ),
-        textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
+        titleTextStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
+        bodyTextStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
         mainImage: Image.asset(
           'assets/airplane.png',
           height: 285.0,
@@ -40,7 +41,8 @@ class App extends StatelessWidget {
         width: 285.0,
         alignment: Alignment.center,
       ),
-      textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
+      titleTextStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
+      bodyTextStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
     ),
     PageViewModel(
       pageColor: const Color(0xFF607D8B),
@@ -55,7 +57,8 @@ class App extends StatelessWidget {
         width: 285.0,
         alignment: Alignment.center,
       ),
-      textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
+      titleTextStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
+      bodyTextStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
     ),
   ];
 

@@ -31,8 +31,14 @@ class PageViewModel {
   /// @Default Textstyle `color: Colors.white, fontSize: 24.0`
   final Widget body;
 
-  /// set default TextStyle for both title and body
+  /// set default TextStyle for title and body
   final TextStyle textStyle;
+
+  /// set default TextStyle for title
+  final TextStyle titleTextStyle;
+
+  /// set default TextStyle for body
+  final TextStyle bodyTextStyle;
 
   /// Image Widget
   ///
@@ -55,13 +61,19 @@ class PageViewModel {
       @required this.body,
       @required this.mainImage,
       this.bubble,
-      this.textStyle});
+      this.textStyle,
+      this.titleTextStyle,
+      this.bodyTextStyle});
 
-  TextStyle get titleTextStyle {
-    return TextStyle(color: Colors.white, fontSize: 50.0).merge(this.textStyle);
+  TextStyle get mergedTitleTextStyle {
+    return TextStyle(color: Colors.white, fontSize: 50.0)
+        .merge(this.textStyle)
+        .merge(this.titleTextStyle);
   }
 
-  TextStyle get bodyTextStyle {
-    return TextStyle(color: Colors.white, fontSize: 24.0).merge(this.textStyle);
+  TextStyle get mergedBodyTextStyle {
+    return TextStyle(color: Colors.white, fontSize: 24.0)
+        .merge(this.textStyle)
+        .merge(this.bodyTextStyle);
   }
 }
