@@ -189,10 +189,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-
 <table>
   <tr>
     <td align="center"><a href="https://github.com/taljacobson"><img src="https://avatars1.githubusercontent.com/u/13042769?v=4" width="100px;" alt="Tal Jacobson"/><br /><sub><b>Tal Jacobson</b></sub></a><br /><a href="#maintenance-taljacobson" title="Maintenance">🚧</a> <a href="https://github.com/aagarwal1012/IntroViews-Flutter/commits?author=taljacobson" title="Documentation">📖</a> <a href="#projectManagement-taljacobson" title="Project Management">📆</a></td>
+    <td align="center"><a href="https://github.com/marloncepeda"><img src="https://avatars0.githubusercontent.com/u/25042632?v=4" width="100px;" alt="marloncepeda"/><br /><sub><b>marloncepeda</b></sub></a><br /><a href="https://github.com/aagarwal1012/IntroViews-Flutter/issues?q=author%3Amarloncepeda" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
