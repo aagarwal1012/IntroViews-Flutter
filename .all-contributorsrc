@@ -15,6 +15,15 @@
         "doc",
         "projectManagement"
       ]
+    },
+    {
+      "login": "haideraltahan",
+      "name": "Haider Al-Tahan",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/4427929?v=4",
+      "profile": "http://haideraltahan.com",
+      "contributions": [
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
