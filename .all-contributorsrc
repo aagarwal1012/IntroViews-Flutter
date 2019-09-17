@@ -24,6 +24,51 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "Gorniv",
+      "name": "Kravchenko Igor",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/963316?v=4",
+      "profile": "https://medium.com/it-challenge",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "SiDevesh",
+      "name": "SiDevesh",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/17254413?v=4",
+      "profile": "https://github.com/SiDevesh",
+      "contributions": [
+        "ideas"
+      ]
+    },
+    {
+      "login": "spidgorny",
+      "name": "Slawa Pidgorny",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1579235?v=4",
+      "profile": "http://have-you-been-here.com/",
+      "contributions": [
+        "ideas"
+      ]
+    },
+    {
+      "login": "haideraltahan",
+      "name": "Haider Al-Tahan",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/4427929?v=4",
+      "profile": "http://haideraltahan.com",
+      "contributions": [
+        "ideas"
+      ]
+    },
+    {
+      "login": "newerton",
+      "name": "Newerton",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/4175945?v=4",
+      "profile": "http://newerton.com",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
