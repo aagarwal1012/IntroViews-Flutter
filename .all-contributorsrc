@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "taljacobson",
+      "name": "Tal Jacobson",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/13042769?v=4",
+      "profile": "https://github.com/taljacobson",
+      "contributions": [
+        "maintenance",
+        "doc",
+        "projectManagement"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "IntroViews-Flutter",
+  "projectOwner": "aagarwal1012",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}

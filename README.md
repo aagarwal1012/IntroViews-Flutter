@@ -36,7 +36,9 @@ IntroViews is inspired by [Paper Onboarding](https://github.com/Ramotion/paper-o
   * [Documentation](#documentaion)  
   	* [PageViewModel Class](#pageViewModel-class)
   	* [IntroViewFlutter Class](#introViewFlutter-class)
-  * [Bugs or Requests](#want-to-contribute-!)
+  * [Bugs or Requests](#bugs-or-requests)
+  * [Donate](#donate)
+  * [Contributors](#contributors)
   * [License](#license)
 
 <img src="https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/display/output.gif?raw=true" align = "right" height = "550px">
@@ -170,15 +172,33 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 
 For help on editing package code, view the [flutter documentation](https://flutter.io/developing-packages/).
 
-# Want to contribute !
+# Bugs or Requests
 
-This is the well `documented` package. I have documented each and every method that I have used, so have a good read to the code and suggest some changes and new feature to be added in the package. See [Contributing.md](https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/CONTRIBUTING.md).
-Feel free to [open an issue](https://github.com/aagarwal1012/IntroViews-Flutter/issues).
+If you encounter any problems feel free to open an [issue](https://github.com/aagarwal1012/IntroViews-Flutter/issues/new?template=bug_report.md). If you feel the library is missing a feature, please raise a [ticket](https://github.com/aagarwal1012/IntroViews-Flutter/issues/new?template=feature_request.md) on GitHub and I'll look into it. Pull request are also welcome.
+
+See [Contributing.md](https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/CONTRIBUTING.md).
 
 # Donate
 > If you found this project helpful or you learned something from the source code and want to thank me, consider buying me a cup of :coffee:
 >
 > - [PayPal](https://www.paypal.me/aagarwal1012/)
+
+# Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/taljacobson"><img src="https://avatars1.githubusercontent.com/u/13042769?v=4" width="100px;" alt="Tal Jacobson"/><br /><sub><b>Tal Jacobson</b></sub></a><br /><a href="#maintenance-taljacobson" title="Maintenance">🚧</a> <a href="https://github.com/aagarwal1012/IntroViews-Flutter/commits?author=taljacobson" title="Documentation">📖</a> <a href="#projectManagement-taljacobson" title="Project Management">📆</a></td>
+  </tr>
+</table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome! See [Contributing.md](https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/CONTRIBUTING.md).
 
 # License
 
