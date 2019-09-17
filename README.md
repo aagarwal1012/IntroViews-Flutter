@@ -1,4 +1,5 @@
 <div align="center"><img src="https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/display/header.png?raw=true"/></div>
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 <br/>
 <div align="center">
 	<a href="https://flutter.io">
@@ -183,3 +184,19 @@ Feel free to [open an issue](https://github.com/aagarwal1012/IntroViews-Flutter/
 # License
 
 **IntroViews-Flutter** is licensed under `MIT license`.
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/taljacobson"><img src="https://avatars1.githubusercontent.com/u/13042769?v=4" width="100px;" alt="Tal Jacobson"/><br /><sub><b>Tal Jacobson</b></sub></a><br /><a href="#maintenance-taljacobson" title="Maintenance">🚧</a> <a href="https://github.com/aagarwal1012/IntroViews-Flutter/commits?author=taljacobson" title="Documentation">📖</a> <a href="#projectManagement-taljacobson" title="Project Management">📆</a></td>
+  </tr>
+</table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
