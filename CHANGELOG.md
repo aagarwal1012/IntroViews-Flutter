@@ -1,3 +1,8 @@
+## 2.7.0
+**Feature Enhancement**
+* Allow title TextStyle and body TextStyle to be changed individually.
+* fix: title size for iPhone 5s
+
 ## 2.6.0
 * Fix problem padding top in title of pageViews.
 * Background property added that can be used to add full screen image to IntroViews.
