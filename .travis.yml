@@ -28,6 +28,6 @@ script:
   - flutter packages get
   - flutter format --set-exit-if-changed lib example
   - flutter analyze lib example
-  - flutter test --no-pub --coverage
+  - flutter test --no-pub --no-test-assets --coverage
   # export coverage
   - bash <(curl -s https://codecov.io/bash)
