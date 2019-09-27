@@ -1,3 +1,8 @@
+## 2.8.0
+**Bug Fixes** 
+* Add SafeArea to align title below display cutouts.
+* Prevent multiple rapid clicks to overflow index bounds.
+
 ## 2.7.0
 **Feature Enhancement**
 * Allow title TextStyle and body TextStyle to be changed individually.
