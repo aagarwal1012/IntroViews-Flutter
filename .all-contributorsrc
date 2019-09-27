@@ -69,6 +69,16 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "kengu",
+      "name": "Kenneth Gulbrandsøy",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/866528?v=4",
+      "profile": "http://www.discoos.org",
+      "contributions": [
+        "bug",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
