@@ -1,6 +1,7 @@
 library intro_views_flutter;
 
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Animation_Gesture/animated_page_dragger.dart';
@@ -156,9 +157,9 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
 
           //conditions on slide direction
           if (slideDirection == SlideDirection.leftToRight) {
-            nextPageIndex = activePageIndex - 1;
+            nextPageIndex = max(0, activePageIndex - 1);
           } else if (slideDirection == SlideDirection.rightToLeft) {
-            nextPageIndex = activePageIndex + 1;
+            nextPageIndex = min(widget.pages.length - 1, activePageIndex + 1);
           } else {
             nextPageIndex = activePageIndex;
           }
@@ -288,8 +289,8 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
             onPressedNextButton: () {
               //method executed on pressing next button
               setState(() {
-                activePageIndex = activePageIndex + 1;
-                nextPageIndex = nextPageIndex + 1;
+                activePageIndex = min(pages.length - 1, activePageIndex + 1);
+                nextPageIndex = min(pages.length - 1, nextPageIndex + 1);
                 // after next pressed invoke function
                 // this can be used for analytics/page transition
                 if (widget.onTapNextButton != null) {
@@ -300,8 +301,8 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
             onPressedBackButton: () {
               //method executed on pressing back button
               setState(() {
-                activePageIndex = activePageIndex - 1;
-                nextPageIndex = nextPageIndex - 1;
+                activePageIndex = max(0, activePageIndex - 1);
+                nextPageIndex = max(0, nextPageIndex - 1);
                 // after next pressed invoke function
                 // this can be used for analytics/page transition
                 if (widget.onTapBackButton != null) {
