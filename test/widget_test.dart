@@ -23,7 +23,7 @@ void main() {
     await tester.pump();
 
     // Verify that our counter has incremented.
-    expect(find.text('SKIP'), findsNothing);
+    expect(find.text('BACK'), findsOneWidget);
     expect(find.text('DONE'), findsOneWidget);
   });
 
@@ -79,5 +79,43 @@ void main() {
     expect(find.text('Flights'), findsWidgets);
     // second page title Text should not be found
     expect(find.text('Hotels'), findsNothing);
+  });
+
+  // Overflow condition
+  testWidgets('multiple rapid clicks does not overflow',
+      (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(new App());
+
+    // Verify progress buttons exists
+    expect(find.text('BACK'), findsNothing);
+    expect(find.text('DONE'), findsNothing);
+    expect(find.text('SKIP'), findsOneWidget);
+    expect(find.text('NEXT'), findsOneWidget);
+
+    // Tap 'NEXT' beyond last frame without index out of bound
+    await tester.tap(find.text('NEXT'));
+    await tester.tap(find.text('NEXT'));
+    await tester.tap(find.text('NEXT'));
+    await tester.tap(find.text('NEXT'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('SKIP'), findsNothing);
+    expect(find.text('NEXT'), findsNothing);
+    expect(find.text('BACK'), findsOneWidget);
+    expect(find.text('DONE'), findsOneWidget);
+
+    // Tap 'BACK' beyond first frame without index out of bound
+    await tester.tap(find.text('BACK'));
+    await tester.tap(find.text('BACK'));
+    await tester.tap(find.text('BACK'));
+    await tester.tap(find.text('BACK'));
+    await tester.pumpAndSettle();
+
+    // Verify progress buttons exists
+    expect(find.text('BACK'), findsNothing);
+    expect(find.text('DONE'), findsNothing);
+    expect(find.text('SKIP'), findsOneWidget);
+    expect(find.text('NEXT'), findsOneWidget);
   });
 }

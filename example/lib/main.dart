@@ -73,6 +73,8 @@ class App extends StatelessWidget {
       home: Builder(
         builder: (context) => IntroViewsFlutter(
           pages,
+          showNextButton: true,
+          showBackButton: true,
           onTapDoneButton: () {
             Navigator.push(
               context,
