@@ -97,6 +97,8 @@ class IntroViewsFlutter extends StatefulWidget {
 
   final RevealPosition revealPosition;
 
+  final bool loop;
+
   IntroViewsFlutter(this.pages,
       {Key key,
       this.onTapDoneButton,
@@ -118,7 +120,9 @@ class IntroViewsFlutter extends StatefulWidget {
       this.columnMainAxisAlignment = MainAxisAlignment.spaceAround,
       this.fullTransition = FULL_TARNSITION_PX,
       this.background,
-      this.revealPosition = RevealPosition.bottom})
+      this.revealPosition = RevealPosition.bottom,
+      this.loop = false,
+      })
       : super(key: key);
 
   @override
@@ -152,6 +156,7 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
       setState(() {
         //setState is used to change the values dynamically
 
+        print("event.slidePercent=>"+event.slidePercent.toString());
         //if the user is dragging then
         if (event.updateType == UpdateType.dragging) {
           slideDirection = event.direction;
@@ -159,9 +164,17 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
 
           //conditions on slide direction
           if (slideDirection == SlideDirection.leftToRight) {
-            nextPageIndex = max(0, activePageIndex - 1);
+//            nextPageIndex = max(0, activePageIndex - 1);
+            nextPageIndex = activePageIndex - 1;
+            if(nextPageIndex < 0){
+              nextPageIndex = widget.pages.length - 1;
+            }
           } else if (slideDirection == SlideDirection.rightToLeft) {
-            nextPageIndex = min(widget.pages.length - 1, activePageIndex + 1);
+//            nextPageIndex = min(widget.pages.length - 1, activePageIndex + 1);
+            nextPageIndex = activePageIndex + 1;
+            if(nextPageIndex > (widget.pages.length - 1)){
+              nextPageIndex = 0;
+            }
           } else {
             nextPageIndex = activePageIndex;
           }
@@ -269,8 +282,8 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
           PageDragger(
             //Used for gesture control
             fullTransitionPX: widget.fullTransition,
-            canDragLeftToRight: activePageIndex > 0,
-            canDragRightToLeft: activePageIndex < pages.length - 1,
+            canDragLeftToRight: widget.loop == true ? widget.loop : activePageIndex > 0,
+            canDragRightToLeft: widget.loop == true ? widget.loop: activePageIndex < pages.length - 1,
             slideUpdateStream: this.slideUpdateStream,
           ), //PageDragger
         ], //Widget

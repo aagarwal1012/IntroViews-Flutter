@@ -29,7 +29,7 @@ class CircularRevealClipper extends CustomClipper<Rect> {
       case RevealPosition.GestureDirection:
         center = this.slideDirection == SlideDirection.leftToRight ?
           Alignment.centerLeft.alongSize(size) : Alignment.centerRight.alongSize(size);
-        theta = atan(center.dy / Alignment.center.alongSize(size).dx);
+        theta = atan(center.dy / Alignment.center.alongSize(size).dx) * 0.40;
         break;
       default:
         center = new Offset(size.width / 2, size.height * 0.9);
