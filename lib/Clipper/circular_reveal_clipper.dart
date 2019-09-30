@@ -19,19 +19,23 @@ class CircularRevealClipper extends CustomClipper<Rect> {
 //    final center = new Offset(size.width / 2, size.height * 0.9);
 //    final center = new Offset(size.width / 2, size.height * 0.9);
     Offset center;
+    double theta;
+
     switch(this.revealPosition){
       case RevealPosition.bottom:
         center = new Offset(size.width / 2, size.height * 0.9);
+        theta = atan(center.dy / center.dx);
         break;
       case RevealPosition.GestureDirection:
         center = this.slideDirection == SlideDirection.leftToRight ?
           Alignment.centerLeft.alongSize(size) : Alignment.centerRight.alongSize(size);
+        theta = atan(center.dy / Alignment.center.alongSize(size).dx);
         break;
       default:
         center = new Offset(size.width / 2, size.height * 0.9);
+        theta = atan(center.dy / center.dx);
     }
     // Calculate distance from center to the top left corner to make sure we fill the screen via simple trigonometry.
-    double theta = atan(center.dy / center.dx);
     final distanceToCorner = center.dy / sin(theta);
 
     final radius = distanceToCorner * revealPercent;
