@@ -23,3 +23,8 @@ enum TransitionGoal {
   open,
   close,
 }
+
+enum RevealPosition{
+  bottom,
+  GestureDirection
+}

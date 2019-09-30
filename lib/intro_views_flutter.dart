@@ -95,29 +95,31 @@ class IntroViewsFlutter extends StatefulWidget {
 
   final Color background;
 
-  IntroViewsFlutter(
-    this.pages, {
-    Key key,
-    this.onTapDoneButton,
-    this.showSkipButton = true,
-    this.pageButtonTextStyles,
-    this.onTapBackButton,
-    this.showNextButton = false,
-    this.showBackButton = false,
-    this.pageButtonTextSize = 18.0,
-    this.pageButtonFontFamily,
-    this.onTapSkipButton,
-    this.onTapNextButton,
-    this.pageButtonsColor,
-    this.doneText = const Text("DONE"),
-    this.nextText = const Text("NEXT"),
-    this.skipText = const Text("SKIP"),
-    this.backText = const Text("BACK"),
-    this.doneButtonPersist = false,
-    this.columnMainAxisAlignment = MainAxisAlignment.spaceAround,
-    this.fullTransition = FULL_TARNSITION_PX,
-    this.background,
-  }) : super(key: key);
+  final RevealPosition revealPosition;
+
+  IntroViewsFlutter(this.pages,
+      {Key key,
+      this.onTapDoneButton,
+      this.showSkipButton = true,
+      this.pageButtonTextStyles,
+      this.onTapBackButton,
+      this.showNextButton = false,
+      this.showBackButton = false,
+      this.pageButtonTextSize = 18.0,
+      this.pageButtonFontFamily,
+      this.onTapSkipButton,
+      this.onTapNextButton,
+      this.pageButtonsColor,
+      this.doneText = const Text("DONE"),
+      this.nextText = const Text("NEXT"),
+      this.skipText = const Text("SKIP"),
+      this.backText = const Text("BACK"),
+      this.doneButtonPersist = false,
+      this.columnMainAxisAlignment = MainAxisAlignment.spaceAround,
+      this.fullTransition = FULL_TARNSITION_PX,
+      this.background,
+      this.revealPosition = RevealPosition.bottom})
+      : super(key: key);
 
   @override
   _IntroViewsFlutterState createState() => _IntroViewsFlutterState();
@@ -246,6 +248,8 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
           PageReveal(
             //next page reveal
             revealPercent: slidePercent,
+            slideDirection: slideDirection,
+            revealPosition: widget.revealPosition,
             child: Page(
                 pageViewModel: pages[nextPageIndex],
                 percentVisible: slidePercent,
@@ -261,61 +265,6 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
               slidePercent,
             ),
           ), //PagerIndicator
-
-          PageIndicatorButtons(
-            //Skip and Done Buttons
-            textStyle: textStyle,
-            activePageIndex: activePageIndex,
-            totalPages: pages.length,
-            onPressedDoneButton: widget.onTapDoneButton,
-            //void Callback to be executed after pressing done button
-            slidePercent: slidePercent,
-            slideDirection: slideDirection,
-            onPressedSkipButton: () {
-              //method executed on pressing skip button
-              setState(() {
-                activePageIndex = pages.length - 1;
-                nextPageIndex = activePageIndex;
-                // after skip pressed invoke function
-                // this can be used for analytics/page transition
-                if (widget.onTapSkipButton != null) {
-                  widget.onTapSkipButton();
-                }
-              });
-            },
-            showSkipButton: widget.showSkipButton,
-            showNextButton: widget.showNextButton,
-            showBackButton: widget.showBackButton,
-            onPressedNextButton: () {
-              //method executed on pressing next button
-              setState(() {
-                activePageIndex = min(pages.length - 1, activePageIndex + 1);
-                nextPageIndex = min(pages.length - 1, nextPageIndex + 1);
-                // after next pressed invoke function
-                // this can be used for analytics/page transition
-                if (widget.onTapNextButton != null) {
-                  widget.onTapNextButton();
-                }
-              });
-            },
-            onPressedBackButton: () {
-              //method executed on pressing back button
-              setState(() {
-                activePageIndex = max(0, activePageIndex - 1);
-                nextPageIndex = max(0, nextPageIndex - 1);
-                // after next pressed invoke function
-                // this can be used for analytics/page transition
-                if (widget.onTapBackButton != null) {
-                  widget.onTapBackButton();
-                }
-              });
-            },
-            nextText: widget.nextText,
-            doneText: widget.doneText,
-            backText: widget.backText,
-            skipText: widget.skipText,
-            doneButtonPersist: widget.doneButtonPersist,
-          ),
 
           PageDragger(
             //Used for gesture control
