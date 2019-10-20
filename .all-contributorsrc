@@ -79,6 +79,15 @@
         "bug",
         "test"
       ]
+    },
+    {
+      "login": "xsahil03x",
+      "name": "Sahil Kumar",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/25670178?v=4",
+      "profile": "http://www.linkedin.com/in/xsahil03x",
+      "contributions": [
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
