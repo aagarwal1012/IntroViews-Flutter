@@ -9,6 +9,9 @@ import 'package:flutter_test/flutter_test.dart';
 
 import '../example/lib/main.dart';
 
+const double PORTRAIT_WIDTH = 1800.0;
+const double PORTRAIT_HEIGHT = 2400.0;
+
 void main() {
   testWidgets('Skip Pressed smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
@@ -117,5 +120,16 @@ void main() {
     expect(find.text('DONE'), findsNothing);
     expect(find.text('SKIP'), findsOneWidget);
     expect(find.text('NEXT'), findsOneWidget);
+  });
+
+  testWidgets('should open app in portrait mode', (WidgetTester tester) async {
+    final TestWidgetsFlutterBinding binding =
+        TestWidgetsFlutterBinding.ensureInitialized();
+    binding.window.physicalSizeTestValue =
+        (Size(PORTRAIT_WIDTH, PORTRAIT_HEIGHT));
+    // Build our app and trigger a frame in portrait mode.
+    await tester.pumpWidget(new App());
+
+    expect(find.byKey(Key("Portrait Page")), findsWidgets);
   });
 }

@@ -41,6 +41,7 @@ class Page extends StatelessWidget {
   /// when device is Portrait place title, image and body in a column
   Widget _buildPortraitPage() {
     return new Column(
+      key: Key("Portrait Page"),
       mainAxisAlignment: columnMainAxisAlignment,
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
