@@ -11,8 +11,10 @@ class PageDragger extends StatefulWidget {
   final bool canDragLeftToRight;
   final bool canDragRightToLeft;
   final double fullTransitionPX;
+
   //Stream controller
   final StreamController<SlideUpdate> slideUpdateStream;
+  final VoidCallback onLastPageTap;
 
   //Constructor
   PageDragger({
@@ -20,6 +22,7 @@ class PageDragger extends StatefulWidget {
     this.canDragRightToLeft,
     this.slideUpdateStream,
     this.fullTransitionPX = FULL_TARNSITION_PX,
+    this.onLastPageTap,
   }) : assert(fullTransitionPX != null);
 
   @override
@@ -66,26 +69,27 @@ class _PageDraggerState extends State<PageDragger> {
       }
 
       // Adding to slideUpdateStream
-      widget.slideUpdateStream
-          .add(SlideUpdate(slideDirection, slidePercent, UpdateType.dragging));
+      widget.slideUpdateStream.add(SlideUpdate(slideDirection, slidePercent, UpdateType.dragging));
     }
   }
 
   // This method executes when user ends dragging.
   onDragEnd(DragEndDetails details) {
-    widget.slideUpdateStream.add(SlideUpdate(
-        SlideDirection.none, slidePercent, UpdateType.doneDragging));
+    widget.slideUpdateStream
+        .add(SlideUpdate(SlideDirection.none, slidePercent, UpdateType.doneDragging));
 
     //Making dragStart to null for the reallocation
     dragStart = null;
   }
 
   _onTap() {
-    if (widget.canDragRightToLeft){
-      widget.slideUpdateStream.add(SlideUpdate(SlideDirection.rightToLeft, 0.0, UpdateType.nextPage));
+    if (widget.canDragRightToLeft) {
+      widget.slideUpdateStream
+          .add(SlideUpdate(SlideDirection.rightToLeft, 0.0, UpdateType.nextPage));
+    }else {
+      widget.onLastPageTap?.call();
     }
   }
-
 
   @override
   Widget build(BuildContext context) {

@@ -11,9 +11,9 @@ import 'package:intro_views_flutter/Models/page_button_view_model.dart';
 import 'package:intro_views_flutter/Models/page_view_model.dart';
 import 'package:intro_views_flutter/Models/pager_indicator_view_model.dart';
 import 'package:intro_views_flutter/Models/slide_update_model.dart';
+import 'package:intro_views_flutter/UI/page.dart';
 import 'package:intro_views_flutter/UI/page_indicator_buttons.dart';
 import 'package:intro_views_flutter/UI/pager_indicator.dart';
-import 'package:intro_views_flutter/UI/page.dart';
 
 /// This is the IntroViewsFlutter widget of app which is a stateful widget as its state is dynamic and updates asynchronously.
 class IntroViewsFlutter extends StatefulWidget {
@@ -73,6 +73,8 @@ class IntroViewsFlutter extends StatefulWidget {
   /// default to 300.0
   final double fullTransition;
 
+  final VoidCallback onLastPageTap;
+
   IntroViewsFlutter(
     this.pages, {
     Key key,
@@ -88,6 +90,7 @@ class IntroViewsFlutter extends StatefulWidget {
     this.doneButtonPersist = false,
     this.columnMainAxisAlignment = MainAxisAlignment.spaceAround,
     this.fullTransition = FULL_TARNSITION_PX,
+    this.onLastPageTap,
   }) : super(key: key);
 
   @override
@@ -97,8 +100,7 @@ class IntroViewsFlutter extends StatefulWidget {
 /// State of above widget.
 /// It extends the TickerProviderStateMixin as it is used for animation control (vsync).
 
-class _IntroViewsFlutterState extends State<IntroViewsFlutter>
-    with TickerProviderStateMixin {
+class _IntroViewsFlutterState extends State<IntroViewsFlutter> with TickerProviderStateMixin {
   StreamController<SlideUpdate>
       // ignore: close_sinks
       slideUpdateStream; //Stream controller is used to get all the updates when user slides across screen.
@@ -141,8 +143,8 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
           if (slidePercent > 0.3) {
             animatedPageDragger = AnimatedPageDragger(
               slideDirection: slideDirection,
-              transitionGoal:
-                  TransitionGoal.open, //we have to animate the open page reveal
+              transitionGoal: TransitionGoal.open,
+              //we have to animate the open page reveal
               slidePercent: slidePercent,
               slideUpdateStream: slideUpdateStream,
               vsync: this,
@@ -150,8 +152,8 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
           } else {
             animatedPageDragger = AnimatedPageDragger(
               slideDirection: slideDirection,
-              transitionGoal:
-                  TransitionGoal.close, //we have to close the page reveal
+              transitionGoal: TransitionGoal.close,
+              //we have to close the page reveal
               slidePercent: slidePercent,
               slideUpdateStream: slideUpdateStream,
               vsync: this,
@@ -235,70 +237,73 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
             canDragLeftToRight: canDragLeftToRight,
             canDragRightToLeft: canDragRightToLeft,
             slideUpdateStream: this.slideUpdateStream,
+            onLastPageTap: widget.onLastPageTap,
           ), //Pa// geReveal
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                alignment: Alignment.bottomCenter,
-                padding: const EdgeInsets.only(bottom: 8.0),
-                child: IconButton(
-                  icon: Icon(Icons.chevron_left, color: Colors.white),
-                  onPressed: () {
-                    if (canDragLeftToRight) {
-                      _animateToPage(SlideDirection.leftToRight);
-                    }
-                  },
-                ),
-              ),
-
-              Expanded(
-                child: PagerIndicator(
-                  //bottom page indicator
-                  viewModel: PagerIndicatorViewModel(
-                    pages,
-                    activePageIndex,
-                    slideDirection,
-                    slidePercent,
+          SafeArea(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  alignment: Alignment.bottomCenter,
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: IconButton(
+                    icon: Icon(Icons.chevron_left, color: Colors.white),
+                    onPressed: () {
+                      if (canDragLeftToRight) {
+                        _animateToPage(SlideDirection.leftToRight);
+                      }
+                    },
                   ),
                 ),
-              ),
 
-              Container(
-                alignment: Alignment.bottomCenter,
-                padding: const EdgeInsets.only(bottom: 8.0),
-                child: !widget.doneButtonPersist &&
-                        (activePageIndex == pages.length - 1 ||
-                            (activePageIndex == pages.length - 2 &&
-                                slideDirection == SlideDirection.rightToLeft))
-                    ? DefaultTextStyle(
-                        style: widget.pageButtonTextStyles,
-                        child: DoneButton(
-                          child: widget.doneText,
-                          onTap: widget.onTapDoneButton,
-                          pageButtonViewModel: PageButtonViewModel(
-                            //view Model
-                            activePageIndex: activePageIndex,
-                            totalPages: pages.length,
-                            slidePercent: widget.doneButtonPersist ? 0.0 : slidePercent,
-                            slideDirection: slideDirection,
+                Expanded(
+                  child: PagerIndicator(
+                    //bottom page indicator
+                    viewModel: PagerIndicatorViewModel(
+                      pages,
+                      activePageIndex,
+                      slideDirection,
+                      slidePercent,
+                    ),
+                  ),
+                ),
+
+                Container(
+                  alignment: Alignment.bottomCenter,
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: !widget.doneButtonPersist &&
+                          (activePageIndex == pages.length - 1 ||
+                              (activePageIndex == pages.length - 2 &&
+                                  slideDirection == SlideDirection.rightToLeft))
+                      ? DefaultTextStyle(
+                          style: widget.pageButtonTextStyles,
+                          child: DoneButton(
+                            child: widget.doneText,
+                            onTap: widget.onTapDoneButton,
+                            pageButtonViewModel: PageButtonViewModel(
+                              //view Model
+                              activePageIndex: activePageIndex,
+                              totalPages: pages.length,
+                              slidePercent: widget.doneButtonPersist ? 0.0 : slidePercent,
+                              slideDirection: slideDirection,
+                            ),
                           ),
+                        )
+                      : IconButton(
+                          icon: Icon(
+                            Icons.chevron_right,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            if (canDragRightToLeft) {
+                              _animateToPage(SlideDirection.rightToLeft);
+                            }
+                          },
                         ),
-                      )
-                    : IconButton(
-                        icon: Icon(
-                          Icons.chevron_right,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {
-                          if (canDragRightToLeft) {
-                            _animateToPage(SlideDirection.rightToLeft);
-                          }
-                        },
-                      ),
-              ), //PagerIndicator
-            ],
+                ), //PagerIndicator
+              ],
+            ),
           ),
 
           PageIndicatorButtons(
@@ -306,8 +311,8 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
             textStyle: textStyle,
             acitvePageIndex: activePageIndex,
             totalPages: pages.length,
-            onPressedDoneButton: widget
-                .onTapDoneButton, //void Callback to be executed after pressing done button
+            onPressedDoneButton: widget.onTapDoneButton,
+            //void Callback to be executed after pressing done button
             slidePercent: slidePercent,
             slideDirection: slideDirection,
             onPressedSkipButton: () {
@@ -332,21 +337,17 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
     ); //Scaffold
   }
 
-
   void _animateToPage(SlideDirection slideDirection) {
-    if (slideDirection == SlideDirection.rightToLeft &&
-        widget.pages.length > activePageIndex) {
+    if (slideDirection == SlideDirection.rightToLeft && widget.pages.length > activePageIndex) {
       nextPageIndex = activePageIndex + 1;
-    }else if (slideDirection == SlideDirection.leftToRight &&
-        activePageIndex -1 >= 0) {
+    } else if (slideDirection == SlideDirection.leftToRight && activePageIndex - 1 >= 0) {
       nextPageIndex = activePageIndex - 1;
     }
 
     if (animatedPageDragger?.animationStatus == AnimationStatus.forward) {
-      if (widget.pages.length - 1 > nextPageIndex &&
-          slideDirection == SlideDirection.rightToLeft) {
+      if (widget.pages.length - 1 > nextPageIndex && slideDirection == SlideDirection.rightToLeft) {
         nextPageIndex++;
-      }else if (nextPageIndex > 0 && slideDirection == SlideDirection.leftToRight){
+      } else if (nextPageIndex > 0 && slideDirection == SlideDirection.leftToRight) {
         nextPageIndex--;
       }
     } else {
