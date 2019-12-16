@@ -4,7 +4,12 @@ import 'package:flutter/material.dart';
 
 class PageViewModel {
   /// Page BackGround Color
+  /// pageColor gets ignored if pageBackground exist
   final Color pageColor;
+
+  ///Widget shown in the Background instead of pageColor
+  ///pageColor gets ignored if this is present
+  final Widget pageBackground;
 
   ///icon image path
   final String iconImageAssetPath;
@@ -54,6 +59,7 @@ class PageViewModel {
 
   PageViewModel(
       {this.pageColor,
+      this.pageBackground,
       this.iconImageAssetPath,
       this.bubbleBackgroundColor = const Color(0x88FFFFFF),
       this.iconColor,

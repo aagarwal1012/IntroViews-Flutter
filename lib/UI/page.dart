@@ -21,20 +21,26 @@ class Page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      padding: const EdgeInsets.all(8.0),
-      width: double.infinity,
-      color: pageViewModel.pageColor,
-      child: new Opacity(
-        //Opacity is used to create fade in effect
-        opacity: percentVisible,
-        child: new OrientationBuilder(
-            builder: (BuildContext context, Orientation orientation) {
-          return orientation == Orientation.portrait
-              ? _buildPortraitPage()
-              : __buildLandscapePage();
-        }), //OrientationBuilder
-      ),
+    return Stack(
+      children: <Widget>[
+        pageViewModel.pageBackground ?? Container(),
+        Container(
+          padding: const EdgeInsets.all(8.0),
+          width: double.infinity,
+          color: pageViewModel.pageColor,
+          child: Opacity(
+            //Opacity is used to create fade in effect
+            opacity: percentVisible,
+            child: OrientationBuilder(
+              builder: (BuildContext context, Orientation orientation) {
+                return orientation == Orientation.portrait
+                    ? _buildPortraitPage()
+                    : __buildLandscapePage();
+              },
+            ),
+          ),
+        ), //OrientationBuilder
+      ],
     );
   }
 
