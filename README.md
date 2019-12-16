@@ -135,6 +135,7 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 | Dart attribute        | Datatype       | Description                                                           |                                          Default Value                                          |
 | :-------------------- | :------------- | :-------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------: |
 | pageColor             | Color          | Set color of the page.                                                |                                              Null                                               |
+| pageBackground        | Widget         | Set a Widget as a page background (pageColor has priority)            |                                              Null                                               |
 | mainImage             | Image / Widget | Set the main image of the page.                                       |                                              Null                                               |
 | title                 | Text / Widget  | Set the title text of the page.                                       |                                              Null                                               |
 | body                  | Text / Widget  | Set the body text of the page.                                        |                                              Null                                               |
