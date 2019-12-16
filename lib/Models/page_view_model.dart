@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 
 class PageViewModel {
   /// Page BackGround Color
-  /// pageColor gets ignored if pageBackground exist
+  /// pageColor has priority pageBackground gets ignored
   final Color pageColor;
 
-  ///Widget shown in the Background instead of pageColor
-  ///pageColor gets ignored if this is present
+  ///Widget shown in the Background and can be used instead of pageColor
+  /// pageColor has priority pageBackground gets ignored
   final Widget pageBackground;
 
   ///icon image path
