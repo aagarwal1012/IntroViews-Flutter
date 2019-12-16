@@ -20,12 +20,16 @@ class Page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Stack(
+        children: <Widget>[
+    pageViewModel.pageBackground ?? Container(),
+    Container(
       padding: const EdgeInsets.all(8.0),
       width: double.infinity,
       color: pageViewModel.pageColor,
       // Opacity is used to create fade in effect
       child: Opacity(
+        //Opacity is used to create fade in effect
         opacity: percentVisible,
         child: OrientationBuilder(
           builder: (context, orientation) {
@@ -35,6 +39,7 @@ class Page extends StatelessWidget {
           },
         ),
       ),
+    ],
     );
   }
 
