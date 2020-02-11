@@ -215,11 +215,11 @@ class PageIndicatorButtons extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Padding(
-                padding: const EdgeInsets.only(bottom: 10.0),
+                padding: const EdgeInsets.only(bottom: 35.0),
                 child: _getSkipORBackButton() //Row
                 ), //Padding
             Padding(
-                padding: const EdgeInsets.only(bottom: 10.0),
+                padding: const EdgeInsets.only(bottom: 35.0),
                 child: _getDoneORNextButton() //Row
                 )
           ],
