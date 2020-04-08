@@ -1,3 +1,6 @@
+## 2.8.1
+* Minor bug fixes.
+
 ## 2.8.0
 **Bug Fixes** 
 * Add SafeArea to align title below display cutouts.
