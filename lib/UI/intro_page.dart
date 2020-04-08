@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Models/page_view_model.dart';
 
 /// This is the class which contains the Page UI.
-class Page extends StatelessWidget {
+class IntroPage extends StatelessWidget {
   ///page details
   final PageViewModel pageViewModel;
 
@@ -13,7 +13,7 @@ class Page extends StatelessWidget {
   final MainAxisAlignment columnMainAxisAlignment;
 
   //Constructor
-  Page({
+  IntroPage({
     this.pageViewModel,
     this.percentVisible = 1.0,
     this.columnMainAxisAlignment = MainAxisAlignment.spaceAround,
