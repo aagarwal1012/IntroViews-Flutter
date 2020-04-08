@@ -88,11 +88,21 @@
       "contributions": [
         "test"
       ]
+    },
+    {
+      "login": "rwrz",
+      "name": "Rodrigo Boratto",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/2169309?v=4",
+      "profile": "http://www.yodsoft.com",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "projectName": "IntroViews-Flutter",
   "projectOwner": "aagarwal1012",
   "repoType": "github",
-  "repoHost": "https://github.com"
+  "repoHost": "https://github.com",
+  "skipCi": true
 }
