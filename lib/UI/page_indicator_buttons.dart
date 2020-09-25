@@ -6,7 +6,7 @@ import 'package:intro_views_flutter/Models/page_button_view_model.dart';
 
 class DefaultButton extends StatelessWidget {
   //callback for skip button
-  final VoidCallback onTap;
+  final Function onTap;
 
   //view model
   final PageButtonViewModel pageButtonViewModel;
@@ -51,7 +51,7 @@ class DefaultButton extends StatelessWidget {
 
 class DoneButton extends StatelessWidget {
   //Callback
-  final VoidCallback onTap;
+  final Function onTap;
 
   //View Model
   final PageButtonViewModel pageButtonViewModel;
@@ -92,10 +92,10 @@ class PageIndicatorButtons extends StatelessWidget {
   //Some variables
   final int activePageIndex;
   final int totalPages;
-  final VoidCallback onPressedDoneButton; //Callback for Done Button
-  final VoidCallback onPressedNextButton;
-  final VoidCallback onPressedBackButton;
-  final VoidCallback onPressedSkipButton; //Callback for Skip Button
+  final Function onPressedDoneButton; //Callback for Done Button
+  final Function onPressedNextButton;
+  final Function onPressedBackButton;
+  final Function onPressedSkipButton; //Callback for Skip Button
   final SlideDirection slideDirection;
   final double slidePercent;
   final bool showSkipButton;
