@@ -1,7 +1,6 @@
 name: intro_views_flutter
 description: A Flutter package for simple material design app intro screens with some cool animations.
-version: 2.8.1
-author: Ayush Agarwal <aagarwal9782@gmail.com>
+version: 2.8.2
 homepage: https://github.com/aagarwal1012/IntroViews-Flutter
 
 dependencies:
@@ -16,4 +15,4 @@ flutter:
 
 environment:
   sdk: ">=2.0.0-dev.28.0 <3.0.0"
-  flutter: ">=0.1.4 <2.0.0"
+  flutter: ">=0.1.4 <3.0.0"

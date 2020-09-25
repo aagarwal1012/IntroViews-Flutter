@@ -1,3 +1,6 @@
+## 2.8.2
+* Minor bug fixes and enhancements.
+
 ## 2.8.1
 * Minor bug fixes.
 
