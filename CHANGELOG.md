@@ -1,3 +1,6 @@
+## 2.9.0
+* Critical Bug Fix: Replacing deprecated `resizeToAvoidBottomPadding`.
+
 ## 2.8.2
 * Minor bug fixes and enhancements.
 
