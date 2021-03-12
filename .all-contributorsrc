@@ -106,6 +106,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "ir2pid",
+      "name": "Sudipta Dutta",
+      "avatar_url": "https://avatars.githubusercontent.com/u/907075?v=4",
+      "profile": "https://ir2pid.github.io",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
