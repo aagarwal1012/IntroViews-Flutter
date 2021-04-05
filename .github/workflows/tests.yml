@@ -13,6 +13,7 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
       - name: Run tests
+        id: test
         run: |
           cd example
           flutter test ..
@@ -25,7 +26,7 @@ jobs:
         continue-on-error: true
         run: flutter test --no-pub --coverage
       - name: Upload coverage to Codecov
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/master' && steps.test.outcome == 'success'
         uses: codecov/codecov-action@v1
         with:
           file: coverage/lcov.info
