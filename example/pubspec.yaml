@@ -1,6 +1,9 @@
 name: example
 description: An example app to show the usage of the IntroViewsFlutter package.
 
+environment:
+  sdk: ">=2.0.0-dev.28.0 <3.0.0"
+
 dependencies:
   flutter:
     sdk: flutter
