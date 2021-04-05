@@ -1,79 +1,85 @@
 import 'package:flutter/material.dart';
 
-//view model for pages
-
+/// View model for pages.
 class PageViewModel {
-  /// Page BackGround Color
+  const PageViewModel({
+    this.pageColor,
+    this.iconImageAssetPath,
+    this.bubbleBackgroundColor = const Color(0x88FFFFFF),
+    this.iconColor,
+    @required this.title,
+    @required this.body,
+    @required this.mainImage,
+    this.bubble,
+    this.textStyle,
+    this.titleTextStyle,
+    this.bodyTextStyle,
+  });
+
+  /// Page background color.
   final Color pageColor;
 
-  ///icon image path
+  /// Icon image path.
   final String iconImageAssetPath;
 
-  /// iconColor
+  /// Icon color.
   final Color iconColor;
 
-  /// color for background of progress bubbles
+  /// Color for background of progress bubbles.
   ///
-  /// @Default `const Color(0x88FFFFFF)`
+  /// Defaults to `const Color(0x88FFFFFF)`.
   final Color bubbleBackgroundColor;
 
-  /// widget for the title
+  /// Widget for the title.
   ///
-  /// _typicaly a Text Widget_
+  /// _Typically a [Text] widget_.
   ///
-  /// @Default Textstyle `color: Colors.white , fontSize: 50.0`
+  /// Defaults to `TextStyle(color: Colors.white, fontSize: 50.0)`.
   final Widget title;
 
-  /// widget for the body
+  /// Widget for the body.
   ///
-  /// _typicaly a Text Widget_
-  ///
-  /// @Default Textstyle `color: Colors.white, fontSize: 24.0`
+  /// _Typically a [Text] widget_.
   final Widget body;
 
-  /// set default TextStyle for title and body
+  /// Sets TextStyle for [titleTextStyle] and [bodyTextStyle].
+  ///
+  /// [titleTextStyle] defaults to `TextStyle(color: Colors.white, fontSize: 50.0)`.
+  ///
+  /// [bodyTextStyle] defaults to `TextStyle(color: Colors.white, fontSize: 24.0)`.
   final TextStyle textStyle;
 
-  /// set default TextStyle for title
+  /// Set TextStyle for [title].
+  ///
+  /// Defaults to `TextStyle(color: Colors.white, fontSize: 50.0)`.
   final TextStyle titleTextStyle;
 
-  /// set default TextStyle for body
+  /// Sets TextStyle for [body].
+  ///
+  /// Defaults to `TextStyle(color: Colors.white, fontSize: 24.0)`.
   final TextStyle bodyTextStyle;
 
-  /// Image Widget
+  /// Main widget.
   ///
-  /// _typicaly a Image Widget_
+  /// _Typically an [Image] widget_.
   final Widget mainImage;
 
-  /// bubble inner Widget
+  /// Bubble inner widget.
   ///
-  /// _typicaly a Image Widget_
+  /// _Typically an [Image] widget_.
   ///
-  /// gets overriden by [iconImageAssetPath]
+  /// Gets overridden by [iconImageAssetPath].
   final Widget bubble;
 
-  PageViewModel(
-      {this.pageColor,
-      this.iconImageAssetPath,
-      this.bubbleBackgroundColor = const Color(0x88FFFFFF),
-      this.iconColor,
-      @required this.title,
-      @required this.body,
-      @required this.mainImage,
-      this.bubble,
-      this.textStyle,
-      this.titleTextStyle,
-      this.bodyTextStyle});
-
   TextStyle get mergedTitleTextStyle {
-    return TextStyle(color: Colors.white, fontSize: 50.0)
-        .merge(this.textStyle)
-        .merge(this.titleTextStyle);
+    return const TextStyle(color: Colors.white, fontSize: 50.0)
+        .merge(textStyle)
+        .merge(titleTextStyle);
   }
 
   TextStyle get mergedBodyTextStyle {
-    return TextStyle(color: Colors.white, fontSize: 24.0)
-        .merge(this.textStyle)
-        .merge(this.bodyTextStyle);
+    return const TextStyle(color: Colors.white, fontSize: 24.0)
+        .merge(textStyle)
+        .merge(bodyTextStyle);
   }
 }

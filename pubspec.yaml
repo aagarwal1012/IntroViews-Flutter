@@ -3,6 +3,9 @@ description: A Flutter package for simple material design app intro screens with
 version: 2.9.0
 homepage: https://github.com/aagarwal1012/IntroViews-Flutter
 
+environment:
+  sdk: ">=2.10.0 <3.0.0"
+
 dependencies:
   flutter:
     sdk: flutter
@@ -10,9 +13,4 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-flutter:
-
-environment:
-  sdk: ">=2.0.0-dev.28.0 <3.0.0"
-  flutter: ">=0.1.4 <3.0.0"
+  pedantic: ^1.11.0

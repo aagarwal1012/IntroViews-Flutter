@@ -11,91 +11,14 @@ import 'package:intro_views_flutter/Constants/constants.dart';
 import 'package:intro_views_flutter/Models/page_view_model.dart';
 import 'package:intro_views_flutter/Models/pager_indicator_view_model.dart';
 import 'package:intro_views_flutter/Models/slide_update_model.dart';
+import 'package:intro_views_flutter/UI/page.dart' as into_ui_page;
 import 'package:intro_views_flutter/UI/page_indicator_buttons.dart';
 import 'package:intro_views_flutter/UI/pager_indicator.dart';
-import 'package:intro_views_flutter/UI/page.dart' as IntoUIPage;
 
-/// This is the IntroViewsFlutter widget of app which is a stateful widget as its state is dynamic and updates asynchronously.
+/// This is the IntroViewsFlutter widget of app which is a
+/// stateful widget as its state is dynamic and updates asynchronously.
 class IntroViewsFlutter extends StatefulWidget {
-  /// List of [PageViewModel] to display
-  final List<PageViewModel> pages;
-
-  /// Callback on Done Button Pressed
-  final VoidCallback onTapDoneButton;
-
-  /// set the Text Color for skip, done buttons
-  ///
-  /// gets overiden by [pageButtonTextStyles]
-  final Color pageButtonsColor;
-
-  /// Whether you want to show the skip button or not.
-  final bool showSkipButton;
-
-  /// Whether you want to show the next button or not.
-  final bool showNextButton;
-
-  /// Whether you want to show the back button or not.
-  final bool showBackButton;
-
-  /// TextStyles for done, skip Buttons
-  ///
-  /// overrides [pageButtonFontFamily] [pageButtonsColor] [pageButtonTextSize]
-  final TextStyle pageButtonTextStyles;
-
-  /// run a function after skip Button pressed
-  final VoidCallback onTapSkipButton;
-
-  /// run a function after next Button pressed
-  final VoidCallback onTapNextButton;
-
-  /// run a function after back Button pressed
-  final VoidCallback onTapBackButton;
-
-  /// set the Text Size for skip, done buttons
-  ///
-  /// gets overridden by [pageButtonTextStyles]
-  final double pageButtonTextSize;
-
-  /// set the Font Family for skip, done buttons
-  ///
-  /// gets overridden by [pageButtonTextStyles]
-  final String pageButtonFontFamily;
-
-  /// Override 'DONE' Text with Your Own Text,
-  /// typicaly a Text Widget
-  final Widget doneText;
-
-  /// Override 'BACK' Text with Your Own Text,
-  /// typicaly a Text Widget
-  final Widget backText;
-
-  /// Override 'NEXT' Text with Your Own Text,
-  /// typicaly a Text Widget
-  final Widget nextText;
-
-  /// Override 'Skip' Text with Your Own Text,
-  /// typicaly a Text Widget
-  final Widget skipText;
-
-  /// always Show DoneButton
-  final bool doneButtonPersist;
-
-  /// [MainAxisAlignment] for [PageViewModel] page column aligment
-  /// default [MainAxisAligment.spaceAround]
-  ///
-  /// portrait view wraps around  [title] [body] [mainImage]
-  ///
-  /// landscape view wraps around [title] [body]
-  final MainAxisAlignment columnMainAxisAlignment;
-
-  /// ajust how how much the user most drag for a full page transition
-  ///
-  /// default to 300.0
-  final double fullTransition;
-
-  final Color background;
-
-  IntroViewsFlutter(
+  const IntroViewsFlutter(
     this.pages, {
     Key key,
     this.onTapDoneButton,
@@ -109,53 +32,149 @@ class IntroViewsFlutter extends StatefulWidget {
     this.onTapSkipButton,
     this.onTapNextButton,
     this.pageButtonsColor,
-    this.doneText = const Text("DONE"),
-    this.nextText = const Text("NEXT"),
-    this.skipText = const Text("SKIP"),
-    this.backText = const Text("BACK"),
+    this.doneText = const Text('DONE'),
+    this.nextText = const Text('NEXT'),
+    this.skipText = const Text('SKIP'),
+    this.backText = const Text('BACK'),
     this.doneButtonPersist = false,
     this.columnMainAxisAlignment = MainAxisAlignment.spaceAround,
-    this.fullTransition = FULL_TARNSITION_PX,
+    this.fullTransition = FULL_TRANSITION_PX,
     this.background,
   }) : super(key: key);
+
+  /// List of [PageViewModel] to display.
+  final List<PageViewModel> pages;
+
+  /// Callback on Done button pressed.
+  final VoidCallback onTapDoneButton;
+
+  /// Sets the text color for Skip and Done buttons.
+  ///
+  /// Gets overridden by [pageButtonTextStyles].
+  final Color pageButtonsColor;
+
+  /// Whether you want to show the Skip button or not.
+  final bool showSkipButton;
+
+  /// Whether you want to show the Next button or not.
+  final bool showNextButton;
+
+  /// Whether you want to show the Back button or not.
+  final bool showBackButton;
+
+  /// TextStyles for Done and Skip buttons.
+  ///
+  /// Overrides [pageButtonFontFamily], [pageButtonsColor]
+  /// and [pageButtonTextSize].
+  final TextStyle pageButtonTextStyles;
+
+  /// Executes when Skip button is pressed.
+  final VoidCallback onTapSkipButton;
+
+  /// Executes when Next button is pressed.
+  final VoidCallback onTapNextButton;
+
+  /// Executes when Back button is pressed.
+  final VoidCallback onTapBackButton;
+
+  /// Sets the text size for Skip and Done buttons.
+  ///
+  /// Gets overridden by [pageButtonTextStyles].
+  final double pageButtonTextSize;
+
+  /// Sets the font family for Skip and Done buttons.
+  ///
+  /// Gets overridden by [pageButtonTextStyles].
+  final String pageButtonFontFamily;
+
+  /// Overrides 'DONE' text with your own text.
+  ///
+  /// Typically a [Text] widget.
+  final Widget doneText;
+
+  /// Overrides 'BACK' text with your own text.
+  ///
+  /// Typically a [Text] widget.
+  final Widget backText;
+
+  /// Overrides 'NEXT' text with your own text.
+  ///
+  /// Typically a [Text] widget.
+  final Widget nextText;
+
+  /// Overrides 'SKIP' text with your own text.
+  ///
+  /// Typically a [Text] widget.
+  final Widget skipText;
+
+  /// Always show `Done` button.
+  final bool doneButtonPersist;
+
+  /// [MainAxisAlignment] for [PageViewModel] page column alignment.
+  ///
+  ///
+  /// Defaults to [MainAxisAlignment.spaceAround].
+  ///
+  /// `Portrait` view wraps around [title], [body] and [mainImage].
+  ///
+  /// `Landscape` view wraps around [title] and [body].
+  final MainAxisAlignment columnMainAxisAlignment;
+
+  /// Adjusts how how much the user must drag for a full page transition.
+  ///
+  /// Defaults to 300.0.
+  final double fullTransition;
+
+  /// Sets the background color to Colors.transparent if you have your own
+  /// background image below.
+  final Color background;
 
   @override
   _IntroViewsFlutterState createState() => _IntroViewsFlutterState();
 }
 
-/// State of above widget.
-/// It extends the TickerProviderStateMixin as it is used for animation control (vsync).
-
+/// State of [IntroViewsFlutter] widget.
+///
+/// It extends the [TickerProviderStateMixin] as it is used for
+/// animation control (vsync).
 class _IntroViewsFlutterState extends State<IntroViewsFlutter>
     with TickerProviderStateMixin {
-  StreamController<SlideUpdate>
-      // ignore: close_sinks
-      slideUpdateStream; //Stream controller is used to get all the updates when user slides across screen.
+  /// Stream controller is used to get all the updates when user
+  /// slides across screen.
+  StreamController<SlideUpdate> slideUpdateStream;
 
-  AnimatedPageDragger
-      animatedPageDragger; //When user stops dragging then by using this page automatically drags.
+  /// When user stops dragging then by using this page automatically drags.
+  AnimatedPageDragger animatedPageDragger;
 
-  int activePageIndex = 0; //active page index
-  int nextPageIndex = 0; //next page index
-  SlideDirection slideDirection = SlideDirection.none; //slide direction
-  double slidePercent = 0.0; //slide percentage (0.0 to 1.0)
-  StreamSubscription<SlideUpdate> slideUpdateStream$;
+  /// Active page index.
+  int activePageIndex = 0;
+
+  /// Next page index.
+  int nextPageIndex = 0;
+
+  /// Slide direction.
+  SlideDirection slideDirection = SlideDirection.none;
+
+  /// Slide percentage (0.0 to 1.0).
+  double slidePercent = 0.0;
+  StreamSubscription<SlideUpdate> slideUpdateStreamListener;
 
   @override
   void initState() {
-    //Stream Controller initialization
+    super.initState();
+    // Stream Controller initialization
     slideUpdateStream = StreamController<SlideUpdate>();
-    //listening to updates of stream controller
-    slideUpdateStream$ = slideUpdateStream.stream.listen((SlideUpdate event) {
+    // listening to updates of stream controller
+    slideUpdateStreamListener =
+        slideUpdateStream.stream.listen((SlideUpdate event) {
+      // setState is used to change the values dynamically
       setState(() {
-        //setState is used to change the values dynamically
-
-        //if the user is dragging then
+        // if the user is dragging then
         if (event.updateType == UpdateType.dragging) {
           slideDirection = event.direction;
           slidePercent = event.slidePercent;
 
-          //conditions on slide direction
+          // conditions on slide direction
           if (slideDirection == SlideDirection.leftToRight) {
             nextPageIndex = max(0, activePageIndex - 1);
           } else if (slideDirection == SlideDirection.rightToLeft) {
@@ -164,14 +183,14 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
             nextPageIndex = activePageIndex;
           }
         }
-        //if the user has done dragging
+        // if the user has done dragging
         else if (event.updateType == UpdateType.doneDragging) {
-          //Auto completion of event using Animated page dragger.
+          // auto completion of event using Animated page dragger
           if (slidePercent > 0.5) {
             animatedPageDragger = AnimatedPageDragger(
               slideDirection: slideDirection,
               transitionGoal: TransitionGoal.open,
-              //we have to animate the open page reveal
+              // we have to animate the open page reveal
               slidePercent: slidePercent,
               slideUpdateStream: slideUpdateStream,
               vsync: this,
@@ -180,23 +199,23 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
             animatedPageDragger = AnimatedPageDragger(
               slideDirection: slideDirection,
               transitionGoal: TransitionGoal.close,
-              //we have to close the page reveal
+              // we have to close the page reveal
               slidePercent: slidePercent,
               slideUpdateStream: slideUpdateStream,
               vsync: this,
             );
-            //also next page is active page
+            // also next page is active page
             nextPageIndex = activePageIndex;
           }
-          //Run the animation
+          // run the animation
           animatedPageDragger.run();
         }
-        //when animating
+        // when animating
         else if (event.updateType == UpdateType.animating) {
           slideDirection = event.direction;
           slidePercent = event.slidePercent;
         }
-        //done animating
+        // done animating
         else if (event.updateType == UpdateType.doneAnimating) {
           activePageIndex = nextPageIndex;
 
@@ -208,71 +227,65 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
         }
       });
     });
-
-    super.initState();
   }
 
   @override
   void dispose() {
-    slideUpdateStream$?.cancel();
+    slideUpdateStreamListener?.cancel();
     animatedPageDragger?.dispose();
     slideUpdateStream?.close();
     super.dispose();
   }
 
-  /// Build method
-
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyle = TextStyle(
-            fontSize: widget.pageButtonTextSize ?? 18.0,
-            color: widget.pageButtonsColor ?? const Color(0x88FFFFFF),
-            fontFamily: widget.pageButtonFontFamily)
-        .merge(widget.pageButtonTextStyles);
+    final textStyle = TextStyle(
+      fontSize: widget.pageButtonTextSize ?? 18.0,
+      color: widget.pageButtonsColor ?? const Color(0x88FFFFFF),
+      fontFamily: widget.pageButtonFontFamily,
+    ).merge(widget.pageButtonTextStyles);
 
-    List<PageViewModel> pages = widget.pages;
+    final pages = widget.pages;
 
     return Scaffold(
-      //Stack is used to place components over one another.
+      // stack is used to place components over one another
       resizeToAvoidBottomInset: false,
       backgroundColor: widget.background,
       body: Stack(
         children: <Widget>[
-          IntoUIPage.Page(
+          into_ui_page.Page(
             pageViewModel: pages[activePageIndex],
             percentVisible: 1.0,
             columnMainAxisAlignment: widget.columnMainAxisAlignment,
-          ), //Pages
+          ),
           PageReveal(
-            //next page reveal
+            // next page reveal
             revealPercent: slidePercent,
-            child: IntoUIPage.Page(
+            child: into_ui_page.Page(
                 pageViewModel: pages[nextPageIndex],
                 percentVisible: slidePercent,
                 columnMainAxisAlignment: widget.columnMainAxisAlignment),
-          ), //PageReveal
-
+          ),
           PagerIndicator(
-            //bottom page indicator
+            // bottom page indicator
             viewModel: PagerIndicatorViewModel(
               pages,
               activePageIndex,
               slideDirection,
               slidePercent,
             ),
-          ), //PagerIndicator
-
+          ),
           PageIndicatorButtons(
-            //Skip and Done Buttons
+            // skip and Done buttons
             textStyle: textStyle,
             activePageIndex: activePageIndex,
             totalPages: pages.length,
             onPressedDoneButton: widget.onTapDoneButton,
-            //void Callback to be executed after pressing done button
+            // void callback to be executed after pressing done button
             slidePercent: slidePercent,
             slideDirection: slideDirection,
             onPressedSkipButton: () {
-              //method executed on pressing skip button
+              // method executed on pressing skip button
               setState(() {
                 activePageIndex = pages.length - 1;
                 nextPageIndex = activePageIndex;
@@ -287,7 +300,7 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
             showNextButton: widget.showNextButton,
             showBackButton: widget.showBackButton,
             onPressedNextButton: () {
-              //method executed on pressing next button
+              // method executed on pressing next button
               setState(() {
                 activePageIndex = min(pages.length - 1, activePageIndex + 1);
                 nextPageIndex = min(pages.length - 1, nextPageIndex + 1);
@@ -299,7 +312,7 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
               });
             },
             onPressedBackButton: () {
-              //method executed on pressing back button
+              // method executed on pressing back button
               setState(() {
                 activePageIndex = max(0, activePageIndex - 1);
                 nextPageIndex = max(0, nextPageIndex - 1);
@@ -316,16 +329,15 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
             skipText: widget.skipText,
             doneButtonPersist: widget.doneButtonPersist,
           ),
-
           PageDragger(
-            //Used for gesture control
+            // used for gesture control
             fullTransitionPX: widget.fullTransition,
             canDragLeftToRight: activePageIndex > 0,
             canDragRightToLeft: activePageIndex < pages.length - 1,
-            slideUpdateStream: this.slideUpdateStream,
-          ), //PageDragger
-        ], //Widget
-      ), //Stack
-    ); //Scaffold
+            slideUpdateStream: slideUpdateStream,
+          ),
+        ],
+      ),
+    );
   }
 }
