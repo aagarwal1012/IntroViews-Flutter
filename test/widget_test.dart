@@ -13,6 +13,12 @@ const double PORTRAIT_WIDTH = 1800.0;
 const double PORTRAIT_HEIGHT = 2400.0;
 
 void main() {
+  testWidgets('Dummy test', (WidgetTester tester) async {
+    await tester.pumpWidget(App());
+    await tester.pumpAndSettle();
+    expect(find.byType(MaterialApp), findsOneWidget);
+  });
+
   testWidgets('Skip Pressed smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(new App());

@@ -1,0 +1,32 @@
+on: [push, pull_request]
+name: tests
+jobs:
+  build:
+    name: Run tests
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Flutter action
+        uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Run tests
+        id: test
+        run: |
+          cd example
+          flutter test ..
+          cd ..
+      - name: Check format
+        run: flutter format --dry-run --set-exit-if-changed .
+      - name: Analyzer
+        run: flutter analyze --no-pub lib example
+      - name: Generate coverage
+        continue-on-error: true
+        run: flutter test --no-pub --coverage
+      - name: Upload coverage to Codecov
+        if: github.ref == 'refs/heads/master' && steps.test.outcome == 'success'
+        uses: codecov/codecov-action@v1
+        with:
+          file: coverage/lcov.info
