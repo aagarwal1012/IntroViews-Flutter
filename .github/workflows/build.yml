@@ -1,0 +1,18 @@
+on: [push, pull_request]
+name: build
+jobs:
+  build:
+    name: Run build
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Flutter action
+        uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Build apk
+        run: |
+          cd example
+          flutter build apk
