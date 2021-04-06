@@ -1,4 +1,4 @@
 library intro_views_flutter;
 
-export 'Models/page_view_model.dart';
-export 'UI/intro_views_flutter.dart';
+export 'src/models/page_view_model.dart';
+export 'src/ui/intro_views_flutter.dart';

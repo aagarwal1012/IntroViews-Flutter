@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:intro_views_flutter/Constants/constants.dart';
-import 'package:intro_views_flutter/Models/page_bubble_view_model.dart';
-import 'package:intro_views_flutter/Models/pager_indicator_view_model.dart';
-import 'package:intro_views_flutter/UI/page_bubble.dart';
+import 'package:intro_views_flutter/src/constants/constants.dart';
+import 'package:intro_views_flutter/src/models/page_bubble_view_model.dart';
+import 'package:intro_views_flutter/src/models/pager_indicator_view_model.dart';
+import 'package:intro_views_flutter/src/ui/page_bubble.dart';
 
 /// This class contains the UI elements associated with bottom page indicator.
 class PagerIndicator extends StatelessWidget {

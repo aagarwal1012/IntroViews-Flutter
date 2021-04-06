@@ -1,3 +1,5 @@
+// TODO: mention import change (will be done with null safety)
+
 ## 2.9.0
 * Critical Bug Fix: Replacing deprecated `resizeToAvoidBottomPadding`.
 

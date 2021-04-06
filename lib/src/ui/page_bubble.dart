@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:intro_views_flutter/Models/page_bubble_view_model.dart';
+import 'package:intro_views_flutter/src/models/page_bubble_view_model.dart';
 
 /// This class contains the UI for page bubble.
 class PageBubble extends StatelessWidget {

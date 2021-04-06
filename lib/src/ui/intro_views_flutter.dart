@@ -2,16 +2,16 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:intro_views_flutter/Animation_Gesture/animated_page_dragger.dart';
-import 'package:intro_views_flutter/Animation_Gesture/page_dragger.dart';
-import 'package:intro_views_flutter/Animation_Gesture/page_reveal.dart';
-import 'package:intro_views_flutter/Constants/constants.dart';
-import 'package:intro_views_flutter/Models/page_view_model.dart';
-import 'package:intro_views_flutter/Models/pager_indicator_view_model.dart';
-import 'package:intro_views_flutter/Models/slide_update_model.dart';
-import 'package:intro_views_flutter/UI/page.dart' as into_ui_page;
-import 'package:intro_views_flutter/UI/page_indicator_buttons.dart';
-import 'package:intro_views_flutter/UI/pager_indicator.dart';
+import 'package:intro_views_flutter/src/animation_gesture/animated_page_dragger.dart';
+import 'package:intro_views_flutter/src/animation_gesture/page_dragger.dart';
+import 'package:intro_views_flutter/src/animation_gesture/page_reveal.dart';
+import 'package:intro_views_flutter/src/constants/constants.dart';
+import 'package:intro_views_flutter/src/models/page_view_model.dart';
+import 'package:intro_views_flutter/src/models/pager_indicator_view_model.dart';
+import 'package:intro_views_flutter/src/models/slide_update_model.dart';
+import 'package:intro_views_flutter/src/ui/page.dart' as into_ui_page;
+import 'package:intro_views_flutter/src/ui/page_indicator_buttons.dart';
+import 'package:intro_views_flutter/src/ui/pager_indicator.dart';
 
 /// This is the IntroViewsFlutter widget of app which is a
 /// stateful widget as its state is dynamic and updates asynchronously.
