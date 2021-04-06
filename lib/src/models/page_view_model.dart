@@ -34,12 +34,14 @@ class PageViewModel {
   ///
   /// _Typically a [Text] widget_.
   ///
-  /// Defaults to `TextStyle(color: Colors.white, fontSize: 50.0)`.
+  /// If null, then the widget is omitted.
   final Widget? title;
 
   /// Widget for the body.
   ///
   /// _Typically a [Text] widget_.
+  ///
+  /// If null, then the widget is omitted.
   final Widget? body;
 
   /// Sets TextStyle for [titleTextStyle] and [bodyTextStyle].
@@ -62,6 +64,9 @@ class PageViewModel {
   /// Main widget.
   ///
   /// _Typically an [Image] widget_.
+  ///
+  ///
+  /// If null, then the widget is omitted.
   final Widget? mainImage;
 
   /// Inner bubble widget.
