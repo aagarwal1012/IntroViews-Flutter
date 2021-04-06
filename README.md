@@ -1,18 +1,18 @@
 <div align="center"><img src="https://github.com/aagarwal1012/IntroViews-Flutter/blob/master/display/header.png?raw=true"/></div>
 <br/>
 <div align="center">
-	<a href="https://flutter.io">
+  <a href="https://flutter.io">
     <img src="https://img.shields.io/badge/Platform-Flutter-yellow.svg"
       alt="Platform" />
   </a>
-  	<a href="https://pub.dartlang.org/packages/intro_views_flutter">
+  <a href="https://pub.dartlang.org/packages/intro_views_flutter">
     <img src="https://img.shields.io/pub/v/intro_views_flutter.svg"
       alt="Pub Package" />
   </a>
-  	<a href="https://travis-ci.com/aagarwal1012/IntroViews-Flutter">
-    <img src="https://travis-ci.com/aagarwal1012/IntroViews-Flutter.svg?branch=master"
+  <img src="https://github.com/aagarwal1012/IntroViews-Flutter/actions/workflows/build.yml/badge.svg"
       alt="Build Status" />
-  </a>
+  <img src="https://github.com/aagarwal1012/IntroViews-Flutter/actions/workflows/tests.yml/badge.svg"
+      alt="Tests Status" />
     <a href="https://codecov.io/gh/aagarwal1012/IntroViews-Flutter">
     <img src="https://codecov.io/gh/aagarwal1012/IntroViews-Flutter/branch/master/graph/badge.svg"
       alt="Codecov Coverage" />
