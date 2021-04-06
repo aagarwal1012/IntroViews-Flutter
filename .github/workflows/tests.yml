@@ -26,7 +26,7 @@ jobs:
         continue-on-error: true
         run: flutter test --no-pub --coverage
       - name: Upload coverage to Codecov
-        if: github.ref == 'refs/heads/master' && steps.test.outcome == 'success'
+        if: steps.test.outcome == 'success'
         uses: codecov/codecov-action@v1
         with:
           file: coverage/lcov.info
