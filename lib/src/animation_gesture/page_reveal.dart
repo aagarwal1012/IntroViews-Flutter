@@ -4,8 +4,8 @@ import 'package:intro_views_flutter/src/clipper/circular_reveal_clipper.dart';
 /// This class reveals the next page in the circular form.
 class PageReveal extends StatelessWidget {
   const PageReveal({
-    this.revealPercent,
-    this.child,
+    required this.revealPercent,
+    required this.child,
   });
 
   final double revealPercent;

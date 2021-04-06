@@ -7,7 +7,7 @@ import 'package:intro_views_flutter/src/ui/page_bubble.dart';
 /// This class contains the UI elements associated with bottom page indicator.
 class PagerIndicator extends StatelessWidget {
   const PagerIndicator({
-    this.viewModel,
+    required this.viewModel,
   });
 
   final PagerIndicatorViewModel viewModel;

@@ -5,13 +5,13 @@ import 'package:intro_views_flutter/src/models/page_button_view_model.dart';
 /// Skip, Next, and Back button class.
 class DefaultButton extends StatelessWidget {
   const DefaultButton({
-    this.onTap,
-    this.pageButtonViewModel,
-    this.child,
+    required this.onTap,
+    required this.pageButtonViewModel,
+    required this.child,
   });
 
   /// Callback for skip button.
-  final Function onTap;
+  final VoidCallback? onTap;
 
   /// View model.
   final PageButtonViewModel pageButtonViewModel;
@@ -48,12 +48,12 @@ class DefaultButton extends StatelessWidget {
 /// Done Button class.
 class DoneButton extends StatelessWidget {
   const DoneButton({
-    this.onTap,
-    this.pageButtonViewModel,
-    this.child,
+    required this.onTap,
+    required this.pageButtonViewModel,
+    required this.child,
   });
 
-  final Function onTap;
+  final VoidCallback? onTap;
 
   final PageButtonViewModel pageButtonViewModel;
   final Widget child;
@@ -84,32 +84,32 @@ class DoneButton extends StatelessWidget {
 
 class PageIndicatorButtons extends StatelessWidget {
   const PageIndicatorButtons({
-    @required this.activePageIndex,
-    @required this.totalPages,
+    required this.activePageIndex,
+    required this.totalPages,
     this.onPressedDoneButton,
-    this.slideDirection,
-    this.slidePercent,
+    required this.slideDirection,
+    required this.slidePercent,
     this.onPressedSkipButton,
     this.onPressedNextButton,
     this.onPressedBackButton,
-    this.showSkipButton,
-    this.skipText,
-    this.nextText,
-    this.doneText,
-    this.textStyle,
-    this.doneButtonPersist,
+    required this.showSkipButton,
+    required this.skipText,
+    required this.nextText,
+    required this.doneText,
+    required this.textStyle,
+    required this.doneButtonPersist,
     this.showNextButton = true,
     this.showBackButton = true,
-    this.backText,
+    required this.backText,
   });
 
   final int activePageIndex;
   final int totalPages;
 
-  final Function onPressedDoneButton;
-  final Function onPressedNextButton;
-  final Function onPressedBackButton;
-  final Function onPressedSkipButton;
+  final VoidCallback? onPressedDoneButton;
+  final VoidCallback? onPressedNextButton;
+  final VoidCallback? onPressedBackButton;
+  final VoidCallback? onPressedSkipButton;
   final SlideDirection slideDirection;
   final double slidePercent;
   final bool showSkipButton;

@@ -4,7 +4,7 @@ import 'package:intro_views_flutter/src/models/page_view_model.dart';
 /// This is the class which contains the Page UI.
 class Page extends StatelessWidget {
   const Page({
-    this.pageViewModel,
+    required this.pageViewModel,
     this.percentVisible = 1.0,
     this.columnMainAxisAlignment = MainAxisAlignment.spaceAround,
   });
@@ -113,9 +113,9 @@ class Page extends StatelessWidget {
 /// Body for the Page.
 class _BodyPageTransform extends StatelessWidget {
   const _BodyPageTransform({
-    Key key,
-    @required this.percentVisible,
-    @required this.pageViewModel,
+    Key? key,
+    required this.percentVisible,
+    required this.pageViewModel,
   }) : super(key: key);
 
   final double percentVisible;
@@ -135,9 +135,9 @@ class _BodyPageTransform extends StatelessWidget {
           right: 10.0,
         ),
         child: DefaultTextStyle.merge(
-          style: pageViewModel.mergedBodyTextStyle,
           textAlign: TextAlign.center,
-          child: pageViewModel.body,
+          style: pageViewModel.mergedBodyTextStyle,
+          child: pageViewModel.body ?? const SizedBox(),
         ),
       ),
     );
@@ -147,9 +147,9 @@ class _BodyPageTransform extends StatelessWidget {
 /// Main Image of the Page.
 class _ImagePageTransform extends StatelessWidget {
   const _ImagePageTransform({
-    Key key,
-    @required this.percentVisible,
-    @required this.pageViewModel,
+    Key? key,
+    required this.percentVisible,
+    required this.pageViewModel,
   }) : super(key: key);
 
   final double percentVisible;
@@ -178,9 +178,9 @@ class _ImagePageTransform extends StatelessWidget {
 /// Title for the Page.
 class _TitlePageTransform extends StatelessWidget {
   const _TitlePageTransform({
-    Key key,
-    @required this.percentVisible,
-    @required this.pageViewModel,
+    Key? key,
+    required this.percentVisible,
+    required this.pageViewModel,
   }) : super(key: key);
 
   final double percentVisible;
@@ -202,7 +202,7 @@ class _TitlePageTransform extends StatelessWidget {
         ),
         child: DefaultTextStyle.merge(
           style: pageViewModel.mergedTitleTextStyle,
-          child: pageViewModel.title,
+          child: pageViewModel.title ?? const SizedBox(),
         ),
       ),
     );

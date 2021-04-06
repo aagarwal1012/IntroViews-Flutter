@@ -7,13 +7,14 @@ import 'package:intro_views_flutter/src/models/slide_update_model.dart';
 /// This class is used to get user gesture and work according to it.
 class PageDragger extends StatefulWidget {
   const PageDragger({
-    this.canDragLeftToRight,
-    this.canDragRightToLeft,
-    this.slideUpdateStream,
+    required this.canDragLeftToRight,
+    required this.canDragRightToLeft,
+    required this.slideUpdateStream,
     this.fullTransitionPX = FULL_TRANSITION_PX,
-  }) : assert(fullTransitionPX != null);
+  });
 
-  // These bool variables are used to check whether user can drag left or right or none.
+  // These bool variables are used to check whether user can
+  // drag left or right or none.
   final bool canDragLeftToRight;
   final bool canDragRightToLeft;
   final double fullTransitionPX;
@@ -26,8 +27,8 @@ class PageDragger extends StatefulWidget {
 }
 
 class _PageDraggerState extends State<PageDragger> {
-  Offset dragStart;
-  SlideDirection slideDirection;
+  Offset? dragStart;
+  late SlideDirection slideDirection;
   double slidePercent = 0.0;
 
   /// This methods executes when user starts dragging.
@@ -41,7 +42,7 @@ class _PageDraggerState extends State<PageDragger> {
       // getting new position details
       final newPosition = details.globalPosition;
       // change in position in x
-      final dx = dragStart.dx - newPosition.dx;
+      final dx = dragStart!.dx - newPosition.dx;
 
       // predicting slide direction
       if (dx > 0.0 && widget.canDragRightToLeft) {
