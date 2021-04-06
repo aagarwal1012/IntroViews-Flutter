@@ -7,6 +7,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+// ignore: avoid_relative_lib_imports
 import '../example/lib/main.dart';
 
 const double PORTRAIT_WIDTH = 1800.0;
@@ -21,26 +22,22 @@ void main() {
 
   testWidgets('Skip Pressed smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(new App());
+    await tester.pumpWidget(App());
 
-    // Verify that our counter starts at 0.
     expect(find.text('SKIP'), findsOneWidget);
     expect(find.text('DONE'), findsNothing);
 
-    // Tap the '+' icon and trigger a frame.
     await tester.tap(find.text('SKIP'));
     await tester.pump();
 
-    // Verify that our counter has incremented.
     expect(find.text('BACK'), findsOneWidget);
     expect(find.text('DONE'), findsOneWidget);
   });
 
   testWidgets('Done Pressed smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(new App());
+    await tester.pumpWidget(App());
 
-    // Verify that our counter starts at 0.
     expect(find.text('SKIP'), findsOneWidget);
     expect(find.text('DONE'), findsNothing);
 
@@ -48,7 +45,6 @@ void main() {
     await tester.tap(find.text('SKIP'));
     await tester.pump();
 
-    // Verify that our counter has incremented.
     expect(find.text('SKIP'), findsNothing);
     expect(find.text('DONE'), findsOneWidget);
 
@@ -61,10 +57,10 @@ void main() {
     expect(find.text('This is the home page of the app'), findsOneWidget);
   });
 
-  // Drag from first page to second and back to first
+  // Drag from first page to second and back to first.
   testWidgets('drag Reveal smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(new App());
+    await tester.pumpWidget(App());
 
     // should find First page by its title Text
     expect(find.text('Flights'), findsWidgets);
@@ -72,8 +68,7 @@ void main() {
     expect(find.text('Hotels'), findsNothing);
 
     // Drag Screen To Reveal next Page
-    await tester.drag(find.byType(App), Offset(-400.0, 0.0));
-
+    await tester.drag(find.byType(App), const Offset(-400.0, 0.0));
     await tester.pumpAndSettle();
 
     // first page should have been removed by second page
@@ -81,7 +76,7 @@ void main() {
     expect(find.text('Hotels'), findsWidgets);
 
     // Drag Screen To Reveal next Prev page
-    await tester.drag(find.byType(App), Offset(400.0, 0.0));
+    await tester.drag(find.byType(App), const Offset(400.0, 0.0));
 
     await tester.pumpAndSettle();
     // first page should have been removed by second page
@@ -94,7 +89,7 @@ void main() {
   testWidgets('multiple rapid clicks does not overflow',
       (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(new App());
+    await tester.pumpWidget(App());
 
     // Verify progress buttons exists
     expect(find.text('BACK'), findsNothing);
@@ -132,10 +127,10 @@ void main() {
     final TestWidgetsFlutterBinding binding =
         TestWidgetsFlutterBinding.ensureInitialized();
     binding.window.physicalSizeTestValue =
-        (Size(PORTRAIT_WIDTH, PORTRAIT_HEIGHT));
+        (const Size(PORTRAIT_WIDTH, PORTRAIT_HEIGHT));
     // Build our app and trigger a frame in portrait mode.
-    await tester.pumpWidget(new App());
+    await tester.pumpWidget(App());
 
-    expect(find.byKey(Key("Portrait Page")), findsWidgets);
+    expect(find.byKey(const Key('Portrait Page')), findsWidgets);
   });
 }

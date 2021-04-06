@@ -1,0 +1,11 @@
+include: package:pedantic/analysis_options.yaml
+
+linter:
+  rules:
+    #    - public_member_api_docs
+    #    - package_api_docs
+    - sort_constructors_first
+    - prefer_const_constructors
+    - prefer_const_constructors_in_immutables
+#    - prefer_null_aware_method_calls
+#    - require_trailing_comma

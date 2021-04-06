@@ -2,7 +2,7 @@ name: example
 description: An example app to show the usage of the IntroViewsFlutter package.
 
 environment:
-  sdk: ">=2.0.0-dev.28.0 <3.0.0"
+  sdk: ">=2.10.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -17,6 +17,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  pedantic: ^1.11.0
 
 
 # For information on the generic Dart part of this file, see the
