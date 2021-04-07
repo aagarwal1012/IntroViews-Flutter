@@ -27,7 +27,7 @@
   </a>
 </div><br>
 
-IntroViews is inspired by [Paper Onboarding](https://github.com/Ramotion/paper-onboarding-android) and developed with `love` from scratch. I decided to rewrite almost all the features in order to make it available to the `flutter` developers and extensible as possible.
+IntroViews is inspired by [Paper Onboarding](https://github.com/Ramotion/paper-onboarding-android) and developed with `love` from scratch. Checkout our fully responsive [live example app](https://introviews-flutter.web.app/).
 
 # Table of contents
   * [Features](#features)
