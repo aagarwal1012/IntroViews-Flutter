@@ -12,3 +12,5 @@ build/
 /android/app/src/main/gen/com/example/example/Manifest.java
 /android/app/src/main/gen/com/example/example/R.java
 /ios/Flutter/flutter_export_environment.sh
+
+.firebase/
