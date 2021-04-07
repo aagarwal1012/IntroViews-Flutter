@@ -92,8 +92,6 @@ You should then run `flutter packages get` in your terminal so as to get the pac
   final page = PageViewModel(
       pageColor: const Color(0xFF607D8B),
         iconImageAssetPath: 'assets/taxi-driver.png',
-        iconColor: null,
-        bubbleBackgroundColor: null,
         body: Text(
           'Easy  cab  booking  at  your  doorstep  with  cashless  payment  system',
         ),
@@ -138,41 +136,41 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 
 | Dart attribute        | Datatype       | Description                                                           |                                          Default Value                                          |
 | :-------------------- | :------------- | :-------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------: |
-| pageColor             | Color          | Set color of the page.                                                |                                              Null                                               |
-| mainImage             | Image / Widget | Set the main image of the page.                                       |                                              Null                                               |
-| title                 | Text / Widget  | Set the title text of the page.                                       |                                              Null                                               |
-| body                  | Text / Widget  | Set the body text of the page.                                        |                                              Null                                               |
-| iconImageAssetPath    | String         | Set the icon image asset path that would be displayed in page bubble. |                                              Null                                               |
-| iconColor             | Color          | Set the page bubble icon color.                                       |                                              Null                                               |
+| pageColor             | Color?          | Set color of the page.                                                |                                              Null                                               |
+| mainImage             | Image? / Widget? | Set the main image of the page.                                       |                                              Null                                               |
+| title                 | Text? / Widget?  | Set the title text of the page. If null, then the widget is omitted.                                       |                                              Null                                               |
+| body                  | Text? / Widget?  | Set the body text of the page. If null, then the widget is omitted.                                        |                                              Null                                               |
+| iconImageAssetPath    | String?         | Set the icon image asset path that would be displayed in page bubble. |                                              Null                                               |
+| iconColor             | Color?          | Set the page bubble icon color.                                       |                                              Null                                               |
 | bubbleBackgroundColor | Color          | Set the page bubble background color.                                 |                                          Colors.white / Color(0x88FFFFFF)                                           |
-| textStyle             | TextStyle      | Set TextStyle for both title and body                                 | title: `color: Colors.white , fontSize: 50.0` <br> body: `color: Colors.white , fontSize: 24.0` |
+| textStyle             | TextStyle?      | Set TextStyle for both title and body                                 | title: `color: Colors.white , fontSize: 50.0` <br> body: `color: Colors.white , fontSize: 24.0` |
 | titleTextStyle             | TextStyle      | Set TextStyle for title                                 | `color: Colors.white , fontSize: 50.0` |
 | bodyTextStyle             | TextStyle      | Set TextStyle for body                                 | `color: Colors.white , fontSize: 24.0` |
-| bubble                | Widget         | Set a custom widget for the inner bubble                              |                                              null                                               |
+| bubble                | Widget?         | Set a custom widget for the inner bubble                              |                                              Null                                               |
 
 ### IntroViewFlutter Class
 
 | Dart attribute          | Datatype            | Description                                                                                                       |              Default Value              |
 | :---------------------- | :------------------ | :---------------------------------------------------------------------------------------------------------------- | :-------------------------------------: |
-| pages                   | List<PageViewModel> | Set the pages of the intro screen.                                                                                |                  Null                   |
-| onTapDoneButton         | VoidCallback        | Method executes on tapping done button.                                                                           |                  Null                   |
-| onTapBackButton         | VoidCallback        | Method executes on tapping back button.                                                                           |                  Null                   |
-| onTapNextButton         | VoidCallback        | Method executes on tapping next button.                                                                           |                  Null                   |
-| showSkipButton          | Bool                | Show the skip button at the bottom of page.                                                                       |                  true                   |
-| showBackButton          | Bool                | Show the Back button at the bottom of page. Overrides showSkipButton starting from the second page                |                  false                   |
-| showNextButton          | Bool                | Show the Next button at the bottom of page. Overrides doneButtonPersist.                                          |                  false                   |
-| pageButtonTextSize      | Double              | Set the button text size.                                                                                         |                  18.0                   |
-| pageButtonFontFamily    | String              | Set the font of button text.                                                                                      |                 Default                 |
-| onTapSkipButton         | VoidCallback        | Method executes on tapping skip button.                                                                           |                  null                   |
-| pageButtonTextStyles    | TextStyle           | Configure TextStyle for skip, done buttons, overrides pageButtonFontFamily, pageButtonsColor, pageButtonTextSize. | fontSize: `18.0`, color: `Colors.white` |
+| pages                   | List\<PageViewModel\> | Set the pages of the intro screen.                                                                                |                  (required)                   |
+| onTapDoneButton         | VoidCallback?        | Method executes on tapping done button.                                                                           |                  Null                   |
+| onTapBackButton         | VoidCallback?        | Method executes on tapping back button.                                                                           |                  Null                   |
+| onTapNextButton         | VoidCallback?        | Method executes on tapping next button.                                                                           |                  Null                   |
+| showSkipButton          | bool                | Show the skip button at the bottom of page.                                                                       |                  true                   |
+| showBackButton          | bool                | Show the Back button at the bottom of page. Overrides showSkipButton starting from the second page                |                  false                   |
+| showNextButton          | bool                | Show the Next button at the bottom of page. Overrides doneButtonPersist.                                          |                  false                   |
+| pageButtonTextSize      | double              | Set the button text size.                                                                                         |                  18.0                   |
+| pageButtonFontFamily    | String?              | Set the font of button text.                                                                                      |                 Null                 |
+| onTapSkipButton         | VoidCallback?        | Method executes on tapping skip button.                                                                           |                  Null                   |
+| pageButtonTextStyles    | TextStyle?           | Configure TextStyle for skip, done buttons, overrides pageButtonFontFamily, pageButtonsColor, pageButtonTextSize. | fontSize: `18.0`, color: `Colors.white` |
 | skipText                | Text / Widget       | Override Skip Button Text and styles.                                                                             |              Text('SKIP')               |
 | doneText                | Text / Widget       | Override Done Button Text and styles.                                                                             |              Text('DONE')               |
 | backText                | Text / Widget       | Override Back Button Text and styles.                                                                             |              Text('BACK')               |
 | nextText                | Text / Widget       | Override Next Button Text and styles.                                                                             |              Text('NEXT')               |
-| doneButtonPersist       | Bool                | Show done Button throughout pages                                                                                 |                  false                  |
+| doneButtonPersist       | bool                | Show done Button throughout pages                                                                                 |                  false                  |
 | columnMainAxisAlignment | MainAxisAlignment   | Control [MainAxisAlignment] for column                                                                            |      MainAxisAlignment.spaceAround      |
 | fullTransition          | double              | Adjust scroll distance for full transition                                                                        |                  300.0                  |
-| background              | Color               | Set the background color to Colors.transparent if you have your own background image below | null |
+| background              | Color?               | Set the background color to Colors.transparent if you have your own background image below | Null |
 
 For help on editing package code, view the [flutter documentation](https://flutter.io/developing-packages/).
 

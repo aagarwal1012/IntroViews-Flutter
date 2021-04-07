@@ -6,7 +6,7 @@ import 'package:intro_views_flutter/src/models/page_bubble_view_model.dart';
 /// This class contains the UI for page bubble.
 class PageBubble extends StatelessWidget {
   const PageBubble({
-    this.viewModel,
+    required this.viewModel,
   });
 
   final PageBubbleViewModel viewModel;
@@ -43,7 +43,7 @@ class PageBubble extends StatelessWidget {
               child: (viewModel.iconAssetPath != null &&
                       viewModel.iconAssetPath != '')
                   ? Image.asset(
-                      viewModel.iconAssetPath,
+                      viewModel.iconAssetPath!,
                       color: viewModel.iconColor,
                     )
                   : viewModel.bubbleInner != null

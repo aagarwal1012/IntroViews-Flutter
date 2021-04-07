@@ -1,4 +1,14 @@
-// TODO: mention import change (will be done with null safety)
+## 3.0.0
+**Major Updates**
+* Migrated to null safety.
+* **Breaking Change**: Now only a single import is required:
+
+```dart
+import 'package:intro_views_flutter/intro_views_flutter.dart';
+```
+
+Other old imports from this package are now invalid and must be removed/replaced
+with import above in order to solve path errors.
 
 ## 2.9.0
 * Critical Bug Fix: Replacing deprecated `resizeToAvoidBottomPadding`.

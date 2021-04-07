@@ -7,47 +7,49 @@ class PageViewModel {
     this.iconImageAssetPath,
     this.bubbleBackgroundColor = const Color(0x88FFFFFF),
     this.iconColor,
-    @required this.title,
-    @required this.body,
-    @required this.mainImage,
+    required this.title,
+    required this.body,
+    required this.mainImage,
     this.bubble,
     this.textStyle,
-    this.titleTextStyle,
-    this.bodyTextStyle,
+    this.titleTextStyle = const TextStyle(color: Colors.white, fontSize: 50.0),
+    this.bodyTextStyle = const TextStyle(color: Colors.white, fontSize: 24.0),
   });
 
   /// Page background color.
-  final Color pageColor;
+  final Color? pageColor;
 
   /// Icon image path.
-  final String iconImageAssetPath;
+  final String? iconImageAssetPath;
 
   /// Icon color.
-  final Color iconColor;
+  final Color? iconColor;
 
   /// Color for background of progress bubbles.
   ///
-  /// Defaults to `const Color(0x88FFFFFF)`.
+  /// Defaults to light grey: `Color(0x88FFFFFF)`.
   final Color bubbleBackgroundColor;
 
   /// Widget for the title.
   ///
   /// _Typically a [Text] widget_.
   ///
-  /// Defaults to `TextStyle(color: Colors.white, fontSize: 50.0)`.
-  final Widget title;
+  /// If null, then the widget is omitted.
+  final Widget? title;
 
   /// Widget for the body.
   ///
   /// _Typically a [Text] widget_.
-  final Widget body;
+  ///
+  /// If null, then the widget is omitted.
+  final Widget? body;
 
   /// Sets TextStyle for [titleTextStyle] and [bodyTextStyle].
   ///
   /// [titleTextStyle] defaults to `TextStyle(color: Colors.white, fontSize: 50.0)`.
   ///
   /// [bodyTextStyle] defaults to `TextStyle(color: Colors.white, fontSize: 24.0)`.
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
 
   /// Set TextStyle for [title].
   ///
@@ -62,14 +64,17 @@ class PageViewModel {
   /// Main widget.
   ///
   /// _Typically an [Image] widget_.
-  final Widget mainImage;
+  ///
+  ///
+  /// If null, then the widget is omitted.
+  final Widget? mainImage;
 
-  /// Bubble inner widget.
+  /// Inner bubble widget.
   ///
   /// _Typically an [Image] widget_.
   ///
   /// Gets overridden by [iconImageAssetPath].
-  final Widget bubble;
+  final Widget? bubble;
 
   TextStyle get mergedTitleTextStyle {
     return const TextStyle(color: Colors.white, fontSize: 50.0)
