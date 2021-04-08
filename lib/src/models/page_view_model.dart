@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class PageViewModel {
   const PageViewModel({
     this.pageColor,
-    this.pageBackground,
+    this.pageBackground = const SizedBox(),
     this.iconImageAssetPath,
     this.bubbleBackgroundColor = const Color(0x88FFFFFF),
     this.iconColor,
@@ -27,7 +27,7 @@ class PageViewModel {
   /// or adding a background image.
   ///
   /// [pageColor] has priority over [pageBackground].
-  final Widget? pageBackground;
+  final Widget pageBackground;
 
   /// Icon image path.
   final String? iconImageAssetPath;

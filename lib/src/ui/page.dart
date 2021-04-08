@@ -22,7 +22,7 @@ class Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        pageViewModel.pageBackground ?? const SizedBox(),
+        pageViewModel.pageBackground,
         Container(
           padding: const EdgeInsets.all(8.0),
           width: double.infinity,
