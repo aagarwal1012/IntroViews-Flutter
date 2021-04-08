@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class PageViewModel {
   const PageViewModel({
     this.pageColor,
+    this.pageBackground,
     this.iconImageAssetPath,
     this.bubbleBackgroundColor = const Color(0x88FFFFFF),
     this.iconColor,
@@ -17,7 +18,16 @@ class PageViewModel {
   });
 
   /// Page background color.
+  ///
+  /// [pageColor] has priority over [pageBackground].
   final Color? pageColor;
+
+  /// Widget shown in the background and can be used instead of [pageColor] or
+  /// for the full customization of the page, e.g. having a gradient background
+  /// or adding a background image.
+  ///
+  /// [pageColor] has priority over [pageBackground].
+  final Widget? pageBackground;
 
   /// Icon image path.
   final String? iconImageAssetPath;
