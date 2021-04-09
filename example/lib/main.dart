@@ -46,7 +46,20 @@ class App extends StatelessWidget {
       bodyTextStyle: const TextStyle(fontFamily: 'MyFont', color: Colors.white),
     ),
     PageViewModel(
-      pageColor: const Color(0xFF607D8B),
+      pageBackground: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            stops: [0.0, 1.0],
+            begin: FractionalOffset.topCenter,
+            end: FractionalOffset.bottomCenter,
+            tileMode: TileMode.repeated,
+            colors: [
+              Colors.orange,
+              Colors.pinkAccent,
+            ],
+          ),
+        ),
+      ),
       iconImageAssetPath: 'assets/taxi-driver.png',
       body: const Text(
         'Easy  cab  booking  at  your  doorstep  with  cashless  payment  system',
