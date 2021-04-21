@@ -1,3 +1,8 @@
+## 3.1.0
+* Added new `pageBackground` property to the `PageViewModel`, which sets a widget as a
+background of the whole page (`pageColor` has priority over this). Thanks @ride4sun
+* Arguments `title`, `body` and `mainImage` are **no longer required** and can be omitted.
+
 ## 3.0.0
 **Major Updates**
 * Migrated to null safety.

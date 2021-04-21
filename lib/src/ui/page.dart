@@ -20,21 +20,26 @@ class Page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(8.0),
-      width: double.infinity,
-      color: pageViewModel.pageColor,
-      // Opacity is used to create fade in effect
-      child: Opacity(
-        opacity: percentVisible,
-        child: OrientationBuilder(
-          builder: (context, orientation) {
-            return orientation == Orientation.portrait
-                ? _buildPortraitPage()
-                : __buildLandscapePage();
-          },
+    return Stack(
+      children: <Widget>[
+        pageViewModel.pageBackground,
+        Container(
+          padding: const EdgeInsets.all(8.0),
+          width: double.infinity,
+          color: pageViewModel.pageColor,
+          // Opacity is used to create fade in effect
+          child: Opacity(
+            opacity: percentVisible,
+            child: OrientationBuilder(
+              builder: (context, orientation) {
+                return orientation == Orientation.portrait
+                    ? _buildPortraitPage()
+                    : __buildLandscapePage();
+              },
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 
@@ -137,7 +142,7 @@ class _BodyPageTransform extends StatelessWidget {
         child: DefaultTextStyle.merge(
           textAlign: TextAlign.center,
           style: pageViewModel.mergedBodyTextStyle,
-          child: pageViewModel.body ?? const SizedBox(),
+          child: pageViewModel.body,
         ),
       ),
     );
@@ -168,7 +173,7 @@ class _ImagePageTransform extends StatelessWidget {
           bottom: 40.0,
         ),
         child: Container(
-          child: pageViewModel.mainImage, // Loading main
+          child: pageViewModel.mainImage,
         ),
       ),
     );
@@ -202,7 +207,7 @@ class _TitlePageTransform extends StatelessWidget {
         ),
         child: DefaultTextStyle.merge(
           style: pageViewModel.mergedTitleTextStyle,
-          child: pageViewModel.title ?? const SizedBox(),
+          child: pageViewModel.title,
         ),
       ),
     );

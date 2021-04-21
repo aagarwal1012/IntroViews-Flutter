@@ -129,6 +129,15 @@
         "ideas",
         "doc"
       ]
+    },
+    {
+      "login": "ride4sun",
+      "name": "ride4sun",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7740651?v=4",
+      "profile": "https://github.com/ride4sun",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
