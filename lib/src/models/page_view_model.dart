@@ -8,9 +8,9 @@ class PageViewModel {
     this.iconImageAssetPath,
     this.bubbleBackgroundColor = const Color(0x88FFFFFF),
     this.iconColor,
-    required this.title,
-    required this.body,
-    required this.mainImage,
+    this.title = const SizedBox(),
+    this.body = const SizedBox(),
+    this.mainImage = const SizedBox(),
     this.bubble,
     this.textStyle,
     this.titleTextStyle = const TextStyle(color: Colors.white, fontSize: 50.0),
@@ -44,15 +44,15 @@ class PageViewModel {
   ///
   /// _Typically a [Text] widget_.
   ///
-  /// If null, then the widget is omitted.
-  final Widget? title;
+  /// Omitted by default.
+  final Widget title;
 
   /// Widget for the body.
   ///
   /// _Typically a [Text] widget_.
   ///
-  /// If null, then the widget is omitted.
-  final Widget? body;
+  /// Omitted by default.
+  final Widget body;
 
   /// Sets TextStyle for [titleTextStyle] and [bodyTextStyle].
   ///
@@ -75,9 +75,8 @@ class PageViewModel {
   ///
   /// _Typically an [Image] widget_.
   ///
-  ///
-  /// If null, then the widget is omitted.
-  final Widget? mainImage;
+  /// Omitted by default.
+  final Widget mainImage;
 
   /// Inner bubble widget.
   ///

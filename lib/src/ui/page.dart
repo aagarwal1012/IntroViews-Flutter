@@ -142,7 +142,7 @@ class _BodyPageTransform extends StatelessWidget {
         child: DefaultTextStyle.merge(
           textAlign: TextAlign.center,
           style: pageViewModel.mergedBodyTextStyle,
-          child: pageViewModel.body ?? const SizedBox(),
+          child: pageViewModel.body,
         ),
       ),
     );
@@ -173,7 +173,7 @@ class _ImagePageTransform extends StatelessWidget {
           bottom: 40.0,
         ),
         child: Container(
-          child: pageViewModel.mainImage, // Loading main
+          child: pageViewModel.mainImage,
         ),
       ),
     );
@@ -207,7 +207,7 @@ class _TitlePageTransform extends StatelessWidget {
         ),
         child: DefaultTextStyle.merge(
           style: pageViewModel.mergedTitleTextStyle,
-          child: pageViewModel.title ?? const SizedBox(),
+          child: pageViewModel.title,
         ),
       ),
     );
