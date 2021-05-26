@@ -1,3 +1,6 @@
+## 3.1.1
+* Updated app example. Thanks @zognotadog
+
 ## 3.1.0
 * Added new `pageBackground` property to the `PageViewModel`, which sets a widget as a
 background of the whole page (`pageColor` has priority over this). Thanks @ride4sun

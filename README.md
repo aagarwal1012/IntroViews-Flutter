@@ -5,7 +5,7 @@
     <img src="https://img.shields.io/badge/Platform-Flutter-yellow.svg"
       alt="Platform" />
   </a>
-  <a href="https://pub.dartlang.org/packages/intro_views_flutter">
+  <a href="https://pub.dev/packages/intro_views_flutter">
     <img src="https://img.shields.io/pub/v/intro_views_flutter.svg"
       alt="Pub Package" />
   </a>
@@ -65,7 +65,7 @@ You should ensure that you add the `intro_views_flutter` as a dependency in your
 
 ```yaml
 dependencies:
-  intro_views_flutter: '^3.1.0'
+  intro_views_flutter: '^3.1.1'
 ```
 
 You can also reference the git repository directly if you want:
@@ -138,9 +138,9 @@ You should then run `flutter packages get` in your terminal so as to get the pac
 | :-------------------- | :------------- | :-------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------: |
 | pageColor             | Color?          | Set color of the page.                                                |                                              Null                                               |
 | pageBackground        | Widget         | Set a widget as a background of the whole page (pageColor has priority)            |                                              Null                                               |
-| mainImage             | Image / Widget | Set the main image of the page. If null, then the widget is omitted. |                                              Null                                               |
-| title                 | Text / Widget  | Set the title text of the page. If null, then the widget is omitted.                                       |                                              Null                                               |
-| body                  | Text / Widget  | Set the body text of the page. If null, then the widget is omitted.                                        |                                              Null                                               |
+| mainImage             | Image / Widget | Set the main image of the page. If null, then the widget is omitted. |                                              -                                               |
+| title                 | Text / Widget  | Set the title text of the page. If null, then the widget is omitted.                                       |                                              -                                               |
+| body                  | Text / Widget  | Set the body text of the page. If null, then the widget is omitted.                                        |                                              -                                               |
 | iconImageAssetPath    | String?         | Set the icon image asset path that would be displayed in page bubble. |                                              Null                                               |
 | iconColor             | Color?          | Set the page bubble icon color.                                       |                                              Null                                               |
 | bubbleBackgroundColor | Color          | Set the page bubble background color.                                 |                                          Colors.white / Color(0x88FFFFFF)                                           |
