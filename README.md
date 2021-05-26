@@ -212,6 +212,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/mzdm"><img src="https://avatars.githubusercontent.com/u/67197047?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Matěj Žídek</b></sub></a><br /><a href="https://github.com/aagarwal1012/IntroViews-Flutter/issues?q=author%3Amzdm" title="Bug reports">🐛</a> <a href="https://github.com/aagarwal1012/IntroViews-Flutter/commits?author=mzdm" title="Code">💻</a> <a href="#platform-mzdm" title="Packaging/porting to new platform">📦</a> <a href="#maintenance-mzdm" title="Maintenance">🚧</a> <a href="#ideas-mzdm" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/aagarwal1012/IntroViews-Flutter/commits?author=mzdm" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/ride4sun"><img src="https://avatars.githubusercontent.com/u/7740651?v=4?s=100" width="100px;" alt=""/><br /><sub><b>ride4sun</b></sub></a><br /><a href="https://github.com/aagarwal1012/IntroViews-Flutter/commits?author=ride4sun" title="Code">💻</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/zognotadog"><img src="https://avatars.githubusercontent.com/u/12435592?v=4?s=100" width="100px;" alt=""/><br /><sub><b>zognotadog</b></sub></a><br /><a href="https://github.com/aagarwal1012/IntroViews-Flutter/commits?author=zognotadog" title="Code">💻</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
