@@ -41,6 +41,7 @@ class PagerIndicator extends StatelessWidget {
 
       // adding to the list
       bubbles.add(PageBubble(
+        numOfPages: viewModel.pages.length, // Pass num of pages to be checked for handling
         viewModel: PageBubbleViewModel(
           iconAssetPath: page.iconImageAssetPath,
           iconColor: page.iconColor,

@@ -6,15 +6,18 @@ import 'package:intro_views_flutter/src/models/page_bubble_view_model.dart';
 /// This class contains the UI for page bubble.
 class PageBubble extends StatelessWidget {
   const PageBubble({
-    required this.viewModel,
+    required this.numOfPages,
+    required this.viewModel
   });
 
+  final int numOfPages;
   final PageBubbleViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 55.0,
+      // If more than 5 pages, use screen width to apply container's width
+      width: numOfPages<6 ? 55.0 : MediaQuery.of(context).size.width/numOfPages,
       height: 65.0,
       child: Center(
         child: Padding(
