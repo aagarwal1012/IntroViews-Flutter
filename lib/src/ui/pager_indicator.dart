@@ -16,8 +16,9 @@ class PagerIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     // extracting page bubble information from page view model
     final bubbles = <PageBubble>[];
+    final numOfPages = viewModel.pages.length;
 
-    for (var i = 0; i < viewModel.pages.length; i++) {
+    for (var i = 0; i < numOfPages; i++) {
       final page = viewModel.pages[i];
 
       // calculating percent active
@@ -41,7 +42,7 @@ class PagerIndicator extends StatelessWidget {
 
       // adding to the list
       bubbles.add(PageBubble(
-        numOfPages: viewModel.pages.length, // Pass num of pages to be checked for handling
+        numOfPages: numOfPages,
         viewModel: PageBubbleViewModel(
           iconAssetPath: page.iconImageAssetPath,
           iconColor: page.iconColor,
