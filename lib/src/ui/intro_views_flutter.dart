@@ -38,7 +38,11 @@ class IntroViewsFlutter extends StatefulWidget {
     this.columnMainAxisAlignment = MainAxisAlignment.spaceAround,
     this.fullTransition = FULL_TRANSITION_PX,
     this.background,
-  }) : super(key: key);
+  })  : assert(
+          pages.length > 0,
+          "At least one item of 'PageViewModel' is required.",
+        ),
+        super(key: key);
 
   /// List of [PageViewModel] to display.
   final List<PageViewModel> pages;
