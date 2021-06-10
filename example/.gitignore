@@ -14,3 +14,5 @@ build/
 /ios/Flutter/flutter_export_environment.sh
 
 .firebase/
+/winuwp/flutter/flutter_windows.h
+/winuwp/flutter/ephemeral/*
