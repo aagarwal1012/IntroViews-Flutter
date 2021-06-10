@@ -91,8 +91,9 @@ class App extends StatelessWidget {
           showNextButton: true,
           showBackButton: true,
           onTapDoneButton: () {
-            // Use Navigator.push if you want the user to be able to slide across and back to the Intro Views.
-            Navigator.pushReplacement(
+            // Use Navigator.pushReplacement if you want to dispose the latest route
+            // so the user will not be able to slide back to the Intro Views.
+            Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => HomePage()),
             );
