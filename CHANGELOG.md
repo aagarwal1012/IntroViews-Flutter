@@ -1,3 +1,6 @@
+## 3.2.0
+* Fixed overflowing issue. Thanks @Jayson1999
+
 ## 3.1.1
 * Updated app example. Thanks @zognotadog
 
