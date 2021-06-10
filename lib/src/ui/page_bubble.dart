@@ -8,7 +8,7 @@ import 'package:intro_views_flutter/src/models/page_bubble_view_model.dart';
 class PageBubble extends StatelessWidget {
   const PageBubble({
     required this.numOfPages,
-    required this.viewModel
+    required this.viewModel,
   });
 
   final int numOfPages;
