@@ -117,7 +117,7 @@ class HomePage extends StatelessWidget {
         title: const Text('Home'),
       ),
       body: const Center(
-        child: Text('This is the home page of the app'),
+        child: Text('test'),
       ),
     );
   }
