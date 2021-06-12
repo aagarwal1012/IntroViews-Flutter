@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intro_views_flutter/src/constants/constants.dart';
+import 'package:intro_views_flutter/src/helpers/constants.dart';
+import 'package:intro_views_flutter/src/helpers/extensions.dart';
 import 'package:intro_views_flutter/src/models/page_bubble_view_model.dart';
 import 'package:intro_views_flutter/src/models/pager_indicator_view_model.dart';
 import 'package:intro_views_flutter/src/ui/page_bubble.dart';

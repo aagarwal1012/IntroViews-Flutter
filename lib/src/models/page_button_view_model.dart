@@ -1,4 +1,4 @@
-import 'package:intro_views_flutter/src/constants/constants.dart';
+import 'package:intro_views_flutter/src/helpers/constants.dart';
 
 /// This is view model for the skip and done buttons.
 class PageButtonViewModel {

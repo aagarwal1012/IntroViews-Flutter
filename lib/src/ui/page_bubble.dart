@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:intro_views_flutter/src/constants/constants.dart';
 import 'package:intro_views_flutter/src/models/page_bubble_view_model.dart';
 
 /// This class contains the UI for page bubble.

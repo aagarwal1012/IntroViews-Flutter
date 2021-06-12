@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intro_views_flutter/src/constants/constants.dart';
+import 'package:intro_views_flutter/src/helpers/constants.dart';
 import 'package:intro_views_flutter/src/models/page_button_view_model.dart';
 
 /// Skip, Next, and Back button class.

@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:intro_views_flutter/src/constants/constants.dart';
+import 'package:intro_views_flutter/src/helpers/constants.dart';
 import 'package:intro_views_flutter/src/models/slide_update_model.dart';
 
 /// This class provides the animation controller
