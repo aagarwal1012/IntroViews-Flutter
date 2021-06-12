@@ -153,4 +153,27 @@ void main() {
       ),
     );
   });
+
+  testWidgets('should not overflow if many bubbles', (
+    WidgetTester tester,
+  ) async {
+    final pages = List.generate(
+      15,
+      (index) => PageViewModel(
+        pageColor: const Color(0xFF03A9F4),
+        title: Text('$index'),
+      ),
+    );
+
+    tester.binding.window.physicalSizeTestValue = const Size(500, 800);
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Builder(
+          builder: (_) => IntroViewsFlutter(pages),
+        ),
+      ),
+    );
+
+    expect(tester.takeException(), isNull);
+  });
 }
