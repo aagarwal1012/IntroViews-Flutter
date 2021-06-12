@@ -19,6 +19,11 @@ class PagerIndicator extends StatelessWidget {
     final bubbles = <PageBubble>[];
     final numOfPages = viewModel.pages.length;
 
+    // calculates the width of the bubble to avoid the overflowing render issue #96
+    final bubbleWidth = BUBBLE_WIDTH * numOfPages > context.screenWidth
+        ? (context.screenWidth / numOfPages)
+        : BUBBLE_WIDTH;
+
     for (var i = 0; i < numOfPages; i++) {
       final page = viewModel.pages[i];
 
@@ -43,7 +48,7 @@ class PagerIndicator extends StatelessWidget {
 
       // adding to the list
       bubbles.add(PageBubble(
-        numOfPages: numOfPages,
+        width: bubbleWidth,
         viewModel: PageBubbleViewModel(
           iconAssetPath: page.iconImageAssetPath,
           iconColor: page.iconColor,
