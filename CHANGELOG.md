@@ -1,5 +1,7 @@
 ## 3.2.0
-* Fixed overflowing issue. Thanks @Jayson1999
+* Fixed overflowing issue with the bubbles. Thanks @Jayson1999
+* Updated app example
+* Updated CI
 
 ## 3.1.1
 * Updated app example. Thanks @zognotadog
