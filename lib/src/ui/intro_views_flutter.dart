@@ -40,7 +40,7 @@ class IntroViewsFlutter extends StatefulWidget {
     this.background,
   })  : assert(
           pages.length > 0,
-          "At least one item of 'PageViewModel' is required.",
+          "At least one 'PageViewModel' item of 'pages' argument is required.",
         ),
         super(key: key);
 
