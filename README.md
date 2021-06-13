@@ -214,6 +214,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/zognotadog"><img src="https://avatars.githubusercontent.com/u/12435592?v=4?s=100" width="100px;" alt=""/><br /><sub><b>zognotadog</b></sub></a><br /><a href="https://github.com/aagarwal1012/IntroViews-Flutter/commits?author=zognotadog" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Jayson1999"><img src="https://avatars.githubusercontent.com/u/44394801?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jayson</b></sub></a><br /><a href="https://github.com/aagarwal1012/IntroViews-Flutter/issues?q=author%3AJayson1999" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
