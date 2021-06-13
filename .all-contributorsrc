@@ -147,6 +147,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Jayson1999",
+      "name": "Jayson",
+      "avatar_url": "https://avatars.githubusercontent.com/u/44394801?v=4",
+      "profile": "https://github.com/Jayson1999",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
