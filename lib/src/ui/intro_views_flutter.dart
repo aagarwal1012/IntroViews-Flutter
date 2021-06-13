@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/src/animation_gesture/animated_page_dragger.dart';
 import 'package:intro_views_flutter/src/animation_gesture/page_dragger.dart';
 import 'package:intro_views_flutter/src/animation_gesture/page_reveal.dart';
-import 'package:intro_views_flutter/src/constants/constants.dart';
+import 'package:intro_views_flutter/src/helpers/constants.dart';
 import 'package:intro_views_flutter/src/models/page_view_model.dart';
 import 'package:intro_views_flutter/src/models/pager_indicator_view_model.dart';
 import 'package:intro_views_flutter/src/models/slide_update_model.dart';
@@ -38,7 +38,11 @@ class IntroViewsFlutter extends StatefulWidget {
     this.columnMainAxisAlignment = MainAxisAlignment.spaceAround,
     this.fullTransition = FULL_TRANSITION_PX,
     this.background,
-  }) : super(key: key);
+  })  : assert(
+          pages.length > 0,
+          "At least one 'PageViewModel' item of 'pages' argument is required.",
+        ),
+        super(key: key);
 
   /// List of [PageViewModel] to display.
   final List<PageViewModel> pages;

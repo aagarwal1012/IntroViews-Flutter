@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intro_views_flutter/src/constants/constants.dart';
+import 'package:intro_views_flutter/src/helpers/constants.dart';
+import 'package:intro_views_flutter/src/helpers/extensions.dart';
 import 'package:intro_views_flutter/src/models/page_bubble_view_model.dart';
 import 'package:intro_views_flutter/src/models/pager_indicator_view_model.dart';
 import 'package:intro_views_flutter/src/ui/page_bubble.dart';
@@ -16,8 +17,14 @@ class PagerIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     // extracting page bubble information from page view model
     final bubbles = <PageBubble>[];
+    final numOfPages = viewModel.pages.length;
 
-    for (var i = 0; i < viewModel.pages.length; i++) {
+    // calculates the width of the bubble to avoid the overflowing render issue #96
+    final bubbleWidth = BUBBLE_WIDTH * numOfPages > context.screenWidth
+        ? (context.screenWidth / numOfPages)
+        : BUBBLE_WIDTH;
+
+    for (var i = 0; i < numOfPages; i++) {
       final page = viewModel.pages[i];
 
       // calculating percent active
@@ -41,6 +48,7 @@ class PagerIndicator extends StatelessWidget {
 
       // adding to the list
       bubbles.add(PageBubble(
+        width: bubbleWidth,
         viewModel: PageBubbleViewModel(
           iconAssetPath: page.iconImageAssetPath,
           iconColor: page.iconColor,

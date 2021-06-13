@@ -1,4 +1,4 @@
-import 'package:intro_views_flutter/src/constants/constants.dart';
+import 'package:intro_views_flutter/src/helpers/constants.dart';
 
 /// Model for slide update.
 class SlideUpdate {

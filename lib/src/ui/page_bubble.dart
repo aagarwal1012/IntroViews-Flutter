@@ -7,14 +7,16 @@ import 'package:intro_views_flutter/src/models/page_bubble_view_model.dart';
 class PageBubble extends StatelessWidget {
   const PageBubble({
     required this.viewModel,
+    required this.width,
   });
 
   final PageBubbleViewModel viewModel;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 55.0,
+      width: width,
       height: 65.0,
       child: Center(
         child: Padding(

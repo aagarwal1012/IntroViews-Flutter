@@ -6,6 +6,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:intro_views_flutter/intro_views_flutter.dart';
 
 // ignore: avoid_relative_lib_imports
 import '../example/lib/main.dart';
@@ -132,5 +133,47 @@ void main() {
     await tester.pumpWidget(App());
 
     expect(find.byKey(const Key('Portrait Page')), findsWidgets);
+  });
+
+  testWidgets('should throw an assert if pages list is empty', (
+    WidgetTester tester,
+  ) async {
+    final pages = <PageViewModel>[];
+
+    await expectLater(
+      () async => await tester.pumpWidget(
+        IntroViewsFlutter(pages),
+      ),
+      throwsA(
+        isAssertionError.having(
+          (AssertionError error) => error.message,
+          'message',
+          contains("At least one 'PageViewModel' item"),
+        ),
+      ),
+    );
+  });
+
+  testWidgets('should not overflow if many bubbles', (
+    WidgetTester tester,
+  ) async {
+    final pages = List.generate(
+      15,
+      (index) => PageViewModel(
+        pageColor: const Color(0xFF03A9F4),
+        title: Text('$index'),
+      ),
+    );
+
+    tester.binding.window.physicalSizeTestValue = const Size(500, 800);
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Builder(
+          builder: (_) => IntroViewsFlutter(pages),
+        ),
+      ),
+    );
+
+    expect(tester.takeException(), isNull);
   });
 }

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:intro_views_flutter/src/constants/constants.dart';
+import 'package:intro_views_flutter/src/helpers/constants.dart';
 import 'package:intro_views_flutter/src/models/slide_update_model.dart';
 
 /// This class is used to get user gesture and work according to it.
