@@ -21,7 +21,6 @@ void main() {
   });
 
   testWidgets('Skip Pressed smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
     await tester.pumpWidget(App());
 
     expect(find.text('SKIP'), findsOneWidget);
@@ -35,7 +34,6 @@ void main() {
   });
 
   testWidgets('Done Pressed smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
     await tester.pumpWidget(App());
 
     expect(find.text('SKIP'), findsOneWidget);
@@ -59,30 +57,55 @@ void main() {
 
   // Drag from first page to second and back to first.
   testWidgets('drag Reveal smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
     await tester.pumpWidget(App());
 
-    // should find First page by its title Text
+    // title of the first page should be found
     expect(find.text('Flights'), findsWidgets);
-    // second page title Text should not be found
+    // title of the second page should not be found
     expect(find.text('Hotels'), findsNothing);
 
-    // Drag Screen To Reveal next Page
+    // drag to reveal the next page
     await tester.drag(find.byType(App), const Offset(-400.0, 0.0));
     await tester.pumpAndSettle();
 
-    // first page should have been removed by second page
+    // first page should be replaced with the second page
     expect(find.text('Flights'), findsNothing);
     expect(find.text('Hotels'), findsWidgets);
 
-    // Drag Screen To Reveal next Prev page
+    // drag to reveal the latest page
     await tester.drag(find.byType(App), const Offset(400.0, 0.0));
 
     await tester.pumpAndSettle();
-    // first page should have been removed by second page
+    // first page should be replaced with the first page
     expect(find.text('Flights'), findsWidgets);
-    // second page title Text should not be found
+    // title of the second page should not be found
     expect(find.text('Hotels'), findsNothing);
+  });
+
+  testWidgets('drag to a wrong direction on the first/last page does nothing',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(App());
+
+    // title of the first page should be found
+    expect(find.text('Flights'), findsWidgets);
+
+    // dragging right to left (previous page direction) does nothing
+    await tester.drag(find.byType(App), const Offset(400.0, 0.0));
+    await tester.pumpAndSettle();
+    expect(find.text('Flights'), findsWidgets);
+
+    // drag to the latest page
+    await tester.drag(find.byType(App), const Offset(-400.0, 0.0));
+    await tester.pumpAndSettle();
+    await tester.drag(find.byType(App), const Offset(-400.0, 0.0));
+    await tester.pumpAndSettle();
+    expect(find.text('Cabs'), findsWidgets);
+
+    // dragging again to the next page does nothing, since it is the last page
+    await tester.drag(find.byType(App), const Offset(-400.0, 0.0));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Cabs'), findsWidgets);
   });
 
   // Overflow condition
@@ -124,10 +147,10 @@ void main() {
   });
 
   testWidgets('should open app in portrait mode', (WidgetTester tester) async {
-    final binding = TestWidgetsFlutterBinding.ensureInitialized()
-        as TestWidgetsFlutterBinding;
-    binding.window.physicalSizeTestValue =
+    tester.binding.window.physicalSizeTestValue =
         (const Size(PORTRAIT_WIDTH, PORTRAIT_HEIGHT));
+    addTearDown(tester.binding.window.clearPhysicalSizeTestValue);
+
     // Build our app and trigger a frame in portrait mode.
     await tester.pumpWidget(App());
 
@@ -146,8 +169,8 @@ void main() {
       throwsA(
         isAssertionError.having(
           (AssertionError error) => error.message,
-          'message',
-          contains("At least one 'PageViewModel' item"),
+          'tapMessage',
+          startsWith("At least one 'PageViewModel' item"),
         ),
       ),
     );
@@ -156,6 +179,9 @@ void main() {
   testWidgets('should not overflow if many bubbles', (
     WidgetTester tester,
   ) async {
+    tester.binding.window.physicalSizeTestValue = const Size(500, 800);
+    addTearDown(tester.binding.window.clearPhysicalSizeTestValue);
+
     final pages = List.generate(
       15,
       (index) => PageViewModel(
@@ -164,7 +190,6 @@ void main() {
       ),
     );
 
-    tester.binding.window.physicalSizeTestValue = const Size(500, 800);
     await tester.pumpWidget(
       MaterialApp(
         home: Builder(
@@ -174,5 +199,135 @@ void main() {
     );
 
     expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('SKIP button is working as intended',
+      (WidgetTester tester) async {
+    String? tapMessage;
+
+    final pages = List.generate(
+      3,
+      (index) => PageViewModel(
+        pageColor: const Color(0xFF03A9F4),
+        title: Text('Page: ${index + 1}'),
+      ),
+    );
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Builder(
+          builder: (_) => IntroViewsFlutter(
+            pages,
+            showSkipButton: true,
+            onTapSkipButton: () {
+              tapMessage = 'SKIP button clicked';
+            },
+          ),
+        ),
+      ),
+    );
+
+    expect(find.text('Page: 1'), findsWidgets);
+    expect(find.text('Page: 2'), findsNothing);
+    expect(find.text('Page: 3'), findsNothing);
+    expect(tapMessage, isNull);
+
+    await tester.tap(find.text('SKIP'));
+    await tester.pumpAndSettle();
+
+    expect(tapMessage, 'SKIP button clicked');
+    expect(tapMessage, isNotNull);
+    expect(find.text('Page: 1'), findsNothing);
+    expect(find.text('Page: 2'), findsNothing);
+    expect(find.text('Page: 3'), findsWidgets);
+  });
+
+  testWidgets('NEXT button is working as intended',
+      (WidgetTester tester) async {
+    String? tapMessage;
+
+    final pages = List.generate(
+      3,
+      (index) => PageViewModel(
+        pageColor: const Color(0xFF03A9F4),
+        title: Text('Page: ${index + 1}'),
+      ),
+    );
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Builder(
+          builder: (_) => IntroViewsFlutter(
+            pages,
+            showNextButton: true,
+            showBackButton: false,
+            onTapNextButton: () {
+              tapMessage = 'NEXT button clicked';
+            },
+          ),
+        ),
+      ),
+    );
+
+    expect(tapMessage, isNull);
+    expect(find.text('Page: 1'), findsWidgets);
+    expect(find.text('Page: 2'), findsNothing);
+    expect(find.text('Page: 3'), findsNothing);
+
+    await tester.tap(find.text('NEXT'));
+    await tester.pumpAndSettle();
+
+    expect(tapMessage, 'NEXT button clicked');
+    expect(tapMessage, isNotNull);
+    expect(find.text('Page: 1'), findsNothing);
+    expect(find.text('Page: 2'), findsWidgets);
+    expect(find.text('Page: 3'), findsNothing);
+  });
+
+  testWidgets('BACK button is working as intended',
+      (WidgetTester tester) async {
+    String? tapMessage;
+
+    final pages = List.generate(
+      4,
+      (index) => PageViewModel(
+        pageColor: const Color(0xFF03A9F4),
+        title: Text('Page: ${index + 1}'),
+      ),
+    );
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Builder(
+          builder: (_) => IntroViewsFlutter(
+            pages,
+            showBackButton: true,
+            showSkipButton: true,
+            showNextButton: false,
+            onTapBackButton: () {
+              tapMessage = 'BACK button clicked';
+            },
+          ),
+        ),
+      ),
+    );
+
+    expect(tapMessage, isNull);
+    expect(find.text('Page: 1'), findsWidgets);
+    expect(find.text('Page: 2'), findsNothing);
+    expect(find.text('Page: 3'), findsNothing);
+    expect(find.text('Page: 4'), findsNothing);
+
+    await tester.tap(find.text('SKIP'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('BACK'));
+    await tester.pumpAndSettle();
+
+    expect(tapMessage, 'BACK button clicked');
+    expect(tapMessage, isNotNull);
+    expect(find.text('Page: 1'), findsNothing);
+    expect(find.text('Page: 2'), findsNothing);
+    expect(find.text('Page: 3'), findsWidgets);
+    expect(find.text('Page: 4'), findsNothing);
   });
 }
