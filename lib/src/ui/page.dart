@@ -4,10 +4,11 @@ import 'package:intro_views_flutter/src/models/page_view_model.dart';
 /// This is the class which contains the Page UI.
 class Page extends StatelessWidget {
   const Page({
+    Key? key,
     required this.pageViewModel,
     this.percentVisible = 1.0,
     this.columnMainAxisAlignment = MainAxisAlignment.spaceAround,
-  });
+  }) : super(key: key);
 
   /// Page details.
   final PageViewModel pageViewModel;

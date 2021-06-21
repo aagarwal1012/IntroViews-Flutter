@@ -1,14 +1,13 @@
-// This is a basic Flutter widget test.
-// To perform an interaction with a widget in your test, use the WidgetTester utility that Flutter
-// provides. For example, you can send tap and scroll gestures. You can also use WidgetTester to
-// find child widgets in the widget tree, read text, and verify that the values of widget properties
-// are correct.
-
+/// Tests are run from the example directory in order to have access to
+/// the app's asset images.
+///
+/// cd example
+/// flutter test ..
+// ignore_for_file: avoid_relative_lib_imports, constant_identifier_names
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
 
-// ignore: avoid_relative_lib_imports
 import '../example/lib/main.dart';
 
 const double PORTRAIT_WIDTH = 1800.0;

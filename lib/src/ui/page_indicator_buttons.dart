@@ -5,10 +5,11 @@ import 'package:intro_views_flutter/src/models/page_button_view_model.dart';
 /// Skip, Next, and Back button class.
 class DefaultButton extends StatelessWidget {
   const DefaultButton({
+    Key? key,
     required this.onTap,
     required this.pageButtonViewModel,
     required this.child,
-  });
+  }) : super(key: key);
 
   /// Callback for skip button.
   final VoidCallback? onTap;
@@ -48,10 +49,11 @@ class DefaultButton extends StatelessWidget {
 /// Done Button class.
 class DoneButton extends StatelessWidget {
   const DoneButton({
+    Key? key,
     required this.onTap,
     required this.pageButtonViewModel,
     required this.child,
-  });
+  }) : super(key: key);
 
   final VoidCallback? onTap;
 
@@ -86,6 +88,7 @@ class DoneButton extends StatelessWidget {
 
 class PageIndicatorButtons extends StatelessWidget {
   const PageIndicatorButtons({
+    Key? key,
     required this.activePageIndex,
     required this.totalPages,
     this.onPressedDoneButton,
@@ -103,7 +106,7 @@ class PageIndicatorButtons extends StatelessWidget {
     this.showNextButton = true,
     this.showBackButton = true,
     required this.backText,
-  });
+  }) : super(key: key);
 
   final int activePageIndex;
   final int totalPages;
