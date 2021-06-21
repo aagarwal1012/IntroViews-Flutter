@@ -8,8 +8,9 @@ import 'package:intro_views_flutter/src/ui/page_bubble.dart';
 /// This class contains the UI elements associated with bottom page indicator.
 class PagerIndicator extends StatelessWidget {
   const PagerIndicator({
+    Key? key,
     required this.viewModel,
-  });
+  }) : super(key: key);
 
   final PagerIndicatorViewModel viewModel;
 
@@ -28,7 +29,7 @@ class PagerIndicator extends StatelessWidget {
       final page = viewModel.pages[i];
 
       // calculating percent active
-      var percentActive;
+      double percentActive;
       if (i == viewModel.activeIndex) {
         percentActive = 1.0 - viewModel.slidePercent;
       } else if (i == viewModel.activeIndex - 1 &&

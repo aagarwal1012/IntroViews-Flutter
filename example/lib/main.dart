@@ -6,6 +6,8 @@ void main() => runApp(App());
 
 /// App widget class.
 class App extends StatelessWidget {
+  App({Key? key}) : super(key: key);
+
   // Making list of pages needed to pass in IntroViewsFlutter constructor.
   final pages = [
     PageViewModel(
@@ -110,6 +112,9 @@ class App extends StatelessWidget {
 
 /// Home Page of our example app.
 class HomePage extends StatelessWidget {
+  // ignore: prefer_const_constructors_in_immutables
+  HomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
