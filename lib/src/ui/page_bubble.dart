@@ -6,16 +6,17 @@ import 'package:intro_views_flutter/src/models/page_bubble_view_model.dart';
 /// This class contains the UI for page bubble.
 class PageBubble extends StatelessWidget {
   const PageBubble({
+    Key? key,
     required this.viewModel,
     required this.width,
-  });
+  }) : super(key: key);
 
   final PageBubbleViewModel viewModel;
   final double width;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: width,
       height: 65.0,
       child: Center(

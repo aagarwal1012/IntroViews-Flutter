@@ -1,3 +1,4 @@
+// ignore_for_file: constant_identifier_names
 /// This package contains all the constants used.
 
 const BUBBLE_WIDTH = 55.0;
