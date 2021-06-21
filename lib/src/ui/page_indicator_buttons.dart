@@ -63,6 +63,8 @@ class DoneButton extends StatelessWidget {
     // calculating opacity so as to create a fade in effect
     var opacity = 1.0;
     final textStyle = DefaultTextStyle.of(context).style;
+
+    // TODO: remove this, seems like that this if clause is always evaluated as false
     if (pageButtonViewModel.activePageIndex ==
             pageButtonViewModel.totalPages - 1 &&
         pageButtonViewModel.slideDirection == SlideDirection.leftToRight) {
