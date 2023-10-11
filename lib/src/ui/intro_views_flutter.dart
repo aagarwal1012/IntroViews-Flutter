@@ -35,6 +35,7 @@ class IntroViewsFlutter extends StatefulWidget {
     this.skipText = const Text('SKIP'),
     this.backText = const Text('BACK'),
     this.doneButtonPersist = false,
+    this.enabled = true,
     this.columnMainAxisAlignment = MainAxisAlignment.spaceAround,
     this.fullTransition = FULL_TRANSITION_PX,
     this.background,
@@ -126,6 +127,10 @@ class IntroViewsFlutter extends StatefulWidget {
   ///
   /// Defaults to 300.0.
   final double fullTransition;
+
+  /// Enable or disbale full page transition.
+  ///
+  final bool enabled;
 
   /// Sets the background color to Colors.transparent if you have your own
   /// background image below.
@@ -334,7 +339,8 @@ class _IntroViewsFlutterState extends State<IntroViewsFlutter>
           ),
           PageDragger(
             // used for gesture control
-            fullTransitionPX: widget.fullTransition,
+            fullTransitionPX:
+                widget.enabled ? widget.fullTransition : double.infinity,
             canDragLeftToRight: activePageIndex > 0,
             canDragRightToLeft: activePageIndex < pages.length - 1,
             slideUpdateStream: slideUpdateStream,
